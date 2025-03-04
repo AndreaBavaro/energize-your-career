@@ -19,7 +19,7 @@ export default function AboutUs() {
     {
       icon: <Trophy className="h-6 w-6 text-voltify-600" />,
       title: 'Proven Track Record',
-      description: 'We've helped hundreds of professionals improve their careers and organizations find their perfect match.'
+      description: "We've helped hundreds of professionals improve their careers and organizations find their perfect match."
     },
     {
       icon: <CheckCircle className="h-6 w-6 text-voltify-600" />,
