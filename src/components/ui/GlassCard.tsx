@@ -18,7 +18,7 @@ export function GlassCard({
   return (
     <div 
       className={cn(
-        "bg-white rounded-xl p-6 shadow-md border border-gray-100",
+        "bg-white/95 backdrop-blur-sm rounded-xl p-6 shadow-md border border-gray-100",
         hoverEffect && "hover:shadow-lg hover:-translate-y-1",
         className
       )}

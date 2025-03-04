@@ -45,7 +45,7 @@ const Index = () => {
       
       <Hero />
       
-      <main className="flex-grow white-brick-bg">
+      <main className="flex-grow white-brick-bg relative">
         <AboutUs />
         <OurStory />
         <Testimonials />
