@@ -1,6 +1,7 @@
 
 import { SectionHeading } from '../ui/SectionHeading';
 import { Zap, Database, Heart, CreditCard, Microscope, BarChart3 } from 'lucide-react';
+import { GlassCard } from '../ui/GlassCard';
 
 export default function Sectors() {
   const sectors = [
@@ -53,27 +54,29 @@ export default function Sectors() {
         
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-20">
           {sectors.map((sector, index) => (
-            <div 
+            <GlassCard 
               key={index}
-              className="opacity-0 animate-fade-in-up animate-fill-forwards bg-white rounded-lg shadow-md p-6 text-center transition-all duration-300 hover:shadow-lg hover:transform hover:-translate-y-1"
-              style={{ animationDelay: `${index * 100}ms` }}
+              className="opacity-0 animate-fade-in-up animate-fill-forwards"
+              animationDelay={`${index * 100}ms`}
             >
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-voltify-50 mb-4 mx-auto">
-                {sector.icon}
+              <div className="text-center">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-voltify-50 mb-4 mx-auto">
+                  {sector.icon}
+                </div>
+                <h3 className="font-semibold text-stone-900">{sector.name}</h3>
               </div>
-              <h3 className="font-semibold text-stone-900">{sector.name}</h3>
-            </div>
+            </GlassCard>
           ))}
         </div>
         
-        <div className="bg-voltify-50 rounded-2xl p-8 md:p-12 max-w-5xl mx-auto">
+        <div className="bg-voltify-50/80 backdrop-blur-sm rounded-2xl p-8 md:p-12 max-w-5xl mx-auto shadow-md">
           <h3 className="text-2xl font-bold mb-8 text-center text-stone-900">Positions We Place</h3>
           
           <div className="flex flex-wrap justify-center gap-3">
             {positions.map((position, index) => (
               <span 
                 key={index}
-                className="px-4 py-2 bg-white text-stone-800 rounded-full shadow-sm text-sm font-medium transition-all duration-300 hover:shadow-md hover:bg-voltify-100"
+                className="px-4 py-2 bg-white/80 backdrop-blur-sm text-stone-800 rounded-full shadow-sm text-sm font-medium transition-all duration-300 hover:shadow-md hover:bg-voltify-100"
               >
                 {position}
               </span>

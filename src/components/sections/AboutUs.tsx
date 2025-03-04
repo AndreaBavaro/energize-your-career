@@ -1,10 +1,40 @@
 
+import { useState } from 'react';
 import { SectionHeading } from '../ui/SectionHeading';
 import { GlassCard } from '../ui/GlassCard';
-import { CheckCircle, Users, History, Trophy } from 'lucide-react';
+import { CheckCircle, Users, History, Trophy, ChevronLeft, ChevronRight } from 'lucide-react';
 import { AnimatedText } from '../ui/AnimatedText';
 
+// City skylines (moved from Hero component)
+const cities = [
+  {
+    name: "Boston",
+    image: "/lovable-uploads/07c248d8-4002-45cf-b24f-339ef7c321eb.png",
+    position: "bg-center"
+  },
+  {
+    name: "Los Angeles",
+    image: "/lovable-uploads/03aace2d-574d-4292-a524-5b760748ade9.png",
+    position: "bg-center"
+  },
+  {
+    name: "New York",
+    image: "/lovable-uploads/45016fe7-27c2-40eb-95ff-1f2f9f2f71d2.png", 
+    position: "bg-center"
+  }
+];
+
 export default function AboutUs() {
+  const [currentCityIndex, setCurrentCityIndex] = useState(0);
+  
+  const nextCity = () => {
+    setCurrentCityIndex((prevIndex) => (prevIndex + 1) % cities.length);
+  };
+  
+  const prevCity = () => {
+    setCurrentCityIndex((prevIndex) => (prevIndex - 1 + cities.length) % cities.length);
+  };
+
   const features = [
     {
       icon: <Users className="h-6 w-6 text-voltify-600" />,
@@ -79,6 +109,48 @@ export default function AboutUs() {
                 </div>
               </GlassCard>
             ))}
+          </div>
+        </div>
+        
+        {/* Cities We Serve */}
+        <div className="mt-20">
+          <h3 className="text-2xl font-bold text-center mb-10">Cities We Serve</h3>
+          
+          <div className="relative max-w-5xl mx-auto h-[300px] md:h-[400px] rounded-xl overflow-hidden shadow-xl">
+            {/* City Images */}
+            {cities.map((city, index) => (
+              <div 
+                key={city.name}
+                className={`absolute inset-0 transition-opacity duration-1000 bg-cover ${city.position} ${
+                  index === currentCityIndex ? 'opacity-100' : 'opacity-0'
+                }`}
+                style={{
+                  backgroundImage: `url(${city.image})`,
+                }}
+              />
+            ))}
+            
+            {/* City Name */}
+            <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-black/50 backdrop-blur-sm text-white px-4 py-2 rounded-full font-medium">
+              {cities[currentCityIndex].name}
+            </div>
+            
+            {/* Navigation Controls */}
+            <button 
+              onClick={prevCity}
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white p-2 rounded-full transition-all duration-300"
+              aria-label="Previous city"
+            >
+              <ChevronLeft className="h-6 w-6" />
+            </button>
+            
+            <button 
+              onClick={nextCity}
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white p-2 rounded-full transition-all duration-300"
+              aria-label="Next city"
+            >
+              <ChevronRight className="h-6 w-6" />
+            </button>
           </div>
         </div>
       </div>

@@ -1,84 +1,25 @@
 
 import { useState, useEffect } from 'react';
-import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { AnimatedText } from '../ui/AnimatedText';
 import { Button } from '@/components/ui/button';
 
-// City skylines
-const cities = [
-  {
-    name: "Boston",
-    image: "/lovable-uploads/07c248d8-4002-45cf-b24f-339ef7c321eb.png",
-    position: "bg-center"
-  },
-  {
-    name: "Los Angeles",
-    image: "/lovable-uploads/03aace2d-574d-4292-a524-5b760748ade9.png",
-    position: "bg-center"
-  },
-  {
-    name: "New York",
-    image: "/lovable-uploads/45016fe7-27c2-40eb-95ff-1f2f9f2f71d2.png", 
-    position: "bg-center"
-  }
-];
-
 export default function Hero() {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  
-  // Auto-rotate images
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % cities.length);
-    }, 6000);
-    
-    return () => clearInterval(interval);
-  }, []);
-  
-  const nextImage = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % cities.length);
-  };
-  
-  const prevImage = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex - 1 + cities.length) % cities.length);
-  };
-
   return (
     <div className="relative min-h-screen flex items-center overflow-hidden">
-      {/* City Skyline Images with Overlay */}
+      {/* Office Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
-        {cities.map((city, index) => (
-          <div 
-            key={city.name}
-            className={`absolute inset-0 transition-opacity duration-1000 bg-cover ${city.position} ${
-              index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-            }`}
-            style={{
-              backgroundImage: `url(${city.image})`,
-            }}
-          />
-        ))}
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url('/lovable-uploads/fa2de695-0bf5-4f8a-89f0-ac1c6ed56faa.png')`,
+            filter: 'blur(2px)'
+          }}
+        />
         
         {/* Dark Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-stone-950/70 via-stone-950/50 to-stone-950/70"></div>
       </div>
-      
-      {/* Slider Controls */}
-      <button 
-        onClick={prevImage}
-        className="absolute left-5 top-1/2 transform -translate-y-1/2 z-20 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white p-2 rounded-full transition-all duration-300"
-        aria-label="Previous image"
-      >
-        <ChevronLeft className="h-6 w-6" />
-      </button>
-      
-      <button 
-        onClick={nextImage}
-        className="absolute right-5 top-1/2 transform -translate-y-1/2 z-20 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white p-2 rounded-full transition-all duration-300"
-        aria-label="Next image"
-      >
-        <ChevronRight className="h-6 w-6" />
-      </button>
       
       {/* Content */}
       <div className="container-custom relative z-10">
