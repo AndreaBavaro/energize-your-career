@@ -1,21 +1,28 @@
 
-import { ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import React from "react";
 
-interface GlassCardProps {
-  children: ReactNode;
+export interface GlassCardProps {
+  children: React.ReactNode;
   className?: string;
   hoverEffect?: boolean;
+  animationDelay?: string;
 }
 
-export function GlassCard({ children, className, hoverEffect = true }: GlassCardProps) {
+export function GlassCard({ 
+  children, 
+  className, 
+  hoverEffect = true,
+  animationDelay
+}: GlassCardProps) {
   return (
     <div 
       className={cn(
-        "relative p-6 md:p-8 rounded-2xl bg-white bg-opacity-70 backdrop-filter backdrop-blur-md border border-white border-opacity-20 shadow-md",
-        hoverEffect && "transition-all duration-300 hover:shadow-lg hover:translate-y-[-5px]",
+        "glass rounded-xl p-6 transition duration-300 ease-in-out",
+        hoverEffect && "hover:shadow-lg hover:-translate-y-1",
         className
       )}
+      style={animationDelay ? { animationDelay } : undefined}
     >
       {children}
     </div>

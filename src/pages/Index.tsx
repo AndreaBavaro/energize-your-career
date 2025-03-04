@@ -8,6 +8,9 @@ import Services from "@/components/sections/Services";
 import Sectors from "@/components/sections/Sectors";
 import ClientTypes from "@/components/sections/ClientTypes";
 import GivingBack from "@/components/sections/GivingBack";
+import OurStory from "@/components/sections/OurStory";
+import Testimonials from "@/components/sections/Testimonials";
+import WhyPartner from "@/components/sections/WhyPartner";
 
 const Index = () => {
   useEffect(() => {
@@ -43,6 +46,9 @@ const Index = () => {
       <main className="flex-grow">
         <Hero />
         <AboutUs />
+        <OurStory />
+        <Testimonials />
+        <WhyPartner />
         <Services />
         <Sectors />
         <ClientTypes />

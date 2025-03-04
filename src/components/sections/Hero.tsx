@@ -1,43 +1,121 @@
 
-import { ArrowRight } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { AnimatedText } from '../ui/AnimatedText';
 import { Button } from '@/components/ui/button';
 
+// City skylines
+const cities = [
+  {
+    name: "Boston",
+    image: "/lovable-uploads/07c248d8-4002-45cf-b24f-339ef7c321eb.png",
+    position: "bg-center"
+  },
+  {
+    name: "Los Angeles",
+    image: "/lovable-uploads/03aace2d-574d-4292-a524-5b760748ade9.png",
+    position: "bg-center"
+  },
+  {
+    name: "New York",
+    image: "/lovable-uploads/45016fe7-27c2-40eb-95ff-1f2f9f2f71d2.png", 
+    position: "bg-center"
+  }
+];
+
 export default function Hero() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  // Auto-rotate images
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % cities.length);
+    }, 6000);
+    
+    return () => clearInterval(interval);
+  }, []);
+  
+  const nextImage = () => {
+    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % cities.length);
+  };
+  
+  const prevImage = () => {
+    setCurrentImageIndex((prevIndex) => (prevIndex - 1 + cities.length) % cities.length);
+  };
+
   return (
-    <div className="relative min-h-screen flex items-center pt-16 overflow-hidden">
-      {/* Background Elements */}
+    <div className="relative min-h-screen flex items-center overflow-hidden">
+      {/* City Skyline Images with Overlay */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-voltify-100 rounded-full filter blur-3xl opacity-60 transform translate-x-1/4 -translate-y-1/4"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-voltify-200 rounded-full filter blur-3xl opacity-60 transform -translate-x-1/4 translate-y-1/4"></div>
+        {cities.map((city, index) => (
+          <div 
+            key={city.name}
+            className={`absolute inset-0 transition-opacity duration-1000 bg-cover ${city.position} ${
+              index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+            }`}
+            style={{
+              backgroundImage: `url(${city.image})`,
+            }}
+          />
+        ))}
+        
+        {/* White Brick Texture Overlay */}
+        <div className="absolute inset-0 bg-white/10 backdrop-blur-sm" 
+             style={{
+               backgroundImage: `url('data:image/svg+xml,%3Csvg width="42" height="44" viewBox="0 0 42 44" xmlns="http://www.w3.org/2000/svg"%3E%3Cg id="Page-1" fill="none" fill-rule="evenodd"%3E%3Cg id="brick-wall" fill="%23ffffff" fill-opacity="0.1"%3E%3Cpath d="M0 0h42v44H0V0zm1 1h40v20H1V1zM0 23h20v20H0V23zm22 0h20v20H22V23z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')`,
+             }}
+        ></div>
+
+        {/* Dark Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-stone-950/70 via-stone-950/50 to-stone-950/70"></div>
       </div>
       
+      {/* Slider Controls */}
+      <button 
+        onClick={prevImage}
+        className="absolute left-5 top-1/2 transform -translate-y-1/2 z-20 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white p-2 rounded-full transition-all duration-300"
+        aria-label="Previous image"
+      >
+        <ChevronLeft className="h-6 w-6" />
+      </button>
+      
+      <button 
+        onClick={nextImage}
+        className="absolute right-5 top-1/2 transform -translate-y-1/2 z-20 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white p-2 rounded-full transition-all duration-300"
+        aria-label="Next image"
+      >
+        <ChevronRight className="h-6 w-6" />
+      </button>
+      
+      {/* Content */}
       <div className="container-custom relative z-10">
         <div className="max-w-3xl mx-auto text-center">
           <div className="mb-6 inline-block">
-            <span className="inline-flex items-center px-3 py-1 text-sm font-medium rounded-full bg-voltify-100 text-voltify-800 animate-fade-in">
-              <span className="w-2 h-2 rounded-full bg-voltify-500 mr-2"></span>
+            <span className="inline-flex items-center px-3 py-1 text-sm font-medium rounded-full bg-voltify-100/20 text-voltify-100 backdrop-blur-sm animate-fade-in">
+              <span className="w-2 h-2 rounded-full bg-voltify-400 mr-2"></span>
               Women-Owned Staffing Solutions
             </span>
           </div>
           
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 opacity-0 animate-fade-in-up animate-fill-forwards">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-8 opacity-0 animate-fade-in-up animate-fill-forwards text-white">
             <AnimatedText 
               text="Energize Your Career" 
-              className="text-voltify-800 block mb-3"
+              className="text-white block mb-3"
               animation="fade-in-up"
               delay={200}
             />
             <AnimatedText 
               text="With Voltify" 
-              className="text-stone-800 block"
+              className="text-voltify-200 block"
               animation="fade-in-up"
               delay={400}
             />
           </h1>
           
-          <p className="text-xl text-stone-600 mb-10 max-w-xl mx-auto opacity-0 animate-fade-in-up animate-fill-forwards animate-delay-500">
-            We connect exceptional talent with outstanding organizations, creating perfect matches that drive success for both.
+          <p className="text-xl text-stone-200 mb-10 max-w-2xl mx-auto opacity-0 animate-fade-in-up animate-fill-forwards animate-delay-500 leading-relaxed">
+            True to the meaning of our name – Voltify – our mission is clear: to energize careers, 
+            build lasting relationships, connect you with opportunities, and help you grow, all supported 
+            by a positive mindset that leads to success.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center opacity-0 animate-fade-in-up animate-fill-forwards animate-delay-700">
@@ -53,7 +131,7 @@ export default function Hero() {
             </Button>
             <Button 
               variant="outline" 
-              className="border-2 border-voltify-600 text-voltify-700 hover:bg-voltify-50 px-8 py-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-lg font-medium"
+              className="border-2 border-white text-white hover:bg-white/10 px-8 py-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-lg font-medium backdrop-blur-sm"
               size="lg"
               asChild
             >
@@ -66,7 +144,7 @@ export default function Hero() {
       </div>
       
       <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <a href="#about" className="text-stone-500 hover:text-voltify-600 transition-colors">
+        <a href="#about" className="text-white hover:text-voltify-300 transition-colors">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-chevron-down">
             <path d="m6 9 6 6 6-6"/>
           </svg>

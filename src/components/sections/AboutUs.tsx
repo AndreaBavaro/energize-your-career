@@ -68,7 +68,7 @@ export default function AboutUs() {
               <GlassCard 
                 key={index}
                 className={`opacity-0 animate-fade-in-up animate-fill-forwards`}
-                style={{ animationDelay: `${index * 100 + 200}ms` }}
+                animationDelay={`${index * 100 + 200}ms`}
               >
                 <div className="flex flex-col h-full">
                   <div className="rounded-full w-12 h-12 bg-voltify-100 flex items-center justify-center mb-4">
