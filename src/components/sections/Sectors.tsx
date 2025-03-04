@@ -1,0 +1,86 @@
+
+import { SectionHeading } from '../ui/SectionHeading';
+import { Zap, Database, Heart, CreditCard, Microscope, BarChart3 } from 'lucide-react';
+
+export default function Sectors() {
+  const sectors = [
+    {
+      icon: <Zap className="h-8 w-8 text-voltify-600" />,
+      name: 'Energy',
+    },
+    {
+      icon: <Database className="h-8 w-8 text-voltify-600" />,
+      name: 'Information Technology',
+    },
+    {
+      icon: <Heart className="h-8 w-8 text-voltify-600" />,
+      name: 'Human Resources',
+    },
+    {
+      icon: <BarChart3 className="h-8 w-8 text-voltify-600" />,
+      name: 'Marketing',
+    },
+    {
+      icon: <CreditCard className="h-8 w-8 text-voltify-600" />,
+      name: 'Financial Services',
+    },
+    {
+      icon: <Microscope className="h-8 w-8 text-voltify-600" />,
+      name: 'Life Science',
+    },
+  ];
+
+  const positions = [
+    'CIO', 'CTO', 'VP', 'Director', 'Manager of IT', 'Manager of HR', 
+    'Manager of Sales', 'Project Managers', 'Business Analyst', 'AI Engineers', 
+    'Machine Learning Engineers', 'Robotics Engineer', 'Software Developers', 
+    'Network Administrators', 'Systems Administrators', 'Data Warehouse', 
+    'Information Security', 'Web Developers', 'Web Designers', 'QA', 
+    'BI', 'Marketing Managers'
+  ];
+
+  return (
+    <section id="sectors" className="section-padding relative overflow-hidden">
+      <div className="absolute inset-0 z-0">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-voltify-100 rounded-full filter blur-3xl opacity-40 transform translate-x-1/4 -translate-y-1/4"></div>
+      </div>
+      
+      <div className="container-custom relative z-10">
+        <SectionHeading 
+          title="The Sectors We Serve"
+          subtitle="We provide specialized staffing solutions across a diverse range of industries."
+        />
+        
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-20">
+          {sectors.map((sector, index) => (
+            <div 
+              key={index}
+              className="opacity-0 animate-fade-in-up animate-fill-forwards bg-white rounded-lg shadow-md p-6 text-center transition-all duration-300 hover:shadow-lg hover:transform hover:-translate-y-1"
+              style={{ animationDelay: `${index * 100}ms` }}
+            >
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-voltify-50 mb-4 mx-auto">
+                {sector.icon}
+              </div>
+              <h3 className="font-semibold text-stone-900">{sector.name}</h3>
+            </div>
+          ))}
+        </div>
+        
+        <div className="bg-voltify-50 rounded-2xl p-8 md:p-12 max-w-5xl mx-auto">
+          <h3 className="text-2xl font-bold mb-8 text-center text-stone-900">Positions We Place</h3>
+          
+          <div className="flex flex-wrap justify-center gap-3">
+            {positions.map((position, index) => (
+              <span 
+                key={index}
+                className="px-4 py-2 bg-white text-stone-800 rounded-full shadow-sm text-sm font-medium transition-all duration-300 hover:shadow-md hover:bg-voltify-100"
+              >
+                {position}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
