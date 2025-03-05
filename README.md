@@ -1,69 +1,66 @@
-# Welcome to your Lovable project
+# Voltify - Energize Your Career
 
-## Project info
+## Project Overview
 
-**URL**: https://lovable.dev/projects/b726ac7e-bbd4-42b3-bec2-84192d4b7419
+Voltify is a women-owned staffing agency specializing in connecting talented professionals with opportunities in various industries. Our mission is to energize careers, build lasting relationships, and help both job seekers and employers achieve their goals.
 
-## How can I edit this code?
+## Features
 
-There are several ways of editing your application.
+- **Responsive Design**: Fully optimized for mobile, tablet, and desktop viewing
+- **Modern UI**: Clean, professional interface with intuitive navigation
+- **Service Showcase**: Detailed presentation of staffing and recruitment services
+- **Industry Sectors**: Overview of the various industries we serve
+- **Testimonials**: Real feedback from satisfied clients and candidates
+- **Contact Form**: Easy way for potential clients and job seekers to reach out
 
-**Use Lovable**
+## Technology Stack
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/b726ac7e-bbd4-42b3-bec2-84192d4b7419) and start prompting.
+This project is built with:
 
-Changes made via Lovable will be committed automatically to this repo.
+- **React**: Frontend library for building the user interface
+- **TypeScript**: For type-safe code
+- **Tailwind CSS**: Utility-first CSS framework for styling
+- **Shadcn UI**: Component library for consistent design elements
+- **Vite**: Fast, modern frontend build tool
+- **Lucide React**: For beautiful, consistent icons
 
-**Use your preferred IDE**
+## Mobile Optimization
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+The website has been carefully optimized for mobile devices with:
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- Responsive navigation with a mobile-friendly menu
+- Properly sized text and touch targets for mobile users
+- Optimized spacing and layout for small screens
+- Stacked grid layouts on mobile for better readability
+- Improved form usability on touch devices
 
-Follow these steps:
+## Development
+
+### Prerequisites
+
+- Node.js (v16+)
+- npm or yarn
+
+### Local Development
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Clone the repository
+git clone https://github.com/WolfDukes/energize-your-career.git
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Navigate to the project directory
+cd energize-your-career
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start the development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## Deployment
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+The site is automatically deployed to GitHub Pages when changes are pushed to the main branch.
 
-**Use GitHub Codespaces**
+## License
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with .
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/b726ac7e-bbd4-42b3-bec2-84192d4b7419) and click on Share -> Publish.
-
-## I want to use a custom domain - is that possible?
-
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+All rights reserved. This project and its contents are proprietary and confidential.
