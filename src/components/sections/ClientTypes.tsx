@@ -1,4 +1,3 @@
-
 import { SectionHeading } from '../ui/SectionHeading';
 import { GlassCard } from '../ui/GlassCard';
 import { Button } from '@/components/ui/button';
@@ -24,7 +23,7 @@ export default function ClientTypes() {
   ];
 
   return (
-    <div className="py-24 bg-gradient-to-b from-white to-gray-50">
+    <section className="py-24 white-brick-bg">
       <div className="container-custom">
         <div id="job-seekers" className="mb-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -120,6 +119,6 @@ export default function ClientTypes() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

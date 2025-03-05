@@ -1,11 +1,10 @@
-
 import { SectionHeading } from '../ui/SectionHeading';
 import { GlassCard } from '../ui/GlassCard';
 import { BookOpen, Award, Heart, Lightbulb } from 'lucide-react';
 
 export default function OurStory() {
   return (
-    <section id="our-story" className="py-24 bg-gradient-to-b from-white to-stone-50 relative">
+    <section id="our-story" className="py-24 white-brick-bg relative">
       <div className="absolute inset-0 z-0">
         <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-voltify-50 rounded-full filter blur-3xl opacity-30"></div>
       </div>

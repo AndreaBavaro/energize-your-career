@@ -1,4 +1,3 @@
-
 import { useEffect } from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -11,6 +10,7 @@ import GivingBack from "@/components/sections/GivingBack";
 import OurStory from "@/components/sections/OurStory";
 import Testimonials from "@/components/sections/Testimonials";
 import WhyPartner from "@/components/sections/WhyPartner";
+import WhatWeDo from "@/components/sections/WhatWeDo";
 
 const Index = () => {
   useEffect(() => {
@@ -45,8 +45,9 @@ const Index = () => {
       
       <Hero />
       
-      <main className="flex-grow white-brick-bg relative">
+      <main className="flex-grow relative">
         <AboutUs />
+        <WhatWeDo />
         <OurStory />
         <Testimonials />
         <WhyPartner />

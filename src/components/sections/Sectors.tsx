@@ -1,4 +1,3 @@
-
 import { SectionHeading } from '../ui/SectionHeading';
 import { Zap, Database, Heart, CreditCard, Microscope, BarChart3 } from 'lucide-react';
 import { GlassCard } from '../ui/GlassCard';
@@ -41,7 +40,7 @@ export default function Sectors() {
   ];
 
   return (
-    <section id="sectors" className="section-padding relative overflow-hidden">
+    <section id="sectors" className="section-padding white-brick-bg relative overflow-hidden">
       <div className="absolute inset-0 z-0">
         <div className="absolute top-0 right-0 w-96 h-96 bg-voltify-100 rounded-full filter blur-3xl opacity-40 transform translate-x-1/4 -translate-y-1/4"></div>
       </div>
