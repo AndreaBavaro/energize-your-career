@@ -8,7 +8,7 @@ import Image from 'next/image';
 const standaloneItems = [
   { name: 'Our Story', href: '#who-we-are' },
   { name: 'Why Partner With Us', href: '#why-partner' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Contact', href: '/contact' },
   { name: 'Testimonials', href: '#testimonials' },
 ];
 

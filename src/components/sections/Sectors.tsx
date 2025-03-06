@@ -40,7 +40,7 @@ export default function Sectors() {
   ];
 
   return (
-    <section id="sectors" className="section-padding white-brick-bg relative overflow-hidden">
+    <section id="sectors" className="py-24 white-brick-bg relative overflow-hidden">
       <div className="absolute inset-0 z-0">
         <div className="absolute top-0 right-0 w-96 h-96 bg-voltify-100 rounded-full filter blur-3xl opacity-40 transform translate-x-1/4 -translate-y-1/4"></div>
       </div>

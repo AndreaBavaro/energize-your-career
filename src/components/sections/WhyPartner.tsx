@@ -37,11 +37,7 @@ export default function WhyPartner() {
   ];
 
   return (
-    <section id="why-partner" className="py-24 white-brick-bg relative">
-      <div className="absolute inset-0 z-0">
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-voltify-50 rounded-full filter blur-3xl opacity-30"></div>
-      </div>
-      
+    <section id="services" className="py-24 white-brick-bg relative overflow-hidden">
       <div className="container-custom relative z-10">
         <SectionHeading 
           title="Why Partner With Us"

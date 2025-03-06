@@ -173,6 +173,24 @@
     background-image: url('data:image/svg+xml,%3Csvg width="42" height="44" viewBox="0 0 42 44" xmlns="http://www.w3.org/2000/svg"%3E%3Cg id="Page-1" fill="none" fill-rule="evenodd"%3E%3Cg id="brick-wall" fill="%23333333" fill-opacity="0.05"%3E%3Cpath d="M0 0h42v44H0V0zm1 1h40v20H1V1zM0 23h20v20H0V23zm22 0h20v20H22V23z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
     z-index: -1;
   }
+
+  /* Speech bubble effect */
+  .speech-bubble-left {
+    position: relative;
+  }
+
+  .speech-bubble-left:before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 15px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-right: 10px solid rgba(59, 130, 246, 0.2); /* Matches bg-blue-500/20 */
+    border-bottom: 10px solid transparent;
+    display: none;
+  }
 }
 
 .animate-delay-100 {

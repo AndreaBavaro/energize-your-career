@@ -1,4 +1,3 @@
-
 import { cn } from '@/lib/utils';
 import { Facebook, Linkedin, Mail, MapPin, Phone, Twitter } from 'lucide-react';
 
@@ -6,7 +5,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
   
   return (
-    <footer className="bg-stone-950 text-white" id="contact">
+    <footer className="bg-stone-950 text-white">
       <div className="container-custom pt-16 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div className="space-y-4">
@@ -44,6 +43,9 @@ export default function Footer() {
               </li>
               <li>
                 <a href="#employers" className="text-stone-300 hover:text-white transition-colors">For Employers</a>
+              </li>
+              <li>
+                <a href="/contact" className="text-stone-300 hover:text-white transition-colors">Contact Us</a>
               </li>
             </ul>
           </div>
@@ -86,7 +88,7 @@ export default function Footer() {
         </div>
         
         <div className="mt-12 pt-8 border-t border-stone-800 text-center text-stone-400 text-sm">
-          <p>© {currentYear} Voltify. All rights reserved. A subsidiary of Ban Partners (est. 2005)</p>
+          <p> {currentYear} Voltify. All rights reserved. A subsidiary of Ban Partners (est. 2005)</p>
         </div>
       </div>
     </footer>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0H40V40H0V0Z" fill="none"/>
+  <path d="M20 0V40" stroke="currentColor" stroke-opacity="0.1"/>
+  <path d="M40 20H0" stroke="currentColor" stroke-opacity="0.1"/>
+  <path d="M0 10H40" stroke="currentColor" stroke-opacity="0.05"/>
+  <path d="M0 30H40" stroke="currentColor" stroke-opacity="0.05"/>
+  <path d="M10 0V40" stroke="currentColor" stroke-opacity="0.05"/>
+  <path d="M30 0V40" stroke="currentColor" stroke-opacity="0.05"/>
+</svg>

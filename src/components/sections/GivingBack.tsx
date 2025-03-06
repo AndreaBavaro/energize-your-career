@@ -2,7 +2,7 @@ import { Heart } from 'lucide-react';
 
 export default function GivingBack() {
   return (
-    <section className="white-brick-bg py-20">
+    <section id="giving-back" className="py-24 white-brick-bg relative">
       <div className="container-custom max-w-4xl">
         <div className="text-center mb-10">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white mb-4">
