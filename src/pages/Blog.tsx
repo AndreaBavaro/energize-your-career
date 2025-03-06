@@ -1,10 +1,9 @@
 import Navbar from "@/components/layout/Navbar";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { GlassCard } from "@/components/ui/GlassCard";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { format } from "date-fns";
-import { AnimatedText } from "@/components/ui/AnimatedText";
-import { Zap, ChevronDown, ChevronUp, Calendar, User, Clock, Search, Tag, Briefcase, BookOpen, X } from "lucide-react";
+import { ChevronDown, ChevronUp, Search, Briefcase, BookOpen, X } from "lucide-react";
 
 interface BlogPost {
   id: number;
@@ -52,14 +51,13 @@ export default function Blog() {
   const postsPerPage = 3;
   const totalPages = Math.ceil((posts?.length || 0) / postsPerPage);
 
+  // Load Twitter and Instagram embed scripts
   useEffect(() => {
-    // Load Twitter embed script
     const twitterScript = document.createElement('script');
     twitterScript.src = 'https://platform.twitter.com/widgets.js';
     twitterScript.async = true;
     document.body.appendChild(twitterScript);
 
-    // Load Instagram embed script
     const instagramScript = document.createElement('script');
     instagramScript.src = '//www.instagram.com/embed.js';
     instagramScript.async = true;
@@ -71,8 +69,8 @@ export default function Blog() {
     };
   }, []);
 
+  // Re-run embed scripts when post expansion changes
   useEffect(() => {
-    // Re-run Twitter and Instagram embed when content changes
     if (window.twttr?.widgets) {
       window.twttr.widgets.load();
     }
@@ -81,6 +79,7 @@ export default function Blog() {
     }
   }, [expandedPost]);
 
+  // Fetch posts from WordPress API
   useEffect(() => {
     const fetchPosts = async () => {
       try {
@@ -105,14 +104,14 @@ export default function Blog() {
   };
 
   const extractThumbnail = (content: string): Thumbnail => {
-    // First try to find a regular image
+    // Try to find a regular image
     const imgRegex = /<img[^>]+src="([^">]+)"/;
     const imgMatch = content.match(imgRegex);
     if (imgMatch) {
       return { url: imgMatch[1], type: 'image' };
     }
 
-    // If no image found, look for YouTube video
+    // Look for a YouTube video if no image found
     const youtubeRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
     const youtubeMatch = content.match(youtubeRegex);
     if (youtubeMatch) {
@@ -120,7 +119,7 @@ export default function Blog() {
       return {
         url: `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`,
         type: 'youtube',
-        videoId
+        videoId,
       };
     }
 
@@ -134,15 +133,15 @@ export default function Blog() {
 
   const findEmbeds = (content: string): EmbedMatch[] => {
     const embeds: EmbedMatch[] = [];
-    
-    // Find Twitter embeds
+    let match: RegExpExecArray | null;
+
+    // Twitter embeds
     const twitterRegex = /<blockquote[^>]*class="twitter-tweet"[^>]*>.*?<a[^>]*href="(https:\/\/twitter\.com\/[^"]+)"[^>]*>.*?<\/blockquote>/gs;
-    let match;
     while ((match = twitterRegex.exec(content)) !== null) {
       embeds.push({ type: 'twitter', url: match[1], html: match[0] });
     }
 
-    // Find YouTube embeds
+    // YouTube embeds
     const youtubeRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/g;
     while ((match = youtubeRegex.exec(content)) !== null) {
       embeds.push({
@@ -155,17 +154,17 @@ export default function Blog() {
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
-        ></iframe>`
+        ></iframe>`,
       });
     }
 
-    // Find Instagram embeds
+    // Instagram embeds
     const instagramRegex = /<blockquote[^>]*class="instagram-media"[^>]*>.*?<a[^>]*href="(https:\/\/www\.instagram\.com\/[^"]+)"[^>]*>.*?<\/blockquote>/gs;
     while ((match = instagramRegex.exec(content)) !== null) {
       embeds.push({ type: 'instagram', url: match[1], html: match[0] });
     }
 
-    // Find news article embeds
+    // News article embeds
     const articleRegex = /<figure[^>]*class="wp-block-embed-wordpress"[^>]*>.*?<a[^>]*href="([^"]+)"[^>]*>(.*?)<\/a>/gs;
     while ((match = articleRegex.exec(content)) !== null) {
       embeds.push({
@@ -179,7 +178,7 @@ export default function Blog() {
               <span>Read full article</span>
             </div>
           </a>
-        </div>`
+        </div>`,
       });
     }
 
@@ -203,22 +202,23 @@ export default function Blog() {
       .replace(/<td/g, '<td class="border border-stone-300 p-2"')
       .replace(/<blockquote/g, '<blockquote class="border-l-4 border-voltify-300 pl-4 italic my-4"');
 
-    // Process embeds
+    // Process embeds and wrap them
     const embeds = findEmbeds(fixed);
     embeds.forEach(embed => {
       if (embed.html) {
         const embedWrapper = `<div class="my-6 overflow-hidden ${
-          embed.type === 'twitter' ? 'twitter-embed' :
-          embed.type === 'youtube' ? 'youtube-embed' :
-          embed.type === 'instagram' ? 'instagram-embed' :
-          'article-embed'
+          embed.type === 'twitter'
+            ? 'twitter-embed'
+            : embed.type === 'youtube'
+            ? 'youtube-embed'
+            : embed.type === 'instagram'
+            ? 'instagram-embed'
+            : 'article-embed'
         }">${embed.html}</div>`;
-        
-        // Replace the original embed code with our wrapped version
         fixed = fixed.replace(embed.html, embedWrapper);
       }
     });
-    
+
     return fixed;
   };
 
@@ -243,7 +243,7 @@ export default function Blog() {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      
+
       <main className="flex-grow white-brick-bg">
         {/* Header Section */}
         <section className="py-16 md:py-24 relative overflow-hidden">
@@ -251,7 +251,7 @@ export default function Blog() {
             <div className="absolute top-1/3 left-0 w-96 h-96 bg-voltify-50 rounded-full filter blur-3xl opacity-30 transform -translate-x-1/4"></div>
             <div className="absolute bottom-1/3 right-0 w-96 h-96 bg-voltify-100 rounded-full filter blur-3xl opacity-30 transform translate-x-1/4"></div>
           </div>
-          
+
           <div className="container-custom relative z-10">
             <SectionHeading 
               title="Insights & Perspectives"
@@ -355,7 +355,7 @@ export default function Blog() {
                                 <>
                                   <img 
                                     src={thumbnail.url} 
-                                    alt=""
+                                    alt="Post thumbnail"
                                     className="w-full h-full object-cover transition-transform duration-500 hover:scale-105 cursor-pointer"
                                   />
                                   {thumbnail.type === 'youtube' && (
@@ -372,7 +372,9 @@ export default function Blog() {
                                 <div className="w-full h-full bg-stone-100 flex items-center justify-center">
                                   <BookOpen className="w-12 h-12 text-stone-300" />
                                 </div>
-                              )}
+                              )
+                            )}
+                            {!isVideoActive && (
                               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
                             )}
                           </div>
