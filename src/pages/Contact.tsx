@@ -2,16 +2,22 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { GlassCard } from '@/components/ui/GlassCard';
-import { Mail, Phone, MapPin, Send, MessageSquare } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, MessageSquare, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import DOMPurify from 'dompurify';
+import emailjs from '@emailjs/browser';
+import { EMAILJS_CONFIG } from '@/config/emailjs';
+import { useToast } from "@/components/ui/use-toast";
 
 export default function Contact() {
   const [userType, setUserType] = useState<'jobSeeker'|'employer'|''>('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
     const formData = new FormData(e.target as HTMLFormElement);
     
     // Sanitize inputs
@@ -26,33 +32,105 @@ export default function Contact() {
 
     // Validation
     if (!sanitizedData.name || !sanitizedData.email || !sanitizedData.userType) {
-      alert('Please fill out all required fields');
+      toast({
+        title: "Error",
+        description: "Please fill out all required fields",
+        variant: "destructive",
+      });
+      setIsSubmitting(false);
       return;
     }
 
     if (!/^[^@]+@[^@]+\.[^@]+$/.test(sanitizedData.email)) {
-      alert('Please enter a valid email address');
+      toast({
+        title: "Error",
+        description: "Please enter a valid email address",
+        variant: "destructive",
+      });
+      setIsSubmitting(false);
       return;
     }
 
     if (userType === 'jobSeeker' && !sanitizedData.resume) {
-      alert('Resume is required for job seekers');
+      toast({
+        title: "Error",
+        description: "Resume is required for job seekers",
+        variant: "destructive",
+      });
+      setIsSubmitting(false);
       return;
     }
 
     if (sanitizedData.resume instanceof File) {
       if (sanitizedData.resume.size > 5 * 1024 * 1024) {
-        alert('Resume file size must be less than 5MB');
+        toast({
+          title: "Error",
+          description: "Resume file size must be less than 5MB",
+          variant: "destructive",
+        });
+        setIsSubmitting(false);
         return;
       }
       if (!['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'].includes(sanitizedData.resume.type)) {
-        alert('Only PDF and Word documents are allowed');
+        toast({
+          title: "Error",
+          description: "Only PDF and Word documents are allowed",
+          variant: "destructive",
+        });
+        setIsSubmitting(false);
         return;
       }
     }
 
-    // Submit logic here
-    console.log('Submitting:', sanitizedData);
+    try {
+      // Convert resume to base64 if it exists
+      let resumeBase64 = '';
+      if (sanitizedData.resume instanceof File) {
+        resumeBase64 = await new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result as string);
+          reader.onerror = (error) => reject(error);
+          reader.readAsDataURL(sanitizedData.resume);
+        });
+      }
+
+      // Prepare email template parameters
+      const templateParams = {
+        from_name: sanitizedData.name,
+        from_email: sanitizedData.email,
+        user_type: sanitizedData.userType,
+        subject: sanitizedData.subject,
+        message: sanitizedData.message,
+        resume: resumeBase64,
+      };
+
+      // Send email using EmailJS
+      await emailjs.send(
+        EMAILJS_CONFIG.SERVICE_ID,
+        EMAILJS_CONFIG.TEMPLATE_ID,
+        templateParams,
+        EMAILJS_CONFIG.PUBLIC_KEY
+      );
+
+      // Clear form
+      (e.target as HTMLFormElement).reset();
+      setUserType('');
+
+      // Show success message
+      toast({
+        title: "Success",
+        description: "Your message has been sent successfully! We'll get back to you soon.",
+      });
+    } catch (error) {
+      console.error('Error sending email:', error);
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -80,20 +158,24 @@ export default function Contact() {
                   <form className="space-y-6" onSubmit={handleSubmit}>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <label htmlFor="name" className="block text-sm font-medium text-stone-700">Name</label>
+                        <label htmlFor="name" className="block text-sm font-medium text-stone-700">Name *</label>
                         <input 
                           type="text" 
-                          id="name" 
+                          id="name"
+                          name="name"
+                          required
                           className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-voltify-500 focus:border-transparent transition-all duration-200"
                           placeholder="Your name"
                         />
                       </div>
                       
                       <div className="space-y-2">
-                        <label htmlFor="email" className="block text-sm font-medium text-stone-700">Email</label>
+                        <label htmlFor="email" className="block text-sm font-medium text-stone-700">Email *</label>
                         <input 
                           type="email" 
-                          id="email" 
+                          id="email"
+                          name="email"
+                          required
                           className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-voltify-500 focus:border-transparent transition-all duration-200"
                           placeholder="Your email"
                         />
@@ -102,14 +184,23 @@ export default function Contact() {
                     
                     <div className="space-y-2">
                       <label className="block text-sm font-medium text-stone-700">
-                        I am a:
+                        I am a: *
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
                           <label className={`
-                            p-4 rounded-xl border-2 transition-all
+                            p-4 rounded-xl border-2 transition-all cursor-pointer
                             ${userType === 'jobSeeker' 
                               ? 'border-voltify-600 bg-voltify-50 shadow-md' 
                               : 'border-stone-200 hover:border-voltify-400 hover:bg-white'}
                           `}>
+                            <input
+                              type="radio"
+                              name="userType"
+                              value="jobSeeker"
+                              className="sr-only"
+                              checked={userType === 'jobSeeker'}
+                              onChange={(e) => setUserType(e.target.value as 'jobSeeker')}
+                              required
+                            />
                             <div className="flex items-center gap-3">
                               <div className={`
                                 h-5 w-5 rounded-full border-2 flex items-center justify-center
@@ -127,11 +218,20 @@ export default function Contact() {
                           </label>
                           
                           <label className={`
-                            p-4 rounded-xl border-2 transition-all
+                            p-4 rounded-xl border-2 transition-all cursor-pointer
                             ${userType === 'employer' 
                               ? 'border-voltify-600 bg-voltify-50 shadow-md' 
                               : 'border-stone-200 hover:border-voltify-400 hover:bg-white'}
                           `}>
+                            <input
+                              type="radio"
+                              name="userType"
+                              value="employer"
+                              className="sr-only"
+                              checked={userType === 'employer'}
+                              onChange={(e) => setUserType(e.target.value as 'employer')}
+                              required
+                            />
                             <div className="flex items-center gap-3">
                               <div className={`
                                 h-5 w-5 rounded-full border-2 flex items-center justify-center
@@ -154,7 +254,7 @@ export default function Contact() {
                     {userType === 'jobSeeker' && (
                       <div className="space-y-2">
                         <label className="block text-sm font-medium text-stone-700">
-                          Upload Resume
+                          Upload Resume *
                           <div className="mt-2 flex justify-center px-6 py-8 border-2 border-dashed border-stone-200 rounded-lg hover:border-voltify-400 transition-colors cursor-pointer">
                             <input
                               type="file"
@@ -162,6 +262,7 @@ export default function Contact() {
                               name="resume"
                               accept=".pdf,.doc,.docx"
                               className="sr-only"
+                              required={userType === 'jobSeeker'}
                             />
                             <div className="text-center">
                               <Send className="mx-auto h-8 w-8 text-voltify-500 mb-2" />
@@ -176,28 +277,45 @@ export default function Contact() {
                     )}
 
                     <div className="space-y-2">
-                      <label htmlFor="subject" className="block text-sm font-medium text-stone-700">Subject</label>
+                      <label htmlFor="subject" className="block text-sm font-medium text-stone-700">Subject *</label>
                       <input 
                         type="text" 
-                        id="subject" 
+                        id="subject"
+                        name="subject"
+                        required
                         className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-voltify-500 focus:border-transparent transition-all duration-200"
                         placeholder="Subject"
                       />
                     </div>
                     
                     <div className="space-y-2">
-                      <label htmlFor="message" className="block text-sm font-medium text-stone-700">Message</label>
+                      <label htmlFor="message" className="block text-sm font-medium text-stone-700">Message *</label>
                       <textarea 
-                        id="message" 
-                        rows={5} 
+                        id="message"
+                        name="message"
+                        rows={5}
+                        required
                         className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-voltify-500 focus:border-transparent transition-all duration-200"
                         placeholder="Your message"
                       ></textarea>
                     </div>
                     
-                    <Button className="w-full py-6 sm:py-4 bg-voltify-600 hover:bg-voltify-700 text-white font-medium rounded-lg transition-all duration-200 flex items-center justify-center gap-2">
-                      <Send className="h-5 w-5" />
-                      Send Message
+                    <Button 
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full py-6 sm:py-4 bg-voltify-600 hover:bg-voltify-700 text-white font-medium rounded-lg transition-all duration-200 flex items-center justify-center gap-2"
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="h-5 w-5 animate-spin" />
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          <Send className="h-5 w-5" />
+                          Send Message
+                        </>
+                      )}
                     </Button>
                   </form>
                 </GlassCard>

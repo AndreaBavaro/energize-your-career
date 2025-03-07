@@ -1,7 +1,7 @@
 import Navbar from "@/components/layout/Navbar";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { GlassCard } from "@/components/ui/GlassCard";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, useLayoutEffect } from "react";
 import { format } from "date-fns";
 import { ChevronDown, ChevronUp, Search, Briefcase, BookOpen, X } from "lucide-react";
 
@@ -41,6 +41,22 @@ interface ImageThumbnail {
 
 type Thumbnail = VideoThumbnail | ImageThumbnail | null;
 
+declare global {
+  interface Window {
+    twttr?: {
+      widgets: {
+        load: (element?: HTMLElement) => void;
+        createTweet: (tweetId: string, element: HTMLElement, options?: any) => Promise<HTMLElement>;
+      };
+    };
+    instgrm?: {
+      Embeds: {
+        process: () => void;
+      };
+    };
+  }
+}
+
 export default function Blog() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
@@ -48,6 +64,12 @@ export default function Blog() {
   const [expandedPost, setExpandedPost] = useState<number | null>(null);
   const [activeTab, setActiveTab] = useState(0);
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
+  const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
+  const [popupVisible, setPopupVisible] = useState(false);
+  const [contentLoading, setContentLoading] = useState(false);
+  const popupRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [needsScroll, setNeedsScroll] = useState(false);
   const postsPerPage = 3;
   const totalPages = Math.ceil((posts?.length || 0) / postsPerPage);
 
@@ -99,9 +121,88 @@ export default function Blog() {
     fetchPosts();
   }, []);
 
-  const togglePost = (postId: number) => {
-    setExpandedPost(expandedPost === postId ? null : postId);
+  const openPopup = (post: BlogPost) => {
+    setContentLoading(true);
+    setSelectedPost(post);
+    
+    // Small delay to allow state update before showing popup
+    setTimeout(() => {
+      // Load Twitter script first
+      const loadTwitterAndShowPopup = () => {
+        if (!window.twttr) {
+          const script = document.createElement('script');
+          script.setAttribute('src', 'https://platform.twitter.com/widgets.js');
+          script.setAttribute('async', 'true');
+          script.setAttribute('charset', 'utf-8');
+          
+          script.onload = () => {
+            // Once Twitter script is loaded, show the popup
+            setPopupVisible(true);
+            // Set a timeout to ensure content is fully processed
+            setTimeout(() => setContentLoading(false), 800);
+          };
+          
+          document.head.appendChild(script);
+        } else {
+          // Twitter script already loaded, show popup
+          setPopupVisible(true);
+          // Set a timeout to ensure content is fully processed
+          setTimeout(() => setContentLoading(false), 800);
+        }
+      };
+      
+      loadTwitterAndShowPopup();
+    }, 100);
   };
+
+  const closePopup = () => {
+    setPopupVisible(false);
+    document.body.style.overflow = ''; // Re-enable scrolling
+  };
+
+  // Close popup when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (popupRef.current && !popupRef.current.contains(event.target as Node)) {
+        closePopup();
+      }
+    };
+
+    if (popupVisible) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [popupVisible]);
+
+  // Close popup on escape key
+  useEffect(() => {
+    const handleEscKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        closePopup();
+      }
+    };
+
+    if (popupVisible) {
+      document.addEventListener('keydown', handleEscKey);
+    }
+    
+    return () => {
+      document.removeEventListener('keydown', handleEscKey);
+    };
+  }, [popupVisible]);
+
+  // Re-run embed scripts when popup visibility changes
+  useEffect(() => {
+    if (popupVisible && window.twttr?.widgets) {
+      window.twttr.widgets.load();
+    }
+    if (popupVisible && window.instgrm?.Embeds) {
+      window.instgrm.Embeds.process();
+    }
+  }, [popupVisible]);
 
   const extractThumbnail = (content: string): Thumbnail => {
     // Try to find a regular image
@@ -186,39 +287,48 @@ export default function Blog() {
   };
 
   const fixWordPressContent = (content: string) => {
-    let fixed = content
-      .replace(/class="aligncenter/g, 'class="mx-auto block')
-      .replace(/class="alignleft/g, 'class="float-left mr-4 mb-2')
-      .replace(/class="alignright/g, 'class="float-right ml-4 mb-2')
-      .replace(/class="wp-caption/g, 'class="my-4')
-      .replace(/class="wp-caption-text/g, 'class="text-sm text-center text-stone-500 mt-1')
-      .replace(/class="gallery/g, 'class="grid grid-cols-2 md:grid-cols-3 gap-2 my-4')
-      .replace(/class="gallery-item/g, 'class="')
-      .replace(/class="wp-block-embed/g, 'class="my-4')
-      .replace(/<ul>/g, '<ul class="list-disc pl-5 my-4">')
-      .replace(/<ol>/g, '<ol class="list-decimal pl-5 my-4">')
-      .replace(/<table/g, '<table class="w-full border-collapse my-4"')
-      .replace(/<th/g, '<th class="border border-stone-300 p-2 bg-stone-100"')
-      .replace(/<td/g, '<td class="border border-stone-300 p-2"')
-      .replace(/<blockquote/g, '<blockquote class="border-l-4 border-voltify-300 pl-4 italic my-4"');
-
-    // Process embeds and wrap them
-    const embeds = findEmbeds(fixed);
-    embeds.forEach(embed => {
-      if (embed.html) {
-        const embedWrapper = `<div class="my-6 overflow-hidden ${
-          embed.type === 'twitter'
-            ? 'twitter-embed'
-            : embed.type === 'youtube'
-            ? 'youtube-embed'
-            : embed.type === 'instagram'
-            ? 'instagram-embed'
-            : 'article-embed'
-        }">${embed.html}</div>`;
-        fixed = fixed.replace(embed.html, embedWrapper);
+    let fixed = content.replace(/class="aligncenter/g, 'class="mx-auto block');
+    
+    // Handle Twitter embeds - keep only one instance of each tweet
+    // First, find all tweet URLs
+    const tweetIds = new Set<string>();
+    const tweetUrlRegex = /https?:\/\/twitter\.com\/[a-zA-Z0-9_]+\/status\/([0-9]+)/g;
+    let match;
+    while ((match = tweetUrlRegex.exec(content)) !== null) {
+      if (match[1]) {
+        tweetIds.add(match[1]);
       }
+    }
+    
+    // Remove all Twitter URLs and embeds
+    fixed = fixed.replace(/<blockquote[^>]*class="twitter-tweet[^>]*>[\s\S]*?<\/blockquote>/g, '');
+    fixed = fixed.replace(/<a[^>]*href="https?:\/\/twitter\.com\/[a-zA-Z0-9_]+\/status\/[0-9]+"[^>]*>.*?<\/a>/g, '');
+    fixed = fixed.replace(/https?:\/\/twitter\.com\/[a-zA-Z0-9_]+\/status\/[0-9]+/g, '');
+    
+    // For each unique tweet ID, add a placeholder div that will be replaced by the Twitter widget
+    tweetIds.forEach(id => {
+      // Add a placeholder at the end of the content
+      fixed += `<div id="tweet-${id}" class="twitter-embed-placeholder" data-tweet-id="${id}"></div>`;
     });
-
+    
+    // Center embedded articles specifically - further reduced margins and size
+    fixed = fixed.replace(/<blockquote/g, '<blockquote class="w-full my-0.5 mx-auto block max-w-md"');
+    
+    // Fix iframes to be responsive, larger, and centered - further reduced margins and size
+    fixed = fixed.replace(/<iframe/g, '<iframe class="w-full aspect-video my-0.5 mx-auto block max-w-md"');
+    
+    // Enhance embedded content containers - further reduced size
+    fixed = fixed.replace(/wp-embedded-content/g, 'wp-embedded-content w-full mx-auto block max-w-md');
+    
+    // Make images responsive and centered - further reduced size
+    fixed = fixed.replace(/<img/g, '<img class="max-w-full h-auto mx-auto block max-w-md"');
+    
+    // Center embedded articles from external sources - further reduced size
+    fixed = fixed.replace(/class="wp-block-embed/g, 'class="wp-block-embed mx-auto block w-full max-w-md');
+    
+    // Remove empty paragraphs that might be left after removing Twitter URLs
+    fixed = fixed.replace(/<p>\s*<\/p>/g, '');
+    
     return fixed;
   };
 
@@ -239,6 +349,88 @@ export default function Blog() {
       setActiveTab(activeTab - 1);
     }
   };
+
+  // Effect to load Twitter widgets when popup content changes
+  useEffect(() => {
+    if (popupVisible && selectedPost) {
+      // Small delay to ensure the DOM is updated before loading widgets
+      const timer = setTimeout(() => {
+        // Load Twitter widgets
+        if (!window.twttr) {
+          // If Twitter script is not loaded, create and append it
+          const script = document.createElement('script');
+          script.setAttribute('src', 'https://platform.twitter.com/widgets.js');
+          script.setAttribute('async', 'true');
+          script.setAttribute('charset', 'utf-8');
+          
+          script.onload = () => {
+            // Once loaded, find all tweet placeholders and replace them with actual tweets
+            document.querySelectorAll('.twitter-embed-placeholder').forEach(placeholder => {
+              const tweetId = placeholder.getAttribute('data-tweet-id');
+              if (tweetId && window.twttr) {
+                window.twttr.widgets.createTweet(
+                  tweetId,
+                  placeholder,
+                  {
+                    align: 'center',
+                    theme: 'light',
+                    dnt: true,
+                    width: '100%',
+                    maxWidth: 350
+                  }
+                );
+              }
+            });
+            
+            // Force no scrolling after tweets load
+            setTimeout(() => {
+              setContentLoading(false);
+            }, 500);
+          };
+          
+          document.head.appendChild(script);
+        } else {
+          // If Twitter script is already loaded, just create the tweets
+          document.querySelectorAll('.twitter-embed-placeholder').forEach(placeholder => {
+            const tweetId = placeholder.getAttribute('data-tweet-id');
+            if (tweetId && window.twttr) {
+              window.twttr.widgets.createTweet(
+                tweetId,
+                placeholder,
+                {
+                  align: 'center',
+                  theme: 'light',
+                  dnt: true,
+                  width: '100%',
+                  maxWidth: 350
+                }
+              );
+            }
+          });
+          
+          // Force no scrolling after tweets load
+          setTimeout(() => {
+            setContentLoading(false);
+          }, 500);
+        }
+        
+        // Also handle Instagram embeds if present
+        if (window.instgrm) {
+          window.instgrm.Embeds.process();
+        }
+      }, 500);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [popupVisible, selectedPost]);
+
+  // Check if content needs scrolling after it's rendered - always set to false
+  useLayoutEffect(() => {
+    if (popupVisible && contentRef.current) {
+      // Always set to false to prevent scrolling
+      setNeedsScroll(false);
+    }
+  }, [popupVisible]);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -300,7 +492,7 @@ export default function Blog() {
             )}
 
             {loading ? (
-              <div className="flex flex-col items-center justify-center min-h-[300px]">
+              <div className="flex flex-col items-center text-center min-h-[300px]">
                 <div className="animate-spin rounded-full h-12 w-12 border-3 border-voltify-600 border-t-transparent"></div>
                 <p className="mt-4 text-stone-600">Loading insights...</p>
               </div>
@@ -310,21 +502,19 @@ export default function Blog() {
                   {getCurrentPosts().map((post, index) => {
                     const thumbnail = extractThumbnail(post.content.rendered);
                     const preview = createPreview(post.excerpt.rendered || post.content.rendered);
-                    const isExpanded = expandedPost === post.id;
                     const authorName = post._embedded?.author?.[0]?.name || 'Anonymous';
                     const avatarUrl = post._embedded?.author?.[0]?.avatar_urls?.['96'] || null;
-                    const fixedContent = fixWordPressContent(post.content.rendered);
                     const isVideoActive = thumbnail?.type === 'youtube' && activeVideo === (thumbnail as VideoThumbnail).videoId;
 
                     return (
                       <GlassCard 
                         key={post.id}
-                        className={`opacity-0 animate-fade-in-up animate-fill-forwards ${isExpanded ? 'lg:col-span-3' : ''}`}
+                        className={`opacity-0 animate-fade-in-up animate-fill-forwards`}
                         animationDelay={`${index * 100 + 200}ms`}
                       >
-                        <div className={`flex flex-col ${isExpanded ? 'lg:flex-row' : ''}`}>
+                        <div className="flex flex-col">
                           <div 
-                            className={`relative ${isExpanded ? 'lg:w-1/3' : ''} h-48 overflow-hidden rounded-t-xl ${isExpanded ? 'lg:rounded-l-xl lg:rounded-tr-none' : ''}`}
+                            className="relative h-48 overflow-hidden rounded-t-xl"
                             onClick={() => {
                               if (thumbnail?.type === 'youtube' && !isVideoActive) {
                                 setActiveVideo((thumbnail as VideoThumbnail).videoId);
@@ -379,7 +569,7 @@ export default function Blog() {
                             )}
                           </div>
 
-                          <div className={`p-6 flex-grow flex flex-col ${isExpanded ? 'lg:w-2/3' : ''}`}>
+                          <div className="p-6 flex-grow flex flex-col">
                             <div className="flex items-center mb-4">
                               {avatarUrl && (
                                 <img 
@@ -391,39 +581,25 @@ export default function Blog() {
                               <div className="ml-3">
                                 <div className="font-medium text-stone-900">{authorName}</div>
                                 <div className="text-sm text-stone-500">
-                                  {format(new Date(post.date), 'MMMM d, yyyy')}
+                                  {format(new Date(post.date), 'MMM d, yyyy')}
                                 </div>
                               </div>
                             </div>
-
+                            
                             <h3 
-                              className={`font-semibold text-stone-900 mb-3 ${isExpanded ? 'text-2xl' : 'text-xl'}`}
+                              className="text-xl font-bold text-stone-900 mb-2 hover:text-voltify-600 transition-colors cursor-pointer"
                               dangerouslySetInnerHTML={{ __html: post.title.rendered }}
+                              onClick={() => openPopup(post)}
                             />
                             
-                            {!isExpanded ? (
-                              <p className="text-stone-600 mb-4 line-clamp-3">{preview}</p>
-                            ) : (
-                              <div className="prose prose-stone max-w-none mb-4">
-                                <div dangerouslySetInnerHTML={{ __html: fixedContent }} />
-                              </div>
-                            )}
+                            <p className="text-stone-600 mb-4 line-clamp-3">{preview}</p>
                             
                             <button
-                              onClick={() => togglePost(post.id)}
+                              onClick={() => openPopup(post)}
                               className="mt-auto inline-flex items-center px-4 py-2 rounded-lg bg-voltify-500 text-white font-medium text-sm transition-all duration-300 hover:bg-voltify-600 self-start"
                             >
-                              {isExpanded ? (
-                                <>
-                                  <ChevronUp className="h-4 w-4 mr-1.5" />
-                                  Show Less
-                                </>
-                              ) : (
-                                <>
-                                  <ChevronDown className="h-4 w-4 mr-1.5" />
-                                  Read More
-                                </>
-                              )}
+                              <ChevronDown className="h-4 w-4 mr-1.5" />
+                              Read More
                             </button>
                           </div>
                         </div>
@@ -471,6 +647,112 @@ export default function Blog() {
           </div>
         </section>
       </main>
+
+      {/* Blog Post Popup */}
+      {popupVisible && selectedPost && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 overflow-hidden transition-opacity duration-300">
+          <div 
+            ref={popupRef}
+            className="bg-white w-full max-w-4xl max-h-[90vh] shadow-2xl rounded-xl animate-fade-in-scale flex flex-col white-brick-bg relative overflow-hidden"
+          >
+            {/* Loading overlay */}
+            {contentLoading && (
+              <div className="absolute inset-0 bg-white/80 backdrop-blur-sm flex items-center justify-center z-50 rounded-xl">
+                <div className="flex flex-col items-center">
+                  <div className="w-12 h-12 border-4 border-voltify-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+                  <p className="text-voltify-700 font-medium">Loading content...</p>
+                </div>
+              </div>
+            )}
+            
+            {/* Decorative header accent */}
+            <div className="h-2 bg-gradient-to-r from-voltify-400 via-voltify-500 to-voltify-600 rounded-t-xl"></div>
+            
+            <div className="sticky top-0 z-10 bg-white/95 backdrop-blur-md border-b border-stone-200 flex justify-between items-center p-5 shadow-sm">
+              <div className="flex-1 text-center pr-10">
+                <h2 
+                  className="text-3xl font-bold text-stone-900 line-clamp-1"
+                  dangerouslySetInnerHTML={{ __html: selectedPost.title.rendered }}
+                />
+              </div>
+              <button 
+                onClick={closePopup}
+                className="p-2 rounded-full hover:bg-stone-100 transition-colors absolute right-4 hover:rotate-90 duration-300"
+                aria-label="Close popup"
+              >
+                <X className="h-6 w-6 text-stone-600" />
+              </button>
+            </div>
+            
+            {/* Content */}
+            <div ref={contentRef} className="px-6 py-3 pb-6 flex-grow overflow-visible">
+              <div className="prose prose-stone prose-sm max-w-4xl mx-auto">
+                {/* Reading time estimate and author info combined */}
+                <div className="flex items-center justify-center mb-3 text-xs text-stone-500">
+                  <div className="flex items-center px-3 py-1.5 rounded-full bg-voltify-100/80 text-voltify-700 backdrop-blur-sm mr-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1.5" fill="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    {Math.ceil(selectedPost.content.rendered.split(' ').length / 200)} min read
+                  </div>
+                  
+                  <div className="flex items-center px-3 py-1.5 rounded-full bg-voltify-100/80 text-voltify-700 backdrop-blur-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1.5" fill="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                    {selectedPost._embedded?.author?.[0]?.name || 'Anonymous'}
+                    <span className="mx-1">•</span>
+                    {format(new Date(selectedPost.date), 'MMM d, yyyy')}
+                  </div>
+                </div>
+                
+                {/* Title */}
+                <h1 
+                  className="text-center text-2xl font-bold text-stone-900 mb-3 leading-tight"
+                  dangerouslySetInnerHTML={{ __html: selectedPost.title.rendered }}
+                />
+                
+                {/* Article content with centered text and embedded content */}
+                <div className="grid place-items-center w-full">
+                  <div 
+                    className="first-letter:text-4xl first-letter:font-bold first-letter:text-voltify-600 first-letter:mr-2 first-letter:float-left first-paragraph text-left text-xs w-full pl-2 md:pl-10 embedded-content"
+                    dangerouslySetInnerHTML={{ __html: fixWordPressContent(selectedPost.content.rendered) }} 
+                  />
+                </div>
+              </div>
+            </div>
+            
+            {/* Social sharing buttons - fixed at bottom */}
+            <div className="flex justify-center gap-2 p-2 bg-white border-t border-stone-200 mt-auto">
+              <button className="p-1.5 rounded-full bg-blue-500 text-white hover:bg-blue-600 transition-colors" aria-label="Share on Twitter">
+                <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                </svg>
+              </button>
+              <button className="p-1.5 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors" aria-label="Share on Facebook">
+                <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                </svg>
+              </button>
+              <button className="p-1.5 rounded-full bg-green-500 text-white hover:bg-green-600 transition-colors" aria-label="Share on WhatsApp">
+                <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg>
+              </button>
+              <button className="p-1.5 rounded-full bg-blue-700 text-white hover:bg-blue-800 transition-colors" aria-label="Share on LinkedIn">
+                <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                </svg>
+              </button>
+              <button className="p-1.5 rounded-full bg-stone-200 text-stone-600 hover:bg-stone-300 transition-colors" aria-label="Copy link">
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
