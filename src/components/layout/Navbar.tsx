@@ -2,26 +2,29 @@ import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Menu, X, ChevronDown, Zap } from 'lucide-react';
 import Image from 'next/image';
+import { Link } from 'react-router-dom';
 
 
 // Standalone navigation items
 const standaloneItems = [
-  { name: 'Our Story', href: '#who-we-are' },
-  { name: 'Why Partner With Us', href: '#why-partner' },
-  { name: 'Contact', href: '/contact' },
-  { name: 'Testimonials', href: '#testimonials' },
+  { name: 'Our Story', href: '#who-we-are', isRouterLink: false },
+  { name: 'Why Partner With Us', href: '#why-partner', isRouterLink: false },
+  { name: 'Contact', href: '/contact', isRouterLink: true },
+  { name: 'Blog', href: '/blog', isRouterLink: true },
+  { name: 'Charity', href: '/charity', isRouterLink: true },
+  { name: 'Testimonials', href: '#testimonials', isRouterLink: false },
 ];
 
 const navigationGroups = [
   {
     name: 'Services',
     items: [
-      { name: 'Who We Are', href: '#about' },
-      { name: 'What We Do', href: '#what-we-do' },
-      { name: 'Job Seekers', href: '#job-seekers' },
-      { name: 'Employers', href: '#employers' },
-      { name: 'Positions We Place', href: '#positions' },
-      { name: 'Giving Back', href: '#giving-back' },
+      { name: 'Who We Are', href: '#about', isRouterLink: false },
+      { name: 'What We Do', href: '#what-we-do', isRouterLink: false },
+      { name: 'Job Seekers', href: '#job-seekers', isRouterLink: false },
+      { name: 'Employers', href: '#employers', isRouterLink: false },
+      { name: 'Positions We Place', href: '#positions', isRouterLink: false },
+      { name: 'Giving Back', href: '#giving-back', isRouterLink: false },
     ]
   }
 ];
@@ -59,6 +62,31 @@ export default function Navbar() {
     );
   };
 
+  // Render navigation link based on whether it's a router link or hash link
+  const renderNavLink = (item: { name: string; href: string; isRouterLink: boolean }, className: string, onClick?: () => void) => {
+    if (item.isRouterLink) {
+      return (
+        <Link
+          key={item.name}
+          to={item.href}
+          className={className}
+          onClick={onClick}
+          dangerouslySetInnerHTML={{ __html: item.name }}
+        />
+      );
+    } else {
+      return (
+        <a
+          key={item.name}
+          href={item.href}
+          className={className}
+          onClick={onClick}
+          dangerouslySetInnerHTML={{ __html: item.name }}
+        />
+      );
+    }
+  };
+
   return (
     <header className={cn(
       "fixed top-0 inset-x-0 z-50 transition-all duration-300 ease-in-out",
@@ -66,10 +94,10 @@ export default function Navbar() {
     )}>
       {/* Logo positioned absolutely at the top left */}
       <div className="absolute top-1/2 -translate-y-1/2 left-0 p-4 flex items-center z-50">
-        <a href="#" className="flex items-center">
+        <Link to="/" className="flex items-center">
           <Zap className="h-6 w-6 text-voltify-300 mr-1" />
           <div className="text-2xl font-bold text-white">Voltify</div>
-        </a>
+        </Link>
       </div>
       
       {/* Navigation container */}
@@ -78,14 +106,10 @@ export default function Navbar() {
         <div className="hidden lg:flex lg:items-center lg:gap-x-1">
           {/* Standalone items at the beginning */}
           {standaloneItems.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className={cn(
-                "nav-link px-3 py-2 text-sm font-medium hover:text-blue-100 transition-colors text-white"
-              )}
-              dangerouslySetInnerHTML={{ __html: item.name }}
-            />
+            renderNavLink(
+              item,
+              cn("nav-link px-3 py-2 text-sm font-medium hover:text-blue-100 transition-colors text-white")
+            )
           ))}
           
           {/* Dropdown navigation groups */}
@@ -113,13 +137,11 @@ export default function Navbar() {
               >
                 <div className="py-1">
                   {group.items.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                      onClick={() => setActiveDropdown(null)}
-                      dangerouslySetInnerHTML={{ __html: item.name }}
-                    />
+                    renderNavLink(
+                      item,
+                      "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900",
+                      () => setActiveDropdown(null)
+                    )
                   ))}
                 </div>
               </div>
@@ -151,8 +173,10 @@ export default function Navbar() {
         <div className="relative p-4">
           {/* Logo in top left */}
           <div className="absolute left-4 top-4 flex items-center">
-            <Zap className="h-5 w-5 text-voltify-300 mr-1" />
-            <div className="text-xl font-bold text-white">Voltify</div>
+            <Link to="/" className="flex items-center" onClick={() => setMobileMenuOpen(false)}>
+              <Zap className="h-5 w-5 text-voltify-300 mr-1" />
+              <div className="text-xl font-bold text-white">Voltify</div>
+            </Link>
           </div>
           
           {/* Close button in top right */}
@@ -170,25 +194,21 @@ export default function Navbar() {
           <div className="flex flex-col gap-y-4 bg-blue-800 rounded-lg p-4">
             {/* Standalone items first */}
             {standaloneItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="text-lg font-medium text-white hover:text-blue-200 transition-colors py-2"
-                onClick={() => setMobileMenuOpen(false)}
-                dangerouslySetInnerHTML={{ __html: item.name }}
-              />
+              renderNavLink(
+                item,
+                "text-lg font-medium text-white hover:text-blue-200 transition-colors py-2",
+                () => setMobileMenuOpen(false)
+              )
             ))}
             
             {/* Group items */}
             {navigationGroups.flatMap(group => 
               group.items.map(item => (
-                <a
-                  key={`${group.name}-${item.name}`}
-                  href={item.href}
-                  className="text-lg font-medium text-white hover:text-blue-200 transition-colors py-2"
-                  onClick={() => setMobileMenuOpen(false)}
-                  dangerouslySetInnerHTML={{ __html: item.name }}
-                />
+                renderNavLink(
+                  item,
+                  "text-lg font-medium text-white hover:text-blue-200 transition-colors py-2",
+                  () => setMobileMenuOpen(false)
+                )
               ))
             )}
           </div>
