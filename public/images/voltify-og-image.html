@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voltify OG Image</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      width: 1200px;
+      height: 630px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      padding: 2rem;
+      text-align: center;
+    }
+    
+    .logo {
+      font-size: 5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color: #f8fafc;
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo-accent {
+      color: #38bdf8;
+    }
+    
+    .tagline {
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      color: #e2e8f0;
+    }
+    
+    .description {
+      font-size: 1.5rem;
+      max-width: 800px;
+      color: #cbd5e1;
+      margin-bottom: 2rem;
+    }
+    
+    .stats {
+      display: flex;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    
+    .stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #38bdf8;
+    }
+    
+    .stat-label {
+      font-size: 1rem;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .badge {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 0.5rem 1rem;
+      border-radius: 2rem;
+      font-size: 0.9rem;
+      color: #f8fafc;
+    }
+    
+    .lightning {
+      display: inline-block;
+      transform: rotate(20deg);
+      font-size: 4rem;
+      margin-left: 0.5rem;
+      color: #38bdf8;
+    }
+    
+    .gradient-orb {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.3) 0%, rgba(56, 189, 248, 0) 70%);
+      z-index: 1;
+    }
+    
+    .orb1 {
+      top: -100px;
+      left: -100px;
+    }
+    
+    .orb2 {
+      bottom: -100px;
+      right: -100px;
+    }
+  </style>
+</head>
+<body>
+  <div class="gradient-orb orb1"></div>
+  <div class="gradient-orb orb2"></div>
+  
+  <div class="badge">WOMEN-OWNED & OPERATED</div>
+  
+  <div class="content">
+    <div class="logo">Voltify<span class="lightning">⚡</span></div>
+    <div class="tagline">Energize Your Career</div>
+    <div class="description">A women-owned staffing solutions business built on a solid foundation of industry expertise since 2005</div>
+    
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-number">20+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">500+</div>
+        <div class="stat-label">Successful Placements</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">5%</div>
+        <div class="stat-label">To Charity</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
