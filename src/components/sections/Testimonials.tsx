@@ -104,17 +104,17 @@ export default function Testimonials() {
   };
 
   return (
-    <section id="testimonials" className="py-24 bg-gradient-to-br from-stone-900 to-stone-800 text-white relative overflow-hidden">
+    <section id="testimonials" className="py-24 white-brick-bg relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-voltify-900/20 rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-voltify-600/20 rounded-full filter blur-3xl"></div>
-        <div className="absolute top-1/3 right-1/4 w-64 h-64 bg-voltify-800/20 rounded-full filter blur-3xl"></div>
+        <div className="absolute top-0 left-0 w-96 h-96 bg-voltify-100/40 rounded-full filter blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-voltify-200/40 rounded-full filter blur-3xl"></div>
+        <div className="absolute top-1/3 right-1/4 w-64 h-64 bg-voltify-300/40 rounded-full filter blur-3xl"></div>
       </div>
       
       <div className="container-custom relative z-10">
         <div className="flex justify-center mb-2">
-          <div className="bg-voltify-600 text-white px-4 py-1 rounded-full text-sm font-medium inline-flex items-center">
+          <div className="bg-voltify-400 text-white px-4 py-1 rounded-full text-sm font-medium inline-flex items-center shadow-md">
             <CheckCircle2 className="h-4 w-4 mr-1" />
             <span>Verified Client Testimonials</span>
           </div>
@@ -123,7 +123,7 @@ export default function Testimonials() {
         <SectionHeading 
           title="What Our Clients Say"
           subtitle="Hear directly from professionals who've partnered with Melinda and Ban Partners."
-          className="text-white mb-12"
+          className="text-stone-800 mb-12"
         />
         
         <div className="max-w-5xl mx-auto relative">
@@ -131,15 +131,14 @@ export default function Testimonials() {
             <>
               <button 
                 onClick={prevTestimonial}
-                className="absolute -left-4 md:-left-12 top-1/2 transform -translate-y-1/2 z-10 bg-voltify-700/50 hover:bg-voltify-700/70 text-white p-2 rounded-full transition-all duration-300 shadow-lg"
+                className="absolute -left-4 md:-left-12 top-1/2 transform -translate-y-1/2 z-10 bg-voltify-400/90 hover:bg-voltify-500 text-white p-2 rounded-full transition-all duration-300 shadow-lg"
                 aria-label="Previous testimonial"
               >
                 <ChevronLeft className="h-6 w-6" />
               </button>
-              
               <button 
                 onClick={nextTestimonial}
-                className="absolute -right-4 md:-right-12 top-1/2 transform -translate-y-1/2 z-10 bg-voltify-700/50 hover:bg-voltify-700/70 text-white p-2 rounded-full transition-all duration-300 shadow-lg"
+                className="absolute -right-4 md:-right-12 top-1/2 transform -translate-y-1/2 z-10 bg-voltify-400/90 hover:bg-voltify-500 text-white p-2 rounded-full transition-all duration-300 shadow-lg"
                 aria-label="Next testimonial"
               >
                 <ChevronRight className="h-6 w-6" />
@@ -147,74 +146,55 @@ export default function Testimonials() {
             </>
           )}
           
-          <div className="relative overflow-hidden min-h-[400px] flex items-center">
-            {testimonials.map((testimonial, index) => (
-              <div 
-                key={index}
-                className={`absolute inset-0 transition-all duration-500 ease-in-out flex flex-col items-center justify-center py-6 px-4 md:px-8 ${
-                  index === currentIndex 
-                    ? 'opacity-100 translate-x-0' 
-                    : index < currentIndex 
-                      ? 'opacity-0 -translate-x-full' 
-                      : 'opacity-0 translate-x-full'
-                }`}
-              >
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-8 md:p-10 shadow-xl border border-white/20 w-full max-w-4xl">
-                  <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-8 gap-4">
-                    <div className="flex items-center">
-                      <div className={`w-16 h-16 rounded-full ${testimonial.avatarColor} flex items-center justify-center mr-5 shadow-md border-2 border-white/30`}>
-                        <span className="font-bold text-stone-900 text-2xl">{testimonial.author[0]}</span>
-                      </div>
-                      <div>
-                        <p className="font-semibold text-white text-xl">{testimonial.author}</p>
-                        <p className="text-stone-300 text-lg">{testimonial.position}</p>
-                        <div className="flex items-center mt-1">
-                          <Building className="h-4 w-4 text-stone-400 mr-1" />
-                          <p className="text-sm text-stone-300">{testimonial.company}</p>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-center bg-voltify-900/30 px-4 py-2 rounded-full">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="h-5 w-5 text-yellow-400 fill-yellow-400 mx-0.5" />
-                      ))}
-                    </div>
+          <div className="relative">
+            <div className={`transition-opacity duration-500 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-stone-200">
+                <div className="flex items-start gap-4 mb-6">
+                  <div className={`${testimonials[currentIndex].avatarColor} w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg shrink-0`}>
+                    {testimonials[currentIndex].author.split(' ').map(word => word[0]).join('')}
                   </div>
-                  
-                  <div className="mb-6">
-                    <Quote className="h-10 w-10 text-voltify-400 mb-4 float-left mr-4" />
-                    <p className="text-base md:text-lg text-stone-100 leading-relaxed">
-                      {showFullQuote ? testimonial.fullQuote : testimonial.quote}
-                    </p>
+                  <div>
+                    <h3 className="text-xl font-semibold text-stone-900">{testimonials[currentIndex].author}</h3>
+                    <p className="text-stone-600">{testimonials[currentIndex].position}</p>
+                    <p className="text-voltify-500 font-medium">{testimonials[currentIndex].company}</p>
                   </div>
-                  
-                  <div className="flex justify-between items-center mt-8 pt-4 border-t border-white/10">
-                    <div className="flex items-center">
-                      <Award className="h-5 w-5 text-voltify-400 mr-2" />
-                      <span className="text-sm text-stone-300">Verified Client</span>
-                    </div>
-                    <button 
-                      onClick={toggleQuoteLength} 
-                      className="text-sm text-voltify-400 hover:text-voltify-300 transition-colors duration-300 underline"
-                    >
-                      {showFullQuote ? "Show Less" : "Read Full Testimonial"}
-                    </button>
+                  <div className="ml-auto flex">
+                    {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
+                      <Star key={i} className="h-5 w-5 text-voltify-400" fill="currentColor" />
+                    ))}
                   </div>
                 </div>
+                
+                <div className="relative">
+                  <Quote className="absolute -top-2 -left-2 h-8 w-8 text-voltify-200" />
+                  <p className="text-stone-700 text-lg leading-relaxed pl-6">
+                    {showFullQuote ? testimonials[currentIndex].fullQuote : testimonials[currentIndex].quote}
+                  </p>
+                  {testimonials[currentIndex].fullQuote !== testimonials[currentIndex].quote && (
+                    <button
+                      onClick={toggleQuoteLength}
+                      className="mt-4 text-voltify-500 hover:text-voltify-600 font-medium transition-colors"
+                    >
+                      {showFullQuote ? 'Show Less' : 'Read More'}
+                    </button>
+                  )}
+                </div>
               </div>
-            ))}
+            </div>
           </div>
           
+          {/* Testimonial Navigation Dots */}
           {!showFullQuote && (
             <div className="flex justify-center mt-8 gap-2">
               {testimonials.map((_, index) => (
                 <button
                   key={index}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === currentIndex ? 'bg-voltify-400 w-6' : 'bg-stone-600'
-                  }`}
                   onClick={() => setCurrentIndex(index)}
+                  className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                    index === currentIndex 
+                      ? 'bg-voltify-400 w-8' 
+                      : 'bg-stone-300 hover:bg-stone-400'
+                  }`}
                   aria-label={`Go to testimonial ${index + 1}`}
                 />
               ))}

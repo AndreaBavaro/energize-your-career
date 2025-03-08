@@ -130,7 +130,10 @@ export default function WhatWeDo() {
   };
 
   return (
-    <section id="what-we-do" className="py-16 md:py-24 white-brick-bg relative overflow-hidden">
+    <section 
+      id="what-we-do" 
+      className="py-16 md:py-24 white-brick-bg relative overflow-hidden"
+    >
       <div className="absolute inset-0 z-0">
         <div className="absolute top-1/3 left-0 w-96 h-96 bg-voltify-50 rounded-full filter blur-3xl opacity-30 transform -translate-x-1/4"></div>
         <div className="absolute bottom-1/3 right-0 w-80 h-80 bg-voltify-100 rounded-full filter blur-3xl opacity-20 transform translate-x-1/4"></div>
@@ -148,68 +151,88 @@ export default function WhatWeDo() {
         <div className="max-w-5xl mx-auto mb-12">
           <GlassCard className="border-0 shadow-xl bg-white/90 backdrop-blur-sm">
             <div className="p-6 md:p-8">
-              <h3 className="text-xl md:text-2xl font-semibold mb-4 text-stone-800 text-center">
+              <h3 className="text-xl md:text-2xl font-semibold mb-4 text-stone-900 text-center">
                 Specialized Placement Across Industries
               </h3>
-              <p className="text-lg text-stone-600 mb-8 text-center">
+              <p className="text-lg text-stone-900 mb-8 text-center">
                 Voltify provides placements of <span className="text-voltify-700 font-semibold">highly qualified, fully screened professionals</span> across various roles and specialized industry sectors.
               </p>
               
-              <h4 className="text-lg font-semibold mb-4 text-stone-800 text-center">Your Path to the Perfect Role</h4>
+              <h4 className="text-lg font-semibold mb-4 text-stone-900 text-center">Your Path to the Perfect Role</h4>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
                 <div className="flex flex-col items-center text-center">
                   <div className="w-12 h-12 rounded-full bg-voltify-100 flex items-center justify-center mb-3">
                     <span className="text-voltify-700 font-bold text-lg">1</span>
                   </div>
-                  <h5 className="font-semibold text-stone-800 mb-2">Initial Consultation</h5>
-                  <p className="text-stone-600 text-sm">We discuss your skills, experience, and career goals to understand your unique qualifications.</p>
+                  <h5 className="font-semibold text-stone-900 mb-2">Initial Consultation</h5>
+                  <p className="text-stone-900 text-sm">We discuss your skills, experience, and career goals to understand your unique qualifications.</p>
                 </div>
                 
                 <div className="flex flex-col items-center text-center">
                   <div className="w-12 h-12 rounded-full bg-voltify-100 flex items-center justify-center mb-3">
                     <span className="text-voltify-700 font-bold text-lg">2</span>
                   </div>
-                  <h5 className="font-semibold text-stone-800 mb-2">Matching & Preparation</h5>
-                  <p className="text-stone-600 text-sm">We match you with suitable opportunities and prepare you for interviews with potential employers.</p>
+                  <h5 className="font-semibold text-stone-900 mb-2">Matching & Preparation</h5>
+                  <p className="text-stone-900 text-sm">We match you with suitable opportunities and prepare you for interviews with potential employers.</p>
                 </div>
                 
                 <div className="flex flex-col items-center text-center">
                   <div className="w-12 h-12 rounded-full bg-voltify-100 flex items-center justify-center mb-3">
                     <span className="text-voltify-700 font-bold text-lg">3</span>
                   </div>
-                  <h5 className="font-semibold text-stone-800 mb-2">Placement & Support</h5>
-                  <p className="text-stone-600 text-sm">Once placed, we provide ongoing support to ensure your success in the new role.</p>
+                  <h5 className="font-semibold text-stone-900 mb-2">Placement & Support</h5>
+                  <p className="text-stone-900 text-sm">Once placed, we provide ongoing support to ensure your success in the new role.</p>
                 </div>
               </div>
             </div>
           </GlassCard>
         </div>
         
-        {/* Industry Sectors Grid */}
-        <div id="sectors" className="mb-12">
-          <h3 className="text-2xl font-bold mb-8 text-center text-stone-900">Sectors We Serve</h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-4 md:gap-6">
-            {sectors.map((sector, index) => (
-              <GlassCard 
-                key={index}
-                className="opacity-0 animate-fade-in-up animate-fill-forwards"
-                animationDelay={`${index * 100}ms`}
-              >
-                <div className="text-center p-4">
-                  <div className="inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 rounded-full bg-voltify-50 mb-3 mx-auto">
-                    {sector.icon}
-                  </div>
-                  <h3 className="font-semibold text-stone-900 text-sm md:text-base">{sector.name}</h3>
+        {/* Industries Banner */}
+        <div className="relative py-24 md:py-32 my-12 md:my-16 overflow-hidden w-screen -ml-[50vw] left-1/2 min-h-[500px] md:min-h-[500px] flex items-center justify-center bg-[position:calc(50%+400px)_30%] md:bg-[position:center_30%]" 
+          style={{
+            backgroundImage: 'url("/images/lightbulb.jpg")',
+            backgroundSize: 'cover'
+          }}>
+          {/* Semi-transparent overlay with stronger opacity on mobile */}
+          <div className="absolute inset-0 bg-black/60 md:bg-black/50"></div>
+          
+          {/* Content container with increased padding on mobile */}
+          <div className="relative z-10 container mx-auto px-6 sm:px-6 lg:px-8 py-8 md:py-0">
+            <div className="flex flex-col md:flex-row items-center md:items-start justify-between">
+              {/* Left side - Main heading */}
+              <div className="md:w-1/2 mb-10 md:mb-0 md:pr-8">
+                <h2 className="text-3xl md:text-4xl font-bold text-white drop-shadow-md">Powering Industries Forward</h2>
+    
+              </div>
+              
+              {/* Right side - Industries list */}
+              <div className="md:w-1/2 md:pl-10">
+                <h3 className="text-xl md:text-2xl font-semibold text-white mb-6 text-center md:text-left">Industries We Specialize In</h3>
+                
+                <div className="space-y-3 max-w-md mx-auto md:mx-0">
+                  {sectors.map((sector, index) => (
+                    <div 
+                      key={index}
+                      className="opacity-0 animate-fade-in-up animate-fill-forwards bg-white/20 backdrop-blur-sm rounded-lg shadow-md p-3 flex items-center"
+                      style={{animationDelay: `${index * 100}ms`}}
+                    >
+                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-voltify-50 flex items-center justify-center mr-3">
+                        {sector.icon}
+                      </div>
+                      <h4 className="font-semibold text-white text-base">{sector.name}</h4>
+                    </div>
+                  ))}
                 </div>
-              </GlassCard>
-            ))}
+              </div>
+            </div>
           </div>
         </div>
         
         {/* Positions We Place - Enhanced with icons and categories */}
-        <div className="max-w-5xl mx-auto mb-12">
-          <GlassCard className="border-0 shadow-xl">
+        <div className="max-w-5xl mx-auto my-16">
+          <GlassCard className="border-0 shadow-xl bg-white/90 backdrop-blur-sm">
             <div className="p-6 md:p-8">
               <div className="flex items-center mb-6">
                 <Briefcase className="h-8 w-8 text-voltify-600 mr-3" />
@@ -221,7 +244,7 @@ export default function WhatWeDo() {
                 <details className="mb-3">
                   <summary className="flex items-center cursor-pointer p-2 bg-voltify-50/50 rounded-lg">
                     <Users className="h-5 w-5 text-voltify-600 mr-2" />
-                    <span className="font-semibold text-stone-800">Leadership & Management</span>
+                    <span className="font-semibold text-stone-900">Leadership & Management</span>
                   </summary>
                   <div className="pl-7 pt-2 pb-1">
                     <p className="text-sm text-stone-700">CIO, CTO, VP, Director, Manager of IT, Manager of HR, Manager of Sales</p>
@@ -231,7 +254,7 @@ export default function WhatWeDo() {
                 <details className="mb-3">
                   <summary className="flex items-center cursor-pointer p-2 bg-voltify-50/50 rounded-lg">
                     <Briefcase className="h-5 w-5 text-voltify-600 mr-2" />
-                    <span className="font-semibold text-stone-800">Project Management</span>
+                    <span className="font-semibold text-stone-900">Project Management</span>
                   </summary>
                   <div className="pl-7 pt-2 pb-1">
                     <p className="text-sm text-stone-700">Project Managers, Business Analyst</p>
@@ -241,7 +264,7 @@ export default function WhatWeDo() {
                 <details className="mb-3">
                   <summary className="flex items-center cursor-pointer p-2 bg-voltify-50/50 rounded-lg">
                     <Cpu className="h-5 w-5 text-voltify-600 mr-2" />
-                    <span className="font-semibold text-stone-800">Engineering</span>
+                    <span className="font-semibold text-stone-900">Engineering</span>
                   </summary>
                   <div className="pl-7 pt-2 pb-1">
                     <p className="text-sm text-stone-700">AI Engineers, Machine Learning Engineers, Robotics Engineer, Software Developers</p>
@@ -251,7 +274,7 @@ export default function WhatWeDo() {
                 <details className="mb-3">
                   <summary className="flex items-center cursor-pointer p-2 bg-voltify-50/50 rounded-lg">
                     <Server className="h-5 w-5 text-voltify-600 mr-2" />
-                    <span className="font-semibold text-stone-800">Infrastructure</span>
+                    <span className="font-semibold text-stone-900">Infrastructure</span>
                   </summary>
                   <div className="pl-7 pt-2 pb-1">
                     <p className="text-sm text-stone-700">Network Administrators, Systems Administrators, Data Warehouse, Information Security</p>
@@ -261,7 +284,7 @@ export default function WhatWeDo() {
                 <details className="mb-3">
                   <summary className="flex items-center cursor-pointer p-2 bg-voltify-50/50 rounded-lg">
                     <Layout className="h-5 w-5 text-voltify-600 mr-2" />
-                    <span className="font-semibold text-stone-800">Web & Design</span>
+                    <span className="font-semibold text-stone-900">Web & Design</span>
                   </summary>
                   <div className="pl-7 pt-2 pb-1">
                     <p className="text-sm text-stone-700">Web Developers, Web Designers</p>
@@ -271,7 +294,7 @@ export default function WhatWeDo() {
                 <details className="mb-3">
                   <summary className="flex items-center cursor-pointer p-2 bg-voltify-50/50 rounded-lg">
                     <PieChart className="h-5 w-5 text-voltify-600 mr-2" />
-                    <span className="font-semibold text-stone-800">Analytics & Marketing</span>
+                    <span className="font-semibold text-stone-900">Analytics & Marketing</span>
                   </summary>
                   <div className="pl-7 pt-2 pb-1">
                     <p className="text-sm text-stone-700">QA, BI, Marketing Managers</p>
@@ -282,10 +305,10 @@ export default function WhatWeDo() {
               {/* Desktop view - grid layout */}
               <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {positionGroups.map((group, groupIndex) => (
-                  <div key={groupIndex} className="bg-white/50 backdrop-blur-sm rounded-xl p-4 shadow-sm hover:shadow-md transition-all duration-300">
+                  <div key={groupIndex} className="bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-sm hover:shadow-md transition-all duration-300">
                     <div className="flex items-center mb-3">
                       {group.icon}
-                      <h4 className="ml-2 font-semibold text-stone-800">{group.category}</h4>
+                      <h4 className="ml-2 font-semibold text-stone-900">{group.category}</h4>
                     </div>
                     <ul className="space-y-1">
                       {group.positions.map((position, posIndex) => (
@@ -307,7 +330,7 @@ export default function WhatWeDo() {
           {/* Top service - Pay Only When Hired */}
           <GlassCard 
             key="top-service"
-            className="opacity-0 animate-fade-in-up animate-fill-forwards mb-3 sm:mb-6"
+            className="opacity-0 animate-fade-in-up animate-fill-forwards mb-3 sm:mb-6 bg-white/90 backdrop-blur-sm"
             animationDelay="300ms"
           >
             <div className="p-4 sm:p-6 text-center">
@@ -315,7 +338,7 @@ export default function WhatWeDo() {
                 {additionalServices[0].icon}
               </div>
               <h3 className="text-base sm:text-lg font-semibold mb-1 sm:mb-2 text-stone-900">{additionalServices[0].title}</h3>
-              <p className="text-stone-600 text-sm sm:text-base max-w-lg mx-auto">{additionalServices[0].description}</p>
+              <p className="text-stone-900 text-sm sm:text-base max-w-lg mx-auto">{additionalServices[0].description}</p>
             </div>
           </GlassCard>
           
@@ -324,7 +347,7 @@ export default function WhatWeDo() {
             {additionalServices.slice(1).map((service, index) => (
               <GlassCard 
                 key={index + 1}
-                className={`opacity-0 animate-fade-in-up animate-fill-forwards`}
+                className={`opacity-0 animate-fade-in-up animate-fill-forwards bg-white/80 backdrop-blur-sm`}
                 animationDelay={`${(index + 4) * 100}ms`}
               >
                 <div className="p-3 sm:p-6 text-center">
@@ -332,7 +355,7 @@ export default function WhatWeDo() {
                     {service.icon}
                   </div>
                   <h3 className="text-sm sm:text-lg font-semibold mb-1 sm:mb-2 text-stone-900">{service.title}</h3>
-                  <p className="text-stone-600 text-xs sm:text-base">{service.description}</p>
+                  <p className="text-stone-900 text-xs sm:text-base">{service.description}</p>
                 </div>
               </GlassCard>
             ))}
@@ -341,42 +364,42 @@ export default function WhatWeDo() {
         
         {/* Cities We Serve */}
         <div className="mt-8 mb-12">
-          <h3 className="text-2xl font-bold text-center mb-10">Cities We Serve</h3>
+          <h3 className="text-2xl font-bold text-center mb-6 md:mb-10 text-stone-900">Cities We Serve</h3>
           
-          <div className="relative max-w-5xl mx-auto h-[300px] md:h-[400px] rounded-xl overflow-hidden shadow-xl">
+          <div className="relative max-w-5xl mx-auto h-[250px] sm:h-[300px] md:h-[400px] rounded-xl overflow-hidden shadow-xl">
             {/* City Images */}
             {cities.map((city, index) => (
               <div 
                 key={city.name}
-                className={`absolute inset-0 transition-opacity duration-1000 bg-cover ${city.position} ${
+                className={`absolute inset-0 transition-opacity duration-1000 bg-cover bg-center ${city.position} ${
                   index === currentCityIndex ? 'opacity-100' : 'opacity-0'
                 }`}
                 style={{
-                  backgroundImage: `url(${city.image})`,
+                  backgroundImage: `linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 30%, rgba(0,0,0,0.1) 100%), url(${city.image})`,
                 }}
               />
             ))}
             
             {/* City Name */}
-            <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-black/50 backdrop-blur-sm text-white px-4 py-2 rounded-full font-medium">
+            <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-black/60 backdrop-blur-sm text-white px-6 py-3 rounded-full font-medium text-sm sm:text-base">
               {cities[currentCityIndex].name}
             </div>
             
             {/* Navigation Controls */}
             <button 
               onClick={prevCity}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white p-2 rounded-full transition-all duration-300"
+              className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-white/30 hover:bg-white/50 backdrop-blur-sm text-white p-1.5 sm:p-2 rounded-full transition-all duration-300"
               aria-label="Previous city"
             >
-              <ChevronLeft className="h-6 w-6" />
+              <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" />
             </button>
             
             <button 
               onClick={nextCity}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white p-2 rounded-full transition-all duration-300"
+              className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-white/30 hover:bg-white/50 backdrop-blur-sm text-white p-1.5 sm:p-2 rounded-full transition-all duration-300"
               aria-label="Next city"
             >
-              <ChevronRight className="h-6 w-6" />
+              <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
             </button>
           </div>
         </div>
