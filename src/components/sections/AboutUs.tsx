@@ -58,7 +58,7 @@ export default function AboutUs() {
   ];
 
   return (
-    <section id="about-us" className="py-24 white-brick-bg relative">
+    <section id="our-story" className="py-24 white-brick-bg relative">
       <div className="absolute inset-0 z-0">
         <div className="absolute top-1/2 right-0 w-96 h-96 bg-voltify-100 rounded-full filter blur-3xl opacity-40 transform translate-x-1/4 -translate-y-1/4"></div>
       </div>
@@ -66,7 +66,7 @@ export default function AboutUs() {
       <div className="container-custom relative z-10">
         <SectionHeading 
           title="Who We Are"
-          subtitle="Voltify is a women-owned staffing solutions business built on a solid foundation of industry expertise and decades of experience."
+          subtitle="Voltify is a women-owned staffing solutions business built on a solid foundation of industry expertise. A subsidiary of Ban Partners founded in 2005."
         />
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto">

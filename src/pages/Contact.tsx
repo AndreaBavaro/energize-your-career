@@ -30,6 +30,11 @@ export default function Contact() {
       message: DOMPurify.sanitize(formData.get('message') as string).trim()
     };
 
+    // Check if resume is an empty file input (when no file is selected)
+    if (sanitizedData.resume instanceof File && sanitizedData.resume.size === 0 && sanitizedData.resume.name === '') {
+      sanitizedData.resume = null;
+    }
+
     // Validation
     if (!sanitizedData.name || !sanitizedData.email || !sanitizedData.userType) {
       toast({
@@ -45,16 +50,6 @@ export default function Contact() {
       toast({
         title: "Error",
         description: "Please enter a valid email address",
-        variant: "destructive",
-      });
-      setIsSubmitting(false);
-      return;
-    }
-
-    if (userType === 'jobSeeker' && !sanitizedData.resume) {
-      toast({
-        title: "Error",
-        description: "Resume is required for job seekers",
         variant: "destructive",
       });
       setIsSubmitting(false);
@@ -254,7 +249,7 @@ export default function Contact() {
                     {userType === 'jobSeeker' && (
                       <div className="space-y-2">
                         <label className="block text-sm font-medium text-stone-700">
-                          Upload Resume *
+                          Upload Resume (Optional)
                           <div className="mt-2 flex justify-center px-6 py-8 border-2 border-dashed border-stone-200 rounded-lg hover:border-voltify-400 transition-colors cursor-pointer">
                             <input
                               type="file"
@@ -262,7 +257,7 @@ export default function Contact() {
                               name="resume"
                               accept=".pdf,.doc,.docx"
                               className="sr-only"
-                              required={userType === 'jobSeeker'}
+                              required={false}
                             />
                             <div className="text-center">
                               <Send className="mx-auto h-8 w-8 text-voltify-500 mb-2" />
@@ -364,82 +359,33 @@ export default function Contact() {
                 </GlassCard>
                 
                 <GlassCard className="p-8">
-                  <h3 className="text-2xl font-bold mb-6 text-stone-900">Office Hours</h3>
+                  <h3 className="text-2xl font-bold mb-6 text-stone-900">Frequently Asked Questions</h3>
                   
-                  <div className="space-y-4">
-                    <div className="flex justify-between items-center">
-                      <span className="text-stone-700 font-medium">Monday - Friday</span>
-                      <span className="text-stone-900 font-semibold">9:00 AM - 6:00 PM</span>
+                  <div className="space-y-6">
+                    <div className="flex items-start gap-4">
+                      <div className="w-10 h-10 rounded-full bg-voltify-100 flex items-center justify-center flex-shrink-0">
+                        <MessageSquare className="h-5 w-5 text-voltify-600" />
+                      </div>
+                      <div>
+                        <h4 className="text-lg font-semibold text-stone-900 mb-2">How quickly can you find candidates?</h4>
+                        <p className="text-stone-600">We typically present qualified candidates within 1-2 weeks, depending on the position's requirements and market conditions.</p>
+                      </div>
                     </div>
                     
-                    <div className="flex justify-between items-center">
-                      <span className="text-stone-700 font-medium">Saturday</span>
-                      <span className="text-stone-900 font-semibold">10:00 AM - 2:00 PM</span>
-                    </div>
-                    
-                    <div className="flex justify-between items-center">
-                      <span className="text-stone-700 font-medium">Sunday</span>
-                      <span className="text-stone-900 font-semibold">Closed</span>
+                    <div className="flex items-start gap-4">
+                      <div className="w-10 h-10 rounded-full bg-voltify-100 flex items-center justify-center flex-shrink-0">
+                        <MessageSquare className="h-5 w-5 text-voltify-600" />
+                      </div>
+                      <div>
+                        <h4 className="text-lg font-semibold text-stone-900 mb-2">What industries do you specialize in?</h4>
+                        <p className="text-stone-600">We specialize in IT, energy, healthcare, finance, and marketing sectors, but our expertise extends to various other industries as well.</p>
+                      </div>
                     </div>
                   </div>
                 </GlassCard>
               </div>
             </div>
             
-            {/* FAQ Section */}
-            <div className="mt-12 md:mt-16">
-              <h3 className="text-xl md:text-2xl font-bold mb-6 md:mb-8 text-center text-stone-900">Frequently Asked Questions</h3>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-                <GlassCard className="p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-full bg-voltify-100 flex items-center justify-center flex-shrink-0">
-                      <MessageSquare className="h-5 w-5 text-voltify-600" />
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-semibold text-stone-900 mb-2">How quickly can you find candidates?</h4>
-                      <p className="text-stone-600">We typically present qualified candidates within 1-2 weeks, depending on the position's requirements and market conditions.</p>
-                    </div>
-                  </div>
-                </GlassCard>
-                
-                <GlassCard className="p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-full bg-voltify-100 flex items-center justify-center flex-shrink-0">
-                      <MessageSquare className="h-5 w-5 text-voltify-600" />
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-semibold text-stone-900 mb-2">What industries do you specialize in?</h4>
-                      <p className="text-stone-600">We specialize in IT, energy, healthcare, finance, and marketing sectors, but our expertise extends to various other industries as well.</p>
-                    </div>
-                  </div>
-                </GlassCard>
-                
-                <GlassCard className="p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-full bg-voltify-100 flex items-center justify-center flex-shrink-0">
-                      <MessageSquare className="h-5 w-5 text-voltify-600" />
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-semibold text-stone-900 mb-2">Do you offer temporary staffing?</h4>
-                      <p className="text-stone-600">Yes, we provide both temporary and permanent staffing solutions to meet your business needs, including contract-to-hire options.</p>
-                    </div>
-                  </div>
-                </GlassCard>
-                
-                <GlassCard className="p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-full bg-voltify-100 flex items-center justify-center flex-shrink-0">
-                      <MessageSquare className="h-5 w-5 text-voltify-600" />
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-semibold text-stone-900 mb-2">What is your fee structure?</h4>
-                      <p className="text-stone-600">Our fees are competitive and typically based on a percentage of the candidate's first-year salary. Contact us for specific details.</p>
-                    </div>
-                  </div>
-                </GlassCard>
-              </div>
-            </div>
           </div>
         </section>
       </main>

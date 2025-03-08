@@ -28,6 +28,10 @@ export default function Sectors() {
       icon: <Microscope className="h-8 w-8 text-voltify-600" />,
       name: 'Life Science',
     },
+    {
+      icon: <CreditCard className="h-8 w-8 text-voltify-600" />,
+      name: 'FinTech',
+    },
   ];
 
   const positions = [

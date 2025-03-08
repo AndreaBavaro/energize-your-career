@@ -37,11 +37,11 @@ export default function WhyPartner() {
   ];
 
   return (
-    <section id="services" className="py-24 white-brick-bg relative overflow-hidden">
+    <section id="why-partner" className="py-24 white-brick-bg relative overflow-hidden">
       <div className="container-custom relative z-10">
         <SectionHeading 
           title="Why Partner With Us"
-          subtitle="Experience and transparency are at the core of what sets us apart in the staffing industry."
+          subtitle="Experience and Transparency! With 20 years of experience in the staffing industry, our commitment to excellence and proven track record are what set us apart."
         />
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">

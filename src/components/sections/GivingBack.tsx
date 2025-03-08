@@ -19,11 +19,6 @@ export default function GivingBack() {
           <p className="text-stone-600">
             A copy of the donation receipt is provided to the designated client for complete transparency. Together, we're making a difference beyond the workplace.
           </p>
-          <div className="mt-8 border-t border-gray-100 pt-6">
-            <p className="text-sm text-stone-500 italic">
-              "We believe in giving back to the communities that have supported us and our clients throughout the years."
-            </p>
-          </div>
         </div>
       </div>
     </section>

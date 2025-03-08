@@ -2,6 +2,8 @@ import { useState, useEffect, useCallback } from 'react';
 import { ArrowRight, Award, Heart, Star, Briefcase, Tag, Zap, TrendingUp, ChevronDown, ChevronUp, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
 import { AnimatedText } from '../ui/AnimatedText';
 import { Button } from '@/components/ui/button';
+import { JobSeekerModal } from '../ui/JobSeekerModal';
+import { EmployerModal } from '../ui/EmployerModal';
 
 export default function Hero() {
   // State to track if the mobile dropdown is open
@@ -78,6 +80,10 @@ export default function Hero() {
   // Get the current testimonial
   const currentTestimonial = testimonials[currentTestimonialIndex];
 
+  // State for modals
+  const [isJobSeekerModalOpen, setIsJobSeekerModalOpen] = useState(false);
+  const [isEmployerModalOpen, setIsEmployerModalOpen] = useState(false);
+
   return (
     <section id="hero" className="relative min-h-[calc(100vh-2rem)] md:min-h-screen flex items-start md:items-center overflow-hidden -mt-[2.5rem] sm:-mt-6 pt-16 sm:pt-0 pb-16 md:pb-20">
       {/* Office Background Image with Overlay */}
@@ -136,22 +142,18 @@ export default function Hero() {
                       <Button 
                         className="bg-voltify-600 hover:bg-voltify-700 text-white px-6 sm:px-8 py-4 sm:py-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 text-base sm:text-lg font-medium"
                         size="lg"
-                        asChild
+                        onClick={() => setIsJobSeekerModalOpen(true)}
                       >
-                        <a href="#job-seekers">
-                          For Job Seekers
-                          <ArrowRight className="ml-2 h-5 w-5" />
-                        </a>
+                        For Job Seekers
+                        <ArrowRight className="ml-2 h-5 w-5" />
                       </Button>
                       <Button 
                         className="bg-blue-900 hover:bg-blue-800 text-white px-6 sm:px-8 py-4 sm:py-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 text-base sm:text-lg font-medium"
                         size="lg"
-                        asChild
+                        onClick={() => setIsEmployerModalOpen(true)}
                       >
-                        <a href="#employers">
-                          For Employers
-                          <ArrowRight className="ml-2 h-5 w-5" />
-                        </a>
+                        For Employers
+                        <ArrowRight className="ml-2 h-5 w-5" />
                       </Button>
                     </div>
                     
@@ -312,6 +314,16 @@ export default function Hero() {
           </div>
         </div>
       </div>
+      
+      {/* Modals */}
+      <JobSeekerModal 
+        isOpen={isJobSeekerModalOpen} 
+        onClose={() => setIsJobSeekerModalOpen(false)} 
+      />
+      <EmployerModal 
+        isOpen={isEmployerModalOpen} 
+        onClose={() => setIsEmployerModalOpen(false)} 
+      />
       
       <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
         <a href="#about" className="text-white hover:text-voltify-300 transition-colors">

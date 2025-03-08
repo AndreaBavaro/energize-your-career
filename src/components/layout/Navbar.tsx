@@ -2,40 +2,26 @@ import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Menu, X, ChevronDown, Zap } from 'lucide-react';
 import Image from 'next/image';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 
-// Standalone navigation items
-const standaloneItems = [
-  { name: 'Our Story', href: '#who-we-are', isRouterLink: false },
+// Navigation items in the specified order
+const navigationItems = [
+  { name: 'What We Do', href: '#what-we-do', isRouterLink: false },
+  { name: 'Our Story', href: '#our-story', isRouterLink: false },
   { name: 'Why Partner With Us', href: '#why-partner', isRouterLink: false },
-  { name: 'Contact', href: '/contact', isRouterLink: true },
-  { name: 'Blog', href: '/blog', isRouterLink: true },
-  { name: 'Charity', href: '/charity', isRouterLink: true },
   { name: 'Testimonials', href: '#testimonials', isRouterLink: false },
-];
-
-const navigationGroups = [
-  {
-    name: 'Services',
-    items: [
-      { name: 'Who We Are', href: '#about', isRouterLink: false },
-      { name: 'What We Do', href: '#what-we-do', isRouterLink: false },
-      { name: 'Job Seekers', href: '#job-seekers', isRouterLink: false },
-      { name: 'Employers', href: '#employers', isRouterLink: false },
-      { name: 'Positions We Place', href: '#positions', isRouterLink: false },
-      { name: 'Giving Back', href: '#giving-back', isRouterLink: false },
-    ]
-  }
+  { name: 'Giving Back', href: '/charity', isRouterLink: true },
+  { name: 'Sectors We Serve', href: '#sectors', isRouterLink: false },
+  { name: 'Blog', href: '/blog', isRouterLink: true },
+  { name: 'Contact Us', href: '/contact', isRouterLink: true },
 ];
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const [mobileExpandedGroups, setMobileExpandedGroups] = useState<string[]>(
-    navigationGroups.map(group => group.name) // Start with all groups expanded
-  );
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,29 +34,56 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [scrolled]);
-
-  const toggleDropdown = (name: string) => {
-    setActiveDropdown(activeDropdown === name ? null : name);
+  
+  // Handle smooth scrolling for hash links
+  const handleHashLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    
+    // If we're not on the homepage, navigate there first
+    if (location.pathname !== '/') {
+      navigate('/');
+      // After navigation, we need to wait for the page to load before scrolling
+      setTimeout(() => {
+        scrollToElement(href.substring(1));
+      }, 100);
+    } else {
+      // We're already on the homepage, just scroll
+      scrollToElement(href.substring(1));
+    }
   };
   
-  // Toggle mobile group expansion
-  const toggleMobileGroup = (name: string) => {
-    setMobileExpandedGroups(prev => 
-      prev.includes(name) 
-        ? prev.filter(item => item !== name) 
-        : [...prev, name]
-    );
+  // Helper function to scroll to an element by ID
+  const scrollToElement = (elementId: string) => {
+    const element = document.getElementById(elementId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+  
+  // Get the correct href for navigation items based on current location
+  const getItemHref = (item: { href: string, isRouterLink: boolean }) => {
+    // If it's already a router link, return the href as is
+    if (item.isRouterLink) {
+      return item.href;
+    }
+    
+    // For hash links, just return the href as is
+    return item.href;
   };
 
   // Render navigation link based on whether it's a router link or hash link
   const renderNavLink = (item: { name: string; href: string; isRouterLink: boolean }, className: string, onClick?: () => void) => {
+    const href = getItemHref(item);
+    
     if (item.isRouterLink) {
       return (
         <Link
           key={item.name}
-          to={item.href}
+          to={href}
           className={className}
-          onClick={onClick}
+          onClick={(e) => {
+            if (onClick) onClick();
+          }}
           dangerouslySetInnerHTML={{ __html: item.name }}
         />
       );
@@ -78,9 +91,12 @@ export default function Navbar() {
       return (
         <a
           key={item.name}
-          href={item.href}
+          href={href}
           className={className}
-          onClick={onClick}
+          onClick={(e) => {
+            handleHashLinkClick(e, href);
+            if (onClick) onClick();
+          }}
           dangerouslySetInnerHTML={{ __html: item.name }}
         />
       );
@@ -104,48 +120,12 @@ export default function Navbar() {
       <nav className="container-custom flex items-center justify-end py-3 px-4">
         {/* Desktop navigation */}
         <div className="hidden lg:flex lg:items-center lg:gap-x-1">
-          {/* Standalone items at the beginning */}
-          {standaloneItems.map((item) => (
+          {/* Navigation items */}
+          {navigationItems.map((item) => (
             renderNavLink(
               item,
               cn("nav-link px-3 py-2 text-sm font-medium hover:text-blue-100 transition-colors text-white")
             )
-          ))}
-          
-          {/* Dropdown navigation groups */}
-          {navigationGroups.map((group) => (
-            <div key={group.name} className="relative group">
-              <button
-                className={cn(
-                  "nav-link flex items-center px-3 py-2 text-sm font-medium hover:text-blue-100 transition-colors text-white"
-                )}
-                onClick={() => toggleDropdown(group.name)}
-                onMouseEnter={() => setActiveDropdown(group.name)}
-                onMouseLeave={() => setActiveDropdown(null)}
-              >
-                {group.name}
-                <ChevronDown className="ml-1 h-4 w-4" />
-              </button>
-              
-              <div 
-                className={cn(
-                  "absolute left-0 mt-1 w-56 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 transition-all duration-200 origin-top-left",
-                  activeDropdown === group.name ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"
-                )}
-                onMouseEnter={() => setActiveDropdown(group.name)}
-                onMouseLeave={() => setActiveDropdown(null)}
-              >
-                <div className="py-1">
-                  {group.items.map((item) => (
-                    renderNavLink(
-                      item,
-                      "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900",
-                      () => setActiveDropdown(null)
-                    )
-                  ))}
-                </div>
-              </div>
-            </div>
           ))}
         </div>
         
@@ -192,25 +172,14 @@ export default function Navbar() {
         <div className="container-custom py-6 mt-10">
           {/* All navigation items in one list */}
           <div className="flex flex-col gap-y-4 bg-blue-800 rounded-lg p-4">
-            {/* Standalone items first */}
-            {standaloneItems.map((item) => (
+            {/* Navigation items */}
+            {navigationItems.map((item) => (
               renderNavLink(
                 item,
                 "text-lg font-medium text-white hover:text-blue-200 transition-colors py-2",
                 () => setMobileMenuOpen(false)
               )
             ))}
-            
-            {/* Group items */}
-            {navigationGroups.flatMap(group => 
-              group.items.map(item => (
-                renderNavLink(
-                  item,
-                  "text-lg font-medium text-white hover:text-blue-200 transition-colors py-2",
-                  () => setMobileMenuOpen(false)
-                )
-              ))
-            )}
           </div>
         </div>
       </div>

@@ -65,7 +65,7 @@ export default function OurStory() {
                   <h3 className="text-2xl font-bold text-stone-900 mb-3">Proven Track Record</h3>
                   <p className="text-stone-600">
                     Our founder is the co-founder of our parent company and has a proven track record 
-                    of delivering high-quality talent for various roles across industries.
+                    of delivering high-quality talent for various roles across industries, serving small and Fortune 500 businesses.
                   </p>
                 </div>
               </div>
