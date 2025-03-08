@@ -1,9 +1,10 @@
 import { GlassCard } from '../ui/GlassCard';
 import { 
   Briefcase, CheckCircle, Lightbulb, CreditCard, Zap, Database, Heart, BarChart3, Microscope,
-  Users, Code, Server, Shield, Globe, LineChart, Cpu, ChevronRight, Monitor, Layout, PieChart, UserCog
+  Users, Code, Server, Shield, Globe, LineChart, Cpu, ChevronRight, Monitor, Layout, PieChart, UserCog,
+  ChevronLeft
 } from 'lucide-react';
-import CharityBanner from '../ui/CharityBanner';
+import { useState } from 'react';
 
 export default function WhatWeDo() {
   // List of positions we place
@@ -99,6 +100,35 @@ export default function WhatWeDo() {
     }
   ];
 
+  // Cities we serve
+  const cities = [
+    {
+      name: "Boston",
+      image: "/lovable-uploads/07c248d8-4002-45cf-b24f-339ef7c321eb.png",
+      position: "bg-center"
+    },
+    {
+      name: "Los Angeles",
+      image: "/lovable-uploads/03aace2d-574d-4292-a524-5b760748ade9.png",
+      position: "bg-center"
+    },
+    {
+      name: "New York",
+      image: "/lovable-uploads/45016fe7-27c2-40eb-95ff-1f2f9f2f71d2.png", 
+      position: "bg-center"
+    }
+  ];
+
+  const [currentCityIndex, setCurrentCityIndex] = useState(0);
+  
+  const nextCity = () => {
+    setCurrentCityIndex((prevIndex) => (prevIndex + 1) % cities.length);
+  };
+  
+  const prevCity = () => {
+    setCurrentCityIndex((prevIndex) => (prevIndex - 1 + cities.length) % cities.length);
+  };
+
   return (
     <section id="what-we-do" className="py-16 md:py-24 white-brick-bg relative overflow-hidden">
       <div className="absolute inset-0 z-0">
@@ -115,7 +145,7 @@ export default function WhatWeDo() {
         </div>
         
         {/* Bubble with specialized placement text and steps */}
-        <div className="max-w-5xl mx-auto mb-16">
+        <div className="max-w-5xl mx-auto mb-12">
           <GlassCard className="border-0 shadow-xl bg-white/90 backdrop-blur-sm">
             <div className="p-6 md:p-8">
               <h3 className="text-xl md:text-2xl font-semibold mb-4 text-stone-800 text-center">
@@ -157,8 +187,8 @@ export default function WhatWeDo() {
         </div>
         
         {/* Industry Sectors Grid */}
-        <div id="sectors" className="mb-16">
-          <h3 className="text-2xl font-bold mb-8 text-center text-stone-900">Industries We Serve</h3>
+        <div id="sectors" className="mb-12">
+          <h3 className="text-2xl font-bold mb-8 text-center text-stone-900">Sectors We Serve</h3>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-4 md:gap-6">
             {sectors.map((sector, index) => (
               <GlassCard 
@@ -178,7 +208,7 @@ export default function WhatWeDo() {
         </div>
         
         {/* Positions We Place - Enhanced with icons and categories */}
-        <div className="max-w-5xl mx-auto mb-16">
+        <div className="max-w-5xl mx-auto mb-12">
           <GlassCard className="border-0 shadow-xl">
             <div className="p-6 md:p-8">
               <div className="flex items-center mb-6">
@@ -209,7 +239,7 @@ export default function WhatWeDo() {
         </div>
         
         {/* Additional Services */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-12">
           {additionalServices.map((service, index) => (
             <GlassCard 
               key={index}
@@ -227,8 +257,47 @@ export default function WhatWeDo() {
           ))}
         </div>
         
-        {/* Charity Banner */}
-        <CharityBanner />
+        {/* Cities We Serve */}
+        <div className="mt-8 mb-12">
+          <h3 className="text-2xl font-bold text-center mb-10">Cities We Serve</h3>
+          
+          <div className="relative max-w-5xl mx-auto h-[300px] md:h-[400px] rounded-xl overflow-hidden shadow-xl">
+            {/* City Images */}
+            {cities.map((city, index) => (
+              <div 
+                key={city.name}
+                className={`absolute inset-0 transition-opacity duration-1000 bg-cover ${city.position} ${
+                  index === currentCityIndex ? 'opacity-100' : 'opacity-0'
+                }`}
+                style={{
+                  backgroundImage: `url(${city.image})`,
+                }}
+              />
+            ))}
+            
+            {/* City Name */}
+            <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-black/50 backdrop-blur-sm text-white px-4 py-2 rounded-full font-medium">
+              {cities[currentCityIndex].name}
+            </div>
+            
+            {/* Navigation Controls */}
+            <button 
+              onClick={prevCity}
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white p-2 rounded-full transition-all duration-300"
+              aria-label="Previous city"
+            >
+              <ChevronLeft className="h-6 w-6" />
+            </button>
+            
+            <button 
+              onClick={nextCity}
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white p-2 rounded-full transition-all duration-300"
+              aria-label="Next city"
+            >
+              <ChevronRight className="h-6 w-6" />
+            </button>
+          </div>
+        </div>
       </div>
     </section>
   );

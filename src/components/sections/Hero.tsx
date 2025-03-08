@@ -15,27 +15,50 @@ export default function Hero() {
   // Testimonials data
   const testimonials = [
     {
-      quote: "Voltify transformed my job search. Their personal approach helped me land my dream role in tech leadership.",
-      author: "Sarah J.",
-      position: "CTO at a FinTech Startup",
-      initials: "SJ",
+      quote: "Melinda’s professionalism and transparency made the hiring process seamless. She provided exceptional support throughout and after I started my new role.",
+      author: "Ali Darbani",
+      position: "Senior Project Manager, RBC Capital Markets",
+      initials: "AD",
+      bgColor: "bg-voltify-900"
+    },
+    {
+      quote: "Melinda played a key role in securing a well-paid position for me, advocating for contract extensions that led to a three-year role. I’m grateful for the opportunity to work with her.",
+      author: "Werner Strijewski",
+      position: "Principal Software Engineer, Yamaha Motor Canada",
+      initials: "WS",
+      bgColor: "bg-voltify-700"
+    },
+    {
+      quote: "Melinda's support was invaluable throughout the process, making me feel confident and heard. I highly recommend her to anyone seeking career guidance.",
+      author: "Jared Drepaul",
+      position: "Director HR Operations Technology, TMX Group",
+      initials: "JD",
       bgColor: "bg-voltify-400"
     },
     {
-      quote: "As an HR director, I've worked with many staffing agencies, but Voltify stands out. They truly understand our company culture.",
-      author: "Michael T.",
-      position: "HR Director, Fortune 500 Company",
-      initials: "MT",
+      quote: "Her guidance in securing a Senior Project Manager role was instrumental. Melinda's support through the interview process was invaluable.",
+      author: "Gabriela Alcina",
+      position: "Global Project Manager, IPC Systems",
+      initials: "GA",
       bgColor: "bg-voltify-500"
     },
     {
-      quote: "Their expertise in the energy sector is unmatched. Voltify helped us staff an entire data science team in record time.",
-      author: "Elena R.",
-      position: "VP of Analytics, Energy Sector",
-      initials: "ER",
+      quote: "Working with Melinda was a transformative experience. She made everything clear, proactive, and stress-free during the contract process.",
+      author: "Shayan Nedaei",
+      position: "Senior Project Manager Digital Transformation, DECIEM/The Abnormal Beauty Company",
+      initials: "SN",
+      bgColor: "bg-voltify-800"
+    },
+    {
+      quote: "Melinda was a great partner throughout my job search, providing tailored advice and regular feedback. I felt supported and confident in her hands.",
+      author: "Adelle DSilva",
+      position: "Senior Project Manager, DECIEM/The Abnormal Beauty Company",
+      initials: "AD",
       bgColor: "bg-voltify-600"
     }
   ];
+  
+  
 
   // Trending tech buzzwords instead of specific positions
   const trendingBuzzwords = [

@@ -1,6 +1,6 @@
 import { SectionHeading } from '../ui/SectionHeading';
 import { GlassCard } from '../ui/GlassCard';
-import { BookOpen, Award, Heart, Lightbulb } from 'lucide-react';
+import { BookOpen, Award, Heart, Lightbulb, Star, Users } from 'lucide-react';
 
 export default function OurStory() {
   return (
@@ -16,89 +16,57 @@ export default function OurStory() {
         />
         
         <div className="max-w-5xl mx-auto">
-          <div className="relative mb-16">
-            {/* Timeline Line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-voltify-100"></div>
+          <div className="bg-white rounded-xl shadow-lg p-8 mb-10">
+            <h3 className="text-2xl font-bold text-voltify-600 mb-6 text-center">The Voltify Journey</h3>
             
-            {/* Experience Point */}
-            <div className="relative z-10 mb-16">
-              <div className="flex flex-col md:flex-row items-center">
-                <div className="md:w-1/2 md:pr-12 mb-8 md:mb-0 text-right opacity-0 animate-slide-in-left animate-fill-forwards">
-                  <h3 className="text-2xl font-bold text-stone-900 mb-3">20 Years of Experience</h3>
-                  <p className="text-stone-600">
-                    The founder of Voltify has 20 years of experience in the technology and 
-                    professional staffing industry, serving small businesses and Fortune 500 companies.
-                  </p>
-                </div>
-                
-                <div className="rounded-full w-16 h-16 bg-voltify-100 flex items-center justify-center z-10 mb-8 md:mb-0 border-4 border-white shadow-lg">
-                  <BookOpen className="h-8 w-8 text-voltify-600" />
-                </div>
-                
-                <div className="md:w-1/2 md:pl-12 opacity-0 animate-slide-in-right animate-fill-forwards animate-delay-200">
-                  <div className="bg-white rounded-xl shadow-md p-6">
-                    <p className="italic text-stone-600">
-                      "My journey in the staffing industry began with a simple mission: to create meaningful connections between talented professionals and organizations that value their skills."
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            {/* Co-founder Point */}
-            <div className="relative z-10 mb-16">
-              <div className="flex flex-col md:flex-row items-center">
-                <div className="md:w-1/2 md:pr-12 mb-8 md:mb-0 text-right order-1 md:order-1 opacity-0 animate-slide-in-left animate-fill-forwards animate-delay-300">
-                  <div className="bg-white rounded-xl shadow-md p-6">
-                    <p className="italic text-stone-600">
-                      "As co-founder of our parent company, Ban Partners, established in 2005, 
-                      I've witnessed firsthand how the right placement can transform both careers and organizations."
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="rounded-full w-16 h-16 bg-voltify-100 flex items-center justify-center z-10 mb-8 md:mb-0 border-4 border-white shadow-lg order-2 md:order-2">
-                  <Award className="h-8 w-8 text-voltify-600" />
-                </div>
-                
-                <div className="md:w-1/2 md:pl-12 order-3 md:order-3 opacity-0 animate-slide-in-right animate-fill-forwards animate-delay-400">
-                  <h3 className="text-2xl font-bold text-stone-900 mb-3">Proven Track Record</h3>
-                  <p className="text-stone-600">
-                    Our founder is the co-founder of our parent company and has a proven track record 
-                    of delivering high-quality talent for various roles across industries, serving small and Fortune 500 businesses.
-                  </p>
-                </div>
-              </div>
-            </div>
-            
-            {/* Motivation Point */}
-            <div className="relative z-10">
-              <div className="flex flex-col md:flex-row items-center">
-                <div className="md:w-1/2 md:pr-12 mb-8 md:mb-0 text-right opacity-0 animate-slide-in-left animate-fill-forwards animate-delay-500">
-                  <h3 className="text-2xl font-bold text-stone-900 mb-3">Our Motivation</h3>
-                  <p className="text-stone-600">
-                    She has had the privilege of helping hundreds of individuals improve their careers 
-                    and lives – and that's what continues to motivate us every day.
-                  </p>
-                </div>
-                
-                <div className="rounded-full w-16 h-16 bg-voltify-100 flex items-center justify-center z-10 mb-8 md:mb-0 border-4 border-white shadow-lg">
-                  <Heart className="h-8 w-8 text-voltify-600" />
-                </div>
-                
-                <div className="md:w-1/2 md:pl-12 opacity-0 animate-slide-in-right animate-fill-forwards animate-delay-600">
-                  <div className="bg-white rounded-xl shadow-md p-6">
-                    <p className="italic text-stone-600">
-                      "There's no greater satisfaction than seeing someone thrive in a role that we helped them find. 
-                      It's about more than filling positions – it's about changing lives."
-                    </p>
-                  </div>
-                </div>
-              </div>
+            <div className="space-y-6">
+              <p className="text-lg text-stone-700 leading-relaxed">
+                The founder of Voltify brings over <span className="font-semibold text-voltify-600">two decades of expertise</span> in the technology and professional staffing industry. Throughout her distinguished career, she has partnered with a diverse range of clients—from innovative startups to Fortune 500 corporations—delivering exceptional talent solutions tailored to their unique needs.
+              </p>
+              
+              <p className="text-lg text-stone-700 leading-relaxed">
+                As the visionary co-founder of our parent company, she has established a proven track record of identifying and placing high-caliber professionals across various specialized roles. Her deep industry knowledge and commitment to excellence have been the cornerstone of our success in building lasting relationships with both clients and candidates.
+              </p>
+              
+              <p className="text-lg text-stone-700 leading-relaxed font-medium italic text-center py-4 border-y border-voltify-100">
+                "She has had the privilege of helping hundreds of individuals transform their careers and enhance their lives—and that's what continues to drive and inspire us every day!"
+              </p>
             </div>
           </div>
           
-          <div className="bg-voltify-50 rounded-2xl p-8 shadow-inner mt-20">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            <GlassCard className="p-6 text-center">
+              <div className="rounded-full w-16 h-16 bg-voltify-100 flex items-center justify-center mx-auto mb-4">
+                <Star className="h-8 w-8 text-voltify-600" />
+              </div>
+              <h3 className="text-xl font-bold text-stone-900 mb-3">Industry Expertise</h3>
+              <p className="text-stone-600">
+                Two decades of specialized experience in technology and professional staffing across diverse industries.
+              </p>
+            </GlassCard>
+            
+            <GlassCard className="p-6 text-center">
+              <div className="rounded-full w-16 h-16 bg-voltify-100 flex items-center justify-center mx-auto mb-4">
+                <Award className="h-8 w-8 text-voltify-600" />
+              </div>
+              <h3 className="text-xl font-bold text-stone-900 mb-3">Proven Success</h3>
+              <p className="text-stone-600">
+                A track record of excellence in matching exceptional talent with organizations that value their skills.
+              </p>
+            </GlassCard>
+            
+            <GlassCard className="p-6 text-center">
+              <div className="rounded-full w-16 h-16 bg-voltify-100 flex items-center justify-center mx-auto mb-4">
+                <Heart className="h-8 w-8 text-voltify-600" />
+              </div>
+              <h3 className="text-xl font-bold text-stone-900 mb-3">Meaningful Impact</h3>
+              <p className="text-stone-600">
+                Dedicated to transforming careers and creating positive change in the lives of hundreds of professionals.
+              </p>
+            </GlassCard>
+          </div>
+          
+          <div className="bg-voltify-50 rounded-2xl p-8 shadow-inner">
             <div className="flex items-center justify-center gap-3 mb-6">
               <Lightbulb className="h-6 w-6 text-voltify-600" />
               <h3 className="text-xl font-bold text-stone-900">The Voltify Philosophy</h3>
