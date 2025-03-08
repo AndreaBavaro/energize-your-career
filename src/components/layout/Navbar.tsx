@@ -7,11 +7,11 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 // Navigation items in the specified order
 const navigationItems = [
-  { name: 'Who We Are', href: '#about-us', isRouterLink: false },
+  { name: 'Who We Are', href: '#who-we-are', isRouterLink: false },
   { name: 'What We Do', href: '#what-we-do', isRouterLink: false },
   { name: 'Our Story', href: '#our-story', isRouterLink: false },
-  { name: 'Why Partner With Us', href: '#why-partner', isRouterLink: false },
   { name: 'Testimonials', href: '#testimonials', isRouterLink: false },
+  { name: 'Why Partner With Us', href: '#why-partner', isRouterLink: false },
   { name: 'Giving Back', href: '/charity', isRouterLink: true },
   { name: 'Sectors We Serve', href: '#sectors', isRouterLink: false },
   { name: 'Blog', href: '/blog', isRouterLink: true },

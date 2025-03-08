@@ -1,3 +1,4 @@
+import React from 'react';
 import { SectionHeading } from '../ui/SectionHeading';
 import { GlassCard } from '../ui/GlassCard';
 import { Trophy, Clock, CheckCircle, Handshake, Key, MessageSquare } from 'lucide-react';
@@ -44,7 +45,29 @@ export default function WhyPartner() {
           subtitle="Experience and Transparency! With 20 years of experience in the staffing industry, our commitment to excellence and proven track record are what set us apart."
         />
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {/* Mobile view: 3x2 grid */}
+        <div className="block sm:hidden">
+          <div className="grid grid-cols-3 gap-3 max-w-6xl mx-auto">
+            {reasons.map((reason, index) => (
+              <GlassCard 
+                key={index}
+                className="opacity-0 animate-fade-in-up animate-fill-forwards p-3 h-auto"
+                animationDelay={`${index * 100 + 200}ms`}
+              >
+                <div className="flex flex-col h-full items-center text-center">
+                  <div className="rounded-full w-10 h-10 bg-voltify-50 flex items-center justify-center mb-2">
+                    {React.cloneElement(reason.icon, { className: 'h-5 w-5 text-voltify-600' })}
+                  </div>
+                  <h3 className="text-sm font-semibold mb-1 text-stone-900">{reason.title}</h3>
+                  <p className="text-xs text-stone-600">{reason.description}</p>
+                </div>
+              </GlassCard>
+            ))}
+          </div>
+        </div>
+        
+        {/* Desktop view: original layout */}
+        <div className="hidden sm:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {reasons.map((reason, index) => (
             <GlassCard 
               key={index}

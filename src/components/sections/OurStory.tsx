@@ -34,7 +34,45 @@ export default function OurStory() {
             </div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+          {/* Mobile view: 2x1 grid (first card on top, other two below) */}
+          <div className="md:hidden mb-10">
+            {/* Top row - Industry Expertise */}
+            <GlassCard className="p-6 text-center mb-4">
+              <div className="rounded-full w-16 h-16 bg-voltify-100 flex items-center justify-center mx-auto mb-4">
+                <Star className="h-8 w-8 text-voltify-600" />
+              </div>
+              <h3 className="text-xl font-bold text-stone-900 mb-3">Industry Expertise</h3>
+              <p className="text-stone-600">
+                Two decades of specialized experience in technology and professional staffing across diverse industries.
+              </p>
+            </GlassCard>
+            
+            {/* Bottom row - 2 cards side by side */}
+            <div className="grid grid-cols-2 gap-4">
+              <GlassCard className="p-4 text-center">
+                <div className="rounded-full w-12 h-12 bg-voltify-100 flex items-center justify-center mx-auto mb-3">
+                  <Award className="h-6 w-6 text-voltify-600" />
+                </div>
+                <h3 className="text-base font-bold text-stone-900 mb-2">Proven Success</h3>
+                <p className="text-stone-600 text-xs">
+                  A track record of excellence in matching exceptional talent with organizations that value their skills.
+                </p>
+              </GlassCard>
+              
+              <GlassCard className="p-4 text-center">
+                <div className="rounded-full w-12 h-12 bg-voltify-100 flex items-center justify-center mx-auto mb-3">
+                  <Heart className="h-6 w-6 text-voltify-600" />
+                </div>
+                <h3 className="text-base font-bold text-stone-900 mb-2">Meaningful Impact</h3>
+                <p className="text-stone-600 text-xs">
+                  Dedicated to transforming careers and creating positive change in the lives of hundreds of professionals.
+                </p>
+              </GlassCard>
+            </div>
+          </div>
+          
+          {/* Desktop view: 3 cards in a row */}
+          <div className="hidden md:grid grid-cols-3 gap-6 mb-10">
             <GlassCard className="p-6 text-center">
               <div className="rounded-full w-16 h-16 bg-voltify-100 flex items-center justify-center mx-auto mb-4">
                 <Star className="h-8 w-8 text-voltify-600" />

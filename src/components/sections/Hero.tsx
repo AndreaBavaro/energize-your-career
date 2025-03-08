@@ -12,6 +12,14 @@ export default function Hero() {
   // State to track the current testimonial index
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
 
+  // Effect to set video playback rate
+  useEffect(() => {
+    const video = document.querySelector('video');
+    if (video) {
+      video.playbackRate = 0.75;
+    }
+  }, []);
+
   // Testimonials data
   const testimonials = [
     {
@@ -109,19 +117,20 @@ export default function Hero() {
 
   return (
     <section id="hero" className="relative min-h-[calc(100vh-2rem)] md:min-h-screen flex items-start md:items-center overflow-hidden -mt-[2.5rem] sm:-mt-6 pt-16 sm:pt-0 pb-16 md:pb-20">
-      {/* Office Background Image with Overlay */}
+      {/* Video Background */}
       <div className="absolute inset-0 z-0">
-        <div 
-          className="absolute inset-0 hero-bg-image"
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
           style={{
-            backgroundImage: `url('/images/office-view6.jpg')`,
             filter: 'contrast(1.2) brightness(1.0) saturate(1.0)',
-            imageRendering: 'auto'
           }}
-        />
-        
-        {/* Dark Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-stone-950/60 via-stone-950/50 to-stone-950/60"></div>
+        >
+          <source src="/images/istockphoto-1372856395-640_adpp_is.mp4" type="video/mp4" />
+        </video>
       </div>
       
       {/* Content */}

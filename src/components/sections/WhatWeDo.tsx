@@ -50,6 +50,11 @@ export default function WhatWeDo() {
   // Additional services
   const additionalServices = [
     {
+      icon: <CreditCard className="h-8 w-8 text-voltify-600" />,
+      title: 'Pay Only When Hired',
+      description: 'Clients pay only when the hire starts, ensuring satisfaction with our placements.'
+    },
+    {
       icon: <CheckCircle className="h-8 w-8 text-voltify-600" />,
       title: 'Reference & Background Checks',
       description: 'We handle comprehensive reference and background checks for all candidates.'
@@ -58,11 +63,6 @@ export default function WhatWeDo() {
       icon: <Lightbulb className="h-8 w-8 text-voltify-600" />,
       title: 'Coaching & Training',
       description: 'We provide coaching and training to help candidates succeed in their new roles.'
-    },
-    {
-      icon: <CreditCard className="h-8 w-8 text-voltify-600" />,
-      title: 'Pay Only When Hired',
-      description: 'Clients pay only when the hire starts, ensuring satisfaction with our placements.'
     }
   ];
 
@@ -216,7 +216,71 @@ export default function WhatWeDo() {
                 <h3 className="text-xl font-semibold text-stone-900">Positions We Place</h3>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {/* Mobile view - dropdown/accordion style */}
+              <div className="block md:hidden">
+                <details className="mb-3">
+                  <summary className="flex items-center cursor-pointer p-2 bg-voltify-50/50 rounded-lg">
+                    <Users className="h-5 w-5 text-voltify-600 mr-2" />
+                    <span className="font-semibold text-stone-800">Leadership & Management</span>
+                  </summary>
+                  <div className="pl-7 pt-2 pb-1">
+                    <p className="text-sm text-stone-700">CIO, CTO, VP, Director, Manager of IT, Manager of HR, Manager of Sales</p>
+                  </div>
+                </details>
+                
+                <details className="mb-3">
+                  <summary className="flex items-center cursor-pointer p-2 bg-voltify-50/50 rounded-lg">
+                    <Briefcase className="h-5 w-5 text-voltify-600 mr-2" />
+                    <span className="font-semibold text-stone-800">Project Management</span>
+                  </summary>
+                  <div className="pl-7 pt-2 pb-1">
+                    <p className="text-sm text-stone-700">Project Managers, Business Analyst</p>
+                  </div>
+                </details>
+                
+                <details className="mb-3">
+                  <summary className="flex items-center cursor-pointer p-2 bg-voltify-50/50 rounded-lg">
+                    <Cpu className="h-5 w-5 text-voltify-600 mr-2" />
+                    <span className="font-semibold text-stone-800">Engineering</span>
+                  </summary>
+                  <div className="pl-7 pt-2 pb-1">
+                    <p className="text-sm text-stone-700">AI Engineers, Machine Learning Engineers, Robotics Engineer, Software Developers</p>
+                  </div>
+                </details>
+                
+                <details className="mb-3">
+                  <summary className="flex items-center cursor-pointer p-2 bg-voltify-50/50 rounded-lg">
+                    <Server className="h-5 w-5 text-voltify-600 mr-2" />
+                    <span className="font-semibold text-stone-800">Infrastructure</span>
+                  </summary>
+                  <div className="pl-7 pt-2 pb-1">
+                    <p className="text-sm text-stone-700">Network Administrators, Systems Administrators, Data Warehouse, Information Security</p>
+                  </div>
+                </details>
+                
+                <details className="mb-3">
+                  <summary className="flex items-center cursor-pointer p-2 bg-voltify-50/50 rounded-lg">
+                    <Layout className="h-5 w-5 text-voltify-600 mr-2" />
+                    <span className="font-semibold text-stone-800">Web & Design</span>
+                  </summary>
+                  <div className="pl-7 pt-2 pb-1">
+                    <p className="text-sm text-stone-700">Web Developers, Web Designers</p>
+                  </div>
+                </details>
+                
+                <details className="mb-3">
+                  <summary className="flex items-center cursor-pointer p-2 bg-voltify-50/50 rounded-lg">
+                    <PieChart className="h-5 w-5 text-voltify-600 mr-2" />
+                    <span className="font-semibold text-stone-800">Analytics & Marketing</span>
+                  </summary>
+                  <div className="pl-7 pt-2 pb-1">
+                    <p className="text-sm text-stone-700">QA, BI, Marketing Managers</p>
+                  </div>
+                </details>
+              </div>
+              
+              {/* Desktop view - grid layout */}
+              <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {positionGroups.map((group, groupIndex) => (
                   <div key={groupIndex} className="bg-white/50 backdrop-blur-sm rounded-xl p-4 shadow-sm hover:shadow-md transition-all duration-300">
                     <div className="flex items-center mb-3">
@@ -238,23 +302,41 @@ export default function WhatWeDo() {
           </GlassCard>
         </div>
         
-        {/* Additional Services */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-12">
-          {additionalServices.map((service, index) => (
-            <GlassCard 
-              key={index}
-              className={`opacity-0 animate-fade-in-up animate-fill-forwards`}
-              animationDelay={`${(index + 3) * 100}ms`}
-            >
-              <div className="p-6 text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-voltify-50 mb-4 mx-auto">
-                  {service.icon}
-                </div>
-                <h3 className="text-lg font-semibold mb-2 text-stone-900">{service.title}</h3>
-                <p className="text-stone-600">{service.description}</p>
+        {/* Additional Services - 2x1 grid layout */}
+        <div className="max-w-5xl mx-auto mb-12">
+          {/* Top service - Pay Only When Hired */}
+          <GlassCard 
+            key="top-service"
+            className="opacity-0 animate-fade-in-up animate-fill-forwards mb-3 sm:mb-6"
+            animationDelay="300ms"
+          >
+            <div className="p-4 sm:p-6 text-center">
+              <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-voltify-50 mb-2 sm:mb-4 mx-auto">
+                {additionalServices[0].icon}
               </div>
-            </GlassCard>
-          ))}
+              <h3 className="text-base sm:text-lg font-semibold mb-1 sm:mb-2 text-stone-900">{additionalServices[0].title}</h3>
+              <p className="text-stone-600 text-sm sm:text-base max-w-lg mx-auto">{additionalServices[0].description}</p>
+            </div>
+          </GlassCard>
+          
+          {/* Bottom row - two services side by side */}
+          <div className="grid grid-cols-2 gap-3 sm:gap-6">
+            {additionalServices.slice(1).map((service, index) => (
+              <GlassCard 
+                key={index + 1}
+                className={`opacity-0 animate-fade-in-up animate-fill-forwards`}
+                animationDelay={`${(index + 4) * 100}ms`}
+              >
+                <div className="p-3 sm:p-6 text-center">
+                  <div className="inline-flex items-center justify-center w-10 h-10 sm:w-16 sm:h-16 rounded-full bg-voltify-50 mb-2 sm:mb-4 mx-auto">
+                    {service.icon}
+                  </div>
+                  <h3 className="text-sm sm:text-lg font-semibold mb-1 sm:mb-2 text-stone-900">{service.title}</h3>
+                  <p className="text-stone-600 text-xs sm:text-base">{service.description}</p>
+                </div>
+              </GlassCard>
+            ))}
+          </div>
         </div>
         
         {/* Cities We Serve */}

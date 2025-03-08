@@ -147,42 +147,42 @@ export default function Contact() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 md:gap-12 mt-8 md:mt-12">
               {/* Contact Form */}
               <div>
-                <GlassCard className="p-8 h-full">
-                  <h3 className="text-2xl font-bold mb-6 text-stone-900">Send Us a Message</h3>
+                <GlassCard className="p-4 sm:p-8 h-full">
+                  <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-6 text-stone-900">Send Us a Message</h3>
                   
-                  <form className="space-y-6" onSubmit={handleSubmit}>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                      <div className="space-y-2">
-                        <label htmlFor="name" className="block text-sm font-medium text-stone-700">Name *</label>
+                  <form className="space-y-3 sm:space-y-6" onSubmit={handleSubmit}>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6">
+                      <div className="space-y-1 sm:space-y-2">
+                        <label htmlFor="name" className="block text-xs sm:text-sm font-medium text-stone-700">Name *</label>
                         <input 
                           type="text" 
                           id="name"
                           name="name"
                           required
-                          className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-voltify-500 focus:border-transparent transition-all duration-200"
+                          className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-voltify-500 focus:border-transparent transition-all duration-200 text-sm"
                           placeholder="Your name"
                         />
                       </div>
                       
-                      <div className="space-y-2">
-                        <label htmlFor="email" className="block text-sm font-medium text-stone-700">Email *</label>
+                      <div className="space-y-1 sm:space-y-2">
+                        <label htmlFor="email" className="block text-xs sm:text-sm font-medium text-stone-700">Email *</label>
                         <input 
                           type="email" 
                           id="email"
                           name="email"
                           required
-                          className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-voltify-500 focus:border-transparent transition-all duration-200"
+                          className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-voltify-500 focus:border-transparent transition-all duration-200 text-sm"
                           placeholder="Your email"
                         />
                       </div>
                     </div>
                     
-                    <div className="space-y-2">
-                      <label className="block text-sm font-medium text-stone-700">
+                    <div className="space-y-1 sm:space-y-2">
+                      <label className="block text-xs sm:text-sm font-medium text-stone-700">
                         I am a: *
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 mt-1 sm:mt-2">
                           <label className={`
-                            p-4 rounded-xl border-2 transition-all cursor-pointer
+                            p-2 sm:p-4 rounded-xl border-2 transition-all cursor-pointer
                             ${userType === 'jobSeeker' 
                               ? 'border-voltify-600 bg-voltify-50 shadow-md' 
                               : 'border-stone-200 hover:border-voltify-400 hover:bg-white'}
@@ -196,24 +196,24 @@ export default function Contact() {
                               onChange={(e) => setUserType(e.target.value as 'jobSeeker')}
                               required
                             />
-                            <div className="flex items-center gap-3">
+                            <div className="flex items-center gap-2 sm:gap-3">
                               <div className={`
-                                h-5 w-5 rounded-full border-2 flex items-center justify-center
+                                h-4 sm:h-5 w-4 sm:w-5 rounded-full border-2 flex items-center justify-center
                                 ${userType === 'jobSeeker' 
                                   ? 'border-voltify-600 bg-voltify-600' 
                                   : 'border-stone-300 bg-white'}
                               `}>
                                 <div className={`
-                                  h-2 w-2 rounded-full
+                                  h-1.5 sm:h-2 w-1.5 sm:w-2 rounded-full
                                   ${userType === 'jobSeeker' ? 'bg-white' : ''}
                                 `}></div>
                               </div>
-                              <span className="text-stone-700 font-medium">Job Seeker</span>
+                              <span className="text-stone-700 font-medium text-sm">Job Seeker</span>
                             </div>
                           </label>
                           
                           <label className={`
-                            p-4 rounded-xl border-2 transition-all cursor-pointer
+                            p-2 sm:p-4 rounded-xl border-2 transition-all cursor-pointer
                             ${userType === 'employer' 
                               ? 'border-voltify-600 bg-voltify-50 shadow-md' 
                               : 'border-stone-200 hover:border-voltify-400 hover:bg-white'}
@@ -227,19 +227,19 @@ export default function Contact() {
                               onChange={(e) => setUserType(e.target.value as 'employer')}
                               required
                             />
-                            <div className="flex items-center gap-3">
+                            <div className="flex items-center gap-2 sm:gap-3">
                               <div className={`
-                                h-5 w-5 rounded-full border-2 flex items-center justify-center
+                                h-4 sm:h-5 w-4 sm:w-5 rounded-full border-2 flex items-center justify-center
                                 ${userType === 'employer' 
                                   ? 'border-voltify-600 bg-voltify-600' 
                                   : 'border-stone-300 bg-white'}
                               `}>
                                 <div className={`
-                                  h-2 w-2 rounded-full
+                                  h-1.5 sm:h-2 w-1.5 sm:w-2 rounded-full
                                   ${userType === 'employer' ? 'bg-white' : ''}
                                 `}></div>
                               </div>
-                              <span className="text-stone-700 font-medium">Employer</span>
+                              <span className="text-stone-700 font-medium text-sm">Employer</span>
                             </div>
                           </label>
                         </div>
@@ -247,10 +247,10 @@ export default function Contact() {
                     </div>
 
                     {userType === 'jobSeeker' && (
-                      <div className="space-y-2">
-                        <label className="block text-sm font-medium text-stone-700">
+                      <div className="space-y-1 sm:space-y-2">
+                        <label className="block text-xs sm:text-sm font-medium text-stone-700">
                           Upload Resume (Optional)
-                          <div className="mt-2 flex justify-center px-6 py-8 border-2 border-dashed border-stone-200 rounded-lg hover:border-voltify-400 transition-colors cursor-pointer">
+                          <div className="mt-1 sm:mt-2 flex justify-center px-3 sm:px-6 py-4 sm:py-8 border-2 border-dashed border-stone-200 rounded-lg hover:border-voltify-400 transition-colors cursor-pointer">
                             <input
                               type="file"
                               id="resume"
@@ -260,37 +260,37 @@ export default function Contact() {
                               required={false}
                             />
                             <div className="text-center">
-                              <Send className="mx-auto h-8 w-8 text-voltify-500 mb-2" />
-                              <p className="text-stone-600">
+                              <Send className="mx-auto h-6 sm:h-8 w-6 sm:w-8 text-voltify-500 mb-1 sm:mb-2" />
+                              <p className="text-sm text-stone-600">
                                 <span className="font-medium text-voltify-600 hover:text-voltify-700">Click to upload</span> or drag and drop
                               </p>
-                              <p className="text-xs text-stone-500 mt-1">PDF or Word (MAX 5MB)</p>
+                              <p className="text-xs text-stone-500 mt-0.5 sm:mt-1">PDF or Word (MAX 5MB)</p>
                             </div>
                           </div>
                         </label>
                       </div>
                     )}
 
-                    <div className="space-y-2">
-                      <label htmlFor="subject" className="block text-sm font-medium text-stone-700">Subject *</label>
+                    <div className="space-y-1 sm:space-y-2">
+                      <label htmlFor="subject" className="block text-xs sm:text-sm font-medium text-stone-700">Subject *</label>
                       <input 
                         type="text" 
                         id="subject"
                         name="subject"
                         required
-                        className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-voltify-500 focus:border-transparent transition-all duration-200"
+                        className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-voltify-500 focus:border-transparent transition-all duration-200 text-sm"
                         placeholder="Subject"
                       />
                     </div>
                     
-                    <div className="space-y-2">
-                      <label htmlFor="message" className="block text-sm font-medium text-stone-700">Message *</label>
+                    <div className="space-y-1 sm:space-y-2">
+                      <label htmlFor="message" className="block text-xs sm:text-sm font-medium text-stone-700">Message *</label>
                       <textarea 
                         id="message"
                         name="message"
-                        rows={5}
+                        rows={4}
                         required
-                        className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-voltify-500 focus:border-transparent transition-all duration-200"
+                        className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-voltify-500 focus:border-transparent transition-all duration-200 text-sm"
                         placeholder="Your message"
                       ></textarea>
                     </div>
@@ -298,16 +298,16 @@ export default function Contact() {
                     <Button 
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full py-6 sm:py-4 bg-voltify-600 hover:bg-voltify-700 text-white font-medium rounded-lg transition-all duration-200 flex items-center justify-center gap-2"
+                      className="w-full py-3 sm:py-4 bg-voltify-600 hover:bg-voltify-700 text-white text-sm font-medium rounded-lg transition-all duration-200 flex items-center justify-center gap-2"
                     >
                       {isSubmitting ? (
                         <>
-                          <Loader2 className="h-5 w-5 animate-spin" />
+                          <Loader2 className="h-4 sm:h-5 w-4 sm:w-5 animate-spin" />
                           Sending...
                         </>
                       ) : (
                         <>
-                          <Send className="h-5 w-5" />
+                          <Send className="h-4 sm:h-5 w-4 sm:w-5" />
                           Send Message
                         </>
                       )}
@@ -316,73 +316,75 @@ export default function Contact() {
                 </GlassCard>
               </div>
               
-              {/* Contact Information */}
-              <div className="space-y-8">
-                <GlassCard className="p-8">
-                  <h3 className="text-2xl font-bold mb-6 text-stone-900">Contact Information</h3>
+              {/* Contact Information and FAQ Section */}
+              <div className="grid grid-cols-1 sm:grid-cols-1 gap-4 sm:space-y-8 sm:gap-0">
+                <div className="grid grid-rows-2 gap-4 sm:space-y-8 sm:gap-0">
+                  <GlassCard className="p-4 sm:p-8">
+                    <h3 className="text-lg sm:text-2xl font-bold mb-4 sm:mb-6 text-stone-900">Contact Information</h3>
+                    
+                    <div className="space-y-4 sm:space-y-6">
+                      <div className="flex items-start gap-3 sm:gap-4">
+                        <div className="w-8 sm:w-12 h-8 sm:h-12 rounded-full bg-voltify-100 flex items-center justify-center flex-shrink-0">
+                          <Mail className="h-4 sm:h-6 w-4 sm:w-6 text-voltify-600" />
+                        </div>
+                        <div>
+                          <h4 className="text-sm sm:text-lg font-semibold text-stone-900">Email</h4>
+                          <p className="text-xs sm:text-base text-stone-600">info@energizeyourcareer.com</p>
+                          <p className="text-xs sm:text-base text-stone-600">support@energizeyourcareer.com</p>
+                        </div>
+                      </div>
+                      
+                      <div className="flex items-start gap-3 sm:gap-4">
+                        <div className="w-8 sm:w-12 h-8 sm:h-12 rounded-full bg-voltify-100 flex items-center justify-center flex-shrink-0">
+                          <Phone className="h-4 sm:h-6 w-4 sm:w-6 text-voltify-600" />
+                        </div>
+                        <div>
+                          <h4 className="text-sm sm:text-lg font-semibold text-stone-900">Phone</h4>
+                          <p className="text-xs sm:text-base text-stone-600">+1 (555) 123-4567</p>
+                          <p className="text-xs sm:text-base text-stone-600">+1 (555) 987-6543</p>
+                        </div>
+                      </div>
+                      
+                      <div className="flex items-start gap-3 sm:gap-4">
+                        <div className="w-8 sm:w-12 h-8 sm:h-12 rounded-full bg-voltify-100 flex items-center justify-center flex-shrink-0">
+                          <MapPin className="h-4 sm:h-6 w-4 sm:w-6 text-voltify-600" />
+                        </div>
+                        <div>
+                          <h4 className="text-sm sm:text-lg font-semibold text-stone-900">Office</h4>
+                          <p className="text-xs sm:text-base text-stone-600">123 Business Avenue</p>
+                          <p className="text-xs sm:text-base text-stone-600">Suite 456</p>
+                          <p className="text-xs sm:text-base text-stone-600">Houston, TX 77002</p>
+                        </div>
+                      </div>
+                    </div>
+                  </GlassCard>
                   
-                  <div className="space-y-6">
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-full bg-voltify-100 flex items-center justify-center flex-shrink-0">
-                        <Mail className="h-6 w-6 text-voltify-600" />
-                      </div>
-                      <div>
-                        <h4 className="text-lg font-semibold text-stone-900">Email</h4>
-                        <p className="text-stone-600">info@energizeyourcareer.com</p>
-                        <p className="text-stone-600">support@energizeyourcareer.com</p>
-                      </div>
-                    </div>
+                  <GlassCard className="p-4 sm:p-8">
+                    <h3 className="text-lg sm:text-2xl font-bold mb-4 sm:mb-6 text-stone-900">Frequently Asked Questions</h3>
                     
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-full bg-voltify-100 flex items-center justify-center flex-shrink-0">
-                        <Phone className="h-6 w-6 text-voltify-600" />
+                    <div className="space-y-4 sm:space-y-6">
+                      <div className="flex items-start gap-3 sm:gap-4">
+                        <div className="w-8 sm:w-10 h-8 sm:h-10 rounded-full bg-voltify-100 flex items-center justify-center flex-shrink-0">
+                          <MessageSquare className="h-4 sm:h-5 w-4 sm:w-5 text-voltify-600" />
+                        </div>
+                        <div>
+                          <h4 className="text-sm sm:text-lg font-semibold text-stone-900 mb-1 sm:mb-2">How quickly can you find candidates?</h4>
+                          <p className="text-xs sm:text-base text-stone-600">We typically present qualified candidates within 1-2 weeks, depending on the position's requirements and market conditions.</p>
+                        </div>
                       </div>
-                      <div>
-                        <h4 className="text-lg font-semibold text-stone-900">Phone</h4>
-                        <p className="text-stone-600">+1 (555) 123-4567</p>
-                        <p className="text-stone-600">+1 (555) 987-6543</p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-full bg-voltify-100 flex items-center justify-center flex-shrink-0">
-                        <MapPin className="h-6 w-6 text-voltify-600" />
-                      </div>
-                      <div>
-                        <h4 className="text-lg font-semibold text-stone-900">Office</h4>
-                        <p className="text-stone-600">123 Business Avenue</p>
-                        <p className="text-stone-600">Suite 456</p>
-                        <p className="text-stone-600">Houston, TX 77002</p>
-                      </div>
-                    </div>
-                  </div>
-                </GlassCard>
-                
-                <GlassCard className="p-8">
-                  <h3 className="text-2xl font-bold mb-6 text-stone-900">Frequently Asked Questions</h3>
-                  
-                  <div className="space-y-6">
-                    <div className="flex items-start gap-4">
-                      <div className="w-10 h-10 rounded-full bg-voltify-100 flex items-center justify-center flex-shrink-0">
-                        <MessageSquare className="h-5 w-5 text-voltify-600" />
-                      </div>
-                      <div>
-                        <h4 className="text-lg font-semibold text-stone-900 mb-2">How quickly can you find candidates?</h4>
-                        <p className="text-stone-600">We typically present qualified candidates within 1-2 weeks, depending on the position's requirements and market conditions.</p>
+                      
+                      <div className="flex items-start gap-3 sm:gap-4">
+                        <div className="w-8 sm:w-10 h-8 sm:h-10 rounded-full bg-voltify-100 flex items-center justify-center flex-shrink-0">
+                          <MessageSquare className="h-4 sm:h-5 w-4 sm:w-5 text-voltify-600" />
+                        </div>
+                        <div>
+                          <h4 className="text-sm sm:text-lg font-semibold text-stone-900 mb-1 sm:mb-2">What industries do you specialize in?</h4>
+                          <p className="text-xs sm:text-base text-stone-600">We specialize in IT, energy, healthcare, finance, and marketing sectors, but our expertise extends to various other industries as well.</p>
+                        </div>
                       </div>
                     </div>
-                    
-                    <div className="flex items-start gap-4">
-                      <div className="w-10 h-10 rounded-full bg-voltify-100 flex items-center justify-center flex-shrink-0">
-                        <MessageSquare className="h-5 w-5 text-voltify-600" />
-                      </div>
-                      <div>
-                        <h4 className="text-lg font-semibold text-stone-900 mb-2">What industries do you specialize in?</h4>
-                        <p className="text-stone-600">We specialize in IT, energy, healthcare, finance, and marketing sectors, but our expertise extends to various other industries as well.</p>
-                      </div>
-                    </div>
-                  </div>
-                </GlassCard>
+                  </GlassCard>
+                </div>
               </div>
             </div>
             

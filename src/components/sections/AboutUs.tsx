@@ -28,7 +28,7 @@ export default function AboutUs() {
   ];
 
   return (
-    <section id="our-story" className="py-24 white-brick-bg relative">
+    <section id="who-we-are" className="py-24 white-brick-bg relative">
       <div className="absolute inset-0 z-0">
         <div className="absolute top-1/2 right-0 w-96 h-96 bg-voltify-100 rounded-full filter blur-3xl opacity-40 transform translate-x-1/4 -translate-y-1/4"></div>
       </div>
@@ -60,7 +60,8 @@ export default function AboutUs() {
             </div>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {/* Features section - 2x2 grid on mobile, 2x2 on tablet/desktop */}
+          <div className="grid grid-cols-2 gap-4 sm:gap-6">
             {features.map((feature, index) => (
               <GlassCard 
                 key={index}
@@ -68,11 +69,11 @@ export default function AboutUs() {
                 animationDelay={`${index * 100 + 200}ms`}
               >
                 <div className="flex flex-col h-full">
-                  <div className="rounded-full w-12 h-12 bg-voltify-100 flex items-center justify-center mb-4">
+                  <div className="rounded-full w-10 h-10 sm:w-12 sm:h-12 bg-voltify-100 flex items-center justify-center mb-2 sm:mb-4">
                     {feature.icon}
                   </div>
-                  <h3 className="text-lg font-semibold mb-2 text-stone-900">{feature.title}</h3>
-                  <p className="text-stone-600 text-sm">{feature.description}</p>
+                  <h3 className="text-base sm:text-lg font-semibold mb-1 sm:mb-2 text-stone-900">{feature.title}</h3>
+                  <p className="text-stone-600 text-xs sm:text-sm">{feature.description}</p>
                 </div>
               </GlassCard>
             ))}
