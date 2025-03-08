@@ -95,7 +95,7 @@ export default function Hero() {
   useEffect(() => {
     const interval = setInterval(() => {
       nextTestimonial();
-    }, 10000);
+    }, 10000000);
     
     return () => clearInterval(interval);
   }, [nextTestimonial]);

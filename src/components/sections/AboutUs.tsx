@@ -1,7 +1,6 @@
 import { SectionHeading } from '../ui/SectionHeading';
 import { GlassCard } from '../ui/GlassCard';
 import { CheckCircle, Users, History, Trophy } from 'lucide-react';
-import { AnimatedText } from '../ui/AnimatedText';
 import CharityBanner from '../ui/CharityBanner';
 
 export default function AboutUs() {
@@ -37,35 +36,27 @@ export default function AboutUs() {
       <div className="container-custom relative z-10">
         <SectionHeading 
           title="Who We Are"
-          subtitle="Voltify is a women-owned staffing solutions business built on a solid foundation of industry expertise. A subsidiary of Ban Partners founded in 2005."
+          subtitle="Voltify is a women-owned staffing solutions business built on a solid foundation of industry expertise. (Subsidiary of Ban Partners founded in 2005)"
         />
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto">
           <div className="space-y-6">
             <div className="bg-white p-6 rounded-xl shadow-md">
-              <AnimatedText 
-                text="We partner with Human Resources departments of organizations in the U.S. to meet staffing needs across Information Technology, Human Resources, and professional communities."
-                className="text-lg text-stone-700"
-                animation="slide-in-left"
-              />
+              <p className="text-lg text-stone-700">
+                We partner with the Human Resources departments of organizations in the U.S. to meet the staffing needs of the Information Technology, Human Resources, and professional communities, including executive-level roles and leadership positions. We have built an excellent reputation for delivering quality results efficiently.
+              </p>
             </div>
             
             <div className="bg-white p-6 rounded-xl shadow-md">
-              <AnimatedText 
-                text="We specialize in placing candidates in roles from executive-level positions to technical specialists, building a reputation for quality results delivered efficiently."
-                className="text-lg text-stone-700"
-                animation="slide-in-left"
-                delay={200}
-              />
+              <p className="text-lg text-stone-700">
+                We believe in a more tailored approach to staffing and recruitment, treating every candidate and client with the same respect and consideration we would expect ourselves.
+              </p>
             </div>
-            
+
             <div className="bg-white p-6 rounded-xl shadow-md">
-              <AnimatedText 
-                text="Our founder's 20 years of experience serving small businesses and Fortune 500 companies has helped hundreds of individuals improve their careers and lives."
-                className="text-lg text-stone-700"
-                animation="slide-in-left"
-                delay={400}
-              />
+              <p className="text-lg text-stone-700">
+                Our founder's 20 years of experience serving small and Fortune 500 businesses has helped hundreds of individuals improve their careers and lives through personalized placement services.
+              </p>
             </div>
           </div>
           

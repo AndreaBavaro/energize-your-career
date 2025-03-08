@@ -2,8 +2,16 @@ import { SectionHeading } from '../ui/SectionHeading';
 import { GlassCard } from '../ui/GlassCard';
 import { Button } from '@/components/ui/button';
 import { CheckCircle2, Users, Building } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 export default function ClientTypes() {
+  const navigate = useNavigate();
+  
+  // Function to handle navigation to contact page
+  const navigateToContact = () => {
+    navigate('/contact');
+  };
+  
   const seekerBenefits = [
     'Expert career guidance and advice',
     'Access to exclusive job opportunities',
@@ -51,6 +59,7 @@ export default function ClientTypes() {
                 
                 <Button 
                   className="w-full bg-voltify-600 hover:bg-voltify-700 text-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
+                  onClick={navigateToContact}
                 >
                   Submit Your Resume
                 </Button>
@@ -111,6 +120,7 @@ export default function ClientTypes() {
                 
                 <Button 
                   className="w-full bg-voltify-600 hover:bg-voltify-700 text-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
+                  onClick={navigateToContact}
                 >
                   Partner With Us
                 </Button>
