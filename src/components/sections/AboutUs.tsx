@@ -12,7 +12,7 @@ export default function AboutUs() {
     {
       icon: <History className="h-6 w-6 text-alternative-600" />,
       title: '20+ Years of Experience',
-      description: 'Our founders have over two decades of experience in the technology and professional staffing industry.'
+      description: 'Our founder has over two decades of experience in the technology and professional staffing industry.'
     },
     {
       icon: <Trophy className="h-6 w-6 text-alternative-600" />,
