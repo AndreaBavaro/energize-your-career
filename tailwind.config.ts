@@ -57,17 +57,35 @@ export default {
           foreground: 'hsl(var(--card-foreground))'
         },
         voltify: {
-          50: '#fff1f0',
-          100: '#ffe4e2',
-          200: '#ffccc8',
-          300: '#ffa6a0',
-          400: '#ff867d',
-          500: '#ff5f54',
-          600: '#ff3326',
-          700: '#ff1a0a',
-          800: '#cc0d00',
-          900: '#990a00',
-          950: '#4d0500',
+          50: "#fdf7f3",    // Very light soft nude
+          100: "#f6eadd",   // Lighter warm beige
+          200: "#ebd7c0",   // Balanced nude
+          300: "#e1c5a6",   // Soft creamy beige
+          400: "#daba93",   // Muted peachy beige
+          500: "#D6B89A",   // Base color (Softer, less brown)
+          600: "#c3a789",   // Softened tan
+          700: "#af9579",   // Muted warm taupe
+          800: "#9a8370",   // Neutral brown-tan
+          850: "#8e7867",   // Softer deep taupe
+          900: "#827060",   // Desaturated warm brown
+          950: "#6a5d50",   // Deepest tone, but less brown
+        }
+        
+        
+               
+        ,
+        alternative: {
+          50: "#f2f6fb",    // Very light version
+          100: "#e0e8f3",
+          200: "#c0cde3",
+          300: "#a0b3d3",
+          400: "#8098c3",
+          500: "#7393B3",    // Base color
+          600: "#6783a0",
+          700: "#5b728d",
+          800: "#4f627a",
+          900: "#435167",
+          950: "#374154",
         },
         stone: {
           50: '#fafaf9',

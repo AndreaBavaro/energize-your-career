@@ -66,8 +66,6 @@ export default function Hero() {
     }
   ];
   
-  
-
   // Trending tech buzzwords instead of specific positions
   const trendingBuzzwords = [
     "Artificial Intelligence",
@@ -116,7 +114,10 @@ export default function Hero() {
   const [isEmployerModalOpen, setIsEmployerModalOpen] = useState(false);
 
   return (
-    <section id="hero" className="relative min-h-screen flex flex-col justify-between items-start md:items-center overflow-hidden -mt-[1.5rem] sm:-mt-4 md:-mt-8 pt-6 sm:pt-12 md:pt-0 pb-4 md:pb-20">
+    <section 
+      id="hero" 
+      className="relative min-h-screen flex flex-col justify-between pt-4 overflow-hidden"
+    >
       {/* Video Background */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <video
@@ -128,50 +129,65 @@ export default function Hero() {
           style={{
             filter: 'contrast(1.2) brightness(1.0) saturate(1.0)',
           }}
+          onError={(e) => console.error("Video loading error:", e)}
         >
-          <source src="/images/istockphoto-1372856395-640_adpp_is.mp4" type="video/mp4" />
+          <source src={`${import.meta.env.BASE_URL}images/herovideo.mp4`} type="video/mp4" />
         </video>
       </div>
       
-      {/* Content */}
-      <div className="container-custom relative z-10 flex flex-col justify-between h-full py-4">
-        <div className="max-w-5xl mx-auto mt-4 sm:mt-8 md:mt-8">
+      {/* Flexbox layout for side-by-side containers */}
+      <div className="container-custom relative z-20 flex flex-col justify-start py-0">
+        <div className="max-w-6xl mx-auto w-full mt-2 sm:mt-4 md:mt-0">
           <div className="pt-7 sm:pt-12 md:pt-20">
-            {/* Main content with right-side trending section */}
-            <div className="flex flex-col md:flex-row gap-6 items-stretch">
-              {/* Left content column */}
-              <div className="flex-1">
-                {/* Text content with backdrop */}
-                <div className="relative p-4 sm:p-5 md:p-6 rounded-xl bg-voltify-950/60 backdrop-blur-sm shadow-lg border border-voltify-200/20 text-center md:text-left h-auto flex flex-col justify-between space-y-3 sm:space-y-0">
+            {/* Side-by-side containers with flexbox */}
+            <div className="flex flex-col md:flex-row gap-6 items-start">
+              
+              {/* Text content with backdrop container - made shorter */}
+              <div className="w-full md:w-5/6 mx-auto">
+                <div className="relative p-3 sm:p-4 md:p-5 rounded-xl bg-voltify-600/80 backdrop-blur-sm shadow-lg border border-voltify-200/20 text-center md:text-left h-auto flex flex-col justify-between space-y-2 sm:space-y-0">
                   
-                  <div className="md:grid md:grid-cols-3 md:gap-8 lg:gap-12">
-                    <div className="col-span-2">
-                      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-2 sm:mb-3 opacity-0 animate-fade-in-up animate-fill-forwards text-white">
-                        <AnimatedText 
-                          text="Energize Your Career" 
-                          className="text-white block mb-3"
-                          animation="fade-in-up"
-                          delay={200}
-                        />
-                        <div className="flex items-center justify-center md:justify-start mt-1 sm:mt-1">
-                          <span className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">With</span>
-                          <div className="flex items-center ml-2 sm:ml-3">
-                            <span className="text-voltify-400/95 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">Voltify</span>
-                            <Zap className="h-8 w-6 sm:h-10 sm:w-8 md:h-12 md:w-10 text-voltify-400/95 ml-1 sm:ml-2" />
-                          </div>
-                        </div>
-                      </h1>
+                <div className="md:grid md:grid-cols-3 md:gap-6 lg:gap-8">
+                <div className="col-span-2">
+                  <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-1 sm:mb-2 text-voltify-700">
+                    <AnimatedText 
+                      text={
+                        <>
+                          <span className="text-white drop-shadow-[0_0_15px_rgba(100,160,255,1)]">Energize</span> Your Career
+                        </>
+                      } 
+                      className="text-voltify-800 block mb-2"
+                      animation="fade-in-up"
+                      delay={200}
+                    />
+                        <div className="flex items-center justify-center md:justify-start mt-1">
+                  <span className="text-voltify-800 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">With</span>
+                  <div className="flex items-center ml-2 relative">
+                    {/* Updated Text Gradient with Orange */}
+                    <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white bg-clip-text bg-gradient-to-r from-orange-500 via-orange-400 to-orange-500 pb-1 leading-relaxed  drop-shadow-[0_0_15px_rgba(100,160,255,1)]
+">
+                      Voltify
+                    </span>
+
+                    {/* Zap Icon with Matching Gradient */}
+                  <Zap 
+                    className="h-6 w-5 sm:h-8 sm:w-6 md:h-10 md:w-8 ml-1 text-white drop-shadow-[0_0_10px_rgba(100,160,255,1)] fill-current"
+                  />
+                </div>
+                  </div>
+                  </h1>
                       
                       <div className="md:pr-6">
-                        <p className="text-lg sm:text-xl md:text-xl text-white mb-3 sm:mb-4 mx-auto md:mx-0 opacity-0 animate-fade-in-up animate-fill-forwards animate-delay-500 leading-relaxed">
-                          True to the meaning of our name – Voltify – our mission is clear: to energize careers, build lasting relationships, connect you with opportunities, and help you grow, all supported by a positive mindset that leads to success.
-                        </p>
+                        <div className="bg-voltify-800/40 backdrop-blur-sm border-l-4 border-alternative-400 pl-4 pr-2 py-3 rounded-r-lg shadow-md mt-2 mb-6">
+                          <p className="text-lg sm:text-xl md:text-xl text-white leading-relaxed font-medium">
+                            True to the meaning of our name – Voltify – our mission is clear: to energize careers, build lasting relationships, connect you with opportunities, and help you grow, all supported by a positive mindset that leads to success.
+                          </p>
+                        </div>
                       </div>
                       
                       <div className="md:flex md:items-end md:justify-start">
-                        <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center md:justify-start opacity-0 animate-fade-in-up animate-fill-forwards animate-delay-700">
+                        <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center md:justify-start">
                           <Button 
-                            className="bg-voltify-400 hover:bg-voltify-500 text-white px-5 sm:px-6 py-3 sm:py-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 text-base sm:text-lg font-medium"
+                            className="bg-voltify-700/80 text-white px-5 sm:px-6 py-3 sm:py-4 rounded-lg shadow-lg transition-all duration-300 text-base sm:text-lg font-medium"
                             size="lg"
                             onClick={() => setIsJobSeekerModalOpen(true)}
                           >
@@ -180,7 +196,7 @@ export default function Hero() {
                           </Button>
                           
                           <Button 
-                            className="bg-voltify-900 hover:bg-voltify-950 text-white px-5 sm:px-6 py-3 sm:py-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 text-base sm:text-lg font-medium"
+                            className="bg-voltify-700/80 text-white px-5 sm:px-6 py-3 sm:py-4 rounded-lg shadow-lg transition-all duration-300 text-base sm:text-lg font-medium"
                             size="lg"
                             onClick={() => setIsEmployerModalOpen(true)}
                           >
@@ -192,10 +208,10 @@ export default function Hero() {
                     </div>
                     
                     {/* Testimonial card - positioned on the right side */}
-                    <div className="hidden md:block col-span-1 opacity-0 animate-fade-in-up animate-fill-forwards animate-delay-600">
-                      <div className="bg-voltify-950/80 backdrop-blur-md rounded-lg p-4 border border-voltify-400/20 shadow-lg hover:shadow-voltify-400/10 transition-all duration-300 h-full flex flex-col justify-between">
+                    <div className="hidden md:block col-span-1">
+                      <div className="bg-voltify-700/80 backdrop-blur-md rounded-lg border border-voltify-400/20 shadow-lg overflow-hidden p-4 h-full flex flex-col justify-between">
                         <div>
-                          <div className="flex items-center justify-center mb-3 bg-voltify-400/20 px-3 py-1.5 rounded">
+                          <div className="flex items-center justify-center mb-3 bg-voltify-600/70 px-3 py-1.5 rounded">
                             <h3 className="text-white font-bold text-sm tracking-wide">Client Testimonials</h3>
                           </div>
                           
@@ -206,7 +222,7 @@ export default function Hero() {
                               </div>
                               <div>
                                 <h4 className="text-sm font-semibold text-white">{currentTestimonial.author}</h4>
-                                <p className="text-xs text-stone-200">{currentTestimonial.position}</p>
+                                <p className="text-xs text-stone-100">{currentTestimonial.position}</p>
                               </div>
                             </div>
                           </div>
@@ -222,7 +238,7 @@ export default function Hero() {
                               <button 
                                 key={index}
                                 onClick={() => setCurrentTestimonialIndex(index)}
-                                className={`w-2 h-2 rounded-full transition-colors shadow-sm ${index === currentTestimonialIndex ? 'bg-voltify-400' : 'bg-white/40'}`}
+                                className={`w-2 h-2 rounded-full transition-colors ${index === currentTestimonialIndex ? 'bg-white' : 'bg-white/40'}`}
                                 aria-label={`Go to testimonial ${index + 1}`}
                               />
                             ))}
@@ -231,14 +247,14 @@ export default function Hero() {
                           <div className="flex space-x-1.5">
                             <button 
                               onClick={prevTestimonial}
-                              className="w-7 h-7 rounded-full bg-voltify-400/30 hover:bg-voltify-400/50 flex items-center justify-center transition-colors shadow-sm"
+                              className="w-7 h-7 rounded-full bg-voltify-700/20 flex items-center justify-center transition-colors"
                               aria-label="Previous testimonial"
                             >
                               <ChevronLeft className="h-4 w-4 text-white" />
                             </button>
                             <button 
                               onClick={nextTestimonial}
-                              className="w-7 h-7 rounded-full bg-voltify-400/30 hover:bg-voltify-400/50 flex items-center justify-center transition-colors shadow-sm"
+                              className="w-7 h-7 rounded-full bg-voltify-700/20 flex items-center justify-center transition-colors"
                               aria-label="Next testimonial"
                             >
                               <ChevronRight className="h-4 w-4 text-white" />
@@ -251,50 +267,27 @@ export default function Hero() {
                 </div>
               </div>
             </div>
-            
-            {/* Spacer div to create distance */}
-            <div className="h-0 md:h-80"></div>
           </div>
         </div>
       </div>
       
-      {/* Bottom content with badge and stats */}
-      <div className="container-custom relative z-10 mt-auto">
-        {/* Women-Owned Badge - Creative Version */}
-        <div className="text-center opacity-0 animate-fade-in-up animate-fill-forwards animate-delay-800 mb-3 md:mb-6">
-          <div className="inline-block">
-            <div className="flex items-center space-x-2 bg-voltify-900/40 backdrop-blur-md px-5 py-3 rounded-full border border-voltify-500/30 shadow-md hover:border-voltify-500/50 transition-all duration-300">
-              <Award className="h-5 w-5 text-voltify-300" />
-              <span className="text-sm font-semibold text-white tracking-wider">
-                PROUDLY WOMEN-OWNED & OPERATED
-              </span>
-                <Award className="h-5 w-5 text-voltify-300" />
+      {/* Charitable giving banner */}
+      <div className="container-custom relative z-10 py-16" style={{ marginTop: '4rem' }}>
+        <div className="text-center">
+          <div className="inline-block max-w-3xl w-full">
+            <div className="bg-voltify-700/80 backdrop-blur-md rounded-lg border border-voltify-400/30 shadow-lg overflow-hidden px-8 py-6">
+              <div className="flex flex-row items-center justify-center gap-4">
+                <Heart className="h-5 w-5 sm:h-6 sm:w-6 text-voltify-900 flex-shrink-0" fill="currentColor" />
+                <div className="flex-grow">
+                  <h3 className="text-base sm:text-lg md:text-xl font-semibold text-white mb-1">
+                    5% Voltify Gives Back
+                  </h3>
+                  <p className="text-white/95 text-sm sm:text-base leading-relaxed font-light">
+                    For each candidate hired, we contribute 5% of the fee to assisting those in need through charitable initiatives.
+                  </p>
+                </div>
+                <Heart className="h-5 w-5 sm:h-6 sm:w-6 text-voltify-900 flex-shrink-0" fill="currentColor" />
               </div>
-            </div>
-          </div>
-
-        
-        {/* Stats Bar */}
-        <div className="mb-2 md:mb-0 opacity-0 animate-fade-in-up animate-fill-forwards animate-delay-1000">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 py-3 md:py-6 px-2 md:px-4 rounded-xl bg-voltify-950/40 border-voltify-500/30 backdrop-blur-md shadow-lg border border-gray-500/20">
-            <div className="text-center p-2 md:p-4">
-              <div className="text-xl md:text-3xl lg:text-4xl font-bold text-white mb-1 md:mb-2">20+</div>
-              <div className="text-[8px] md:text-xs uppercase tracking-wider text-voltify-300">YEARS EXPERIENCE</div>
-            </div>
-            
-            <div className="text-center p-2 md:p-4">
-              <div className="text-xl md:text-3xl lg:text-4xl font-bold text-white mb-1 md:mb-2">500+</div>
-              <div className="text-[8px] md:text-xs uppercase tracking-wider text-voltify-300">SUCCESSFUL PLACEMENTS</div>
-            </div>
-            
-            <div className="text-center p-2 md:p-4">
-              <div className="text-xl md:text-3xl lg:text-4xl font-bold text-white mb-1 md:mb-2">95%</div>
-              <div className="text-[8px] md:text-xs uppercase tracking-wider text-voltify-300">CLIENT SATISFACTION</div>
-            </div>
-            
-            <div className="text-center p-2 md:p-4">
-              <div className="text-xl md:text-3xl lg:text-4xl font-bold text-white mb-1 md:mb-2">5%</div>
-              <div className="text-[8px] md:text-xs uppercase tracking-wider text-voltify-300">TO CHARITY</div>
             </div>
           </div>
         </div>
@@ -310,8 +303,8 @@ export default function Hero() {
         onClose={() => setIsEmployerModalOpen(false)} 
       />
       
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <a href="#about" className="text-white hover:text-voltify-300 transition-colors">
+      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2">
+        <a href="#about" className="text-white">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-chevron-down">
             <path d="m6 9 6 6 6-6"/>
           </svg>

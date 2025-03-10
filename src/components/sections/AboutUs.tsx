@@ -6,22 +6,22 @@ import CharityBanner from '../ui/CharityBanner';
 export default function AboutUs() {
   const features = [
     {
-      icon: <Users className="h-6 w-6 text-voltify-600" />,
+      icon: <Users className="h-6 w-6 text-voltify-500" />,
       title: 'Women-Owned Business',
       description: 'A subsidiary of Ban Partners founded in 2005, we bring decades of industry expertise to every engagement.'
     },
     {
-      icon: <History className="h-6 w-6 text-voltify-600" />,
+      icon: <History className="h-6 w-6 text-voltify-500" />,
       title: '20+ Years of Experience',
       description: 'Our founders have over two decades of experience in the technology and professional staffing industry.'
     },
     {
-      icon: <Trophy className="h-6 w-6 text-voltify-600" />,
+      icon: <Trophy className="h-6 w-6 text-voltify-500" />,
       title: 'Proven Track Record',
       description: "We've helped hundreds of professionals improve their careers and organizations find their perfect match."
     },
     {
-      icon: <CheckCircle className="h-6 w-6 text-voltify-600" />,
+      icon: <CheckCircle className="h-6 w-6 text-voltify-500" />,
       title: 'Tailored Approach',
       description: 'We believe in personalized recruitment, treating every candidate and client with respect and consideration.'
     },
@@ -34,6 +34,28 @@ export default function AboutUs() {
       </div>
       
       <div className="container-custom relative z-10">
+        {/* Women-Owned Banner - moved above section heading */}
+        <div className="max-w-6xl mx-auto mb-10">
+          <div className="bg-gradient-to-r from-voltify-500 to-voltify-600 rounded-lg shadow-md overflow-hidden">
+            <div className="flex flex-col sm:flex-row items-center justify-between p-4 sm:p-6">
+              <div className="flex items-center mb-4 sm:mb-0">
+                <div className="bg-white/20 backdrop-blur-sm p-2 rounded-full mr-4">
+                  <Users className="h-7 w-7 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-white">Proudly Women-Owned & Operated</h3>
+                  <p className="text-white/90 max-w-xl">
+                    Founded by industry veterans with over 20 years of experience serving small and Fortune 500 businesses.
+                  </p>
+                </div>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg border border-white/20">
+                <p className="text-white font-semibold text-sm">Est. 2005</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
         <SectionHeading 
           title="Who We Are"
           subtitle="Voltify is a women-owned staffing solutions business built on a solid foundation of industry expertise. (Subsidiary of Ban Partners founded in 2005)"

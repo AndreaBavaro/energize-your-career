@@ -9,7 +9,7 @@ const navigationItems = [
   { name: 'Who We Are', href: '#who-we-are', isRouterLink: false },
   { name: 'What We Do', href: '#what-we-do', isRouterLink: false },
   { name: 'Our Story', href: '#our-story', isRouterLink: false },
-  { name: 'Testimonials', href: '#testimonials', isRouterLink: false },
+  { name: 'Testimonials', href: '/testimonials', isRouterLink: true },
   { name: 'Why Partner With Us', href: '#why-partner', isRouterLink: false },
   { name: 'Giving Back', href: '/charity', isRouterLink: true },
   { name: 'Sectors We Serve', href: '#sectors', isRouterLink: false },
@@ -106,7 +106,7 @@ export default function Navbar() {
   return (
     <header className={cn(
       "fixed top-0 inset-x-0 z-50 transition-all duration-300 ease-in-out",
-      scrolled ? "py-1 bg-voltify-400/95 backdrop-blur-md shadow-md" : "py-1 bg-voltify-400/90 backdrop-blur-sm"
+      scrolled ? "py-1 bg-alternative-500/60 backdrop-blur-md shadow-md" : "py-1 bg-alternative-500/60 backdrop-blur-sm"
     )}>
       {/* Logo positioned absolutely at the top left */}
       <div className="absolute top-1/2 -translate-y-1/2 left-0 p-2 sm:p-3 flex items-center z-50">

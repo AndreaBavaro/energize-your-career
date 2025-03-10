@@ -99,36 +99,7 @@ export default function WhatWeDo() {
       positions: ['QA', 'BI', 'Marketing Managers']
     }
   ];
-
-  // Cities we serve
-  const cities = [
-    {
-      name: "Boston",
-      image: "/lovable-uploads/07c248d8-4002-45cf-b24f-339ef7c321eb.png",
-      position: "bg-center"
-    },
-    {
-      name: "Los Angeles",
-      image: "/lovable-uploads/03aace2d-574d-4292-a524-5b760748ade9.png",
-      position: "bg-center"
-    },
-    {
-      name: "New York",
-      image: "/lovable-uploads/45016fe7-27c2-40eb-95ff-1f2f9f2f71d2.png", 
-      position: "bg-center"
-    }
-  ];
-
-  const [currentCityIndex, setCurrentCityIndex] = useState(0);
   
-  const nextCity = () => {
-    setCurrentCityIndex((prevIndex) => (prevIndex + 1) % cities.length);
-  };
-  
-  const prevCity = () => {
-    setCurrentCityIndex((prevIndex) => (prevIndex - 1 + cities.length) % cities.length);
-  };
-
   return (
     <section 
       id="what-we-do" 
@@ -155,31 +126,31 @@ export default function WhatWeDo() {
                 Specialized Placement Across Industries
               </h3>
               <p className="text-lg text-stone-900 mb-8 text-center">
-                Voltify provides placements of <span className="text-voltify-700 font-semibold">highly qualified, fully screened professionals</span> across various roles and specialized industry sectors.
+                Voltify provides placements of <span className="text-voltify-500 font-semibold">highly qualified, fully screened professionals</span> across various roles and specialized industry sectors.
               </p>
               
               <h4 className="text-lg font-semibold mb-4 text-stone-900 text-center">Your Path to the Perfect Role</h4>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
                 <div className="flex flex-col items-center text-center">
-                  <div className="w-12 h-12 rounded-full bg-voltify-100 flex items-center justify-center mb-3">
-                    <span className="text-voltify-700 font-bold text-lg">1</span>
+                  <div className="w-12 h-12 rounded-full bg-voltify-200 flex items-center justify-center mb-3">
+                    <span className="text-voltify-500 font-bold text-lg">1</span>
                   </div>
                   <h5 className="font-semibold text-stone-900 mb-2">Initial Consultation</h5>
                   <p className="text-stone-900 text-sm">We discuss your skills, experience, and career goals to understand your unique qualifications.</p>
                 </div>
                 
                 <div className="flex flex-col items-center text-center">
-                  <div className="w-12 h-12 rounded-full bg-voltify-100 flex items-center justify-center mb-3">
-                    <span className="text-voltify-700 font-bold text-lg">2</span>
+                  <div className="w-12 h-12 rounded-full bg-voltify-200 flex items-center justify-center mb-3">
+                    <span className="text-voltify-500 font-bold text-lg">2</span>
                   </div>
                   <h5 className="font-semibold text-stone-900 mb-2">Matching & Preparation</h5>
                   <p className="text-stone-900 text-sm">We match you with suitable opportunities and prepare you for interviews with potential employers.</p>
                 </div>
                 
                 <div className="flex flex-col items-center text-center">
-                  <div className="w-12 h-12 rounded-full bg-voltify-100 flex items-center justify-center mb-3">
-                    <span className="text-voltify-700 font-bold text-lg">3</span>
+                  <div className="w-12 h-12 rounded-full bg-voltify-200 flex items-center justify-center mb-3">
+                    <span className="text-voltify-500 font-bold text-lg">3</span>
                   </div>
                   <h5 className="font-semibold text-stone-900 mb-2">Placement & Support</h5>
                   <p className="text-stone-900 text-sm">Once placed, we provide ongoing support to ensure your success in the new role.</p>
@@ -359,48 +330,6 @@ export default function WhatWeDo() {
                 </div>
               </GlassCard>
             ))}
-          </div>
-        </div>
-        
-        {/* Cities We Serve */}
-        <div className="mt-8 mb-12">
-          <h3 className="text-2xl font-bold text-center mb-6 md:mb-10 text-stone-900">Cities We Serve</h3>
-          
-          <div className="relative max-w-5xl mx-auto h-[250px] sm:h-[300px] md:h-[400px] rounded-xl overflow-hidden shadow-xl">
-            {/* City Images */}
-            {cities.map((city, index) => (
-              <div 
-                key={city.name}
-                className={`absolute inset-0 transition-opacity duration-1000 bg-cover bg-center ${city.position} ${
-                  index === currentCityIndex ? 'opacity-100' : 'opacity-0'
-                }`}
-                style={{
-                  backgroundImage: `linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 30%, rgba(0,0,0,0.1) 100%), url(${city.image})`,
-                }}
-              />
-            ))}
-            
-            {/* City Name */}
-            <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-black/60 backdrop-blur-sm text-white px-6 py-3 rounded-full font-medium text-sm sm:text-base">
-              {cities[currentCityIndex].name}
-            </div>
-            
-            {/* Navigation Controls */}
-            <button 
-              onClick={prevCity}
-              className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-white/30 hover:bg-white/50 backdrop-blur-sm text-white p-1.5 sm:p-2 rounded-full transition-all duration-300"
-              aria-label="Previous city"
-            >
-              <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" />
-            </button>
-            
-            <button 
-              onClick={nextCity}
-              className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-white/30 hover:bg-white/50 backdrop-blur-sm text-white p-1.5 sm:p-2 rounded-full transition-all duration-300"
-              aria-label="Next city"
-            >
-              <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
-            </button>
           </div>
         </div>
       </div>
