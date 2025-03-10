@@ -75,18 +75,25 @@ export default {
                
         ,
         alternative: {
-          50: "#f2f6fb",    // Very light version
-          100: "#e0e8f3",
-          200: "#c0cde3",
-          300: "#a0b3d3",
-          400: "#8098c3",
-          500: "#7393B3",    // Base color
-          600: "#6783a0",
-          700: "#5b728d",
-          800: "#4f627a",
-          900: "#435167",
-          950: "#374154",
-        },
+          50: "#fceeed",    // Very light soft red
+          100: "#f8d5d3",   // Soft pastel red
+          200: "#f0aba8",   // Muted warm red
+          300: "#e8807d",   // Soft coral red
+          400: "#e0635b",   // Balanced warm red
+          450: "#db574f",   // NEW (Between 400 & 500) - Slightly darker than 400
+          500: "#D95F54",   // Base color (Brighter Red)
+          600: "#c2564c",   // Muted deep red
+          700: "#aa4c43",   // Earthy warm red
+          800: "#923f38",   // Rich brick red
+          900: "#7a332d",   // Dark rustic red
+          950: "#632822",   // Deepest red-brown
+        }
+        
+        
+        
+        
+        
+        ,        
         stone: {
           50: '#fafaf9',
           100: '#f5f5f4',

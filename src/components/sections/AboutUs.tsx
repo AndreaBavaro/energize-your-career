@@ -1,27 +1,26 @@
 import { SectionHeading } from '../ui/SectionHeading';
 import { GlassCard } from '../ui/GlassCard';
-import { CheckCircle, Users, History, Trophy } from 'lucide-react';
-import CharityBanner from '../ui/CharityBanner';
+import { CheckCircle, Users, History, Trophy, Briefcase, Heart, Award } from 'lucide-react';
 
 export default function AboutUs() {
   const features = [
     {
-      icon: <Users className="h-6 w-6 text-voltify-500" />,
+      icon: <Users className="h-6 w-6 text-alternative-600" />,
       title: 'Women-Owned Business',
-      description: 'A subsidiary of Ban Partners founded in 2005, we bring decades of industry expertise to every engagement.'
+      description: 'Founded in 2005, we bring decades of industry expertise to every engagement.'
     },
     {
-      icon: <History className="h-6 w-6 text-voltify-500" />,
+      icon: <History className="h-6 w-6 text-alternative-600" />,
       title: '20+ Years of Experience',
       description: 'Our founders have over two decades of experience in the technology and professional staffing industry.'
     },
     {
-      icon: <Trophy className="h-6 w-6 text-voltify-500" />,
+      icon: <Trophy className="h-6 w-6 text-alternative-600" />,
       title: 'Proven Track Record',
       description: "We've helped hundreds of professionals improve their careers and organizations find their perfect match."
     },
     {
-      icon: <CheckCircle className="h-6 w-6 text-voltify-500" />,
+      icon: <CheckCircle className="h-6 w-6 text-alternative-600" />,
       title: 'Tailored Approach',
       description: 'We believe in personalized recruitment, treating every candidate and client with respect and consideration.'
     },
@@ -30,13 +29,13 @@ export default function AboutUs() {
   return (
     <section id="who-we-are" className="py-24 white-brick-bg relative">
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-1/2 right-0 w-96 h-96 bg-voltify-100 rounded-full filter blur-3xl opacity-40 transform translate-x-1/4 -translate-y-1/4"></div>
+        <div className="absolute top-1/2 right-0 w-96 h-96 bg-alternative-100 rounded-full filter blur-3xl opacity-40 transform translate-x-1/4 -translate-y-1/4"></div>
       </div>
       
       <div className="container-custom relative z-10">
         {/* Women-Owned Banner - moved above section heading */}
         <div className="max-w-6xl mx-auto mb-10">
-          <div className="bg-gradient-to-r from-voltify-500 to-voltify-600 rounded-lg shadow-md overflow-hidden">
+          <div className="bg-gradient-to-r from-alternative-500 to-alternative-600 rounded-lg shadow-md overflow-hidden">
             <div className="flex flex-col sm:flex-row items-center justify-between p-4 sm:p-6">
               <div className="flex items-center mb-4 sm:mb-0">
                 <div className="bg-white/20 backdrop-blur-sm p-2 rounded-full mr-4">
@@ -58,27 +57,72 @@ export default function AboutUs() {
         
         <SectionHeading 
           title="Who We Are"
-          subtitle="Voltify is a women-owned staffing solutions business built on a solid foundation of industry expertise. (Subsidiary of Ban Partners founded in 2005)"
+          subtitle="Voltify is a women-owned staffing solutions business built on a solid foundation of industry expertise."
         />
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto">
           <div className="space-y-6">
-            <div className="bg-white p-6 rounded-xl shadow-md">
-              <p className="text-lg text-stone-700">
-                We partner with the Human Resources departments of organizations in the U.S. to meet the staffing needs of the Information Technology, Human Resources, and professional communities, including executive-level roles and leadership positions. We have built an excellent reputation for delivering quality results efficiently.
+            <div className="bg-white p-4 rounded-xl shadow-md">
+              <h3 className="text-xl font-semibold text-alternative-700 mb-3 flex items-center">
+                <Briefcase className="h-5 w-5 mr-2 text-alternative-600" />
+                Our Approach
+              </h3>
+              <p className="text-lg text-stone-700 leading-relaxed">
+                We partner with <span className="font-medium text-alternative-700">Human Resources departments</span> across the U.S. to meet staffing needs in:
+              </p>
+              <div className="mt-3 grid grid-cols-1 sm:grid-cols-3 gap-2">
+                <div className="bg-alternative-50 p-4 rounded-lg border border-alternative-100">
+                  <p className="text-center font-medium text-alternative-700">Information Technology</p>
+                </div>
+                <div className="bg-alternative-50 p-4 rounded-lg border border-alternative-100">
+                  <p className="text-center font-medium text-alternative-700">Human Resources</p>
+                </div>
+                <div className="bg-alternative-50 p-4 rounded-lg border border-alternative-100">
+                  <p className="text-center font-medium text-alternative-700">Executive Leadership</p>
+                </div>
+              </div>
+              <p className="mt-3 text-lg text-stone-700 leading-relaxed">
+                We've built an excellent reputation for delivering quality results efficiently.
               </p>
             </div>
             
-            <div className="bg-white p-6 rounded-xl shadow-md">
-              <p className="text-lg text-stone-700">
-                We believe in a more tailored approach to staffing and recruitment, treating every candidate and client with the same respect and consideration we would expect ourselves.
+            <div className="bg-white p-4 rounded-xl shadow-md">
+              <h3 className="text-xl font-semibold text-alternative-700 mb-3 flex items-center">
+                <Heart className="h-5 w-5 mr-2 text-alternative-600" />
+                Our Values
+              </h3>
+              <p className="text-lg text-stone-700 leading-relaxed">
+                We believe in a more <span className="font-medium text-alternative-700">tailored approach</span> to staffing and recruitment, treating every candidate and client with the same respect and consideration we would expect ourselves.
               </p>
+              <div className="mt-3 flex justify-center">
+                <div className="bg-alternative-50 px-4 py-2 rounded-lg border border-alternative-100 inline-block">
+                  <p className="text-center italic">"Respect and consideration in every interaction"</p>
+                </div>
+              </div>
             </div>
 
-            <div className="bg-white p-6 rounded-xl shadow-md">
-              <p className="text-lg text-stone-700">
-                Our founder's 20 years of experience serving small and Fortune 500 businesses has helped hundreds of individuals improve their careers and lives through personalized placement services.
+            <div className="bg-white p-4 rounded-xl shadow-md">
+              <h3 className="text-xl font-semibold text-alternative-700 mb-3 flex items-center">
+                <Award className="h-5 w-5 mr-2 text-alternative-600" />
+                Our Experience
+              </h3>
+              <p className="text-lg text-stone-700 leading-relaxed">
+                Our founder's <span className="font-medium text-alternative-700">20 years of experience</span> serving small and Fortune 500 businesses has helped hundreds of individuals improve their careers and lives through personalized placement services.
               </p>
+              <div className="mt-3 flex items-center justify-center space-x-4">
+                <div className="text-center">
+                  <p className="text-3xl font-bold text-alternative-700">20+</p>
+                  <p className="text-sm text-stone-600">Years Experience</p>
+                </div>
+                <div className="text-center">
+                  <p className="text-3xl font-bold text-alternative-700">100s</p>
+                  <p className="text-sm text-stone-600">Careers Enhanced</p>
+                </div>
+                <div className="text-center">
+                  <p className="text-3xl font-bold text-alternative-700">500+</p>
+                  <p className="text-sm text-stone-600">Fortune Companies</p>
+                </div>
+              </div>
             </div>
           </div>
           
@@ -91,7 +135,7 @@ export default function AboutUs() {
                 animationDelay={`${index * 100 + 200}ms`}
               >
                 <div className="flex flex-col h-full">
-                  <div className="rounded-full w-10 h-10 sm:w-12 sm:h-12 bg-voltify-100 flex items-center justify-center mb-2 sm:mb-4">
+                  <div className="rounded-full w-10 h-10 sm:w-12 sm:h-12 bg-alternative-100 flex items-center justify-center mb-2 sm:mb-4">
                     {feature.icon}
                   </div>
                   <h3 className="text-base sm:text-lg font-semibold mb-1 sm:mb-2 text-stone-900">{feature.title}</h3>
@@ -100,11 +144,6 @@ export default function AboutUs() {
               </GlassCard>
             ))}
           </div>
-        </div>
-        
-        {/* Charity Banner */}
-        <div className="mt-12">
-          <CharityBanner />
         </div>
       </div>
     </section>

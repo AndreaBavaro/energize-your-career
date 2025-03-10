@@ -6,27 +6,27 @@ import React from 'react';
 export default function Services() {
   const services = [
     {
-      icon: <Briefcase className="h-10 w-10 text-voltify-600" />,
+      icon: <Briefcase className="h-10 w-10 text-alternative-600" />,
       title: 'Fulltime Placements',
       description: 'Connect with permanent positions that match your skills and career goals.',
     },
     {
-      icon: <Search className="h-10 w-10 text-voltify-600" />,
+      icon: <Search className="h-10 w-10 text-alternative-600" />,
       title: 'Executive Search',
       description: 'Specialized recruitment for executive-level and leadership positions.',
     },
     {
-      icon: <Clock className="h-10 w-10 text-voltify-600" />,
+      icon: <Clock className="h-10 w-10 text-alternative-600" />,
       title: 'Short & Long-term Contracts',
       description: 'Flexible contract opportunities tailored to your preferences and availability.',
     },
     {
-      icon: <Users className="h-10 w-10 text-voltify-600" />,
+      icon: <Users className="h-10 w-10 text-alternative-600" />,
       title: 'Contract to Full-time',
       description: 'Begin with a contract position with potential for permanent employment.',
     },
     {
-      icon: <CreditCard className="h-10 w-10 text-voltify-600" />,
+      icon: <CreditCard className="h-10 w-10 text-alternative-600" />,
       title: 'Payroll Services',
       description: 'Comprehensive payroll management for businesses of all sizes.',
     }
@@ -35,7 +35,7 @@ export default function Services() {
   return (
     <section id="services" className="py-24 white-brick-bg relative overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-voltify-100 rounded-full filter blur-3xl opacity-40 transform -translate-x-1/4 translate-y-1/4"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full filter blur-3xl opacity-40 transform -translate-x-1/4 translate-y-1/4"></div>
       </div>
       
       <div className="container-custom relative z-10">
@@ -56,8 +56,8 @@ export default function Services() {
               >
                 <GlassCard className="p-4 h-full flex flex-col">
                   <div className="text-center flex flex-col h-full">
-                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-voltify-100 mb-3 mx-auto">
-                      {React.cloneElement(service.icon, { className: 'h-6 w-6 text-voltify-600' })}
+                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-alternative-100 mb-3 mx-auto">
+                      {React.cloneElement(service.icon, { className: 'h-6 w-6 text-alternative-600' })}
                     </div>
                     <h3 className="text-base font-bold mb-2 text-stone-900">{service.title}</h3>
                     <p className="text-xs text-stone-600 flex-grow">{service.description}</p>
@@ -77,8 +77,8 @@ export default function Services() {
               >
                 <GlassCard className="p-4 h-full flex flex-col">
                   <div className="text-center flex flex-col h-full">
-                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-voltify-100 mb-3 mx-auto">
-                      {React.cloneElement(service.icon, { className: 'h-6 w-6 text-voltify-600' })}
+                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-alternative-100 mb-3 mx-auto">
+                      {React.cloneElement(service.icon, { className: 'h-6 w-6 text-alternative-600' })}
                     </div>
                     <h3 className="text-base font-bold mb-2 text-stone-900">{service.title}</h3>
                     <p className="text-xs text-stone-600 flex-grow">{service.description}</p>
@@ -96,8 +96,8 @@ export default function Services() {
             >
               <GlassCard className="p-4 h-full">
                 <div className="text-center">
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-voltify-100 mb-3 mx-auto">
-                    {React.cloneElement(services[4].icon, { className: 'h-6 w-6 text-voltify-600' })}
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-alternative-100 mb-3 mx-auto">
+                    {React.cloneElement(services[4].icon, { className: 'h-6 w-6 text-alternative-600' })}
                   </div>
                   <h3 className="text-base font-bold mb-2 text-stone-900">{services[4].title}</h3>
                   <p className="text-xs text-stone-600">{services[4].description}</p>
@@ -119,7 +119,7 @@ export default function Services() {
               >
                 <GlassCard className="h-full">
                   <div className="text-center flex flex-col h-full">
-                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-voltify-100 mb-6 mx-auto">
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-alternative-100 mb-6 mx-auto">
                       {service.icon}
                     </div>
                     <h3 className="text-xl font-bold mb-3 text-stone-900">{service.title}</h3>
@@ -140,7 +140,7 @@ export default function Services() {
               >
                 <GlassCard className="h-full">
                   <div className="text-center flex flex-col h-full">
-                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-voltify-100 mb-6 mx-auto">
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-alternative-100 mb-6 mx-auto">
                       {service.icon}
                     </div>
                     <h3 className="text-xl font-bold mb-3 text-stone-900">{service.title}</h3>

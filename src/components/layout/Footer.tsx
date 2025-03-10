@@ -1,5 +1,6 @@
 import { cn } from '@/lib/utils';
 import { Facebook, Linkedin, Mail, MapPin, Phone, Twitter } from 'lucide-react';
+import Newsletter from '@/components/ui/Newsletter';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -45,6 +46,9 @@ export default function Footer() {
                 <a href="#employers" className="text-stone-300 hover:text-white transition-colors">For Employers</a>
               </li>
               <li>
+                <a href="/blog" className="text-stone-300 hover:text-white transition-colors">Blog</a>
+              </li>
+              <li>
                 <a href="/contact" className="text-stone-300 hover:text-white transition-colors">Contact Us</a>
               </li>
             </ul>
@@ -62,7 +66,14 @@ export default function Footer() {
           </div>
           
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Contact Us</h3>
+            <h3 className="text-lg font-semibold">Newsletter</h3>
+            <p className="text-stone-300 text-sm">Subscribe to get updates on our latest blog posts and news.</p>
+            <Newsletter 
+              variant="compact" 
+              className="mt-2" 
+            />
+            
+            <h3 className="text-lg font-semibold mt-6">Contact Us</h3>
             <ul className="space-y-3">
               <li className="flex items-start">
                 <Phone size={18} className="mr-2 mt-0.5 text-voltify-400" />
@@ -88,7 +99,7 @@ export default function Footer() {
         </div>
         
         <div className="mt-12 pt-8 border-t border-stone-800 text-center text-stone-400 text-sm">
-          <p> {currentYear} Voltify. All rights reserved. A subsidiary of Ban Partners (est. 2005)</p>
+          <p>&copy; {currentYear} Voltify. All rights reserved. A subsidiary of Ban Partners (est. 2005)</p>
         </div>
       </div>
     </footer>

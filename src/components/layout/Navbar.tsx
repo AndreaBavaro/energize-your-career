@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
 import { Menu, X, ChevronDown, Zap } from 'lucide-react';
 import Image from 'next/image';
@@ -11,8 +11,8 @@ const navigationItems = [
   { name: 'Our Story', href: '#our-story', isRouterLink: false },
   { name: 'Testimonials', href: '/testimonials', isRouterLink: true },
   { name: 'Why Partner With Us', href: '#why-partner', isRouterLink: false },
-  { name: 'Giving Back', href: '/charity', isRouterLink: true },
   { name: 'Sectors We Serve', href: '#sectors', isRouterLink: false },
+  { name: 'Giving Back', href: '/charity', isRouterLink: true },
   { name: 'Blog', href: '/blog', isRouterLink: true },
   { name: 'Contact Us', href: '/contact', isRouterLink: true },
 ];
@@ -22,6 +22,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,6 +35,23 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [scrolled]);
+
+  // Handle click outside to close mobile menu
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (mobileMenuOpen && 
+          mobileMenuRef.current && 
+          !mobileMenuRef.current.contains(event.target as Node) &&
+          !(event.target as Element).closest('button[aria-label="Open main menu"]')) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [mobileMenuOpen]);
 
   // Handle smooth scrolling for hash links
   const handleHashLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -106,7 +124,7 @@ export default function Navbar() {
   return (
     <header className={cn(
       "fixed top-0 inset-x-0 z-50 transition-all duration-300 ease-in-out",
-      scrolled ? "py-1 bg-alternative-500/60 backdrop-blur-md shadow-md" : "py-1 bg-alternative-500/60 backdrop-blur-sm"
+      scrolled ? "py-1 bg-alternative-450 backdrop-blur-md shadow-md" : "py-1 bg-alternative-450 backdrop-blur-sm"
     )}>
       {/* Logo positioned absolutely at the top left */}
       <div className="absolute top-1/2 -translate-y-1/2 left-0 p-2 sm:p-3 flex items-center z-50">
@@ -144,34 +162,27 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       <div
+        ref={mobileMenuRef}
         className={cn(
-          "fixed inset-0 z-50 bg-voltify-400 transform transition-transform duration-300 ease-in-out",
-          mobileMenuOpen ? "translate-x-0" : "translate-x-full"
+          "absolute top-full left-0 right-0 z-50 bg-alternative-600 transform transition-transform duration-300 ease-in-out shadow-lg",
+          mobileMenuOpen ? "translate-y-0" : "-translate-y-full opacity-0 pointer-events-none"
         )}
       >
-        {/* Mobile menu header with close button in top right */}
-        <div className="relative h-full">
-          {/* Logo in top left */}
-          <div className="absolute left-4 top-4 flex items-center">
-            <Link to="/" className="flex items-center" onClick={() => setMobileMenuOpen(false)}>
-              <Zap className="h-5 w-5 text-white" />
-              <div className="text-xl font-bold text-white">Voltify</div>
-            </Link>
+        <div className="container-custom py-4">
+          {/* Close button */}
+          <div className="flex justify-end mb-2">
+            <button
+              type="button"
+              className="rounded-full p-2 bg-white/10 text-white hover:bg-white/20 transition-colors"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <span className="sr-only">Close menu</span>
+              <X className="h-5 w-5" aria-hidden="true" />
+            </button>
           </div>
-
-          {/* Close button in top right */}
-          <button
-            type="button"
-            className="absolute right-4 top-4 rounded-full p-3 bg-white/10 text-white hover:bg-white/20 transition-colors"
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            <span className="sr-only">Close menu</span>
-            <X className="h-5 w-5" aria-hidden="true" />
-          </button>
-        </div>
-        <div className="container-custom py-6 mt-10">
+          
           {/* All navigation items in one list */}
-          <div className="flex flex-col gap-y-4 bg-white/5 rounded-lg p-4">
+          <div className="flex flex-col gap-y-2 rounded-lg p-4">
             {/* Navigation items */}
             {navigationItems.map((item) => (
               renderNavLink(

@@ -6,32 +6,32 @@ import { Trophy, Clock, CheckCircle, Handshake, Key, MessageSquare } from 'lucid
 export default function WhyPartner() {
   const reasons = [
     {
-      icon: <Trophy className="h-8 w-8 text-voltify-600" />,
+      icon: <Trophy className="h-8 w-8 text-alternative-600" />,
       title: "20 Years of Experience",
       description: "Two decades of industry knowledge and staffing expertise, working with businesses of all sizes."
     },
     {
-      icon: <Clock className="h-8 w-8 text-voltify-600" />,
+      icon: <Clock className="h-8 w-8 text-alternative-600" />,
       title: "Fast Turnaround",
       description: "Efficient processes that significantly reduce time-to-hire without sacrificing quality."
     },
     {
-      icon: <CheckCircle className="h-8 w-8 text-voltify-600" />,
+      icon: <CheckCircle className="h-8 w-8 text-alternative-600" />,
       title: "Proven Track Record",
       description: "Consistent history of successful placements and satisfied clients across industries."
     },
     {
-      icon: <Handshake className="h-8 w-8 text-voltify-600" />,
+      icon: <Handshake className="h-8 w-8 text-alternative-600" />,
       title: "Transparent Approach",
       description: "Straightforward fee structure with no hidden costs, only pay when the hire starts."
     },
     {
-      icon: <Key className="h-8 w-8 text-voltify-600" />,
+      icon: <Key className="h-8 w-8 text-alternative-600" />,
       title: "Exclusive Opportunities",
       description: "Access to our network of pre-screened, high-caliber professionals not available elsewhere."
     },
     {
-      icon: <MessageSquare className="h-8 w-8 text-voltify-600" />,
+      icon: <MessageSquare className="h-8 w-8 text-alternative-600" />,
       title: "Ongoing Support",
       description: "We maintain relationships with both clients and candidates long after placement."
     }
@@ -55,8 +55,8 @@ export default function WhyPartner() {
                 animationDelay={`${index * 100 + 200}ms`}
               >
                 <div className="flex flex-col h-full items-center text-center">
-                  <div className="rounded-full w-10 h-10 bg-voltify-50 flex items-center justify-center mb-2">
-                    {React.cloneElement(reason.icon, { className: 'h-5 w-5 text-voltify-600' })}
+                  <div className="rounded-full w-10 h-10 bg-alternative-50 flex items-center justify-center mb-2">
+                    {React.cloneElement(reason.icon, { className: 'h-5 w-5 text-alternative-600' })}
                   </div>
                   <h3 className="text-sm font-semibold mb-1 text-stone-900">{reason.title}</h3>
                   <p className="text-xs text-stone-600">{reason.description}</p>
@@ -75,7 +75,7 @@ export default function WhyPartner() {
               animationDelay={`${index * 100 + 200}ms`}
             >
               <div className="flex flex-col h-full">
-                <div className="rounded-full w-16 h-16 bg-voltify-50 flex items-center justify-center mb-5">
+                <div className="rounded-full w-16 h-16 bg-alternative-50 flex items-center justify-center mb-5">
                   {reason.icon}
                 </div>
                 <h3 className="text-xl font-semibold mb-3 text-stone-900">{reason.title}</h3>
@@ -85,13 +85,13 @@ export default function WhyPartner() {
           ))}
         </div>
         
-        <div className="mt-16 bg-voltify-600 rounded-2xl p-8 md:p-12 text-white max-w-4xl mx-auto shadow-xl">
+        <div className="mt-16 bg-alternative-600 rounded-2xl p-8 md:p-12 text-white max-w-4xl mx-auto shadow-xl">
           <h3 className="text-2xl font-bold mb-6 text-center">Our Commitment to Excellence</h3>
-          <p className="text-lg mb-6 text-voltify-50">
+          <p className="text-lg mb-6 text-alternative-50">
             With 20 years of experience in the staffing industry, our commitment to excellence and proven track record 
             are the key factors that have driven our success and set us apart.
           </p>
-          <p className="text-lg text-voltify-50">
+          <p className="text-lg text-alternative-50">
             We understand that finding the right talent is crucial for your organization's success. That's why we take 
             the time to understand your unique needs and culture, ensuring we deliver candidates who not only have the 
             right skills but will also thrive within your team.

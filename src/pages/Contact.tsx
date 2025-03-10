@@ -135,7 +135,7 @@ export default function Contact() {
       <main className="flex-grow relative">
         <section className="py-16 md:py-24 white-brick-bg relative">
           <div className="absolute inset-0 z-0">
-            <div className="absolute bottom-0 right-0 w-96 h-96 bg-voltify-50 rounded-full filter blur-3xl opacity-30 transform translate-x-1/4"></div>
+            <div className="absolute bottom-0 right-0 w-96 h-96 bg-alternative-50 rounded-full filter blur-3xl opacity-30 transform translate-x-1/4"></div>
           </div>
           
           <div className="container-custom relative z-10">
@@ -159,7 +159,7 @@ export default function Contact() {
                           id="name"
                           name="name"
                           required
-                          className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-voltify-500 focus:border-transparent transition-all duration-200 text-sm"
+                          className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-alternative-500 focus:border-transparent transition-all duration-200 text-sm"
                           placeholder="Your name"
                         />
                       </div>
@@ -171,7 +171,7 @@ export default function Contact() {
                           id="email"
                           name="email"
                           required
-                          className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-voltify-500 focus:border-transparent transition-all duration-200 text-sm"
+                          className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-alternative-500 focus:border-transparent transition-all duration-200 text-sm"
                           placeholder="Your email"
                         />
                       </div>
@@ -184,8 +184,8 @@ export default function Contact() {
                           <label className={`
                             p-2 sm:p-4 rounded-xl border-2 transition-all cursor-pointer
                             ${userType === 'jobSeeker' 
-                              ? 'border-voltify-600 bg-voltify-50 shadow-md' 
-                              : 'border-stone-200 hover:border-voltify-400 hover:bg-white'}
+                              ? 'border-alternative-600 bg-alternative-50 shadow-md' 
+                              : 'border-stone-200'}
                           `}>
                             <input
                               type="radio"
@@ -200,7 +200,7 @@ export default function Contact() {
                               <div className={`
                                 h-4 sm:h-5 w-4 sm:w-5 rounded-full border-2 flex items-center justify-center
                                 ${userType === 'jobSeeker' 
-                                  ? 'border-voltify-600 bg-voltify-600' 
+                                  ? 'border-alternative-600 bg-alternative-600' 
                                   : 'border-stone-300 bg-white'}
                               `}>
                                 <div className={`
@@ -215,8 +215,8 @@ export default function Contact() {
                           <label className={`
                             p-2 sm:p-4 rounded-xl border-2 transition-all cursor-pointer
                             ${userType === 'employer' 
-                              ? 'border-voltify-600 bg-voltify-50 shadow-md' 
-                              : 'border-stone-200 hover:border-voltify-400 hover:bg-white'}
+                              ? 'border-alternative-600 bg-alternative-50 shadow-md' 
+                              : 'border-stone-200'}
                           `}>
                             <input
                               type="radio"
@@ -231,7 +231,7 @@ export default function Contact() {
                               <div className={`
                                 h-4 sm:h-5 w-4 sm:w-5 rounded-full border-2 flex items-center justify-center
                                 ${userType === 'employer' 
-                                  ? 'border-voltify-600 bg-voltify-600' 
+                                  ? 'border-alternative-600 bg-alternative-600' 
                                   : 'border-stone-300 bg-white'}
                               `}>
                                 <div className={`
@@ -250,7 +250,7 @@ export default function Contact() {
                       <div className="space-y-1 sm:space-y-2">
                         <label className="block text-xs sm:text-sm font-medium text-stone-700">
                           Upload Resume (Optional)
-                          <div className="mt-1 sm:mt-2 flex justify-center px-3 sm:px-6 py-4 sm:py-8 border-2 border-dashed border-stone-200 rounded-lg hover:border-voltify-400 transition-colors cursor-pointer">
+                          <div className="mt-1 sm:mt-2 flex justify-center px-3 sm:px-6 py-4 sm:py-8 border-2 border-dashed border-stone-200 rounded-lg transition-colors cursor-pointer">
                             <input
                               type="file"
                               id="resume"
@@ -260,9 +260,9 @@ export default function Contact() {
                               required={false}
                             />
                             <div className="text-center">
-                              <Send className="mx-auto h-6 sm:h-8 w-6 sm:w-8 text-voltify-500 mb-1 sm:mb-2" />
+                              <Send className="mx-auto h-6 sm:h-8 w-6 sm:w-8 text-alternative-500 mb-1 sm:mb-2" />
                               <p className="text-sm text-stone-600">
-                                <span className="font-medium text-voltify-600 hover:text-voltify-700">Click to upload</span> or drag and drop
+                                <span className="font-medium text-alternative-600">Click to upload</span> or drag and drop
                               </p>
                               <p className="text-xs text-stone-500 mt-0.5 sm:mt-1">PDF or Word (MAX 5MB)</p>
                             </div>
@@ -278,7 +278,7 @@ export default function Contact() {
                         id="subject"
                         name="subject"
                         required
-                        className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-voltify-500 focus:border-transparent transition-all duration-200 text-sm"
+                        className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-alternative-500 focus:border-transparent transition-all duration-200 text-sm"
                         placeholder="Subject"
                       />
                     </div>
@@ -290,7 +290,7 @@ export default function Contact() {
                         name="message"
                         rows={4}
                         required
-                        className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-voltify-500 focus:border-transparent transition-all duration-200 text-sm"
+                        className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-alternative-500 focus:border-transparent transition-all duration-200 text-sm"
                         placeholder="Your message"
                       ></textarea>
                     </div>
@@ -298,7 +298,7 @@ export default function Contact() {
                     <Button 
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full py-3 sm:py-4 bg-voltify-600 hover:bg-voltify-700 text-white text-sm font-medium rounded-lg transition-all duration-200 flex items-center justify-center gap-2"
+                      className="w-full py-3 sm:py-4 bg-alternative-600 text-white text-sm font-medium rounded-lg transition-all duration-200 flex items-center justify-center gap-2"
                     >
                       {isSubmitting ? (
                         <>
@@ -324,8 +324,8 @@ export default function Contact() {
                     
                     <div className="space-y-4 sm:space-y-6">
                       <div className="flex items-start gap-3 sm:gap-4">
-                        <div className="w-8 sm:w-12 h-8 sm:h-12 rounded-full bg-voltify-100 flex items-center justify-center flex-shrink-0">
-                          <Mail className="h-4 sm:h-6 w-4 sm:w-6 text-voltify-600" />
+                        <div className="w-8 sm:w-12 h-8 sm:h-12 rounded-full bg-alternative-100 flex items-center justify-center flex-shrink-0">
+                          <Mail className="h-4 sm:h-6 w-4 sm:w-6 text-alternative-600" />
                         </div>
                         <div>
                           <h4 className="text-sm sm:text-lg font-semibold text-stone-900">Email</h4>
@@ -335,8 +335,8 @@ export default function Contact() {
                       </div>
                       
                       <div className="flex items-start gap-3 sm:gap-4">
-                        <div className="w-8 sm:w-12 h-8 sm:h-12 rounded-full bg-voltify-100 flex items-center justify-center flex-shrink-0">
-                          <Phone className="h-4 sm:h-6 w-4 sm:w-6 text-voltify-600" />
+                        <div className="w-8 sm:w-12 h-8 sm:h-12 rounded-full bg-alternative-100 flex items-center justify-center flex-shrink-0">
+                          <Phone className="h-4 sm:h-6 w-4 sm:w-6 text-alternative-600" />
                         </div>
                         <div>
                           <h4 className="text-sm sm:text-lg font-semibold text-stone-900">Phone</h4>
@@ -346,8 +346,8 @@ export default function Contact() {
                       </div>
                       
                       <div className="flex items-start gap-3 sm:gap-4">
-                        <div className="w-8 sm:w-12 h-8 sm:h-12 rounded-full bg-voltify-100 flex items-center justify-center flex-shrink-0">
-                          <MapPin className="h-4 sm:h-6 w-4 sm:w-6 text-voltify-600" />
+                        <div className="w-8 sm:w-12 h-8 sm:h-12 rounded-full bg-alternative-100 flex items-center justify-center flex-shrink-0">
+                          <MapPin className="h-4 sm:h-6 w-4 sm:w-6 text-alternative-600" />
                         </div>
                         <div>
                           <h4 className="text-sm sm:text-lg font-semibold text-stone-900">Office</h4>
@@ -364,8 +364,8 @@ export default function Contact() {
                     
                     <div className="space-y-4 sm:space-y-6">
                       <div className="flex items-start gap-3 sm:gap-4">
-                        <div className="w-8 sm:w-10 h-8 sm:h-10 rounded-full bg-voltify-100 flex items-center justify-center flex-shrink-0">
-                          <MessageSquare className="h-4 sm:h-5 w-4 sm:w-5 text-voltify-600" />
+                        <div className="w-8 sm:w-10 h-8 sm:h-10 rounded-full bg-alternative-100 flex items-center justify-center flex-shrink-0">
+                          <MessageSquare className="h-4 sm:h-5 w-4 sm:w-5 text-alternative-600" />
                         </div>
                         <div>
                           <h4 className="text-sm sm:text-lg font-semibold text-stone-900 mb-1 sm:mb-2">How quickly can you find candidates?</h4>
@@ -374,8 +374,8 @@ export default function Contact() {
                       </div>
                       
                       <div className="flex items-start gap-3 sm:gap-4">
-                        <div className="w-8 sm:w-10 h-8 sm:h-10 rounded-full bg-voltify-100 flex items-center justify-center flex-shrink-0">
-                          <MessageSquare className="h-4 sm:h-5 w-4 sm:w-5 text-voltify-600" />
+                        <div className="w-8 sm:w-10 h-8 sm:h-10 rounded-full bg-alternative-100 flex items-center justify-center flex-shrink-0">
+                          <MessageSquare className="h-4 sm:h-5 w-4 sm:w-5 text-alternative-600" />
                         </div>
                         <div>
                           <h4 className="text-sm sm:text-lg font-semibold text-stone-900 mb-1 sm:mb-2">What industries do you specialize in?</h4>

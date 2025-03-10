@@ -4,9 +4,9 @@ import { Mail, Phone, MapPin, Send, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export default function Contact() {
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const formData = new FormData(event.target);
+    const formData = new FormData(event.currentTarget);
     const name = formData.get('name');
     const email = formData.get('email');
     const userType = formData.get('userType');
@@ -20,12 +20,13 @@ export default function Contact() {
       return;
     }
 
-    if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
+    if (typeof email === 'string' && !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
       alert('Invalid email address');
       return;
     }
 
-    if (resume.size > 1024 * 1024 * 5) {
+    // Check if resume is a File object
+    if (resume instanceof File && resume.size > 1024 * 1024 * 5) {
       alert('Resume file size exceeds 5MB');
       return;
     }
@@ -37,7 +38,7 @@ export default function Contact() {
   return (
     <section id="contact" className="py-24 white-brick-bg relative">
       <div className="absolute inset-0 z-0">
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-voltify-50 rounded-full filter blur-3xl opacity-30 transform translate-x-1/4"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-alternative-50 rounded-full filter blur-3xl opacity-30 transform translate-x-1/4"></div>
       </div>
       
       <div className="container-custom relative z-10">
@@ -59,7 +60,7 @@ export default function Contact() {
                     <input 
                       type="text" 
                       id="name" 
-                      className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-voltify-500 focus:border-transparent transition-all duration-200"
+                      className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-alternative-500 focus:border-transparent transition-all duration-200"
                       placeholder="Your name"
                       required
                     />
@@ -70,7 +71,7 @@ export default function Contact() {
                     <input 
                       type="email" 
                       id="email" 
-                      className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-voltify-500 focus:border-transparent transition-all duration-200"
+                      className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-alternative-500 focus:border-transparent transition-all duration-200"
                       placeholder="Your email"
                       required
                     />
@@ -98,7 +99,7 @@ export default function Contact() {
                   <input 
                     type="file" 
                     id="resume" 
-                    className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-voltify-500 focus:border-transparent transition-all duration-200"
+                    className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-alternative-500 focus:border-transparent transition-all duration-200"
                     accept=".pdf,.doc,.docx"
                     required
                   />
@@ -109,7 +110,7 @@ export default function Contact() {
                   <input 
                     type="text" 
                     id="subject" 
-                    className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-voltify-500 focus:border-transparent transition-all duration-200"
+                    className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-alternative-500 focus:border-transparent transition-all duration-200"
                     placeholder="Subject"
                     required
                   />
@@ -120,13 +121,13 @@ export default function Contact() {
                   <textarea 
                     id="message" 
                     rows={5} 
-                    className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-voltify-500 focus:border-transparent transition-all duration-200"
+                    className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-alternative-500 focus:border-transparent transition-all duration-200"
                     placeholder="Your message"
                     required
                   ></textarea>
                 </div>
                 
-                <Button type="submit" className="w-full py-6 bg-voltify-600 hover:bg-voltify-700 text-white font-medium rounded-lg transition-all duration-200 flex items-center justify-center gap-2">
+                <Button type="submit" className="w-full py-6 bg-alternative-600 text-white font-medium rounded-lg transition-all duration-200 flex items-center justify-center gap-2">
                   <Send className="h-5 w-5" />
                   Send Message
                 </Button>
@@ -141,8 +142,8 @@ export default function Contact() {
               
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-voltify-100 flex items-center justify-center flex-shrink-0">
-                    <Mail className="h-6 w-6 text-voltify-600" />
+                  <div className="w-12 h-12 rounded-full bg-alternative-100 flex items-center justify-center flex-shrink-0">
+                    <Mail className="h-6 w-6 text-alternative-600" />
                   </div>
                   <div>
                     <h4 className="text-lg font-semibold text-stone-900">Email</h4>
@@ -152,8 +153,8 @@ export default function Contact() {
                 </div>
                 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-voltify-100 flex items-center justify-center flex-shrink-0">
-                    <Phone className="h-6 w-6 text-voltify-600" />
+                  <div className="w-12 h-12 rounded-full bg-alternative-100 flex items-center justify-center flex-shrink-0">
+                    <Phone className="h-6 w-6 text-alternative-600" />
                   </div>
                   <div>
                     <h4 className="text-lg font-semibold text-stone-900">Phone</h4>
@@ -163,8 +164,8 @@ export default function Contact() {
                 </div>
                 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-voltify-100 flex items-center justify-center flex-shrink-0">
-                    <MapPin className="h-6 w-6 text-voltify-600" />
+                  <div className="w-12 h-12 rounded-full bg-alternative-100 flex items-center justify-center flex-shrink-0">
+                    <MapPin className="h-6 w-6 text-alternative-600" />
                   </div>
                   <div>
                     <h4 className="text-lg font-semibold text-stone-900">Office</h4>
@@ -206,8 +207,8 @@ export default function Contact() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
             <GlassCard className="p-6">
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-voltify-100 flex items-center justify-center flex-shrink-0">
-                  <MessageSquare className="h-5 w-5 text-voltify-600" />
+                <div className="w-10 h-10 rounded-full bg-alternative-100 flex items-center justify-center flex-shrink-0">
+                  <MessageSquare className="h-5 w-5 text-alternative-600" />
                 </div>
                 <div>
                   <h4 className="text-lg font-semibold text-stone-900 mb-2">How quickly can you find candidates?</h4>
@@ -218,8 +219,8 @@ export default function Contact() {
             
             <GlassCard className="p-6">
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-voltify-100 flex items-center justify-center flex-shrink-0">
-                  <MessageSquare className="h-5 w-5 text-voltify-600" />
+                <div className="w-10 h-10 rounded-full bg-alternative-100 flex items-center justify-center flex-shrink-0">
+                  <MessageSquare className="h-5 w-5 text-alternative-600" />
                 </div>
                 <div>
                   <h4 className="text-lg font-semibold text-stone-900 mb-2">What industries do you specialize in?</h4>
@@ -230,8 +231,8 @@ export default function Contact() {
             
             <GlassCard className="p-6">
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-voltify-100 flex items-center justify-center flex-shrink-0">
-                  <MessageSquare className="h-5 w-5 text-voltify-600" />
+                <div className="w-10 h-10 rounded-full bg-alternative-100 flex items-center justify-center flex-shrink-0">
+                  <MessageSquare className="h-5 w-5 text-alternative-600" />
                 </div>
                 <div>
                   <h4 className="text-lg font-semibold text-stone-900 mb-2">Do you offer temporary staffing?</h4>
@@ -242,8 +243,8 @@ export default function Contact() {
             
             <GlassCard className="p-6">
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-voltify-100 flex items-center justify-center flex-shrink-0">
-                  <MessageSquare className="h-5 w-5 text-voltify-600" />
+                <div className="w-10 h-10 rounded-full bg-alternative-100 flex items-center justify-center flex-shrink-0">
+                  <MessageSquare className="h-5 w-5 text-alternative-600" />
                 </div>
                 <div>
                   <h4 className="text-lg font-semibold text-stone-900 mb-2">What is your fee structure?</h4>

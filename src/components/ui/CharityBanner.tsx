@@ -6,7 +6,7 @@ export default function CharityBanner() {
   const navigate = useNavigate();
   
   return (
-    <div id="charity" className="relative overflow-hidden bg-gradient-to-r from-voltify-600 to-blue-600 py-6 sm:py-8">
+    <div id="charity" className="relative overflow-hidden bg-alternative-500 py-6 sm:py-8">
       <div className="absolute top-0 right-0 -mt-20 -mr-20 opacity-20">
         <Heart className="h-64 w-64 text-white" />
       </div>

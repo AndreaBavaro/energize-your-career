@@ -6,7 +6,7 @@ export default function GivingBack() {
       <div className="container-custom max-w-4xl">
         <div className="text-center mb-10">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white mb-4">
-            <Heart className="h-8 w-8 text-voltify-600" />
+            <Heart className="h-8 w-8 text-voltify-900" />
           </div>
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-stone-900">Voltify Gives Back</h2>
           <p className="text-lg text-stone-600">Making a positive impact in our communities.</p>

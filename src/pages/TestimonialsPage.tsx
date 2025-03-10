@@ -87,7 +87,7 @@ const TestimonialsPage = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Heading & descriptive text placed below the navbar */}
           <div className="text-center mt-8 mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-voltify-500">What Clients Say</h1>
+            <h1 className="text-4xl md:text-5xl font-bold text-alternative-500">What Clients Say</h1>
             <p className="text-gray-600 max-w-3xl mx-auto mt-4">
               We place huge value on strong relationships and have seen the benefit they bring to our business. 
               Customer feedback is vital in helping us to get it right.
@@ -95,39 +95,39 @@ const TestimonialsPage = () => {
           </div>
           
           {/* Testimonial cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {testimonials.map((testimonial, index) => (
               <div 
                 key={index} 
                 className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 flex flex-col"
               >
                 {/* Card content with avatar at top */}
-                <div className="p-6 md:p-8 flex flex-col items-center text-center">
+                <div className="p-4 sm:p-6 md:p-8 flex flex-col items-center text-center">
                   {/* Avatar */}
-                  <div className="mb-6">
+                  <div className="mb-3 sm:mb-6">
                     <img 
                       src={testimonial.avatarUrl} 
                       alt={testimonial.author} 
-                      className="h-20 w-20 md:h-24 md:w-24 rounded-full object-cover border-4 border-white shadow-md" 
+                      className="h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24 rounded-full object-cover border-4 border-white shadow-md" 
                     />
                   </div>
                   
                   {/* Quote marks */}
-                  <div className="mb-4 text-voltify-400">
-                    <Quote className="h-8 w-8 mx-auto" />
+                  <div className="mb-2 sm:mb-4 text-alternative-400">
+                    <Quote className="h-6 w-6 sm:h-8 sm:w-8 mx-auto" />
                   </div>
                   
                   {/* Testimonial text */}
-                  <div className="max-h-64 overflow-y-auto mb-6 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent">
-                    <p className="text-gray-600 italic">
+                  <div className="max-h-48 sm:max-h-64 overflow-y-auto mb-4 sm:mb-6 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent">
+                    <p className="text-gray-600 italic text-sm sm:text-base">
                       {testimonial.fullQuote}
                     </p>
                   </div>
 
                   {/* Author info */}
                   <div className="mt-auto">
-                    <p className="font-bold text-gray-900">{testimonial.author}</p>
-                    <p className="text-gray-600 text-sm">
+                    <p className="font-bold text-gray-900 text-sm sm:text-base">{testimonial.author}</p>
+                    <p className="text-gray-600 text-xs sm:text-sm">
                       {testimonial.position}
                       {testimonial.company ? `, ${testimonial.company}` : ''}
                     </p>
@@ -141,7 +141,7 @@ const TestimonialsPage = () => {
           <div className="mt-16 text-center">
             <a 
               href="/contact" 
-              className="inline-block bg-voltify-500 hover:bg-voltify-600 text-white font-medium py-3 px-8 rounded-full transition-colors duration-300 shadow-md hover:shadow-lg"
+              className="inline-block bg-alternative-500 hover:bg-alternative-600 text-white font-medium py-3 px-8 rounded-full transition-colors duration-300 shadow-md hover:shadow-lg"
             >
               Get in Touch
             </a>
