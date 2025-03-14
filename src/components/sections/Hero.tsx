@@ -410,13 +410,13 @@ export default function Hero() {
       
       {/* Flexbox layout for side-by-side containers */}
       <div className="container-custom relative z-20 flex flex-col justify-start py-0">
-        <div className="max-w-7xl mx-auto w-full mt-2 sm:mt-2 md:mt-0 md:-ml-[5px]">
+        <div className="max-w-7xl mx-auto w-full mt-2 sm:mt-2 md:mt-0">
           <div className="pt-6 sm:pt-8 md:pt-14">
             {/* Three-column layout on desktop, stacked on mobile */}
             <div className="flex flex-col md:flex-row md:items-start md:justify-center">
               
               {/* PRIMARY FOCUS: Heading and Mission Statement - Center column */}
-              <div className="w-full md:w-[95%] order-1 md:px-0 md:pr-0">
+              <div className="w-full md:w-[95%] order-1 md:px-4">
                 {/* Heading - PRIMARY FOCUS PART 1 */}
                 <div className="text-center mb-2 sm:mb-4 animate-fade-in-up overflow-visible">
                   <h1 className="relative text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[59px] font-bold tracking-tight mt-1 mb-1 sm:mb-2 overflow-visible py-2 sm:py-4 px-2 sm:px-0 leading-tight sm:leading-normal sm:whitespace-nowrap"> 
@@ -430,8 +430,8 @@ export default function Hero() {
                 </div>
                 
                 {/* Mission statement - PRIMARY FOCUS PART 2 */}
-                <div className="relative z-10 mb-4 sm:mb-8 px-2 sm:px-4 md:px-0">
-                  <div className="bg-transparent backdrop-blur-sm border-l-4 border-r-4 border-red-500 pl-3 pr-3 sm:pl-8 sm:pr-10 py-1 rounded-l-lg rounded-r-lg shadow-lg mx-auto max-w-[1000px] relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent">
+                <div className="relative z-10 mb-4 sm:mb-8 px-4 sm:px-6 md:px-6">
+                  <div className="bg-transparent backdrop-blur-sm border-l-4 border-r-4 border-red-500 pl-3 pr-3 sm:pl-8 sm:pr-10 py-1 rounded-l-lg rounded-r-lg shadow-lg mx-auto max-w-[900px] relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent">
                     <p className="text-lg xs:text-xl sm:text-2xl md:text-[33px] lg:text-4xl font-bold text-red-700 leading-tight sm:leading-relaxed text-center relative z-10 py-2">
                       <span className="block mb-1 sm:mb-2 mt-1">True to the meaning of our name – <span className="font-bold text-red-500">Voltify</span> – our mission is clear:</span>
                       <span className="block mb-1 sm:mb-2"><span className="font-bold text-red-500 sm:ml-8">To energize careers</span>, build lasting relationships, connect you with opportunities, and help you grow.</span>
