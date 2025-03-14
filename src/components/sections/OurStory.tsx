@@ -17,11 +17,11 @@ export default function OurStory() {
         
         <div className="max-w-5xl mx-auto">
           <div className="bg-white rounded-xl shadow-lg p-8 mb-10">
-            <h3 className="text-2xl font-bold text-alternative-500 mb-6 text-center">The Voltify Journey</h3>
+            <h3 className="text-2xl font-bold text-alternative-600 mb-6 text-center">The Voltify Journey</h3>
             
             <div className="space-y-6">
               <p className="text-lg text-stone-700 leading-relaxed">
-                The founder of Voltify brings over <span className="font-semibold text-alternative-500">two decades of expertise</span> in the technology and professional staffing industry. Throughout her distinguished career, she has partnered with a diverse range of clients—from innovative startups to Fortune 500 corporations—delivering exceptional talent solutions tailored to their unique needs.
+                The founder of Voltify brings over <span className="font-semibold text-alternative-600">two decades of expertise</span> in the technology and professional staffing industry. Throughout her distinguished career, she has partnered with a diverse range of clients—from innovative startups to Fortune 500 corporations—delivering exceptional talent solutions tailored to their unique needs.
               </p>
               
               <p className="text-lg text-stone-700 leading-relaxed">

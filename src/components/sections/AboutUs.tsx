@@ -35,7 +35,7 @@ export default function AboutUs() {
       <div className="container-custom relative z-10">
         {/* Women-Owned Banner - moved above section heading */}
         <div className="max-w-6xl mx-auto mb-10">
-          <div className="bg-gradient-to-r from-alternative-500 to-alternative-600 rounded-lg shadow-md overflow-hidden">
+          <div className="bg-gradient-to-r from-alternative-600 to-alternative-700 rounded-lg shadow-md overflow-hidden">
             <div className="flex flex-col sm:flex-row items-center justify-between p-4 sm:p-6">
               <div className="flex items-center mb-4 sm:mb-0">
                 <div className="bg-white/20 backdrop-blur-sm p-2 rounded-full mr-4">
@@ -63,25 +63,25 @@ export default function AboutUs() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto">
           <div className="space-y-6">
             <div className="bg-white p-4 rounded-xl shadow-md">
-              <h3 className="text-xl font-semibold text-alternative-700 mb-3 flex items-center">
+              <h3 className="text-xl font-semibold text-alternative-600 mb-3 flex items-center">
                 <Briefcase className="h-5 w-5 mr-2 text-alternative-600" />
                 Our Approach
               </h3>
               <p className="text-lg text-stone-700 leading-relaxed">
-                We partner with <span className="font-medium text-alternative-700">Human Resources departments</span> across the U.S. to meet staffing needs in:
+                We partner with <span className="font-medium text-alternative-600">Human Resources departments</span> across the U.S. to meet staffing needs in:
               </p>
               <div className="mt-3 grid grid-cols-1 sm:grid-cols-3 gap-2">
-                <div className="bg-alternative-50 p-4 rounded-lg border border-alternative-100">
-                  <p className="text-center font-medium text-alternative-700">Information Technology</p>
+                <div className="bg-alternative-100 p-4 rounded-lg border border-alternative-100">
+                  <p className="text-center font-medium text-alternative-600">Information Technology</p>
                 </div>
-                <div className="bg-alternative-50 p-4 rounded-lg border border-alternative-100">
-                  <p className="text-center font-medium text-alternative-700">Human Resources</p>
+                <div className="bg-alternative-100 p-4 rounded-lg border border-alternative-100">
+                  <p className="text-center font-medium text-alternative-600">Human Resources</p>
                 </div>
-                <div className="bg-alternative-50 p-4 rounded-lg border border-alternative-100">
-                  <p className="text-center font-medium text-alternative-700">Executive Leadership</p>
+                <div className="bg-alternative-100 p-4 rounded-lg border border-alternative-100">
+                  <p className="text-center font-medium text-alternative-600">Executive Leadership</p>
                 </div>
               </div>
-              <p className="mt-3 text-lg text-stone-700 leading-relaxed">
+              <p className="mt-3 text-lg text-stone-600 leading-relaxed">
                 We've built an excellent reputation for delivering quality results efficiently.
               </p>
             </div>
@@ -95,7 +95,7 @@ export default function AboutUs() {
                 We believe in a more <span className="font-medium text-alternative-700">tailored approach</span> to staffing and recruitment, treating every candidate and client with the same respect and consideration we would expect ourselves.
               </p>
               <div className="mt-3 flex justify-center">
-                <div className="bg-alternative-50 px-4 py-2 rounded-lg border border-alternative-100 inline-block">
+                <div className="bg-alternative-100 px-4 py-2 rounded-lg border border-alternative-100 inline-block">
                   <p className="text-center italic">"Respect and consideration in every interaction"</p>
                 </div>
               </div>
@@ -111,15 +111,15 @@ export default function AboutUs() {
               </p>
               <div className="mt-3 flex items-center justify-center space-x-4">
                 <div className="text-center">
-                  <p className="text-3xl font-bold text-alternative-700">20+</p>
+                  <p className="text-3xl font-bold text-alternative-600">20+</p>
                   <p className="text-sm text-stone-600">Years Experience</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-3xl font-bold text-alternative-700">100s</p>
+                  <p className="text-3xl font-bold text-alternative-600">100s</p>
                   <p className="text-sm text-stone-600">Careers Enhanced</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-3xl font-bold text-alternative-700">500+</p>
+                  <p className="text-3xl font-bold text-alternative-600">500+</p>
                   <p className="text-sm text-stone-600">Fortune Companies</p>
                 </div>
               </div>
