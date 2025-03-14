@@ -56,38 +56,67 @@ export default {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))'
         },
-        voltify: {
-          50: "#fdf7f3",    // Very light soft nude
-          100: "#f6eadd",   // Lighter warm beige
-          200: "#ebd7c0",   // Balanced nude
-          300: "#e1c5a6",   // Soft creamy beige
-          400: "#daba93",   // Muted peachy beige
-          500: "#D6B89A",   // Base color (Softer, less brown)
-          600: "#c3a789",   // Softened tan
-          700: "#af9579",   // Muted warm taupe
-          800: "#9a8370",   // Neutral brown-tan
-          850: "#8e7867",   // Softer deep taupe
-          900: "#827060",   // Desaturated warm brown
-          950: "#6a5d50",   // Deepest tone, but less brown
+        voltify: { 
+          50:  "#F2F2F2",   // Light silver
+          100: "#E0E0E0",   // Soft silver-gray
+          200: "#C7C7C7",   // Brushed silver
+          300: "#AFAFAF",   // Light metallic steel
+          400: "#989898",   // Cool medium grey
+          450: "#8E8E8E",   // Slightly darker brushed metal grey
+          500: "#808080",   // Base color (Classic metallic grey)
+          600: "#707070",   // Dark polished steel
+          700: "#606060",   // Charcoal metal
+          800: "#505050",   // Deep graphite grey
+          900: "#404040",   // Gunmetal dark grey
+          950: "#303030",   // Almost black metallic
         }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
                
         ,
         alternative: {
-          50: "#fceeed",    // Very light soft red
-          100: "#f8d5d3",   // Soft pastel red
-          200: "#f0aba8",   // Muted warm red
-          300: "#e8807d",   // Soft coral red
-          400: "#e0635b",   // Balanced warm red
-          450: "#db574f",   // NEW (Between 400 & 500) - Slightly darker than 400
-          500: "#D95F54",   // Base color (Brighter Red)
-          600: "#c2564c",   // Muted deep red
-          700: "#aa4c43",   // Earthy warm red
-          800: "#923f38",   // Rich brick red
-          900: "#7a332d",   // Dark rustic red
-          950: "#632822",   // Deepest red-brown
+          50: "#FDEAE9",    // Very light coral pink
+          100: "#FACFCF",   // Soft pastel red
+          200: "#F59E9A",   // Warm light red
+          300: "#F06E6B",   // Bright coral red
+          400: "#EB3F3E",   // Vibrant rich red
+          450: "#E63532",   // Midpoint tone between 400 & 500
+          500: "#DF3229",   // Base color (Fiery Red)
+          600: "#C92D26",   // Strong deep red
+          700: "#B32822",   // Muted crimson red
+          800: "#94221C",   // Dark burnt red
+          900: "#751B16",   // Deepest muted red
+          950: "#5A1410",   // Dark red-brown
         }
+        
+        
         
         
         

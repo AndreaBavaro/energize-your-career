@@ -17,7 +17,7 @@ export default function Hero() {
   useEffect(() => {
     const video = document.querySelector('video');
     if (video) {
-      video.playbackRate = 0.75;
+      video.playbackRate = 1.0;
     }
   }, []);
 
@@ -126,12 +126,49 @@ export default function Hero() {
   // State for modals
   const [isJobSeekerModalOpen, setIsJobSeekerModalOpen] = useState(false);
   const [isEmployerModalOpen, setIsEmployerModalOpen] = useState(false);
+  const [isCharityModalOpen, setIsCharityModalOpen] = useState(false);
 
   return (
     <section 
       id="hero" 
       className="relative min-h-screen flex flex-col justify-between pt-4 overflow-hidden"
     >
+      {/* Voltify Donates 5% - Top Left */}
+      <div className="absolute top-20 left-[10%] z-20 w-auto max-w-[350px] min-w-[280px] mt-14">
+        <div 
+          className="bg-transparent backdrop-blur-sm border-l-4 border-r-4 border-red-500 rounded-lg shadow-lg overflow-hidden p-3 flex flex-col justify-between hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] animate-fade-in relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent"
+        >
+          <div>
+            <div className="rounded-t-lg px-0 py-3">
+              <h3 className="text-alternative-600 font-bold text-lg sm:text-xl md:text-2xl tracking-wide text-center flex items-center justify-center gap-2">
+                Voltify Donates 5%
+              </h3>
+            </div>
+            
+            <div className="px-3 pt-2 pb-3 rounded-b-lg mb-0">
+              <div className="flex justify-center mb-2">
+                <div className="bg-red-500/10 rounded-full px-6 py-2 border border-red-500/30 transform hover:scale-105 transition-transform duration-300">
+                  <span className="font-bold text-red-500 text-xl sm:text-2xl md:text-2xl lg:text-3xl">5%</span>
+                </div>
+              </div>
+              
+              <p className="text-lg text-alternative-600 leading-relaxed text-center">
+                For each candidate hired, we contribute a portion of the fee to assisting those in need through charitable initiatives.
+              </p>
+              
+              {/* Heart decoration */}
+              <div className="flex justify-center mt-2">
+                <div className="flex">
+                  {[...Array(5)].map((_, i) => (
+                    <Heart key={i} className="h-3 w-3 text-red-500 fill-red-500 mx-0.5" />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Video Background */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <video
@@ -139,9 +176,10 @@ export default function Hero() {
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover md:scale-100 md:translate-y-0 md:translate-x-0 scale-125 translate-y-12 translate-x-0 md:translate-x-0" 
+          className="absolute inset-0 w-full h-full object-cover" 
           style={{
             filter: 'contrast(1.2) brightness(1.0) saturate(1.0)',
+            transform: 'translateY(100px)'
           }}
           onError={(e) => console.error("Video loading error:", e)}
         >
@@ -151,145 +189,43 @@ export default function Hero() {
       
       {/* Flexbox layout for side-by-side containers */}
       <div className="container-custom relative z-20 flex flex-col justify-start py-0">
-        <div className="max-w-6xl mx-auto w-full mt-2 sm:mt-4 md:mt-0">
-          <div className="pt-10 sm:pt-8 md:pt-20">
-            {/* Side-by-side containers with flexbox */}
-            <div className="flex flex-col md:flex-row gap-6 items-start">
+        <div className="max-w-7xl mx-auto w-full mt-2 sm:mt-2 md:mt-0 md:-ml-[5px]">
+          <div className="pt-10 sm:pt-8 md:pt-14">
+            {/* Three-column layout on desktop, stacked on mobile */}
+            <div className="flex flex-col md:flex-row md:items-start md:justify-center">
               
-              {/* Text content with backdrop container - made shorter */}
-              <div className="w-full md:w-5/6 mx-auto">
-                <div className="relative p-3 sm:p-4 md:p-5 rounded-xl bg-voltify-600/80 backdrop-blur-sm shadow-lg border border-voltify-200/20 text-center md:text-left h-auto flex flex-col justify-between space-y-2 sm:space-y-0">
-                  
-                <div className="md:grid md:grid-cols-3 md:gap-6 lg:gap-8">
-                <div className="col-span-2">
-                  <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-1 sm:mb-2 text-voltify-700">
-                    <AnimatedText 
-                      text={
-                        <>
-                          <span className="text-white drop-shadow-[0_0_15px_rgba(255,82,82,1)]">Energize</span> Your Career
-                        </>
-                      } 
-                      className="text-voltify-800 block mb-2"
-                      animation="fade-in-up"
-                      delay={200}
-                    />
-                        <div className="flex items-center justify-center md:justify-start mt-1">
-                  <span className="text-voltify-800 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">With</span>
-                  <div className="flex items-center ml-2 relative">
-                    {/* Updated Text Gradient with Orange */}
-                    <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white bg-clip-text bg-gradient-to-r from-orange-500 via-orange-400 to-orange-500 pb-1 leading-relaxed  drop-shadow-[0_0_15px_rgba(255,82,82,1)]
-">
-                      Voltify
+              {/* PRIMARY FOCUS: Heading and Mission Statement - Center column */}
+              <div className="w-full md:w-[95%] order-1 md:px-0 md:pr-0">
+                {/* Heading - PRIMARY FOCUS PART 1 */}
+                <div className="text-center mb-4 animate-fade-in-up overflow-visible">
+                  <h1 className="relative text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-[54px] font-bold tracking-tight mt-1 mb-1 sm:mb-2 whitespace-nowrap overflow-visible py-4"> 
+                    <span className="text-red-500 drop-shadow-[0_0_15px_rgba(255,82,82,1)]">
+                      Energize Your Career With Voltify
+                      <Zap 
+                        className="inline-block h-6 w-5 sm:h-8 sm:w-6 md:h-10 md:w-8 lg:h-12 lg:w-10 ml-1 text-yellow-400 drop-shadow-[0_0_10px_rgba(255,82,82,1)] fill-current animate-pulse"
+                      />
                     </span>
-
-                    {/* Zap Icon with Matching Gradient */}
-                  <Zap 
-                    className="h-6 w-5 sm:h-8 sm:w-6 md:h-10 md:w-8 ml-1 text-white drop-shadow-[0_0_10px_rgba(255,82,82,1)] fill-current"
-                  />
-                </div>
-                  </div>
                   </h1>
-                      
-                      <div className="md:pr-6">
-                        <div className="bg-voltify-800/40 backdrop-blur-sm border-l-4 border-alternative-400 pl-4 pr-2 py-3 rounded-r-lg shadow-md mt-2 mb-6">
-                          <p className="text-lg sm:text-xl md:text-xl text-white leading-relaxed font-small">
-                            True to the meaning of our name – Voltify – our mission is clear: to energize careers, build lasting relationships, connect you with opportunities, and help you grow, all supported by a positive mindset that leads to success.
-                          </p>
-                        </div>
-                      </div>
-                      
-                      <div className="md:flex md:items-end md:justify-start">
-                        <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center md:justify-start">
-                          <Button 
-                            className="bg-alternative-500 text-white px-5 sm:px-6 py-3 sm:py-4 rounded-lg shadow-lg transition-all duration-300 text-base sm:text-lg font-medium"
-                            size="lg"
-                            onClick={() => setIsJobSeekerModalOpen(true)}
-                          >
-                            For Job Seekers
-                            <ArrowRight className="ml-2 h-5 w-5" />
-                          </Button>
-                          
-                          <Button 
-                            className="bg-alternative-700 text-white px-5 sm:px-6 py-3 sm:py-4 rounded-lg shadow-lg transition-all duration-300 text-base sm:text-lg font-medium"
-                            size="lg"
-                            onClick={() => setIsEmployerModalOpen(true)}
-                          >
-                            For Employers
-                            <ArrowRight className="ml-2 h-5 w-5" />
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
+                </div>
+                
+                {/* Mission statement - PRIMARY FOCUS PART 2 */}
+                <div className="relative z-10 mb-8">
+                  <div className="bg-transparent backdrop-blur-sm border-l-4 border-r-4 border-red-500 pl-8 pr-10 py-1 rounded-l-lg rounded-r-lg shadow-lg mx-auto max-w-[1000px] relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent">
+                    <p className="text-xl sm:text-2xl md:text-[33px] font-bold text-red-700 leading-relaxed text-center relative z-10">
+                      <span className="block mb-2">True to the meaning of our name – <span className="font-bold text-red-500">Voltify</span> – our mission is clear:</span>
+                      <span className="block mb-2"><span className="font-bold text-red-500">To energize careers</span>, build lasting relationships, connect you with opportunities, and help you grow.</span>
+                      <span className="block mb-1">All supported by a positive mindset that leads to success.</span>
+                    </p>
                     
-                    {/* Testimonial card - positioned on the right side */}
-                    <div className="hidden md:block col-span-1">
-                      <div 
-                        className="bg-voltify-700/80 backdrop-blur-md rounded-lg border border-voltify-400/20 shadow-lg overflow-hidden p-4 h-full flex flex-col justify-between cursor-pointer hover:shadow-xl transition-all duration-300 border-voltify-900"
-                        onClick={goToTestimonialsPage}
+                    {/* CTA Button */}
+                    <div className="flex justify-center relative z-10 mt-6 mb-2">
+                      <Button 
+                        className="bg-gradient-to-r from-red-600 via-red-500 to-red-600 hover:from-red-500 hover:to-red-600 text-white px-6 py-3 rounded-full shadow-xl transition-all duration-300 text-lg sm:text-xl font-medium border border-red-400/30 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/20 before:to-transparent before:opacity-70 transform hover:scale-105"
+                        onClick={() => window.open('/contact', '_self')}
                       >
-                        <div>
-                          <div className="bg-alternative-700 rounded-t-lg px-3 py-2 border-voltify-900">
-                            <h3 className="text-white font-bold text-sm tracking-wide text-center">Client Testimonials</h3>
-                          </div>
-                          
-                          <div className="bg-voltify-700/40 px-4 pt-3 pb-2 rounded-b-lg mb-3 border-2 border-voltify-900">
-                            <div className="flex items-center justify-between mb-2">
-                              <div className="flex items-center">
-                                <div className={`w-9 h-9 rounded-full ${currentTestimonial.bgColor} flex items-center justify-center text-white font-bold text-xs mr-2 shadow-sm`}>
-                                  {currentTestimonial.initials}
-                                </div>
-                                <div>
-                                  <h4 className="text-sm font-semibold text-white">{currentTestimonial.author}</h4>
-                                  <p className="text-xs text-stone-100">{currentTestimonial.position}</p>
-                                </div>
-                              </div>
-                            </div>
-
-                            <blockquote className="text-sm text-stone-100 mb-2 leading-relaxed italic">
-                              "{currentTestimonial.quote}"
-                            </blockquote>
-                          </div>
-                        </div>
-                        
-                        <div className="flex justify-between items-center">
-                          <div className="flex space-x-1.5">
-                            {testimonials.map((_, index) => (
-                              <button 
-                                key={index}
-                                onClick={(e) => {
-                                  e.stopPropagation(); // Prevent navigation when clicking on dots
-                                  setCurrentTestimonialIndex(index);
-                                }}
-                                className={`w-2 h-2 rounded-full transition-colors ${index === currentTestimonialIndex ? 'bg-white' : 'bg-white/40'}`}
-                                aria-label={`Go to testimonial ${index + 1}`}
-                              />
-                            ))}
-                          </div>
-                          
-                          <div className="flex space-x-1.5">
-                            <button 
-                              onClick={(e) => {
-                                e.stopPropagation(); // Prevent navigation when clicking navigation buttons
-                                prevTestimonial();
-                              }}
-                              className="w-7 h-7 rounded-full bg-voltify-700/20 flex items-center justify-center transition-colors"
-                              aria-label="Previous testimonial"
-                            >
-                              <ChevronLeft className="h-4 w-4 text-white" />
-                            </button>
-                            <button 
-                              onClick={(e) => {
-                                e.stopPropagation(); // Prevent navigation when clicking navigation buttons
-                                nextTestimonial();
-                              }}
-                              className="w-7 h-7 rounded-full bg-voltify-700/20 flex items-center justify-center transition-colors"
-                              aria-label="Next testimonial"
-                            >
-                              <ChevronRight className="h-4 w-4 text-white" />
-                            </button>
-                          </div>
-                        </div>
-                      </div>
+                        Connect With Us
+                        <ArrowRight className="ml-2 h-5 w-5" />
+                      </Button>
                     </div>
                   </div>
                 </div>
@@ -299,26 +235,85 @@ export default function Hero() {
         </div>
       </div>
       
-      {/* Charitable giving banner */}
-      <div className="container-custom relative z-10 py-6 md:py-16 mt-2 sm:mt-0.5 mb-16 sm:mb-8">
-        <div className="text-center">
-          <div className="inline-block max-w-3xl w-full">
-            <div 
-              className="bg-voltify-600/90 backdrop-blur-md rounded-lg border border-voltify-400/30 shadow-lg overflow-hidden px-4 sm:px-8 py-3 sm:py-6 cursor-pointer hover:bg-voltify-700/90 transition-colors"
-              onClick={goToCharityPage}
-            >
-              <div className="flex flex-row items-center justify-center gap-2 sm:gap-4">
-                <Heart className="h-4 w-4 sm:h-6 sm:w-6 text-voltify-200 flex-shrink-0" fill="currentColor" />
-                <div className="flex-grow">
-                  <h2 className="text-base sm:text-lg md:text-3xl font-bold text-white mb-1">
-                    5% Voltify Gives Back
-                  </h2>
-                  <p className="text-white/95 text-xs sm:text-base leading-relaxed font-light">
-                    For each candidate hired, we contribute 5% of the fee to assisting those in need through charitable initiatives.
-                  </p>
+      {/* Client Testimonials - Bottom Center */}
+      <div className="absolute bottom-4 left-0 right-0 z-20 flex justify-center">
+        <div 
+          className="bg-transparent backdrop-blur-sm border-l-4 border-r-4 border-red-500 rounded-lg shadow-lg overflow-hidden p-0 flex flex-col justify-between cursor-pointer hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] animate-fade-in relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent w-full max-w-[750px]"
+          onClick={goToTestimonialsPage}
+        >
+          {/* Title at the top */}
+          <div className="px-4 pt-0 pb-0 border-b border-red-500/30 flex justify-center">
+            <h3 className="text-alternative-600 font-bold text-xl sm:text-2xl tracking-wide flex mr-13 items-center gap-2 mb-0">
+              Client Testimonials
+            </h3>
+          </div>
+          
+          {/* Content row */}
+          <div className="flex items-center justify-between px-4 pb-0">
+            {/* Left: Author info with stars below */}
+            <div className="flex flex-col min-w-[180px] pr-4">
+              <div className="flex items-center mb-1">
+                <div className={`w-10 h-10 rounded-full ${currentTestimonial.bgColor} flex items-center justify-center text-white font-bold text-sm mr-2 shadow-sm`}>
+                  {currentTestimonial.initials}
                 </div>
-                <Heart className="h-4 w-4 sm:h-6 sm:w-6 text-voltify-200 flex-shrink-0" fill="currentColor" />
+                <div>
+                  <h4 className="text-base font-semibold text-alternative-600">{currentTestimonial.author}</h4>
+                  <p className="text-xs text-alternative-500">{currentTestimonial.position}</p>
+                </div>
               </div>
+              {/* 5-star review below author */}
+              <div className="flex ml-2 mt-3 ml-2">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="h-3.5 w-3.5 text-yellow-400 fill-yellow-400" />
+                ))}
+              </div>
+            </div>
+            
+            {/* Center: Quote */}
+            <div className="flex-1 border-l-2 border-red-500/30 pl-4 py-2">
+              <blockquote className="text-sm text-alternative-600 italic">
+                "{currentTestimonial.quote}"
+              </blockquote>
+            </div>
+          </div>
+          
+          {/* Navigation dots and arrows */}
+          <div className="flex justify-between items-center px-4 py-2 border-t border-red-500/30">
+            <div className="flex space-x-1.5">
+              {testimonials.map((_, index) => (
+                <button 
+                  key={index}
+                  onClick={(e) => {
+                    e.stopPropagation(); // Prevent navigation when clicking on dots
+                    setCurrentTestimonialIndex(index);
+                  }}
+                  className={`w-2 h-2 rounded-full transition-colors ${index === currentTestimonialIndex ? 'bg-red-500' : 'bg-red-500/40'}`}
+                  aria-label={`Go to testimonial ${index + 1}`}
+                />
+              ))}
+            </div>
+            
+            <div className="flex space-x-1.5">
+              <button 
+                onClick={(e) => {
+                  e.stopPropagation(); // Prevent navigation when clicking navigation buttons
+                  prevTestimonial();
+                }}
+                className="w-6 h-6 rounded-full bg-red-500/20 flex items-center justify-center transition-colors hover:bg-red-500/30"
+                aria-label="Previous testimonial"
+              >
+                <ChevronLeft className="h-4 w-4 text-red-500" />
+              </button>
+              <button 
+                onClick={(e) => {
+                  e.stopPropagation(); // Prevent navigation when clicking navigation buttons
+                  nextTestimonial();
+                }}
+                className="w-6 h-6 rounded-full bg-red-500/20 flex items-center justify-center transition-colors hover:bg-red-500/30"
+                aria-label="Next testimonial"
+              >
+                <ChevronRight className="h-4 w-4 text-red-500" />
+              </button>
             </div>
           </div>
         </div>
