@@ -168,26 +168,44 @@ export default function Hero() {
       </div>
 
       {/* Mobile version of Voltify Donates - Bottom Left */}
-      <div className="absolute bottom-[80px] left-4 z-30 w-[42%] max-w-[170px] min-w-[140px] md:hidden">
+      <div className="absolute bottom-[20px] left-4 z-30 w-[42%] max-w-[170px] min-w-[140px] sm:hidden">
         <div 
           className="bg-transparent backdrop-blur-sm border-l-4 border-r-4 border-red-500 rounded-lg shadow-lg overflow-hidden p-2 flex flex-col justify-between hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] animate-fade-in relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent cursor-pointer"
           onClick={() => window.open('/charity', '_self')}
         >
-          <div className="flex flex-col items-center text-center">
-            <h3 className="text-sm font-bold text-red-500 tracking-wide drop-shadow-[0_0_8px_rgba(255,255,255,0.3)] relative z-10 flex items-center">
-              <span className="text-yellow-400 mr-1"></span>
-              Voltify Donates 5%
-              <span className="text-yellow-400 ml-1"></span>
-            </h3>
-            <p className="text-xs text-red-700/95 leading-tight max-w-xl mx-auto font-medium mt-1">
-              For each candidate hired, we contribute <span className="font-bold text-red-500 text-xs">5%</span> of the fee to charity.
-            </p>
+          <div>
+            <div className="rounded-t-lg px-0 py-1">
+              <h3 className="text-alternative-600 font-bold text-sm tracking-wide text-center flex items-center justify-center gap-1">
+                Voltify Donates 5%
+              </h3>
+            </div>
+            
+            <div className="px-2 pt-1 pb-1 rounded-b-lg mb-0">
+              <div className="flex items-center mb-1">
+                <div className="w-5 h-5 rounded-full bg-red-500 flex items-center justify-center text-white font-bold text-[10px] mr-2 shadow-sm">
+                  <span className="text-[10px]">5%</span>
+                </div>
+                <div>
+                  <h4 className="text-xs font-semibold text-alternative-600">Charity Support</h4>
+                  <p className="text-[10px] text-alternative-600">For each hire</p>
+                </div>
+              </div>
+
+              <blockquote className="text-xs text-alternative-600 mb-1 leading-tight italic min-h-[40px] flex items-center">
+                <p>We contribute 5% of our fee to charitable initiatives helping those in need.</p>
+              </blockquote>
+              
+              {/* Heart icon */}
+              <div className="flex justify-center mb-1">
+                <Heart className="h-3 w-3 text-red-500 fill-red-200" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Mobile CTA Button positioned in bottom left */}
-      <div className="absolute bottom-4 left-4 flex justify-center z-30 md:hidden">
+      <div className="absolute bottom-4 left-4 flex justify-center z-30 sm:hidden hidden">
         <Button 
           className="bg-gradient-to-r from-red-600 via-red-500 to-red-600 hover:from-red-500 hover:to-red-600 text-white px-3 py-2 rounded-full shadow-2xl transition-all duration-300 text-sm font-bold border border-red-400/30 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/20 before:to-transparent before:opacity-70 transform hover:scale-105"
           onClick={() => window.open('/contact', '_self')}
@@ -278,7 +296,7 @@ export default function Hero() {
       </div>
 
       {/* Mobile version of Client Testimonials - Bottom Right */}
-      <div className="absolute bottom-[80px] right-4 z-30 w-[42%] max-w-[170px] min-w-[140px] md:hidden">
+      <div className="absolute bottom-[20px] right-4 z-30 w-[42%] max-w-[170px] min-w-[140px] sm:hidden">
         <div 
           className="bg-transparent backdrop-blur-sm border-l-4 border-r-4 border-red-500 rounded-lg shadow-lg overflow-hidden p-2 flex flex-col justify-between cursor-pointer hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] animate-fade-in relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent"
           onClick={goToTestimonialsPage}
@@ -384,7 +402,7 @@ export default function Hero() {
             className="absolute inset-0 w-full h-full object-cover" 
             style={{
               filter: 'contrast(1.2) brightness(1.0) saturate(1.0)',
-              transform: 'translateY(0) scale(1.0)'
+              transform: 'translateY(-20px) scale(1.0)'
             }}
             onError={(e) => console.error("Video loading error:", e)}
           >
@@ -423,6 +441,17 @@ export default function Hero() {
                       <span className="block mb-2 mr-2">connect you with opportunities, and help you grow.</span>
                       <span className="block ml-10">All supported by a positive mindset that leads to success.</span>
                     </p>
+                  </div>
+                  
+                  {/* Mobile CTA Button positioned below mission statement */}
+                  <div className="flex justify-center mt-4 sm:hidden">
+                    <Button 
+                      className="bg-gradient-to-r from-red-600 via-red-500 to-red-600 hover:from-red-500 hover:to-red-600 text-white px-4 py-2 rounded-full shadow-2xl transition-all duration-300 text-sm font-bold border border-red-400/30 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/20 before:to-transparent before:opacity-70 transform hover:scale-105"
+                      onClick={() => window.open('/contact', '_self')}
+                    >
+                      Connect With Us
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
                   </div>
                 </div>
               </div>
