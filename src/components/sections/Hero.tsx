@@ -168,47 +168,32 @@ export default function Hero() {
       </div>
 
       {/* Mobile version of Voltify Donates - Bottom Left */}
-      <div className="absolute bottom-[70px] left-4 z-30 w-[45%] max-w-[180px] min-w-[150px] md:hidden">
+      <div className="absolute bottom-[80px] left-4 z-30 w-[42%] max-w-[170px] min-w-[140px] md:hidden">
         <div 
           className="bg-transparent backdrop-blur-sm border-l-4 border-r-4 border-red-500 rounded-lg shadow-lg overflow-hidden p-2 flex flex-col justify-between hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] animate-fade-in relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent cursor-pointer"
           onClick={() => window.open('/charity', '_self')}
         >
-          <div>
-            <div className="rounded-t-lg px-0 py-1">
-              <h3 className="text-alternative-600 font-bold text-sm tracking-wide text-center flex items-center justify-center gap-1">
-                Voltify Donates 5%
-              </h3>
-            </div>
-            
-            <div className="px-2 pt-1 pb-1 rounded-b-lg mb-0">
-              <p className="text-xs text-alternative-600 leading-tight max-w-xl mx-auto font-light">
-                For each hire, we donate <span className="font-bold text-red-500 text-xs">5%</span> to charity.
-              </p>
-              <div className="flex justify-center">
-                <Button 
-                  className="bg-gradient-to-r from-red-600 via-red-500 to-red-600 hover:from-red-500 hover:to-red-600 text-white px-2 py-1 rounded-full shadow-lg transition-all duration-300 text-[10px] font-medium border border-red-400/30 mt-1 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/20 before:to-transparent before:opacity-70"
-                  onClick={(e) => {
-                    e.stopPropagation(); // Prevent double navigation
-                    window.open('/charity', '_self');
-                  }}
-                >
-                  Learn More
-                  <Heart className="ml-0.5 h-2 w-2 text-red-200 fill-red-200" />
-                </Button>
-              </div>
-            </div>
+          <div className="flex flex-col items-center text-center">
+            <h3 className="text-sm font-bold text-red-500 tracking-wide drop-shadow-[0_0_8px_rgba(255,255,255,0.3)] relative z-10 flex items-center">
+              <span className="text-yellow-400 mr-1"></span>
+              Voltify Donates 5%
+              <span className="text-yellow-400 ml-1"></span>
+            </h3>
+            <p className="text-xs text-red-700/95 leading-tight max-w-xl mx-auto font-medium mt-1">
+              For each candidate hired, we contribute <span className="font-bold text-red-500 text-xs">5%</span> of the fee to charity.
+            </p>
           </div>
         </div>
       </div>
 
       {/* Mobile CTA Button positioned in bottom left */}
-      <div className="absolute bottom-4 left-1 flex justify-center z-30 md:hidden">
+      <div className="absolute bottom-4 left-4 flex justify-center z-30 md:hidden">
         <Button 
-          className="bg-gradient-to-r from-red-600 via-red-500 to-red-600 hover:from-red-500 hover:to-red-600 text-white px-4 sm:px-6 py-3 rounded-full shadow-2xl transition-all duration-300 text-base sm:text-xl font-bold border border-red-400/30 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/20 before:to-transparent before:opacity-70 transform hover:scale-105"
+          className="bg-gradient-to-r from-red-600 via-red-500 to-red-600 hover:from-red-500 hover:to-red-600 text-white px-3 py-2 rounded-full shadow-2xl transition-all duration-300 text-sm font-bold border border-red-400/30 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/20 before:to-transparent before:opacity-70 transform hover:scale-105"
           onClick={() => window.open('/contact', '_self')}
         >
           Connect With Us
-          <ArrowRight className="ml-1 h-5 w-5 sm:h-6 sm:w-6" />
+          <ArrowRight className="ml-2 h-4 w-4" />
         </Button>
       </div>
 
@@ -293,7 +278,7 @@ export default function Hero() {
       </div>
 
       {/* Mobile version of Client Testimonials - Bottom Right */}
-      <div className="absolute bottom-4 right-4 z-30 w-[45%] max-w-[180px] min-w-[150px] md:hidden">
+      <div className="absolute bottom-[80px] right-4 z-30 w-[42%] max-w-[170px] min-w-[140px] md:hidden">
         <div 
           className="bg-transparent backdrop-blur-sm border-l-4 border-r-4 border-red-500 rounded-lg shadow-lg overflow-hidden p-2 flex flex-col justify-between cursor-pointer hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] animate-fade-in relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent"
           onClick={goToTestimonialsPage}
@@ -411,36 +396,34 @@ export default function Hero() {
       {/* Flexbox layout for side-by-side containers */}
       <div className="container-custom relative z-20 flex flex-col justify-start py-0">
         <div className="max-w-7xl mx-auto w-full mt-2 sm:mt-2 md:mt-0 md:-ml-[5px]">
-          <div className="pt-6 sm:pt-8 md:pt-14">
+          <div className="pt-4 sm:pt-6 md:pt-14">
             {/* Three-column layout on desktop, stacked on mobile */}
             <div className="flex flex-col md:flex-row md:items-start md:justify-center">
               
               {/* PRIMARY FOCUS: Heading and Mission Statement - Center column */}
               <div className="w-full md:w-[95%] order-1 md:px-0 md:pr-0">
                 {/* Heading - PRIMARY FOCUS PART 1 */}
-                <div className="text-center mb-2 sm:mb-4 animate-fade-in-up overflow-visible">
-                  <h1 className="relative text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[59px] font-bold tracking-tight mt-1 mb-1 sm:mb-2 overflow-visible py-2 sm:py-4 px-2 sm:px-0 leading-tight sm:leading-normal sm:whitespace-nowrap"> 
+                <div className="text-center mb-3 animate-fade-in-up overflow-visible">
+                  <h1 className="relative text-xl xs:text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-[59px] font-bold tracking-tight mt-1 mb-2 overflow-visible py-3 px-2 leading-tight whitespace-normal md:whitespace-nowrap"> 
                     <span className="text-red-500 drop-shadow-[0_2px_4px_rgba(239,68,68,0.8)] md:drop-shadow-[0_0_15px_rgba(255,82,82,1)]">
                       Energize Your Career With Voltify
                       <Zap 
-                        className="inline-block h-5 w-4 xs:h-6 xs:w-5 sm:h-8 sm:w-6 md:h-10 md:w-8 lg:h-12 lg:w-10 ml-1 text-yellow-400 drop-shadow-[0_2px_4px_rgba(250,204,21,0.8)] md:drop-shadow-[0_0_10px_rgba(255,82,82,1)] fill-current animate-pulse ml-2"
+                        className="inline-block h-4 w-3 xs:h-5 xs:w-4 sm:h-7 sm:w-5 md:h-10 md:w-8 lg:h-12 lg:w-10 ml-2 text-yellow-400 drop-shadow-[0_2px_4px_rgba(250,204,21,0.8)] md:drop-shadow-[0_0_10px_rgba(255,82,82,1)] fill-current animate-pulse"
                       />
                     </span>
                   </h1>
                 </div>
                 
                 {/* Mission statement - PRIMARY FOCUS PART 2 */}
-                <div className="relative z-10 mb-4 sm:mb-8 px-2 sm:px-4 md:px-0">
-                  <div className="bg-transparent backdrop-blur-sm border-l-4 border-r-4 border-red-500 pl-3 pr-3 sm:pl-8 sm:pr-10 py-1 rounded-l-lg rounded-r-lg shadow-lg mx-auto max-w-[1000px] relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent">
-                    <p className="text-lg xs:text-xl sm:text-2xl md:text-[33px] lg:text-4xl font-bold text-red-700 leading-tight sm:leading-relaxed text-center relative z-10 py-2">
-                      <span className="block mb-1 sm:mb-2 mt-1">True to the meaning of our name – <span className="font-bold text-red-500">Voltify</span> – our mission is clear:</span>
-                      <span className="block mb-1 sm:mb-2"><span className="font-bold text-red-500 sm:ml-8">To energize careers</span>, build lasting relationships, connect you with opportunities, and help you grow.</span>
-                      <span className="block mb-1 sm:mb-2">All supported by a positive mindset that leads to success.</span>
+                <div className="relative z-10 mb-6 px-4">
+                  <div className="bg-transparent backdrop-blur-sm border-l-4 border-r-4 border-red-500 pl-4 pr-4 py-2 rounded-l-lg rounded-r-lg shadow-lg mx-auto max-w-[1000px] relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent">
+                    <p className="text-base xs:text-lg sm:text-xl md:text-[33px] lg:text-4xl font-bold text-red-700 leading-tight text-center relative z-10 py-2">
+                      <span className="block mb-2 mt-1">True to the meaning of our name – <span className="font-bold text-red-500">Voltify</span> – our mission is clear:</span>
+                      <span className="block mb-2"><span className="font-bold text-red-500 md:ml-8">To energize careers</span>, build lasting relationships, connect you with opportunities, and help you grow.</span>
+                      <span className="block mb-2">All supported by a positive mindset that leads to success.</span>
                     </p>
                   </div>
                 </div>
-
-                {/* Removed CTA Button that was under mission statement */}
               </div>
             </div>
           </div>
