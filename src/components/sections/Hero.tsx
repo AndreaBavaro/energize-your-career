@@ -134,7 +134,7 @@ export default function Hero() {
       className="relative min-h-[100svh] flex flex-col justify-between pt-4 overflow-hidden"
     >
       {/* Voltify Donates 5% - Top Left on desktop, Bottom Left on mobile */}
-      <div className="absolute md:top-20 md:left-[10%] bottom-0 left-2 md:bottom-auto z-20 w-auto max-w-[300px] min-w-[200px] md:min-w-[240px] md:mt-14 hidden md:block">
+      <div className="absolute md:top-20 md:left-[7%] bottom-0 left-2 md:bottom-auto z-20 w-auto max-w-[300px] min-w-[200px] md:min-w-[240px] md:mt-14 hidden md:block">
         <div 
           className="bg-transparent backdrop-blur-sm border-l-4 border-r-4 border-red-500 rounded-lg shadow-lg overflow-hidden p-2 flex flex-col justify-between hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] animate-fade-in relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent cursor-pointer"
           onClick={() => window.open('/charity', '_self')}
@@ -168,7 +168,7 @@ export default function Hero() {
       </div>
 
       {/* Mobile version of Voltify Donates - Bottom Left */}
-      <div className="absolute bottom-[10vh] left-[3vw] z-30 w-[42%] max-w-[170px] min-w-[140px] md:hidden">
+      <div className="absolute bottom-[80px] left-4 z-30 w-[42%] max-w-[170px] min-w-[140px] md:hidden">
         <div 
           className="bg-transparent backdrop-blur-sm border-l-4 border-r-4 border-red-500 rounded-lg shadow-lg overflow-hidden p-2 flex flex-col justify-between hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] animate-fade-in relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent cursor-pointer"
           onClick={() => window.open('/charity', '_self')}
@@ -187,7 +187,7 @@ export default function Hero() {
       </div>
 
       {/* Mobile CTA Button positioned in bottom left */}
-      <div className="absolute bottom-[2vh] left-[3vw] flex justify-center z-30 md:hidden">
+      <div className="absolute bottom-4 left-4 flex justify-center z-30 md:hidden">
         <Button 
           className="bg-gradient-to-r from-red-600 via-red-500 to-red-600 hover:from-red-500 hover:to-red-600 text-white px-3 py-2 rounded-full shadow-2xl transition-all duration-300 text-sm font-bold border border-red-400/30 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/20 before:to-transparent before:opacity-70 transform hover:scale-105"
           onClick={() => window.open('/contact', '_self')}
@@ -198,7 +198,7 @@ export default function Hero() {
       </div>
 
       {/* Client Testimonials - Top Right on desktop, Bottom Right on mobile */}
-      <div className="absolute md:top-20 md:right-[10%] bottom-auto right-auto z-20 w-auto max-w-[300px] min-w-[240px] md:mt-14 hidden md:block">
+      <div className="absolute md:top-20 md:right-[7%] bottom-auto right-auto z-20 w-auto max-w-[300px] min-w-[240px] md:mt-14 hidden md:block">
         <div 
           className="bg-transparent backdrop-blur-sm border-l-4 border-r-4 border-red-500 rounded-lg shadow-lg overflow-hidden p-2 flex flex-col justify-between cursor-pointer hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] animate-fade-in relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent"
           onClick={goToTestimonialsPage}
@@ -278,7 +278,7 @@ export default function Hero() {
       </div>
 
       {/* Mobile version of Client Testimonials - Bottom Right */}
-      <div className="absolute bottom-[10vh] right-[3vw] z-30 w-[42%] max-w-[170px] min-w-[140px] md:hidden">
+      <div className="absolute bottom-[80px] right-4 z-30 w-[42%] max-w-[170px] min-w-[140px] md:hidden">
         <div 
           className="bg-transparent backdrop-blur-sm border-l-4 border-r-4 border-red-500 rounded-lg shadow-lg overflow-hidden p-2 flex flex-col justify-between cursor-pointer hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] animate-fade-in relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent"
           onClick={goToTestimonialsPage}
@@ -403,8 +403,8 @@ export default function Hero() {
               {/* PRIMARY FOCUS: Heading and Mission Statement - Center column */}
               <div className="w-full md:w-[95%] order-1 md:px-0 md:pr-0">
                 {/* Heading - PRIMARY FOCUS PART 1 */}
-                <div className="text-center mb-[2vh] animate-fade-in-up overflow-visible">
-                  <h1 className="relative text-xl xs:text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-[59px] font-bold tracking-tight mt-[1vh] mb-[1vh] overflow-visible py-[1.5vh] px-[1vw] leading-tight whitespace-normal md:whitespace-nowrap"> 
+                <div className="text-center mb-3 animate-fade-in-up overflow-visible">
+                  <h1 className="relative text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-[40px] xl:text-5xl font-bold tracking-tight mt-1 mb-2 overflow-visible py-3 px-2 leading-tight whitespace-normal md:whitespace-nowrap"> 
                     <span className="text-red-500 drop-shadow-[0_2px_4px_rgba(239,68,68,0.8)] md:drop-shadow-[0_0_15px_rgba(255,82,82,1)]">
                       Energize Your Career With Voltify
                       <Zap 
@@ -415,12 +415,13 @@ export default function Hero() {
                 </div>
                 
                 {/* Mission statement - PRIMARY FOCUS PART 2 */}
-                <div className="relative z-10 mb-[3vh] px-[2vw]">
-                  <div className="bg-transparent backdrop-blur-sm border-l-4 border-r-4 border-red-500 pl-[2vw] pr-[2vw] py-[1vh] rounded-l-lg rounded-r-lg shadow-lg mx-auto max-w-[1000px] relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent">
-                    <p className="text-base xs:text-lg sm:text-xl md:text-[33px] lg:text-4xl font-bold text-red-700 leading-tight text-center relative z-10 py-[1vh]">
-                      <span className="block mb-[1vh] mt-[0.5vh]">True to the meaning of our name – <span className="font-bold text-red-500">Voltify</span> – our mission is clear:</span>
-                      <span className="block mb-[1vh]"><span className="font-bold text-red-500 md:ml-[2vw]">To energize careers</span>, build lasting relationships, connect you with opportunities, and help you grow.</span>
-                      <span className="block mb-[1vh]">All supported by a positive mindset that leads to success.</span>
+                <div className="relative z-10 mb-6 px-4">
+                  <div className="bg-transparent backdrop-blur-sm border-l-4 border-r-4 border-red-500 pl-4 pr-4 py-2 rounded-l-lg rounded-r-lg shadow-lg mx-auto max-w-[1000px] relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent">
+                    <p className="text-base xs:text-lg sm:text-xl md:text-[33px] lg:text-4xl font-bold text-red-700 leading-tight text-center relative z-10 py-2">
+                      <span className="block mb-2 mt-1">True to the meaning of our name – <span className="font-bold text-red-500">Voltify</span> – our mission is clear:</span>
+                      <span className="block mb-2"><span className="font-bold text-red-500 md:ml-6">To energize careers</span>, build lasting relationships, </span>
+                      <span className="block mb-2 mr-2">connect you with opportunities, and help you grow.</span>
+                      <span className="block ml-10">All supported by a positive mindset that leads to success.</span>
                     </p>
                   </div>
                 </div>
