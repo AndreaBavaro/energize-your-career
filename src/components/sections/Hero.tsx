@@ -153,7 +153,7 @@ export default function Hero() {
             style={{
               filter: 'contrast(1.2) brightness(1.0) saturate(1.0)',
               transform: 'translateY(0) scale(1.0)',
-              marginTop: '40px'
+              marginTop: '110px'
             }}
             onError={(e) => console.error("Video loading error:", e)}
           >
@@ -497,14 +497,6 @@ export default function Hero() {
                     variants={fadeInUp}
                     transition={{ delay: 2.9 }} // Fifth element to appear
                   >
-                    <LogoDisplay 
-                      position="relative"
-                      width="clamp(200px, 40vw, 300px)"
-                      height="auto"
-                      className="mb-6 transition-all duration-300"
-                      responsive={true}
-                    />
-                    
                     <Button 
                       className="bg-gradient-to-r from-red-600 via-red-500 to-red-600 hover:from-red-500 hover:to-red-600 text-white px-4 py-2 rounded-full shadow-2xl transition-all duration-300 text-sm font-bold border border-red-400/30 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/20 before:to-transparent before:opacity-70 transform hover:scale-105"
                       onClick={() => window.open('/contact', '_self')}
@@ -550,21 +542,6 @@ export default function Hero() {
         {/* CTA Button */}
         <div className="flex justify-center relative z-10 mt-3 mb-0">
           <div className="flex flex-col items-center justify-center">
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={fadeInUp}
-              transition={{ delay: 2.7 }}
-              className="mb-6"
-            >
-              <LogoDisplay 
-                position="relative"
-                width="clamp(250px, 25vw, 400px)"
-                height="auto"
-                className="transition-all duration-300"
-                responsive={true}
-              />
-            </motion.div>
             
             <Button 
               className="bg-gradient-to-r from-red-600 via-red-500 to-red-600 hover:from-red-500 hover:to-red-600 text-white px-10 py-5 rounded-full shadow-2xl transition-all duration-300 text-xl sm:text-2xl md:text-3xl font-bold border border-red-400/30 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/20 before:to-transparent before:opacity-70 transform hover:scale-105"
