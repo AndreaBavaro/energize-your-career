@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
-import { Menu, X, ChevronDown, Zap } from 'lucide-react';
-import Image from 'next/image';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { LogoDisplay } from '@/components/ui/LogoDisplay';
 
 // Navigation items in the specified order
 const navigationItems = [
@@ -124,18 +124,44 @@ export default function Navbar() {
   return (
     <header className={cn(
       "fixed top-0 inset-x-0 z-50 transition-all duration-300 ease-in-out",
-      scrolled ? "py-1 bg-alternative-700/90 backdrop-blur-md shadow-md" : "py-1 bg-alternative-700/90 backdrop-blur-sm"
+      scrolled ? "py-0 bg-alternative-700 backdrop-blur-md shadow-md" : "py-0 bg-alternative-700 backdrop-blur-sm"
     )}>
-      {/* Logo positioned absolutely at the top left */}
-      <div className="absolute top-1/2 -translate-y-1/2 left-0 p-2 sm:p-3 flex items-center z-50">
-        <Link to="/" className="flex items-center">
-          <Zap className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
-          <div className="text-lg sm:text-xl font-bold text-white">Voltify</div>
-        </Link>
+      {/* Logo positioned absolutely at the top left - hidden on mobile */}
+      <div className="absolute top-1/2 -translate-y-1/2 left-4 sm:left-6 md:left-8 lg:left-10 hidden sm:flex items-center z-50 mt-5">
+        <div className="relative">
+          {/* Semi-circle background */}
+          <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[100px] sm:w-[120px] h-[105px] sm:h-[125px] bg-alternative-700 rounded-t-full transform -rotate-180 z-0"></div>
+          
+          <Link to="/" className="flex items-center relative z-10">
+            <LogoDisplay 
+              position="relative"
+              width="clamp(120px, 12vw, 250px)"
+              height="auto"
+              className="transition-all duration-300"
+              responsive={true}
+            />
+          </Link>
+        </div>
       </div>
 
       {/* Navigation container */}
-      <nav className="container-custom flex items-center justify-end py-0.5 sm:py-1 px-3 sm:px-4">
+      <nav className="container-custom flex items-center justify-between sm:justify-end py-0.5 sm:py-1 px-3 sm:px-4 md:px-6 sm:ml-[180px] md:ml-[220px] lg:ml-[280px]">
+        {/* Mobile logo - visible only on mobile */}
+        <div className="flex sm:hidden items-center">
+          <div className="relative">
+            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[80px] h-[85px] bg-alternative-700 rounded-t-full transform -rotate-180 z-0"></div>
+            <Link to="/" className="relative z-10">
+              <LogoDisplay 
+                position="relative"
+                width="clamp(100px, 10vw, 120px)"
+                height="auto"
+                className="transition-all duration-300"
+                responsive={true}
+              />
+            </Link>
+          </div>
+        </div>
+        
         {/* Desktop navigation */}
         <div className="hidden lg:flex items-center space-x-2">
           {/* Navigation items */}
@@ -169,8 +195,18 @@ export default function Navbar() {
         )}
       >
         <div className="container-custom py-4">
-          {/* Close button */}
-          <div className="flex justify-end mb-2">
+          {/* Mobile logo and close button */}
+          <div className="flex justify-between items-center mb-4">
+            <div className="relative ml-2">
+              <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[80px] h-[85px] bg-alternative-700 rounded-t-full transform -rotate-180 z-0"></div>
+              <LogoDisplay 
+                position="relative"
+                width="clamp(80px, 12vw, 120px)"
+                height="auto"
+                className="transition-all duration-300 relative z-10"
+                responsive={true}
+              />
+            </div>
             <button
               type="button"
               className="rounded-full p-2 bg-white/10 text-white hover:bg-white/20 transition-colors"

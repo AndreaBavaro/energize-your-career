@@ -1,7 +1,8 @@
+import React from 'react';
+import { Heart, Users, Sparkles } from 'lucide-react';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { SectionHeading } from '@/components/ui/SectionHeading';
-import { Heart } from 'lucide-react';
 
 export default function Charity() {
   return (
@@ -22,7 +23,7 @@ export default function Charity() {
             />
             
             <div className="mt-12 max-w-3xl mx-auto">
-              <div className="bg-white/90 backdrop-blur-sm p-8 rounded-xl shadow-md border border-stone-100">
+              <div className="bg-white/90 backdrop-blur-sm p-8 rounded-xl shadow-md border border-stone-100 relative">
                 <div className="flex justify-center mb-6">
                   <Heart className="h-16 w-16 text-alternative-600" fill="currentColor" />
                 </div>

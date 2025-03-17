@@ -1,9 +1,12 @@
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
+import React from 'react';
+import { MapPin, Phone, Mail, Send, CheckCircle, Loader2, MessageSquare } from 'lucide-react';
+import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { GlassCard } from '@/components/ui/GlassCard';
-import { Mail, Phone, MapPin, Send, MessageSquare, Loader2 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import DOMPurify from 'dompurify';
 import emailjs from '@emailjs/browser';
@@ -20,19 +23,17 @@ export default function Contact() {
     setIsSubmitting(true);
     const formData = new FormData(e.target as HTMLFormElement);
     
-    // Sanitize inputs
-    const sanitizedData = {
-      name: DOMPurify.sanitize(formData.get('name') as string).trim(),
-      email: DOMPurify.sanitize(formData.get('email') as string).trim(),
-      userType: formData.get('userType'),
-      resume: formData.get('resume'),
-      subject: DOMPurify.sanitize(formData.get('subject') as string).trim(),
-      message: DOMPurify.sanitize(formData.get('message') as string).trim()
-    };
-
-    // Check if resume is an empty file input (when no file is selected)
-    if (sanitizedData.resume instanceof File && sanitizedData.resume.size === 0 && sanitizedData.resume.name === '') {
-      sanitizedData.resume = null;
+    // Sanitize form data
+    const sanitizedData: Record<string, any> = {};
+    for (const [key, value] of formData.entries()) {
+      if (key === 'resume') {
+        // Handle file upload
+        if (value instanceof File && value.size > 0) {
+          sanitizedData[key] = value;
+        }
+      } else {
+        sanitizedData[key] = typeof value === 'string' ? DOMPurify.sanitize(value) : value;
+      }
     }
 
     // Validation
@@ -154,7 +155,7 @@ export default function Contact() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6">
                       <div className="space-y-1 sm:space-y-2">
                         <label htmlFor="name" className="block text-xs sm:text-sm font-medium text-stone-700">Name *</label>
-                        <input 
+                        <Input 
                           type="text" 
                           id="name"
                           name="name"
@@ -166,7 +167,7 @@ export default function Contact() {
                       
                       <div className="space-y-1 sm:space-y-2">
                         <label htmlFor="email" className="block text-xs sm:text-sm font-medium text-stone-700">Email *</label>
-                        <input 
+                        <Input 
                           type="email" 
                           id="email"
                           name="email"
@@ -273,7 +274,7 @@ export default function Contact() {
 
                     <div className="space-y-1 sm:space-y-2">
                       <label htmlFor="subject" className="block text-xs sm:text-sm font-medium text-stone-700">Subject *</label>
-                      <input 
+                      <Input 
                         type="text" 
                         id="subject"
                         name="subject"
@@ -285,14 +286,14 @@ export default function Contact() {
                     
                     <div className="space-y-1 sm:space-y-2">
                       <label htmlFor="message" className="block text-xs sm:text-sm font-medium text-stone-700">Message *</label>
-                      <textarea 
+                      <Textarea 
                         id="message"
                         name="message"
                         rows={4}
                         required
                         className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-alternative-500 focus:border-transparent transition-all duration-200 text-sm"
                         placeholder="Your message"
-                      ></textarea>
+                      ></Textarea>
                     </div>
                     
                     <Button 

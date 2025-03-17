@@ -1,3 +1,4 @@
+import React from 'react';
 import { Quote } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -81,17 +82,21 @@ const TestimonialsPage = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-
+      
       {/* Main content section with white brick background */}
       <main className="flex-grow pt-12 pb-16 white-brick-bg relative">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          {/* Heading & descriptive text placed below the navbar */}
-          <div className="text-center mt-8 mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-alternative-500">What Clients Say</h1>
-            <p className="text-gray-600 max-w-3xl mx-auto mt-4">
-              We place huge value on strong relationships and have seen the benefit they bring to our business. 
-              Customer feedback is vital in helping us to get it right.
-            </p>
+          {/* Header section */}
+          <div className="relative mb-12 flex flex-col items-center">
+            <div className="w-full relative">
+              <h1 className="text-4xl md:text-5xl font-bold text-center text-stone-900 mb-6 mt-10">
+                What Clients Say
+              </h1>
+              <p className="text-lg text-center text-stone-600 max-w-3xl mx-auto">
+                We place huge value on strong relationships and have seen the benefit they bring to our business.
+                Customer feedback is vital in helping us to get it right.
+              </p>
+            </div>
           </div>
           
           {/* Testimonial cards */}
