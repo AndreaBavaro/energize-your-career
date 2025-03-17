@@ -198,10 +198,10 @@ export default function Navbar() {
           {/* Mobile logo and close button */}
           <div className="flex justify-between items-center mb-4">
             <div className="relative ml-2">
-              <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[80px] h-[85px] bg-alternative-700 rounded-t-full transform -rotate-180 z-0"></div>
+              <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[110px] h-[115px] bg-alternative-700 rounded-t-full transform -rotate-180 z-0"></div>
               <LogoDisplay 
                 position="relative"
-                width="clamp(80px, 12vw, 120px)"
+                width="clamp(140px, 15vw, 180px)"
                 height="auto"
                 className="transition-all duration-300 relative z-10"
                 responsive={true}

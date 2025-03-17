@@ -1,11 +1,9 @@
 import { useState, useEffect, useCallback } from 'react';
 import { ArrowRight, Award, Heart, Star, Briefcase, Tag, Zap, TrendingUp, ChevronDown, ChevronUp, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
-import { AnimatedText } from '../ui/AnimatedText';
 import { Button } from '@/components/ui/button';
 import { JobSeekerModal } from '../ui/JobSeekerModal';
 import { EmployerModal } from '../ui/EmployerModal';
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import { LogoDisplay } from '../ui/LogoDisplay';
 
 export default function Hero() {
@@ -130,12 +128,6 @@ export default function Hero() {
   const [isEmployerModalOpen, setIsEmployerModalOpen] = useState(false);
   const [isCharityModalOpen, setIsCharityModalOpen] = useState(false);
 
-  // Animation variants
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
-  };
-
   return (
     <section 
       id="hero" 
@@ -180,12 +172,8 @@ export default function Hero() {
       </div>
 
       {/* Voltify Donates 5% - Top Left on desktop, Bottom Left on mobile */}
-      <motion.div 
+      <div 
         className="absolute md:top-20 md:left-[7%] bottom-0 left-2 md:bottom-auto z-20 w-auto max-w-[300px] min-w-[200px] md:min-w-[240px] md:mt-14 hidden md:block"
-        initial="hidden"
-        animate="visible"
-        variants={fadeInUp}
-        transition={{ delay: 1.9 }} // Third element to appear
       >
         <div 
           className="bg-transparent backdrop-blur-sm border-l-4 border-r-4 border-red-500 rounded-lg shadow-lg overflow-hidden p-2 flex flex-col justify-between hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent cursor-pointer"
@@ -217,18 +205,14 @@ export default function Hero() {
             </div>
           </div>
         </div>
-      </motion.div>
+      </div>
 
       {/* Mobile version of Voltify Donates - Bottom Left */}
-      <motion.div 
+      <div 
         className="absolute bottom-[20px] left-4 z-30 w-[42%] max-w-[170px] min-w-[140px] sm:hidden"
-        initial="hidden"
-        animate="visible"
-        variants={fadeInUp}
-        transition={{ delay: 1.9 }} // Third element to appear
       >
         <div 
-          className="bg-transparent backdrop-blur-sm border-l-4 border-r-4 border-red-500 rounded-lg shadow-lg overflow-hidden p-2 flex flex-col justify-between hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] animate-fade-in relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent cursor-pointer"
+          className="bg-transparent backdrop-blur-sm border-l-4 border-r-4 border-red-500 rounded-lg shadow-lg overflow-hidden p-2 flex flex-col justify-between hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent cursor-pointer"
           onClick={() => window.open('/charity', '_self')}
         >
           <div>
@@ -260,7 +244,7 @@ export default function Hero() {
             </div>
           </div>
         </div>
-      </motion.div>
+      </div>
 
       {/* Mobile CTA Button positioned in bottom left */}
       <div className="absolute bottom-4 left-4 flex justify-center z-30 sm:hidden hidden">
@@ -274,15 +258,11 @@ export default function Hero() {
       </div>
 
       {/* Client Testimonials - Top Right on desktop, Bottom Right on mobile */}
-      <motion.div 
+      <div 
         className="absolute md:top-20 md:right-[7%] bottom-auto right-auto z-20 w-auto max-w-[300px] min-w-[240px] md:mt-14 hidden md:block"
-        initial="hidden"
-        animate="visible"
-        variants={fadeInUp}
-        transition={{ delay: 2.4 }} // Fourth element to appear
       >
         <div 
-          className="bg-transparent backdrop-blur-sm border-l-4 border-r-4 border-red-500 rounded-lg shadow-lg overflow-hidden p-2 flex flex-col justify-between cursor-pointer hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] animate-fade-in relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent"
+          className="bg-transparent backdrop-blur-sm border-l-4 border-r-4 border-red-500 rounded-lg shadow-lg overflow-hidden p-2 flex flex-col justify-between cursor-pointer hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent"
           onClick={goToTestimonialsPage}
         >
           <div>
@@ -357,18 +337,14 @@ export default function Hero() {
             </div>
           </div>
         </div>
-      </motion.div>
+      </div>
 
       {/* Mobile version of Client Testimonials - Bottom Right */}
-      <motion.div 
+      <div 
         className="absolute bottom-[20px] right-4 z-30 w-[42%] max-w-[170px] min-w-[140px] sm:hidden"
-        initial="hidden"
-        animate="visible"
-        variants={fadeInUp}
-        transition={{ delay: 2.4 }} // Fourth element to appear
       >
         <div 
-          className="bg-transparent backdrop-blur-sm border-l-4 border-r-4 border-red-500 rounded-lg shadow-lg overflow-hidden p-2 flex flex-col justify-between cursor-pointer hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] animate-fade-in relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent"
+          className="bg-transparent backdrop-blur-sm border-l-4 border-r-4 border-red-500 rounded-lg shadow-lg overflow-hidden p-2 flex flex-col justify-between cursor-pointer hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent"
           onClick={goToTestimonialsPage}
         >
           <div>
@@ -443,7 +419,7 @@ export default function Hero() {
             </div>
           </div>
         </div>
-      </motion.div>
+      </div>
 
       {/* Flexbox layout for side-by-side containers */}
       <div className="container-custom relative z-20 flex flex-col justify-start py-0">
@@ -455,31 +431,19 @@ export default function Hero() {
               {/* PRIMARY FOCUS: Heading and Mission Statement - Center column */}
               <div className="w-full md:w-[95%] order-1 md:px-0 md:pr-0">
                 {/* Heading - PRIMARY FOCUS PART 1 */}
-                <motion.div 
-                  className="text-center mb-3 overflow-visible"
-                  initial="hidden"
-                  animate="visible"
-                  variants={fadeInUp}
-                  transition={{ delay: 0.7 }} // First element to appear
-                >
+                <div className="text-center mb-3 overflow-visible">
                   <h1 className="relative text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-[40px] xl:text-5xl font-bold tracking-tight mt-1 mb-2 overflow-visible py-3 px-2 leading-tight whitespace-normal md:whitespace-nowrap"> 
                     <span className="text-red-500 drop-shadow-[0_2px_4px_rgba(239,68,68,0.8)] md:drop-shadow-[0_0_15px_rgba(255,82,82,1)]">
                       Energize Your Career With Voltify
                       <Zap 
-                        className="inline-block h-4 w-3 xs:h-5 xs:w-4 sm:h-7 sm:w-5 md:h-10 md:w-8 lg:h-12 lg:w-10 ml-2 text-yellow-400 drop-shadow-[0_2px_4px_rgba(250,204,21,0.8)] md:drop-shadow-[0_0_10px_rgba(255,82,82,1)] fill-current animate-pulse"
+                        className="inline-block h-4 w-3 xs:h-5 xs:w-4 sm:h-7 sm:w-5 md:h-10 md:w-8 lg:h-12 lg:w-10 ml-2 text-yellow-400 drop-shadow-[0_2px_4px_rgba(250,204,21,0.8)] md:drop-shadow-[0_0_10px_rgba(255,82,82,1)] fill-current"
                       />
                     </span>
                   </h1>
-                </motion.div>
+                </div>
                 
                 {/* Mission statement - PRIMARY FOCUS PART 2 */}
-                <motion.div 
-                  className="relative z-10 mb-6 px-4"
-                  initial="hidden"
-                  animate="visible"
-                  variants={fadeInUp}
-                  transition={{ delay: 1.4 }} // Second element to appear
-                >
+                <div className="relative z-10 mb-6 px-4">
                   <div className="bg-transparent backdrop-blur-sm border-l-4 border-r-4 border-red-500 pl-4 pr-4 py-2 rounded-l-lg rounded-r-lg shadow-lg mx-auto max-w-[1000px] relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent">
                     <p className="text-base xs:text-lg sm:text-xl md:text-[33px] lg:text-4xl font-bold text-red-700 leading-tight text-center relative z-10 py-2">
                       <span className="block mb-2 mt-1">True to the meaning of our name – <span className="font-bold text-red-500">Voltify</span> – our mission is clear:</span>
@@ -490,13 +454,7 @@ export default function Hero() {
                   </div>
                   
                   {/* Mobile CTA Button positioned below mission statement */}
-                  <motion.div 
-                    className="flex flex-col items-center justify-center mt-4 sm:hidden"
-                    initial="hidden"
-                    animate="visible"
-                    variants={fadeInUp}
-                    transition={{ delay: 2.9 }} // Fifth element to appear
-                  >
+                  <div className="flex flex-col items-center justify-center mt-4 sm:hidden">
                     <Button 
                       className="bg-gradient-to-r from-red-600 via-red-500 to-red-600 hover:from-red-500 hover:to-red-600 text-white px-4 py-2 rounded-full shadow-2xl transition-all duration-300 text-sm font-bold border border-red-400/30 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/20 before:to-transparent before:opacity-70 transform hover:scale-105"
                       onClick={() => window.open('/contact', '_self')}
@@ -504,8 +462,8 @@ export default function Hero() {
                       Connect With Us
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
-                  </motion.div>
-                </motion.div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -525,19 +483,15 @@ export default function Hero() {
       {/* Scroll down indicator - desktop only */}
       <div className="absolute bottom-4 md:bottom-10 left-1/2 transform -translate-x-1/2 z-20 hidden md:block">
         <a href="#about" className="text-white bg-red-500/30 hover:bg-red-500/50 rounded-full p-2 flex items-center justify-center transition-colors">
-          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-chevron-down animate-bounce">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-chevron-down">
             <path d="m6 9 6 6 6-6"/>
           </svg>
         </a>
       </div>
       
       {/* CTA Button at bottom - desktop only */}
-      <motion.div 
+      <div 
         className="absolute bottom-10 left-0 right-0 flex-col items-center z-20 hidden md:flex"
-        initial="hidden"
-        animate="visible"
-        variants={fadeInUp}
-        transition={{ delay: 2.9 }} // Fifth element to appear
       >
         {/* CTA Button */}
         <div className="flex justify-center relative z-10 mt-3 mb-0">
@@ -552,7 +506,7 @@ export default function Hero() {
             </Button>
           </div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }
