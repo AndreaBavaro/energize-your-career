@@ -127,15 +127,15 @@ export default function Navbar() {
       scrolled ? "py-0 bg-alternative-700 backdrop-blur-md shadow-md" : "py-0 bg-alternative-700 backdrop-blur-sm"
     )}>
       {/* Logo positioned absolutely at the top left - hidden on mobile */}
-      <div className="absolute top-1/2 -translate-y-1/2 left-4 sm:left-6 md:left-8 lg:left-10 hidden sm:flex items-center z-50 mt-5">
+      <div className="absolute top-1/2 -translate-y-1/2 left-0 sm:left-2 md:left-4 lg:left-6 hidden sm:flex items-center z-50 mt-8">
         <div className="relative">
           {/* Semi-circle background */}
-          <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[100px] sm:w-[120px] h-[105px] sm:h-[125px] bg-alternative-700 rounded-t-full transform -rotate-180 z-0"></div>
+          <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[100px] sm:w-[120px] h-[145px] sm:h-[120px] bg-alternative-700 rounded-t-full transform -rotate-180 z-0"></div>
           
           <Link to="/" className="flex items-center relative z-10">
             <LogoDisplay 
               position="relative"
-              width="clamp(120px, 12vw, 250px)"
+              width="clamp(180px, 18vw, 350px)"
               height="auto"
               className="transition-all duration-300"
               responsive={true}
@@ -145,15 +145,15 @@ export default function Navbar() {
       </div>
 
       {/* Navigation container */}
-      <nav className="container-custom flex items-center justify-between sm:justify-end py-0.5 sm:py-1 px-3 sm:px-4 md:px-6 sm:ml-[180px] md:ml-[220px] lg:ml-[280px]">
+      <nav className="container-custom flex items-center justify-between sm:justify-end py-0.5 sm:py-1 px-3 sm:px-4 md:px-6 sm:ml-[220px] md:ml-[260px] lg:ml-[320px]">
         {/* Mobile logo - visible only on mobile */}
-        <div className="flex sm:hidden items-center">
+        <div className="flex sm:hidden items-center -ml-2">
           <div className="relative">
-            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[80px] h-[85px] bg-alternative-700 rounded-t-full transform -rotate-180 z-0"></div>
+            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[110px] h-[115px] bg-alternative-700 rounded-t-full transform -rotate-180 z-0"></div>
             <Link to="/" className="relative z-10">
               <LogoDisplay 
                 position="relative"
-                width="clamp(100px, 10vw, 120px)"
+                width="clamp(140px, 15vw, 180px)"
                 height="auto"
                 className="transition-all duration-300"
                 responsive={true}
