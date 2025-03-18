@@ -191,21 +191,22 @@ export default function Hero() {
         >
           <div>
             <div className="rounded-t-lg px-0 py-2">
-              <h3 className="text-alternative-600 font-bold text-base sm:text-lg md:text-xl lg:text-2xl xl:text-[23px] tracking-wide text-center flex items-center justify-center gap-2">
+              <h3 className="text-alternative-600 font-bold text-base sm:text-lg md:text-xl lg:text-2xl xl:text-[22px] tracking-wide text-center flex items-center justify-center gap-2">
                 Voltify Donates 5%
               </h3>
             </div>
             
             <div className="px-2 pt-1 pb-2 rounded-b-lg mb-0">
-              <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-[17px] text-alternative-600 leading-tight max-w-xl mx-auto font-light">
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-[16px] text-alternative-600 leading-tight max-w-xl mx-auto font-light">
                 For each candidate hired, we contribute <span className="font-bold text-red-500 text-base sm:text-lg md:text-xl">5%</span> of the fee to assisting those in need through charitable initiatives.
               </p>
               <div className="flex justify-center">
               <Button 
               style={{
-                fontSize: 'clamp(0.6rem, 1.0vw, 1.0rem)', // Text size scales between 1rem and 1.25re
+                fontSize: 'clamp(0.5rem, 0.8vw, 1.0rem)', 
+                padding: '0.3rem 0.8rem', 
               }}
-              className="bg-gradient-to-r from-red-600 via-red-500 to-red-600 hover:from-red-500 hover:to-red-600 text-white rounded-full shadow-lg transition-all duration-300 font-medium border border-red-400/30 mt-2 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/20 before:to-transparent before:opacity-70"
+              className="bg-gradient-to-r from-red-600 via-red-500 to-red-600 hover:from-red-500 hover:to-red-600 text-white rounded-full shadow-lg transition-all duration-300 font-medium border border-red-400/30 mt-1 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/20 before:to-transparent before:opacity-70 scale-90"
               onClick={(e) => {
                 e.stopPropagation(); // Prevent double navigation
                 goToCharityPage(); // Use the navigate function instead of window.open
@@ -459,7 +460,7 @@ export default function Hero() {
         <div className="w-full md:w-[95%] order-1 md:px-0 md:pr-0">
           {/* Heading - PRIMARY FOCUS PART 1 */}
           <div className="text-center overflow-visible">
-            <h1 className="relative text-[21px] xs:text-xl sm:text-2xl md:text-3xl lg:text-[36px] xl:text-[37px] font-bold tracking-tight mb-0 overflow-visible py-2 px-2 leading-tight whitespace-normal mt-2"> 
+            <h1 className="relative text-[21px] xs:text-xl sm:text-2xl md:text-3xl lg:text-[36px] xl:text-[35px] font-bold tracking-tight mb-0 overflow-visible py-2 px-2 leading-tight whitespace-normal mt-2"> 
               <span className="text-red-500">
                 Energize Your Career With Voltify
                 <Zap 
