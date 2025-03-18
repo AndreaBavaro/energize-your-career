@@ -38,8 +38,8 @@ export default function ClientTypes() {
             <div className="order-2 lg:order-1">
               <GlassCard className="border-0 shadow-xl" hoverEffect={false}>
                 <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 rounded-full bg-alternative-100 flex items-center justify-center mr-4">
-                    <Users className="h-6 w-6 text-alternative-600" />
+                  <div className="w-12 h-12 rounded-full bg-alternative-600 flex items-center justify-center mr-4">
+                    <Users className="h-6 w-6 text-white" />
                   </div>
                   <h3 className="text-2xl font-bold text-stone-900">For Job Seekers</h3>
                 </div>
@@ -99,8 +99,8 @@ export default function ClientTypes() {
             <div>
               <GlassCard className="border-0 shadow-xl" hoverEffect={false}>
                 <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 rounded-full bg-alternative-100 flex items-center justify-center mr-4">
-                    <Building className="h-6 w-6 text-alternative-600" />
+                  <div className="w-12 h-12 rounded-full bg-alternative-600 flex items-center justify-center mr-4">
+                    <Building className="h-6 w-6 text-white" />
                   </div>
                   <h3 className="text-2xl font-bold text-stone-900">For Employers</h3>
                 </div>

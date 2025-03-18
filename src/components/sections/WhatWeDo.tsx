@@ -58,17 +58,17 @@ export default function WhatWeDo() {
   // Additional services
   const additionalServices = [
     {
-      icon: <CreditCard className="h-8 w-8 text-alternative-600" />,
+      icon: <CreditCard className="h-8 w-8 text-white" />,
       title: 'Pay Only When Hired',
       description: 'Clients pay only when the hire starts, ensuring satisfaction with our placements.'
     },
     {
-      icon: <CheckCircle className="h-8 w-8 text-alternative-600" />,
+      icon: <CheckCircle className="h-8 w-8 text-white" />,
       title: 'Reference & Background Checks',
       description: 'We handle comprehensive reference and background checks for all candidates.'
     },
     {
-      icon: <Lightbulb className="h-8 w-8 text-alternative-600" />,
+      icon: <Lightbulb className="h-8 w-8 text-white" />,
       title: 'Coaching & Training',
       description: 'We provide coaching and training to help candidates succeed in their new roles.'
     }
@@ -150,7 +150,7 @@ export default function WhatWeDo() {
                       role="button"
                       aria-label={`View positions in ${sector.name}`}
                     >
-                      <div className="flex-shrink-0 w-8 h-8 rounded-full bg-alternative-50 flex items-center justify-center mr-3">
+                      <div className="flex-shrink-0 w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mr-3">
                         {sector.icon}
                       </div>
                       <h4 className="font-semibold text-white text-sm">{sector.name}</h4>
@@ -177,31 +177,31 @@ export default function WhatWeDo() {
                 Specialized Placement Across Industries
               </h3>
               <p className="text-lg text-stone-900 mb-8 text-center">
-                Voltify provides placements of <span className="text-alternative-500 font-semibold">highly qualified, fully screened professionals</span> across various roles and specialized industry sectors.
+                Voltify provides placements of <span className="text-black font-bold">highly qualified, fully screened professionals</span> across various roles and specialized industry sectors.
               </p>
               
               <h4 className="text-lg font-semibold mb-4 text-stone-900 text-center">Your Path to the Perfect Role</h4>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
                 <div className="flex flex-col items-center text-center">
-                  <div className="w-12 h-12 rounded-full bg-alternative-200 flex items-center justify-center mb-3">
-                    <span className="text-alternative-500 font-bold text-lg">1</span>
+                  <div className="w-12 h-12 rounded-full bg-alternative-600 flex items-center justify-center mb-3">
+                    <span className="text-white font-bold text-lg">1</span>
                   </div>
                   <h5 className="font-semibold text-stone-900 mb-2">Initial Consultation</h5>
                   <p className="text-stone-900 text-sm">We discuss your skills, experience, and career goals to understand your unique qualifications.</p>
                 </div>
                 
                 <div className="flex flex-col items-center text-center">
-                  <div className="w-12 h-12 rounded-full bg-alternative-200 flex items-center justify-center mb-3">
-                    <span className="text-alternative-500 font-bold text-lg">2</span>
+                  <div className="w-12 h-12 rounded-full bg-alternative-600 flex items-center justify-center mb-3">
+                    <span className="text-white font-bold text-lg">2</span>
                   </div>
                   <h5 className="font-semibold text-stone-900 mb-2">Matching & Preparation</h5>
                   <p className="text-stone-900 text-sm">We match you with suitable opportunities and prepare you for interviews with potential employers.</p>
                 </div>
                 
                 <div className="flex flex-col items-center text-center">
-                  <div className="w-12 h-12 rounded-full bg-alternative-200 flex items-center justify-center mb-3">
-                    <span className="text-alternative-500 font-bold text-lg">3</span>
+                  <div className="w-12 h-12 rounded-full bg-alternative-600 flex items-center justify-center mb-3">
+                    <span className="text-white font-bold text-lg">3</span>
                   </div>
                   <h5 className="font-semibold text-stone-900 mb-2">Placement & Support</h5>
                   <p className="text-stone-900 text-sm">Once placed, we provide ongoing support to ensure your success in the new role.</p>
@@ -216,15 +216,15 @@ export default function WhatWeDo() {
           <GlassCard className="border-0 shadow-xl bg-white/90 backdrop-blur-sm">
             <div className="p-6 md:p-8">
               <div className="flex items-center mb-6">
-                <Briefcase className="h-8 w-8 text-alternative-600 mr-3" />
+                <Briefcase className="h-8 w-8 text-red-500 mr-3" />
                 <h3 className="text-xl font-semibold text-stone-900">Positions We Place</h3>
               </div>
               
               {/* Mobile view - dropdown/accordion style */}
               <div className="block md:hidden">
                 <details className="mb-3">
-                  <summary className="flex items-center cursor-pointer p-2 bg-alternative-50/50 rounded-lg">
-                    <Users className="h-5 w-5 text-alternative-600 mr-2" />
+                  <summary className="flex items-center cursor-pointer p-2 bg-white/50 rounded-lg">
+                    <Users className="h-5 w-5 text-red-500 mr-2" />
                     <span className="font-semibold text-stone-900">Leadership & Management</span>
                   </summary>
                   <div className="pl-7 pt-2 pb-1">
@@ -286,9 +286,9 @@ export default function WhatWeDo() {
               {/* Desktop view - grid layout */}
               <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-6">
                 {positionGroups.map((group, index) => (
-                  <div key={index} className="bg-alternative-50/50 rounded-lg p-4">
+                  <div key={index} className="bg-white/50 backdrop-blur-sm rounded-lg p-4">
                     <div className="flex items-center mb-3">
-                      <div className="w-8 h-8 rounded-full bg-alternative-100 flex items-center justify-center mr-2">
+                      <div className="w-8 h-8 rounded-full bg-white/50 flex items-center justify-center mr-2">
                         {group.icon}
                       </div>
                       <h4 className="font-semibold text-stone-900">{group.category}</h4>
@@ -317,7 +317,7 @@ export default function WhatWeDo() {
             animationDelay="300ms"
           >
             <div className="p-4 sm:p-6 text-center">
-              <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-alternative-50 mb-2 sm:mb-4 mx-auto">
+              <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-alternative-600 mb-2 sm:mb-4 mx-auto">
                 {additionalServices[0].icon}
               </div>
               <h3 className="text-base sm:text-lg font-semibold mb-1 sm:mb-2 text-stone-900">{additionalServices[0].title}</h3>
@@ -334,7 +334,7 @@ export default function WhatWeDo() {
                 animationDelay={`${(index + 4) * 100}ms`}
               >
                 <div className="p-3 sm:p-6 text-center">
-                  <div className="inline-flex items-center justify-center w-10 h-10 sm:w-16 sm:h-16 rounded-full bg-alternative-50 mb-2 sm:mb-4 mx-auto">
+                  <div className="inline-flex items-center justify-center w-10 h-10 sm:w-16 sm:h-16 rounded-full bg-alternative-600 mb-2 sm:mb-4 mx-auto">
                     {service.icon}
                   </div>
                   <h3 className="text-sm sm:text-lg font-semibold mb-1 sm:mb-2 text-stone-900">{service.title}</h3>

@@ -12,7 +12,7 @@ const TestimonialsPage = () => {
       author: 'Tim Richards',
       position: 'VP Communications Operations, Americas',
       company: 'IPC Systems',
-      avatarUrl: '/images/latin.jpg'
+      avatarUrl: '/images/toronto.jpg'
     },
     {
       fullQuote: `Working with Melinda for our website development project was the right choice. She was instrumental in researching and identifying the right development company to meet our needs, ensuring that every detail aligned with our objectives. Melinda expertly managed the relationship between our team and the developers, advocating for our requirements and making sure our expectations were met at every stage. Her regular collaboration and communication were outstanding, keeping everything on track while proactively addressing any challenges that arose. She handled issues seamlessly, allowing me to focus on other tasks with confidence. Melinda's professionalism, attention to detail, and commitment to our success made the entire process smooth and stress-free. I would highly recommend working with Melinda and Ban Partners to any business seeking expert guidance and strategic support.`,
@@ -61,7 +61,7 @@ const TestimonialsPage = () => {
       author: 'Werner Strijewski',
       position: 'Principal Software Engineer',
       company: 'Yamaha Motor Canada',
-      avatarUrl: '/images/lightbulb.jpg'
+      avatarUrl: '/images/toronto.jpg'
     },
     {
       fullQuote: `I've had the pleasure of working with Melinda over the past four years as a Senior Project Manager at Deciem, and her support has been nothing short of transformative. Her clear communication, responsiveness, and unwavering commitment to ensuring timely payments and seamless contract extensions have made working on contract smooth and successful. Melinda's proactive approach in addressing any questions or concerns, combined with her dedication to building a truly supportive professional relationship, makes her an exceptional partner for anyone in the tech industry. I wholeheartedly recommend working with her—you won't be disappointed.`,
@@ -75,7 +75,7 @@ const TestimonialsPage = () => {
       author: 'Ali Darbani',
       position: 'Senior Project Manager',
       company: 'RBC Capital Markets',
-      avatarUrl: '/images/augmented.jpg'
+      avatarUrl: '/images/toronto.jpg'
     },
   ];
 
