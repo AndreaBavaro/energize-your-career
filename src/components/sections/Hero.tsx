@@ -460,7 +460,7 @@ export default function Hero() {
           {/* Heading - PRIMARY FOCUS PART 1 */}
           <div className="text-center overflow-visible">
             <h1 className="relative text-[21px] xs:text-2xl sm:text-3xl md:text-4xl lg:text-[35px] xl:text-[43px] font-bold tracking-tight mb-0 overflow-visible py-2 px-2 leading-tight whitespace-normal mt-2"> 
-              <span className="text-red-500 drop-shadow-[0_2px_4px_rgba(239,68,68,0.8)] md:drop-shadow-[0_0_15px_rgba(255,82,82,1)]">
+              <span className="text-stone-700 drop-shadow-[0_2px_4px_rgba(239,68,68,0.8)] md:drop-shadow-[0_0_15px_rgba(255,0,0,1)]">
                 Energize Your Career With Voltify
                 <Zap 
                   className="inline-block h-4 w-3 xs:h-5 xs:w-4 sm:h-7 sm:w-5 md:h-8 md:w-6 lg:h-10 lg:w-8 xl:h-12 xl:w-10 ml-2 text-yellow-400 drop-shadow-[0_2px_4px_rgba(250,204,21,0.8)] md:drop-shadow-[0_0_10px_rgba(255,82,82,1)] fill-current"
@@ -524,7 +524,7 @@ export default function Hero() {
           <div className="flex flex-col items-center justify-center">
             
             <Button 
-              className="bg-gradient-to-r from-red-600 via-red-500 to-red-600 hover:from-red-500 hover:to-red-600 text-white px-10 py-5 rounded-full shadow-2xl transition-all duration-300 text-xl sm:text-2xl md:text-3xl font-bold border border-red-400/30 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/20 before:to-transparent before:opacity-70 transform hover:scale-105"
+              className="bg-stone-700 hover:from-red-500 hover:to-red-600 text-white px-10 py-5 rounded-full shadow-2xl transition-all duration-300 text-xl sm:text-2xl md:text-3xl font-bold border border-red-400/30 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/20 before:to-transparent before:opacity-70 transform hover:scale-105"
               onClick={() => window.open('/contact', '_self')}
             >
               Connect With Us
