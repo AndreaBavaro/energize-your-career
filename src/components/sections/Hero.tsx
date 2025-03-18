@@ -475,12 +475,12 @@ export default function Hero() {
       className="bg-transparent backdrop-blur-sm  border-red-500 pl-4 pr-2 py-2 rounded-l-lg rounded-r-lg  mx-auto relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent h-[clamp(100px,31vh,365px)] md:h-[clamp(100px,36vh,365px)] lg:h-[clamp(100px,37vh,365px)] xl:h-[clamp(100px,35vh,365px)]"
       style={{ width: 'clamp(300px, 60vw, 1000px)' }}
   >
-    <p className="relative text-[17px] xs:text-xl sm:text-2xl md:text-2xl lg:text-[29px] xl:text-[30px] font-bold text-red-700 leading-tight text-center relative z-10 py-2 text-between-3xl-4xl">
+    <p className="relative text-[17px] xs:text-xl sm:text-2xl md:text-2xl lg:text-[29px] xl:text-[29px] font-bold text-stone-600 leading-tight text-center relative z-10 py-2 text-between-3xl-4xl">
       <span className="block mb-2 sm:mt-5 md:mt-2 lg:mt-1 xl:mt-1">
         True to the meaning of our name – <span className="font-bold text-red-500">Voltify</span> – our mission is clear:
       </span>
       <span className="block mb-2">
-        <span className="font-bold text-red-500 md:ml-6 xl:mr-12">To energize careers, build lasting relationships,</span>
+        <span className="font-bold text-stone-600 md:ml-6 xl:mr-12">To energize careers, build lasting relationships,</span>
       </span>
       <span className="block mb-2 xl:ml-12 mb-4">
         connect you with opportunities, and help you grow.
