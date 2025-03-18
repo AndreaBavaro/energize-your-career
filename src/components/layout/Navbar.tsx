@@ -42,7 +42,8 @@ export default function Navbar() {
       if (mobileMenuOpen && 
           mobileMenuRef.current && 
           !mobileMenuRef.current.contains(event.target as Node) &&
-          !(event.target as Element).closest('button[aria-label="Open main menu"]')) {
+          !(event.target as Element).closest('button[aria-label="Open main menu"]') &&
+          !(event.target as Element).closest('.mobile-logo-container')) {
         setMobileMenuOpen(false);
       }
     };
@@ -126,11 +127,15 @@ export default function Navbar() {
       "fixed top-0 inset-x-0 z-50 transition-all duration-300 ease-in-out",
       scrolled ? "py-0 bg-alternative-700 backdrop-blur-md shadow-md" : "py-0 bg-alternative-700 backdrop-blur-sm"
     )}>
+      {/* Mobile navbar tap indicator - only visible on mobile when menu is closed */}
+      {!mobileMenuOpen && (
+        <div className="lg:hidden absolute inset-0 bg-white/5 animate-pulse-slow pointer-events-none"></div>
+      )}
       {/* Logo positioned absolutely at the top left - hidden on mobile */}
       <div className="absolute top-1/2 -translate-y-1/2 left-0 sm:left-2 md:left-4 lg:left-6 hidden sm:flex items-center z-50 mt-3">
         <div className="relative">
           {/* Semi-circle background */}
-          <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[50px] sm:w-[60px] md:w-[70px] lg:w-[80px] h-[60px] sm:h-[80px] md:h-90px] lg:h-[100px] bg-alternative-700 rounded-t-full transform -rotate-180 z-0"></div>
+          <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[60px] sm:w-[60px] md:w-[70px] lg:w-[80px] h-[60px] sm:h-[80px] md:h-90px] lg:h-[100px] bg-alternative-700 rounded-t-full transform -rotate-180 z-0"></div>
           
           <Link to="/" className="flex items-center relative z-10">
             <LogoDisplay 
@@ -145,12 +150,28 @@ export default function Navbar() {
       </div>
 
       {/* Navigation container */}
-      <nav className="container-custom flex items-center justify-between sm:justify-end h-8 sm:h-10 md:h-12 lg:h-14 px-2 sm:px-3 md:px-4 lg:px-6 sm:ml-[100px] md:ml-[120px] lg:ml-[180px] mt-1">
+      <nav 
+        className={`container-custom flex items-center justify-between sm:justify-end h-8 sm:h-10 md:h-12 lg:h-14 px-2 sm:px-3 md:px-4 lg:px-6 sm:ml-[100px] md:ml-[120px] lg:ml-[180px] mt-1 ${!mobileMenuOpen ? 'lg:cursor-default cursor-pointer' : ''}`}
+        onClick={() => {
+          if (window.innerWidth < 1024 && !mobileMenuOpen) {
+            setMobileMenuOpen(true);
+          }
+        }}
+      >
         {/* Mobile logo - visible only on mobile */}
-        <div className="flex sm:hidden items-center -ml-2">
+        <div className={`flex sm:hidden items-center -ml-2 ${mobileMenuOpen ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300 mobile-logo-container`}>
           <div className="relative">
             <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[50px] h-[55px] bg-alternative-700 rounded-t-full transform -rotate-180 z-0"></div>
-            <Link to="/" className="relative z-10">
+            <Link 
+              to="/" 
+              className="relative z-10"
+              onClick={(e) => {
+                if (window.innerWidth < 1024) {
+                  e.preventDefault();
+                  setMobileMenuOpen(true);
+                }
+              }}
+            >
               <LogoDisplay 
                 position="relative"
                 width="90px"
@@ -177,11 +198,18 @@ export default function Navbar() {
         <div className="flex lg:hidden">
           <button
             type="button"
-            className="text-white p-0.5 sm:p-1 rounded-lg hover:bg-white/10 transition-colors"
+            className="text-white p-0.5 sm:p-1 rounded-lg hover:bg-white/10 transition-colors relative"
             onClick={() => setMobileMenuOpen(true)}
+            aria-label="Open main menu"
           >
             <span className="sr-only">Open main menu</span>
             <Menu className="h-3 w-3 sm:h-4 sm:w-4" aria-hidden="true" />
+            {!mobileMenuOpen && (
+              <span className="absolute -top-1 -right-1 flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+              </span>
+            )}
           </button>
         </div>
       </nav>
@@ -190,21 +218,22 @@ export default function Navbar() {
       <div
         ref={mobileMenuRef}
         className={cn(
-          "absolute top-full left-0 right-0 z-50 bg-alternative-600 transform transition-transform duration-300 ease-in-out shadow-lg",
-          mobileMenuOpen ? "translate-y-0" : "-translate-y-full opacity-0 pointer-events-none"
+          "absolute top-full left-0 right-0 z-50 bg-alternative-600 transform transition-all duration-300 ease-in-out shadow-lg",
+          mobileMenuOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 pointer-events-none"
         )}
       >
         <div className="container-custom py-4">
           {/* Mobile logo and close button */}
           <div className="flex justify-between items-center mb-4">
-            <div className="relative ml-2">
+            <div className="relative ml-2 mobile-logo-container">
               <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[110px] h-[115px] bg-alternative-700 rounded-t-full transform -rotate-180 z-0"></div>
               <LogoDisplay 
                 position="relative"
                 width="clamp(160px, 18vw, 220px)"
                 height="auto"
-                className="transition-all duration-300 relative z-10"
+                className="transition-all duration-300 relative z-10 animate-fade-in"
                 responsive={true}
+                style={{ animationDelay: '150ms' }}
               />
             </div>
             <button

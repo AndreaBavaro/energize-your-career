@@ -146,7 +146,7 @@ export default function Hero() {
             style={{
               filter: 'contrast(1.2) brightness(1.0) saturate(1.0)',
               transform: 'translateY(0) scale(1.0)',
-              marginTop: '100px'
+              marginTop: '85px'
             }}
             onError={(e) => console.error("Video loading error:", e)}
           >
@@ -475,7 +475,7 @@ export default function Hero() {
       className="bg-transparent backdrop-blur-sm  border-red-500 pl-4 pr-2 py-2 rounded-l-lg rounded-r-lg  mx-auto relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent h-[clamp(100px,31vh,365px)] md:h-[clamp(100px,36vh,365px)] lg:h-[clamp(100px,37vh,365px)] xl:h-[clamp(100px,35vh,365px)]"
       style={{ width: 'clamp(300px, 60vw, 1000px)' }}
   >
-    <p className="relative text-[17px] xs:text-xl sm:text-2xl md:text-2xl lg:text-[29px] xl:text-[34px] font-bold text-red-700 leading-tight text-center relative z-10 py-2 text-between-3xl-4xl">
+    <p className="relative text-[16px] xs:text-xl sm:text-2xl md:text-2xl lg:text-[29px] xl:text-[31px] font-bold text-red-700 leading-tight text-center relative z-10 py-2 text-between-3xl-4xl">
       <span className="block mb-2 sm:mt-5 md:mt-2 lg:mt-1 xl:mt-1">
         True to the meaning of our name – <span className="font-bold text-red-500">Voltify</span> – our mission is clear:
       </span>
@@ -514,15 +514,6 @@ export default function Hero() {
         isOpen={isEmployerModalOpen} 
         onClose={() => setIsEmployerModalOpen(false)} 
       />
-      
-      {/* Scroll down indicator - desktop only */}
-      <div className="absolute bottom-4 md:bottom-10 left-1/2 transform -translate-x-1/2 z-20 hidden md:block">
-        <a href="#about" className="text-white bg-red-500/30 hover:bg-red-500/50 rounded-full p-2 flex items-center justify-center transition-colors">
-          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-chevron-down">
-            <path d="m6 9 6 6 6-6"/>
-          </svg>
-        </a>
-      </div>
       
       {/* CTA Button at bottom - desktop only */}
       <div 

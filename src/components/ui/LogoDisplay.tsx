@@ -11,6 +11,7 @@ interface LogoDisplayProps {
   zIndex?: string;
   className?: string;
   responsive?: boolean;
+  style?: React.CSSProperties;
 }
 
 export function LogoDisplay({
@@ -24,10 +25,10 @@ export function LogoDisplay({
   zIndex = '1',
   className = '',
   responsive = false,
+  style,
 }: LogoDisplayProps) {
   // Fixed logo path
   const logoPath = 'Adobe Express - file (5).png';
-  
   // Convert string dimensions to numbers if possible for better styling
   const widthValue = width;
   const heightValue = height === 'auto' ? 'auto' : height;
@@ -41,6 +42,7 @@ export function LogoDisplay({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    ...style,
   };
   
   // Add positioning properties
