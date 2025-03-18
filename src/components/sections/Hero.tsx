@@ -476,13 +476,13 @@ export default function Hero() {
       style={{ width: 'clamp(300px, 60vw, 1000px)' }}
   >
     <p className="relative text-[17px] xs:text-xl sm:text-2xl md:text-2xl lg:text-[29px] xl:text-[29px] font-bold text-stone-600 leading-tight text-center relative z-10 py-2 text-between-3xl-4xl">
-      <span className="block mb-2 sm:mt-5 md:mt-2 lg:mt-1 xl:mt-1">
-        True to the meaning of our name – <span className="font-bold text-red-500">Voltify</span> – our mission is clear:
+      <span className="block mb-3 sm:mt-5 md:mt-2 lg:mt-1 xl:mt-1">
+        True to the meaning of our name – <span className="font-bold text-black">Voltify</span> – our mission is clear:
       </span>
       <span className="block mb-2">
         <span className="font-bold text-stone-600 md:ml-6 xl:mr-12">To energize careers, build lasting relationships,</span>
       </span>
-      <span className="block mb-2 xl:ml-12 mb-4">
+      <span className="block mb-2 xl:ml-12 mb-3">
         connect you with opportunities, and help you grow.
       </span>
       <span className="block">
