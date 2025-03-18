@@ -11,7 +11,7 @@ const navigationItems = [
   { name: 'Our Story', href: '#our-story', isRouterLink: false },
   { name: 'Testimonials', href: '/testimonials', isRouterLink: true },
   { name: 'Why Partner With Us', href: '#why-partner', isRouterLink: false },
-  { name: 'Sectors We Serve', href: '#sectors', isRouterLink: false },
+  { name: 'Sectors We Serve', href: '#what-we-do', isRouterLink: false },
   { name: 'Giving Back', href: '/charity', isRouterLink: true },
   { name: 'Blog', href: '/blog', isRouterLink: true },
   { name: 'Contact Us', href: '/contact', isRouterLink: true },
@@ -127,7 +127,7 @@ export default function Navbar() {
       scrolled ? "py-0 bg-alternative-700 backdrop-blur-md shadow-md" : "py-0 bg-alternative-700 backdrop-blur-sm"
     )}>
       {/* Logo positioned absolutely at the top left - hidden on mobile */}
-      <div className="absolute top-1/2 -translate-y-1/2 left-0 sm:left-2 md:left-4 lg:left-6 hidden sm:flex items-center z-50 mt-1">
+      <div className="absolute top-1/2 -translate-y-1/2 left-0 sm:left-2 md:left-4 lg:left-6 hidden sm:flex items-center z-50 mt-3">
         <div className="relative">
           {/* Semi-circle background */}
           <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[50px] sm:w-[60px] md:w-[70px] lg:w-[80px] h-[60px] sm:h-[80px] md:h-90px] lg:h-[100px] bg-alternative-700 rounded-t-full transform -rotate-180 z-0"></div>
@@ -135,8 +135,8 @@ export default function Navbar() {
           <Link to="/" className="flex items-center relative z-10">
             <LogoDisplay 
               position="relative"
-              width="clamp(100px, 15vw, 180px)"
-              height="clamp(50px, 3.5vw, 180px)"
+              width="clamp(120px, 18vw, 220px)"
+              height="clamp(60px, 4vw, 200px)"
               className="transition-all duration-300 scale-100 sm:scale-90 md:scale-95 lg:scale-100"
               responsive={true}
             />
@@ -145,7 +145,7 @@ export default function Navbar() {
       </div>
 
       {/* Navigation container */}
-      <nav className="container-custom flex items-center justify-between sm:justify-end h-8 sm:h-10 md:h-12 lg:h-14 px-2 sm:px-3 md:px-4 lg:px-6 sm:ml-[100px] md:ml-[120px] lg:ml-[180px]">
+      <nav className="container-custom flex items-center justify-between sm:justify-end h-8 sm:h-10 md:h-12 lg:h-14 px-2 sm:px-3 md:px-4 lg:px-6 sm:ml-[100px] md:ml-[120px] lg:ml-[180px] mt-1">
         {/* Mobile logo - visible only on mobile */}
         <div className="flex sm:hidden items-center -ml-2">
           <div className="relative">
@@ -153,7 +153,7 @@ export default function Navbar() {
             <Link to="/" className="relative z-10">
               <LogoDisplay 
                 position="relative"
-                width="70px"
+                width="90px"
                 height="auto"
                 className="transition-all duration-300 scale-75"
                 responsive={true}
@@ -201,7 +201,7 @@ export default function Navbar() {
               <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[110px] h-[115px] bg-alternative-700 rounded-t-full transform -rotate-180 z-0"></div>
               <LogoDisplay 
                 position="relative"
-                width="clamp(140px, 15vw, 180px)"
+                width="clamp(160px, 18vw, 220px)"
                 height="auto"
                 className="transition-all duration-300 relative z-10"
                 responsive={true}

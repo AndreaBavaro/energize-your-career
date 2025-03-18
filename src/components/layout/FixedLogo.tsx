@@ -8,7 +8,7 @@ export function FixedLogo() {
       <Link to="/" aria-label="Home">
         <LogoDisplay 
           position="relative"
-          width="clamp(300px, 15vw, 400px)"
+          width="clamp(320px, 18vw, 450px)"
           height="auto"
           className="transition-all duration-300 hover:scale-105 drop-shadow-lg"
           responsive={true}

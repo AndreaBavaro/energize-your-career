@@ -1,5 +1,4 @@
 import React from 'react';
-import { useLogo } from '../../context/LogoContext';
 
 interface LogoDisplayProps {
   position?: 'absolute' | 'relative' | 'fixed' | 'sticky';
@@ -26,13 +25,9 @@ export function LogoDisplay({
   className = '',
   responsive = false,
 }: LogoDisplayProps) {
-  const { selectedLogo } = useLogo();
+  // Fixed logo path
+  const logoPath = 'Adobe Express - file (5).png';
   
-  // If no logo is selected, don't render anything
-  if (!selectedLogo) {
-    return null;
-  }
-
   // Convert string dimensions to numbers if possible for better styling
   const widthValue = width;
   const heightValue = height === 'auto' ? 'auto' : height;
@@ -101,7 +96,7 @@ export function LogoDisplay({
         }}
       >
         <img
-          src={`/images/${selectedLogo}`}
+          src={`/images/${logoPath}`}
           alt="Voltify Logo"
           style={{ 
             width: 'auto',

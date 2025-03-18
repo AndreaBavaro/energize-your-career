@@ -132,7 +132,7 @@ export default function Hero() {
   return (
     <section 
       id="hero" 
-      className="relative min-h-[100svh] flex flex-col justify-between pt-3 sm:pt-4 md:pt-6 overflow-hidden"
+      className="relative min-h-[100svh] flex flex-col justify-between pt-3 sm:pt-4 md:pt-6 overflow-hidden position-relative"
     >
       {/* Video Background */}
       <div className="absolute inset-0 z-0 overflow-hidden">
@@ -146,7 +146,7 @@ export default function Hero() {
             style={{
               filter: 'contrast(1.2) brightness(1.0) saturate(1.0)',
               transform: 'translateY(0) scale(1.0)',
-              marginTop: '120px'
+              marginTop: '100px'
             }}
             onError={(e) => console.error("Video loading error:", e)}
           >
@@ -184,7 +184,10 @@ export default function Hero() {
       >
         <div 
           className="bg-transparent backdrop-blur-sm border-l-4 border-r-4 border-red-500 rounded-lg shadow-lg overflow-hidden p-2 flex flex-col justify-between hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent cursor-pointer"
-          onClick={() => window.open('/charity', '_self')}
+          onClick={(e) => {
+            e.stopPropagation(); // Prevent double navigation
+            goToCharityPage(); // Use the navigate function instead of window.open
+          }}
         >
           <div>
             <div className="rounded-t-lg px-0 py-2">
@@ -205,7 +208,7 @@ export default function Hero() {
               className="bg-gradient-to-r from-red-600 via-red-500 to-red-600 hover:from-red-500 hover:to-red-600 text-white rounded-full shadow-lg transition-all duration-300 font-medium border border-red-400/30 mt-2 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/20 before:to-transparent before:opacity-70"
               onClick={(e) => {
                 e.stopPropagation(); // Prevent double navigation
-                window.open('/charity', '_self');
+                goToCharityPage(); // Use the navigate function instead of window.open
               }}
             >
               Learn About Our Impact
@@ -215,6 +218,61 @@ export default function Hero() {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Mobile version of Voltify Donates 5% - Bottom Left */}
+      <div 
+        className="absolute bottom-16 left-4 md:hidden"
+        style={{ 
+          zIndex: 25,
+          width: '180px',
+        }}
+      >
+        <div 
+          className="bg-white/90 backdrop-blur-sm border-2 border-red-500 rounded-lg shadow-lg overflow-hidden p-2 flex flex-col justify-between hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent cursor-pointer"
+          onClick={(e) => {
+            e.stopPropagation(); // Prevent double navigation
+            goToCharityPage(); // Use the navigate function instead of window.open
+          }}
+        >
+          <div>
+            <div className="rounded-t-lg px-0 py-1">
+              <h3 className="text-alternative-600 font-bold text-xs tracking-wide text-center flex items-center justify-center gap-1">
+                Voltify Donates 5%
+              </h3>
+            </div>
+            
+            <div className="px-1 pt-1 pb-1 rounded-b-lg mb-0">
+              <p className="text-xs text-alternative-600 leading-tight max-w-xl mx-auto font-light">
+              For each candidate hired, we contribute <span className="font-bold text-red-500">5%</span> to assisting those in need through charitable intives.
+              </p>
+              <div className="flex justify-center">
+              <Button 
+              className="bg-gradient-to-r from-red-600 via-red-500 to-red-600 hover:from-red-500 hover:to-red-600 text-white rounded-full shadow-lg transition-all duration-300 font-medium border border-red-400/30 mt-1 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/20 before:to-transparent before:opacity-70 text-[10px] py-0.5 px-2 h-5 min-h-0"
+              onClick={(e) => {
+                e.stopPropagation(); // Prevent double navigation
+                goToCharityPage(); // Use the navigate function instead of window.open
+              }}
+            >
+              Learn More
+            </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile CTA Button positioned in bottom left corner */}
+      <div 
+        className="absolute bottom-4 left-4 md:hidden"
+      >
+        <Button 
+          className="bg-gradient-to-r from-red-600 via-red-500 to-red-600 hover:from-red-500 hover:to-red-600 text-white px-4 py-2 rounded-full shadow-lg transition-all duration-300 text-sm font-bold border border-red-400/30 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/20 before:to-transparent before:opacity-70"
+          onClick={() => window.open('/contact', '_self')}
+        >
+          Connect With Us
+          <ArrowRight className="ml-2 h-4 w-4" />
+        </Button>
       </div>
 
       <div 
@@ -304,6 +362,92 @@ export default function Hero() {
         </div>
       </div>
 
+      {/* Mobile version of Client Testimonials - Bottom Right */}
+      <div 
+        className="absolute bottom-4 right-4 md:hidden"
+        style={{ 
+          zIndex: 25,
+          width: '140px',
+        }}
+      >
+        <div 
+          className="bg-white/90 backdrop-blur-sm border-2 border-red-500 rounded-lg shadow-lg overflow-hidden p-2 flex flex-col justify-between cursor-pointer hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent"
+          onClick={goToTestimonialsPage}
+        >
+          <div>
+            <div className="rounded-t-lg px-0 py-1">
+              <h3 className="text-alternative-600 font-bold text-xs tracking-wide text-center flex items-center justify-center gap-1">
+                Testimonials
+              </h3>
+            </div>
+            
+            <div className="px-1 pt-1 pb-1 rounded-b-lg mb-0">
+              <div className="flex items-center mb-1">
+                <div className={`w-6 h-6 rounded-full ${currentTestimonial.bgColor} flex items-center justify-center text-white font-bold text-[10px] mr-1 shadow-sm`}>
+                  {currentTestimonial.initials}
+                </div>
+                <div>
+                  <h4 className="text-[10px] font-semibold text-alternative-600">{currentTestimonial.author}</h4>
+                  <p className="text-[8px] text-alternative-600">{currentTestimonial.position}</p>
+                </div>
+              </div>
+
+              <blockquote className="text-[10px] text-alternative-600 mb-1 leading-tight italic min-h-[40px] flex items-center">
+                <p>"{currentTestimonial.quote.substring(0, 60)}..."</p>
+              </blockquote>
+              
+              {/* 5-star review */}
+              <div className="flex justify-center mb-1">
+                <div className="flex">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="h-2 w-2 text-yellow-400 fill-yellow-400" />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="flex justify-between items-center">
+            <div className="flex space-x-0.5">
+              {testimonials.map((_, index) => (
+                <button 
+                  key={index}
+                  onClick={(e) => {
+                    e.stopPropagation(); // Prevent navigation when clicking on dots
+                    setCurrentTestimonialIndex(index);
+                  }}
+                  className={`w-1.5 h-1.5 rounded-full transition-colors ${index === currentTestimonialIndex ? 'bg-red-500' : 'bg-red-300'}`}
+                  aria-label={`Go to testimonial ${index + 1}`}
+                />
+              ))}
+            </div>
+            
+            <div className="flex space-x-1">
+              <button 
+                onClick={(e) => {
+                  e.stopPropagation(); // Prevent navigation when clicking navigation buttons
+                  prevTestimonial();
+                }}
+                className="w-5 h-5 rounded-full bg-red-100 flex items-center justify-center transition-colors"
+                aria-label="Previous testimonial"
+              >
+                <ChevronLeft className="h-3 w-3 text-red-500" />
+              </button>
+              <button 
+                onClick={(e) => {
+                  e.stopPropagation(); // Prevent navigation when clicking navigation buttons
+                  nextTestimonial();
+                }}
+                className="w-5 h-5 rounded-full bg-red-100 flex items-center justify-center transition-colors"
+                aria-label="Next testimonial"
+              >
+                <ChevronRight className="h-3 w-3 text-red-500" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Flexbox layout for side-by-side containers */}
 <div className="container-custom relative z-20 flex flex-col justify-start py-0">
   <div className="max-w-7xl mx-auto w-full mt-2 sm:mt-1 md:mt-0 md:-ml-[5px]">
@@ -315,7 +459,7 @@ export default function Hero() {
         <div className="w-full md:w-[95%] order-1 md:px-0 md:pr-0">
           {/* Heading - PRIMARY FOCUS PART 1 */}
           <div className="text-center overflow-visible">
-            <h1 className="relative text-[21px] xs:text-2xl sm:text-3xl md:text-4xl lg:text-[35px] xl:text-[43px] font-bold tracking-tight mb-0 overflow-visible py-2 px-2 leading-tight whitespace-normal"> 
+            <h1 className="relative text-[21px] xs:text-2xl sm:text-3xl md:text-4xl lg:text-[35px] xl:text-[43px] font-bold tracking-tight mb-0 overflow-visible py-2 px-2 leading-tight whitespace-normal mt-2"> 
               <span className="text-red-500 drop-shadow-[0_2px_4px_rgba(239,68,68,0.8)] md:drop-shadow-[0_0_15px_rgba(255,82,82,1)]">
                 Energize Your Career With Voltify
                 <Zap 
@@ -328,17 +472,17 @@ export default function Hero() {
          {/* Mission statement - PRIMARY FOCUS PART 2 */}
 <div className="relative z-10 mb-4 px-4">
   <div 
-    className="bg-transparent backdrop-blur-sm border-l-4 border-r-4 border-red-500 pl-4 pr-2 py-2 rounded-l-lg rounded-r-lg shadow-lg mx-auto relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent h-[clamp(100px,31vh,365px)] md:h-[clamp(100px,33vh,365px)] lg:h-[clamp(100px,35vh,365px)] xl:h-[clamp(100px,35vh,365px)]"
-    style={{ width: 'clamp(300px, 60vw, 1000px)' }}
+      className="bg-transparent backdrop-blur-sm  border-red-500 pl-4 pr-2 py-2 rounded-l-lg rounded-r-lg  mx-auto relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent h-[clamp(100px,31vh,365px)] md:h-[clamp(100px,36vh,365px)] lg:h-[clamp(100px,37vh,365px)] xl:h-[clamp(100px,35vh,365px)]"
+      style={{ width: 'clamp(300px, 60vw, 1000px)' }}
   >
-    <p className="relative text-[17px] xs:text-xl sm:text-2xl md:text-2xl lg:text-[30px] xl:text-4xl font-bold text-red-700 leading-tight text-center relative z-10 py-2 text-between-3xl-4xl">
-      <span className="block mb-2 mt-1">
+    <p className="relative text-[17px] xs:text-xl sm:text-2xl md:text-2xl lg:text-[29px] xl:text-[34px] font-bold text-red-700 leading-tight text-center relative z-10 py-2 text-between-3xl-4xl">
+      <span className="block mb-2 sm:mt-5 md:mt-2 lg:mt-1 xl:mt-1">
         True to the meaning of our name – <span className="font-bold text-red-500">Voltify</span> – our mission is clear:
       </span>
       <span className="block mb-2">
         <span className="font-bold text-red-500 md:ml-6 xl:mr-12">To energize careers, build lasting relationships,</span>
       </span>
-      <span className="block mb-2 xl:ml-12">
+      <span className="block mb-2 xl:ml-12 mb-4">
         connect you with opportunities, and help you grow.
       </span>
       <span className="block">
@@ -349,13 +493,7 @@ export default function Hero() {
   
   {/* Mobile CTA Button positioned below mission statement */}
   <div className="flex flex-col items-center justify-center mt-4 sm:hidden">
-    <Button 
-      className="bg-gradient-to-r from-red-600 via-red-500 to-red-600 hover:from-red-500 hover:to-red-600 text-white px-4 py-2 rounded-full shadow-2xl transition-all duration-300 text-sm font-bold border border-red-400/30 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/20 before:to-transparent before:opacity-70 transform hover:scale-105"
-      onClick={() => window.open('/contact', '_self')}
-    >
-      Connect With Us
-      <ArrowRight className="ml-2 h-4 w-4" />
-    </Button>
+    {/* Button removed to avoid duplication with the one positioned above Voltify Donates 5% */}
   </div>
 </div>
 

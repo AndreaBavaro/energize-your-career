@@ -117,8 +117,8 @@ export default function OurStory() {
             
             <div className="mt-6 flex justify-center">
               <img 
-                src="/images/augmented.jpg" 
-                alt="Augmented reality technology visualization" 
+                src="/images/latin.jpg" 
+                alt="Helping" 
                 className="rounded-lg shadow-md w-full max-w-4xl h-auto"
               />
             </div>
