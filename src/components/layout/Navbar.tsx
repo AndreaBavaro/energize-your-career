@@ -127,17 +127,17 @@ export default function Navbar() {
       scrolled ? "py-0 bg-alternative-700 backdrop-blur-md shadow-md" : "py-0 bg-alternative-700 backdrop-blur-sm"
     )}>
       {/* Logo positioned absolutely at the top left - hidden on mobile */}
-      <div className="absolute top-1/2 -translate-y-1/2 left-0 sm:left-2 md:left-4 lg:left-6 hidden sm:flex items-center z-50 mt-8">
+      <div className="absolute top-1/2 -translate-y-1/2 left-0 sm:left-2 md:left-4 lg:left-6 hidden sm:flex items-center z-50 mt-1">
         <div className="relative">
           {/* Semi-circle background */}
-          <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[100px] sm:w-[120px] h-[145px] sm:h-[120px] bg-alternative-700 rounded-t-full transform -rotate-180 z-0"></div>
+          <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[50px] sm:w-[60px] md:w-[70px] lg:w-[80px] h-[60px] sm:h-[80px] md:h-90px] lg:h-[100px] bg-alternative-700 rounded-t-full transform -rotate-180 z-0"></div>
           
           <Link to="/" className="flex items-center relative z-10">
             <LogoDisplay 
               position="relative"
-              width="clamp(180px, 18vw, 350px)"
-              height="auto"
-              className="transition-all duration-300"
+              width="clamp(100px, 15vw, 180px)"
+              height="clamp(50px, 3.5vw, 180px)"
+              className="transition-all duration-300 scale-100 sm:scale-90 md:scale-95 lg:scale-100"
               responsive={true}
             />
           </Link>
@@ -145,17 +145,17 @@ export default function Navbar() {
       </div>
 
       {/* Navigation container */}
-      <nav className="container-custom flex items-center justify-between sm:justify-end py-0.5 sm:py-1 px-3 sm:px-4 md:px-6 sm:ml-[220px] md:ml-[260px] lg:ml-[320px]">
+      <nav className="container-custom flex items-center justify-between sm:justify-end h-8 sm:h-10 md:h-12 lg:h-14 px-2 sm:px-3 md:px-4 lg:px-6 sm:ml-[100px] md:ml-[120px] lg:ml-[180px]">
         {/* Mobile logo - visible only on mobile */}
         <div className="flex sm:hidden items-center -ml-2">
           <div className="relative">
-            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[110px] h-[115px] bg-alternative-700 rounded-t-full transform -rotate-180 z-0"></div>
+            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[50px] h-[55px] bg-alternative-700 rounded-t-full transform -rotate-180 z-0"></div>
             <Link to="/" className="relative z-10">
               <LogoDisplay 
                 position="relative"
-                width="clamp(140px, 15vw, 180px)"
+                width="70px"
                 height="auto"
-                className="transition-all duration-300"
+                className="transition-all duration-300 scale-75"
                 responsive={true}
               />
             </Link>
@@ -163,12 +163,12 @@ export default function Navbar() {
         </div>
         
         {/* Desktop navigation */}
-        <div className="hidden lg:flex items-center space-x-2">
+        <div className="hidden lg:flex items-center space-x-1 xl:space-x-1">
           {/* Navigation items */}
           {navigationItems.map((item) => (
             renderNavLink(
               item,
-              cn("px-4 py-2 text-white hover:text-stone-100 transition-colors")
+              cn("px-1.5 sm:px-2 md:px-2 lg:px-3 py-0.5 text-xs sm:text-xs md:text-sm lg:text-sm text-white hover:text-stone-100 transition-colors")
             )
           ))}
         </div>
@@ -177,11 +177,11 @@ export default function Navbar() {
         <div className="flex lg:hidden">
           <button
             type="button"
-            className="text-white p-2 rounded-lg hover:bg-white/10 transition-colors"
+            className="text-white p-0.5 sm:p-1 rounded-lg hover:bg-white/10 transition-colors"
             onClick={() => setMobileMenuOpen(true)}
           >
             <span className="sr-only">Open main menu</span>
-            <Menu className="h-6 w-6" aria-hidden="true" />
+            <Menu className="h-3 w-3 sm:h-4 sm:w-4" aria-hidden="true" />
           </button>
         </div>
       </nav>
