@@ -191,7 +191,7 @@ export default function Hero() {
         >
           <div>
             <div className="rounded-t-lg px-0 py-2">
-              <h3 className="text-alternative-600 font-bold text-base sm:text-xl md:text-2xl lg:text-3xl tracking-wide text-center flex items-center justify-center gap-2">
+              <h3 className="text-alternative-600 font-bold text-base sm:text-xl md:text-2xl lg:text-3xl xl:text-[26px] tracking-wide text-center flex items-center justify-center gap-2">
                 Voltify Donates 5%
               </h3>
             </div>
@@ -459,7 +459,7 @@ export default function Hero() {
         <div className="w-full md:w-[95%] order-1 md:px-0 md:pr-0">
           {/* Heading - PRIMARY FOCUS PART 1 */}
           <div className="text-center overflow-visible">
-            <h1 className="relative text-[21px] xs:text-xl sm:text-2xl md:text-3xl lg:text-[36px] xl:text-[40px] font-bold tracking-tight mb-0 overflow-visible py-2 px-2 leading-tight whitespace-normal mt-2"> 
+            <h1 className="relative text-[21px] xs:text-xl sm:text-2xl md:text-3xl lg:text-[36px] xl:text-[38px] font-bold tracking-tight mb-0 overflow-visible py-2 px-2 leading-tight whitespace-normal mt-2"> 
               <span className="text-red-500">
                 Energize Your Career With Voltify
                 <Zap 
