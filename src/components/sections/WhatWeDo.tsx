@@ -122,8 +122,8 @@ export default function WhatWeDo() {
         {/* Industries Banner - Moved to top and made smaller */}
         <div className="relative py-12 md:py-16 mb-12 overflow-hidden w-screen -ml-[50vw] left-1/2 min-h-[350px] md:min-h-[300px] flex items-center justify-center bg-[position:calc(50%+400px)_30%] md:bg-[position:center_30%]" 
           style={{
-            backgroundImage: 'url("/images/lightbulb.jpg")',
-            backgroundSize: 'cover'
+            backgroundImage: 'url("/images/bulb.jpg")',
+            backgroundSize: 'cover',
           }}>
           {/* Semi-transparent overlay with stronger opacity on mobile */}
           <div className="absolute inset-0 bg-black/60 md:bg-black/50"></div>
