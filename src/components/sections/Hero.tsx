@@ -249,7 +249,7 @@ export default function Hero() {
               </p>
               <div className="flex justify-center">
               <Button 
-              className="bg-gradient-to-r from-red-600 via-red-500 to-red-600 hover:from-red-500 hover:to-red-600 text-white rounded-full shadow-lg transition-all duration-300 font-medium border border-red-400/30 mt-1 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/20 before:to-transparent before:opacity-70 text-[10px] py-0.5 px-2 h-5 min-h-0"
+              className="bg-gradient-to-r from-red-600 via-red-500 to-red-600 hover:from-red-500 hover:to-red-600 text-white rounded-full shadow-lg transition-all duration-300 font-medium border border-red-400/30 mt-1 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/20 before:to-transparent before:opacity-70 text-[10px] py-0.5 px-2 h-5 min-h-0 scale-90"
               onClick={(e) => {
                 e.stopPropagation(); // Prevent double navigation
                 goToCharityPage(); // Use the navigate function instead of window.open
@@ -268,11 +268,11 @@ export default function Hero() {
         className="absolute bottom-4 left-4 md:hidden"
       >
         <Button 
-          className="bg-gradient-to-r from-red-600 via-red-500 to-red-600 hover:from-red-500 hover:to-red-600 text-white px-4 py-2 rounded-full shadow-lg transition-all duration-300 text-sm font-bold border border-red-400/30 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/20 before:to-transparent before:opacity-70"
+          className="bg-gradient-to-r from-red-600 via-red-500 to-red-600 hover:from-red-500 hover:to-red-600 text-white px-3 py-1.5 rounded-full shadow-lg transition-all duration-300 text-xs font-medium border border-red-400/30 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/20 before:to-transparent before:opacity-70 scale-90"
           onClick={() => window.open('/contact', '_self')}
         >
           Connect With Us
-          <ArrowRight className="ml-2 h-4 w-4" />
+          <ArrowRight className="ml-1.5 h-3 w-3" />
         </Button>
       </div>
 
@@ -525,11 +525,11 @@ export default function Hero() {
           <div className="flex flex-col items-center justify-center">
             
             <Button 
-              className="bg-stone-700 hover:from-red-500 hover:to-red-600 text-white px-4 py-4 rounded-full shadow-2xl transition-all duration-300 text-lg sm:text-xl md:text-2xl font-bold border border-red-400/30 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/20 before:to-transparent before:opacity-70 transform hover:scale-105"
+              className="bg-stone-700 hover:from-red-500 hover:to-red-600 text-white px-4 py-3 rounded-full shadow-2xl transition-all duration-300 text-lg font-bold border border-red-400/30 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/20 before:to-transparent before:opacity-70 transform hover:scale-105"
               onClick={() => window.open('/contact', '_self')}
             >
               Connect With Us
-              <ArrowRight className="ml-0 h-7 w-7 sm:h-8 sm:w-8 md:h-10 md:w-10" />
+              <ArrowRight className="ml-2 h-6 w-6" />
             </Button>
           </div>
         </div>
