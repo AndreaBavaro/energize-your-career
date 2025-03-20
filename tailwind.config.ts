@@ -69,38 +69,7 @@ export default {
           800: "#505050",   // Deep graphite grey
           900: "#404040",   // Gunmetal dark grey
           950: "#303030",   // Almost black metallic
-        }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-               
-        ,
+        },
         alternative: {
           50: "#FDEAE9",    // Very light coral pink
           100: "#FACFCF",   // Soft pastel red
@@ -114,15 +83,7 @@ export default {
           800: "#94221C",   // Dark burnt red
           900: "#751B16",   // Deepest muted red
           950: "#5A1410",   // Dark red-brown
-        }
-        
-        
-        
-        
-        
-        
-        
-        ,        
+        },
         stone: {
           50: '#fafaf9',
           100: '#f5f5f4',
@@ -146,6 +107,27 @@ export default {
           border: 'hsl(var(--sidebar-border))',
           ring: 'hsl(var(--sidebar-ring))'
         }
+      },
+      transitionProperty: {
+        'height': 'height',
+        'spacing': 'margin, padding',
+        'width': 'width',
+        'transform': 'transform',
+      },
+      transform: {
+        'perspective': 'perspective(var(--tw-perspective))',
+      },
+      transformOrigin: {
+        'center': 'center',
+      },
+      perspective: {
+        '800': '800px',
+        '1000': '1000px',
+        '1200': '1200px',
+      },
+      rotate: {
+        'y-12': 'rotateY(12deg)',
+        'y-180': 'rotateY(180deg)',
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -200,6 +182,14 @@ export default {
         scaleIn: {
           '0%': { transform: 'scale(0.95)', opacity: '0' },
           '100%': { transform: 'scale(1)', opacity: '1' }
+        },
+        gradientX: {
+          '0%, 100%': { 
+            backgroundPosition: '0% 50%' 
+          },
+          '50%': { 
+            backgroundPosition: '100% 50%' 
+          }
         }
       },
       animation: {
@@ -213,7 +203,8 @@ export default {
         'float': 'float 3s ease-in-out infinite',
         'slide-in-left': 'slideInLeft 0.6s ease-out',
         'slide-in-right': 'slideInRight 0.6s ease-out',
-        'scale-in': 'scaleIn 0.6s ease-out'
+        'scale-in': 'scaleIn 0.6s ease-out',
+        'gradient-x': 'gradientX 8s ease infinite'
       },
       typography: {
         DEFAULT: {

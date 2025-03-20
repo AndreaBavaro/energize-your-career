@@ -461,20 +461,25 @@ export default function Hero() {
           {/* Heading - PRIMARY FOCUS PART 1 */}
           <div className="text-center overflow-visible">
             <h1 className="relative text-[21px] xs:text-xl sm:text-2xl md:text-3xl lg:text-[36px] xl:text-[35px] font-bold tracking-tight mb-0 overflow-visible py-2 px-2 leading-tight whitespace-normal mt-2"> 
-              <span className="text-red-500">
-                Energize Your Career With Voltify
+              <span className="text-red-500 relative">
+                {/* Text shadow and gradient for shine effect */}
+                <span className="relative inline-block">
+                  {/* Gradient text with animation */}
+                  <span className="bg-gradient-to-r from-red-600 via-red-500 to-red-600 bg-clip-text text-transparent animate-gradient-x font-extrabold">
+                    Energize Your Career With Voltify
+                  </span>
+                </span>
+                
                 <Zap 
-  shapeRendering="crispEdges"
-  className="inline-block h-4 w-3 xs:h-5 xs:w-4 sm:h-7 sm:w-5 md:h-8 md:w-6 lg:h-10 lg:w-8 xl:h-12 xl:w-10 ml-2 text-[#fde90c] fill-current"
-  style={{
-    stroke: '#fde90c', // a brighter yellow for the edges
-    strokeWidth: 1,
-    strokeLinejoin: 'miter',
-    strokeLinecap: 'butt',
-    shapeRendering: 'crispEdges'
-  }}
-/>
-
+                  shapeRendering="crispEdges"
+                  className="inline-block h-4 w-3 xs:h-5 xs:w-4 sm:h-7 sm:w-5 md:h-8 md:w-6 lg:h-10 lg:w-8 xl:h-12 xl:w-10 ml-2 text-[#fde90c] fill-current hover:scale-110 transition-transform duration-300"
+                  style={{
+                    stroke: '#fde90c', // a brighter yellow for the edges
+                    strokeWidth: 1,
+                    strokeLinejoin: 'miter',
+                    strokeLinecap: 'butt'
+                  }}
+                />
               </span>
             </h1>
           </div>
