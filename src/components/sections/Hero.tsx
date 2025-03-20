@@ -464,8 +464,17 @@ export default function Hero() {
               <span className="text-red-500">
                 Energize Your Career With Voltify
                 <Zap 
-                  className="inline-block h-4 w-3 xs:h-5 xs:w-4 sm:h-7 sm:w-5 md:h-8 md:w-6 lg:h-10 lg:w-8 xl:h-12 xl:w-10 ml-2 text-yellow-400 drop-shadow-[0_2px_4px_rgba(250,204,21,0.8)] md:drop-shadow-[0_0_10px_rgba(255,82,82,1)] fill-current"
-                />
+  shapeRendering="crispEdges"
+  className="inline-block h-4 w-3 xs:h-5 xs:w-4 sm:h-7 sm:w-5 md:h-8 md:w-6 lg:h-10 lg:w-8 xl:h-12 xl:w-10 ml-2 text-[#fde90c] fill-current"
+  style={{
+    stroke: '#fde90c', // a brighter yellow for the edges
+    strokeWidth: 1,
+    strokeLinejoin: 'miter',
+    strokeLinecap: 'butt',
+    shapeRendering: 'crispEdges'
+  }}
+/>
+
               </span>
             </h1>
           </div>
