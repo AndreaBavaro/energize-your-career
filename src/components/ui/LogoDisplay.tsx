@@ -98,7 +98,7 @@ export function LogoDisplay({
         }}
       >
         <img
-          src={`/images/${logoPath}`}
+          src={`${import.meta.env.BASE_URL}images/${logoPath}`}
           alt="Voltify Logo"
           style={{ 
             width: 'auto',
