@@ -150,8 +150,8 @@ export default function Navbar() {
           >
             <LogoDisplay 
               position="relative"
-              width="clamp(120px, 18vw, 220px)"
-              height="clamp(60px, 4vw, 200px)"
+              width="clamp(120px, 18vw, 150px)"
+              height="clamp(40px, 4vw, 120px)"
               className="transition-all duration-300 scale-100 sm:scale-90 md:scale-95 lg:scale-100"
               responsive={true}
             />
