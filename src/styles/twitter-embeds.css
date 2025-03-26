@@ -1,0 +1,85 @@
+/* Twitter embed centering styles */
+.twitter-tweet-rendered {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Center WordPress blocks that contain embeds */
+.wp-block-embed {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+}
+
+.wp-block-embed__wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Center other common content elements */
+.prose figure,
+.prose img,
+.prose blockquote.twitter-tweet {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Embed containers */
+.embed-container {
+  position: relative;
+  margin: 1.5rem 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* YouTube embed container */
+.youtube-embed-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  max-width: 560px;
+  margin: 1.5rem auto;
+}
+
+.youtube-embed-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Embed type icon */
+.embed-type-icon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 10;
+  background-color: white;
+  border-radius: 50%;
+  padding: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Add icon containers to specific embed types */
+[data-embed-type] {
+  position: relative;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 640px) {
+  .youtube-embed-container {
+    max-width: 100%;
+  }
+  
+  .embed-type-icon {
+    top: 4px;
+    right: 4px;
+    padding: 3px;
+  }
+}
