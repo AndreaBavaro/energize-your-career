@@ -23,11 +23,6 @@ node_modules
 /dist-ssr
 *.local
 
-# Public assets (purchased images and other content)
-/public
-/public/images
-/public/lovable-uploads
-
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
