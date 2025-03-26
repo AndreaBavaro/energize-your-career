@@ -68,7 +68,7 @@ export default function AboutUs() {
                 Our Approach
               </h3>
               <p className="text-lg text-stone-700 leading-relaxed">
-                We partner with <span className="font-bold text-black">Human Resources departments</span> across the U.S. to meet staffing needs in:
+                We partner with <span className="font-bold text-black">Human Resources departments</span> to meet staffing needs in:
               </p>
               <div className="mt-3 grid grid-cols-1 sm:grid-cols-3 gap-2">
                 <div className="bg-alternative-600 p-4 rounded-lg border border-alternative-100">
