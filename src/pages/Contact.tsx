@@ -20,6 +20,7 @@ export default function Contact() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [dragActive, setDragActive] = useState(false);
+  const [error, setError] = useState('');
   const formRef = useRef<HTMLFormElement>(null);
   const { toast } = useToast();
 
@@ -393,27 +394,43 @@ export default function Contact() {
         message: templateParams.message.substring(0, 100) + '...' // Truncate for logging
       });
 
-      // Send email using EmailJS (Team Notification Template)
-      const response = await emailjs.send(
-        EMAILJS_CONFIG.SERVICE_ID,
-        EMAILJS_CONFIG.TEMPLATE_ID,  // Make sure this is your team notification template ID
-        templateParams,
-        EMAILJS_CONFIG.PUBLIC_KEY
-      );
-      
-      console.log('EmailJS Response:', response);
-
-      // Record the submission
-      recordSubmission();
-
-      // Clear form and reset state
-      (e.target as HTMLFormElement).reset();
-      setUserType('');
-      setSelectedFile(null);
-      toast({
-        title: "Success",
-        description: "Your message has been sent successfully! We'll get back to you soon.",
+      // Debug EmailJS configuration
+      console.log('EmailJS Config Check:', {
+        SERVICE_ID: EMAILJS_CONFIG.SERVICE_ID ? 'Set' : 'Missing',
+        TEMPLATE_ID: EMAILJS_CONFIG.TEMPLATE_ID ? 'Set' : 'Missing',
+        PUBLIC_KEY: EMAILJS_CONFIG.PUBLIC_KEY ? 'Set' : 'Missing',
       });
+
+      try {
+        // Send email using EmailJS (Team Notification Template)
+        const response = await emailjs.send(
+          EMAILJS_CONFIG.SERVICE_ID,
+          EMAILJS_CONFIG.TEMPLATE_ID,
+          templateParams,
+          EMAILJS_CONFIG.PUBLIC_KEY
+        );
+        
+        console.log('EmailJS Response:', response);
+
+        // Record the submission
+        recordSubmission();
+
+        // Clear form and reset state
+        (e.target as HTMLFormElement).reset();
+        setUserType('');
+        setSelectedFile(null);
+        toast({
+          title: "Success",
+          description: "Your message has been sent successfully! We'll get back to you soon.",
+        });
+      } catch (error) {
+        console.error('EmailJS Error:', error);
+        setError('Failed to send email. Please try again or contact us directly.');
+        setIsSubmitting(false);
+        return;
+      } finally {
+        setIsSubmitting(false);
+      }
     } catch (error) {
       console.error('Error sending email:', error);
       // Log more detailed error information
@@ -425,8 +442,6 @@ export default function Contact() {
         description: "Failed to send message. Please try again later.",
         variant: "destructive",
       });
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
