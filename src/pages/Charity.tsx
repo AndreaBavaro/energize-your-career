@@ -25,7 +25,7 @@ export default function Charity() {
             <div className="mt-12 max-w-3xl mx-auto">
               <div className="bg-white/90 backdrop-blur-sm p-8 rounded-xl shadow-md border border-stone-100 relative">
                 <div className="flex justify-center mb-6">
-                  <Heart className="h-16 w-16 text-alternative-600" fill="currentColor" />
+                  <Heart className="h-16 w-16 text-red-600" fill="currentColor" />
                 </div>
                 
                 <h3 className="text-2xl font-bold text-stone-900 mb-4 text-center">Our Commitment to Transparency</h3>

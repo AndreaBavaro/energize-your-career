@@ -125,17 +125,15 @@ export default function Navbar() {
   return (
     <header className={cn(
       "fixed top-0 inset-x-0 z-50 transition-all duration-300 ease-in-out",
-      scrolled ? "py-0 bg-alternative-700 backdrop-blur-md shadow-md" : "py-0 bg-alternative-700 backdrop-blur-sm"
+      scrolled ? "py-0 bg-blue-800 backdrop-blur-md shadow-md" : "py-0 bg-blue-800 backdrop-blur-sm"
     )}>
       {/* Mobile navbar tap indicator - only visible on mobile when menu is closed */}
       {!mobileMenuOpen && (
         <div className="lg:hidden absolute inset-0 bg-white/5 animate-pulse-slow pointer-events-none"></div>
       )}
       {/* Logo positioned absolutely at the top left - hidden on mobile */}
-      <div className="absolute top-1/2 -translate-y-1/2 left-0 sm:left-2 md:left-4 lg:left-6 hidden sm:flex items-center z-50 mt-3">
+      <div className="absolute top-1/2 -translate-y-1/2 left-0 sm:left-2 md:left-4 lg:left-6 hidden sm:flex items-center z-50 mt-9">
         <div className="relative">
-          {/* Semi-circle background */}
-          <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[60px] sm:w-[60px] md:w-[70px] lg:w-[80px] h-[60px] sm:h-[80px] md:h-90px] lg:h-[100px] bg-alternative-700 rounded-t-full transform -rotate-180 z-0"></div>
           
           <Link 
             to="/" 
@@ -171,7 +169,7 @@ export default function Navbar() {
         {/* Mobile logo - visible only on mobile */}
         <div className={`flex sm:hidden items-center -ml-2 ${mobileMenuOpen ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300 mobile-logo-container`}>
           <div className="relative">
-            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[50px] h-[55px] bg-alternative-700 rounded-t-full transform -rotate-180 z-0"></div>
+            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[50px] h-[55px] bg-blue-700 rounded-t-full transform -rotate-180 z-0"></div>
             <Link 
               to="/" 
               className="relative z-10"
@@ -237,7 +235,7 @@ export default function Navbar() {
       <div
         ref={mobileMenuRef}
         className={cn(
-          "absolute top-full left-0 right-0 z-50 bg-alternative-600 transform transition-all duration-300 ease-in-out shadow-lg",
+          "absolute top-full left-0 right-0 z-50 bg-blue-600 transform transition-all duration-300 ease-in-out shadow-lg",
           mobileMenuOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 pointer-events-none"
         )}
       >
@@ -245,7 +243,7 @@ export default function Navbar() {
           {/* Mobile logo and close button */}
           <div className="flex justify-between items-center mb-4">
             <div className="relative ml-2 mobile-logo-container">
-              <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[110px] h-[115px] bg-alternative-700 rounded-t-full transform -rotate-180 z-0"></div>
+              <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[110px] h-[115px] bg-blue-700 rounded-t-full transform -rotate-180 z-0"></div>
               <LogoDisplay 
                 position="relative"
                 width="clamp(160px, 18vw, 220px)"
