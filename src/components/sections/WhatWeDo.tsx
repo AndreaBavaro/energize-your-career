@@ -4,7 +4,8 @@ import {
   Users, Code, Server, Shield, Globe, LineChart, Cpu, ChevronRight, Monitor, Layout, PieChart, UserCog,
   ChevronLeft
 } from 'lucide-react';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function WhatWeDo() {
   // Function to scroll to positions section
@@ -207,6 +208,15 @@ export default function WhatWeDo() {
                   <p className="text-stone-900 text-sm">Once placed, we provide ongoing support to ensure your success in the new role.</p>
                 </div>
               </div>
+              
+              {/* Add helping.jpg image below the steps */}
+              <div className="mt-8">
+                <img 
+                  src="/images/helping.jpg" 
+                  alt="Professional helping a candidate find the perfect role" 
+                  className="w-full h-auto rounded-lg shadow-md object-cover"
+                />
+              </div>
             </div>
           </GlassCard>
         </div>
@@ -215,94 +225,77 @@ export default function WhatWeDo() {
         <div id="positions-section" className="max-w-5xl mx-auto my-16">
           <GlassCard className="border-0 shadow-xl bg-white/90 backdrop-blur-sm">
             <div className="p-6 md:p-8">
-              <div className="flex items-center mb-6">
-                <Briefcase className="h-8 w-8 text-red-500 mr-3" />
-                <h3 className="text-xl font-semibold text-stone-900">Positions We Place</h3>
+              <div className="flex items-center justify-center mb-8">
+                <div className="bg-alternative-600 rounded-full p-3 mr-3">
+                  <Briefcase className="h-8 w-8 text-white" />
+                </div>
+                <h3 className="text-2xl md:text-3xl font-bold text-stone-900">Positions We Place</h3>
               </div>
               
               {/* Mobile view - dropdown/accordion style */}
               <div className="block md:hidden">
-                <details className="mb-3">
-                  <summary className="flex items-center cursor-pointer p-2 bg-white/50 rounded-lg">
-                    <Users className="h-5 w-5 text-red-500 mr-2" />
-                    <span className="font-semibold text-stone-900">Leadership & Management</span>
-                  </summary>
-                  <div className="pl-7 pt-2 pb-1">
-                    <p className="text-sm text-stone-700">CIO, CTO, VP, Director, Manager of IT, Manager of HR, Manager of Sales</p>
-                  </div>
-                </details>
-                
-                <details className="mb-3">
-                  <summary className="flex items-center cursor-pointer p-2 bg-alternative-50/50 rounded-lg">
-                    <Briefcase className="h-5 w-5 text-alternative-600 mr-2" />
-                    <span className="font-semibold text-stone-900">Project Management</span>
-                  </summary>
-                  <div className="pl-7 pt-2 pb-1">
-                    <p className="text-sm text-stone-700">Project Managers, Business Analyst</p>
-                  </div>
-                </details>
-                
-                <details className="mb-3">
-                  <summary className="flex items-center cursor-pointer p-2 bg-alternative-50/50 rounded-lg">
-                    <Cpu className="h-5 w-5 text-alternative-600 mr-2" />
-                    <span className="font-semibold text-stone-900">Engineering</span>
-                  </summary>
-                  <div className="pl-7 pt-2 pb-1">
-                    <p className="text-sm text-stone-700">AI Engineers, Machine Learning Engineers, Robotics Engineer, Software Developers</p>
-                  </div>
-                </details>
-                
-                <details className="mb-3">
-                  <summary className="flex items-center cursor-pointer p-2 bg-alternative-50/50 rounded-lg">
-                    <Server className="h-5 w-5 text-alternative-600 mr-2" />
-                    <span className="font-semibold text-stone-900">Infrastructure</span>
-                  </summary>
-                  <div className="pl-7 pt-2 pb-1">
-                    <p className="text-sm text-stone-700">Network Administrators, Systems Administrators, Data Warehouse, Information Security</p>
-                  </div>
-                </details>
-                
-                <details className="mb-3">
-                  <summary className="flex items-center cursor-pointer p-2 bg-alternative-50/50 rounded-lg">
-                    <Layout className="h-5 w-5 text-alternative-600 mr-2" />
-                    <span className="font-semibold text-stone-900">Web & Design</span>
-                  </summary>
-                  <div className="pl-7 pt-2 pb-1">
-                    <p className="text-sm text-stone-700">Web Developers, Web Designers</p>
-                  </div>
-                </details>
-                
-                <details className="mb-3">
-                  <summary className="flex items-center cursor-pointer p-2 bg-alternative-50/50 rounded-lg">
-                    <PieChart className="h-5 w-5 text-alternative-600 mr-2" />
-                    <span className="font-semibold text-stone-900">Analytics & Marketing</span>
-                  </summary>
-                  <div className="pl-7 pt-2 pb-1">
-                    <p className="text-sm text-stone-700">QA, BI, Marketing Managers</p>
-                  </div>
-                </details>
+                {positionGroups.map((group, index) => (
+                  <details key={index} className="mb-4 group">
+                    <summary className="flex items-center cursor-pointer p-3 bg-gradient-to-r from-alternative-50 to-alternative-100 rounded-lg shadow-sm transition-all duration-300 hover:shadow-md">
+                      <div className="bg-alternative-600 rounded-full p-1.5 mr-3">
+                        {React.cloneElement(group.icon, { className: "h-5 w-5 text-white" })}
+                      </div>
+                      <span className="font-semibold text-stone-900">{group.category}</span>
+                    </summary>
+                    <div className="pl-12 pt-3 pb-2 animate-fade-in">
+                      <div className="flex flex-wrap gap-2">
+                        {group.positions.map((position, posIdx) => (
+                          <span key={posIdx} className="inline-block bg-white px-3 py-1 rounded-full text-sm text-stone-700 shadow-sm border border-alternative-100">
+                            {position}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </details>
+                ))}
               </div>
               
-              {/* Desktop view - grid layout */}
-              <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-6">
+              {/* Desktop view - grid layout with cards */}
+              <div className="hidden md:grid md:grid-cols-3 gap-6">
                 {positionGroups.map((group, index) => (
-                  <div key={index} className="bg-white/50 backdrop-blur-sm rounded-lg p-4">
-                    <div className="flex items-center mb-3">
-                      <div className="w-8 h-8 rounded-full bg-white/50 flex items-center justify-center mr-2">
-                        {group.icon}
+                  <div 
+                    key={index} 
+                    className="opacity-0 animate-fade-in-up animate-fill-forwards bg-white rounded-xl shadow-md overflow-hidden border border-alternative-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                    style={{animationDelay: `${index * 100}ms`}}
+                  >
+                    <div className="bg-gradient-to-r from-alternative-500 to-alternative-600 p-4">
+                      <div className="flex items-center">
+                        <div className="bg-white/20 backdrop-blur-sm rounded-full p-2 mr-3">
+                          {React.cloneElement(group.icon, { className: "h-6 w-6 text-white" })}
+                        </div>
+                        <h4 className="font-bold text-white">{group.category}</h4>
                       </div>
-                      <h4 className="font-semibold text-stone-900">{group.category}</h4>
                     </div>
-                    <ul className="space-y-1 pl-10">
-                      {group.positions.map((position, idx) => (
-                        <li key={idx} className="text-stone-700 text-sm flex items-start">
-                          <ChevronRight className="h-3 w-3 text-alternative-400 mr-1 mt-1 flex-shrink-0" />
-                          <span>{position}</span>
-                        </li>
-                      ))}
-                    </ul>
+                    <div className="p-4">
+                      <div className="flex flex-wrap gap-2">
+                        {group.positions.map((position, posIdx) => (
+                          <span 
+                            key={posIdx} 
+                            className="inline-block bg-alternative-50 px-3 py-1 rounded-full text-sm text-stone-700 hover:bg-alternative-100 transition-colors duration-200"
+                          >
+                            {position}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 ))}
+              </div>
+              
+              {/* Call to action button */}
+              <div className="mt-8 text-center">
+                <Link 
+                  to="/contact" 
+                  className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-alternative-600 to-alternative-700 text-white font-medium rounded-lg shadow-md hover:shadow-lg transform transition-all duration-300 hover:-translate-y-1"
+                >
+                  Find Your Next Role
+                  <ChevronRight className="ml-2 h-5 w-5" />
+                </Link>
               </div>
             </div>
           </GlassCard>

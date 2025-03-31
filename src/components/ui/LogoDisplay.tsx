@@ -28,7 +28,7 @@ export function LogoDisplay({
   style,
 }: LogoDisplayProps) {
   // Fixed logo path
-  const logoPath = 'Adobe Express - file (5).png';
+  const logoPath = 'logo.png';
   // Convert string dimensions to numbers if possible for better styling
   const widthValue = width;
   const heightValue = height === 'auto' ? 'auto' : height;

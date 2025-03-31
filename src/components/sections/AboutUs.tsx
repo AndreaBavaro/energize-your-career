@@ -5,16 +5,6 @@ import { CheckCircle, Users, History, Trophy, Briefcase, Heart, Award } from 'lu
 export default function AboutUs() {
   const features = [
     {
-      icon: <Users className="h-6 w-6 text-white" />,
-      title: 'Women-Owned Business',
-      description: 'Founded in 2005, we bring decades of industry expertise to every engagement.'
-    },
-    {
-      icon: <History className="h-6 w-6 text-white" />,
-      title: '20+ Years of Experience',
-      description: 'Our founder has over two decades of experience in the technology and professional staffing industry.'
-    },
-    {
       icon: <Trophy className="h-6 w-6 text-white" />,
       title: 'Proven Track Record',
       description: "We've helped hundreds of professionals improve their careers and organizations find their perfect match."
@@ -33,28 +23,6 @@ export default function AboutUs() {
       </div>
       
       <div className="container-custom relative z-10">
-        {/* Women-Owned Banner - moved above section heading */}
-        <div className="max-w-6xl mx-auto mb-10">
-          <div className="bg-gradient-to-r from-alternative-600 to-alternative-700 rounded-lg shadow-md overflow-hidden">
-            <div className="flex flex-col sm:flex-row items-center justify-between p-4 sm:p-6">
-              <div className="flex items-center mb-4 sm:mb-0">
-                <div className="bg-white/20 backdrop-blur-sm p-2 rounded-full mr-4">
-                  <Users className="h-7 w-7 text-white" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-white">Proudly Women-Owned & Operated</h3>
-                  <p className="text-white/90 max-w-xl">
-                    Founded by industry veterans with over 20 years of experience serving small and Fortune 500 businesses.
-                  </p>
-                </div>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg border border-white/20">
-                <p className="text-white font-semibold text-sm">Est. 2005</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        
         <SectionHeading 
           title="Who We Are"
           subtitle="Voltify is a women-owned staffing solutions business built on a solid foundation of industry expertise."
@@ -126,13 +94,36 @@ export default function AboutUs() {
             </div>
           </div>
           
-          {/* Features section - 2x2 grid on mobile, 2x2 on tablet/desktop */}
-          <div className="grid grid-cols-2 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+            <div className="col-span-1 sm:col-span-2 mb-2">
+              <div className="bg-gradient-to-r from-alternative-600 to-alternative-700 rounded-lg shadow-md overflow-hidden">
+                <div className="p-4 sm:p-5">
+                  <h3 className="text-xl font-bold text-white text-center mb-2">Proudly Women-Owned & Operated</h3>
+                  <p className="text-white/90 text-center text-sm sm:text-base">
+                    Founded by industry veterans with over 20 years of experience serving small and Fortune 500 businesses.
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            <GlassCard 
+              className={`opacity-0 animate-fade-in-up animate-fill-forwards col-span-1 sm:col-span-2 mb-2 sm:mb-4`}
+              animationDelay={`200ms`}
+            >
+              <div className="w-full h-full">
+                <img 
+                  src="/images/women1.jpg" 
+                  alt="Women-Owned Business" 
+                  className="w-full h-56 sm:h-72 md:h-80 object-cover rounded-lg"
+                />
+              </div>
+            </GlassCard>
+            
             {features.map((feature, index) => (
               <GlassCard 
                 key={index}
                 className={`opacity-0 animate-fade-in-up animate-fill-forwards`}
-                animationDelay={`${index * 100 + 200}ms`}
+                animationDelay={`${(index + 1) * 100 + 300}ms`}
               >
                 <div className="flex flex-col h-full">
                   <div className="rounded-full w-10 h-10 sm:w-12 sm:h-12 bg-alternative-600 flex items-center justify-center mb-2 sm:mb-4">
