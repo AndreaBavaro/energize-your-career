@@ -153,11 +153,13 @@ export default function Hero() {
       className="absolute inset-0 w-full h-full"
       style={{
         backgroundImage: `url("${import.meta.env.BASE_URL}images/city.jpg")`,
-        backgroundSize: '100% 100%',
+        backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        filter: 'contrast(1.2) brightness(1.0) saturate(1.0)',      }}
+        filter: 'contrast(1.2) brightness(0.9) saturate(1.0)',
+      }}
     ></div>
+    <div className="absolute inset-0 bg-blue-900/30 backdrop-blur-[1px]"></div>
   </div>
 </div>
 
@@ -202,57 +204,44 @@ export default function Hero() {
 
       {/* Mobile version of Voltify Donates 5% - Bottom Left */}
       <div 
-        className="absolute bottom-20 left-4 md:hidden"
+        className="absolute bottom-[35vh] right-[2vw] md:hidden"
         style={{ 
           zIndex: 25,
-          width: '190px',
+          width: '170px',
         }}
       >
         <div 
-          className="bg-white/90 backdrop-blur-sm border-l-4 border-r-4 border-blue-500 rounded-lg shadow-lg overflow-hidden p-2 flex flex-col justify-between hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent cursor-pointer"
+          className="bg-white/95 backdrop-blur-sm border-l-4 border-r-4 border-blue-500 rounded-lg shadow-lg overflow-hidden p-2 flex flex-col justify-between hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent cursor-pointer h-full"
           onClick={(e) => {
             e.stopPropagation(); // Prevent double navigation
             goToCharityPage(); // Use the navigate function instead of window.open
           }}
         >
           <div>
-            <div className="rounded-t-lg px-0 py-1 border-b border-blue-200">
+            <div className="rounded-t-lg px-0 py-1 border-b border-blue-200 mb-4">
               <h3 className="text-black font-bold text-xs tracking-wide text-center flex items-center justify-center gap-1">
                 Voltify Donates 5%
               </h3>
             </div>
             
-            <div className="px-2 pt-1 pb-0 rounded-b-lg mb-0">
+            <div className="px-1 pt-1 pb-0 rounded-b-lg mb-0">
               <p className="text-xs text-black leading-tight max-w-xl mx-auto font-light">
-              For each candidate hired, we contribute <span className="font-bold text-blue-500">5%</span> to assisting those in need through charitable initiatives.
+              For each candidate hired, we contribute <span className="font-bold text-blue-500">5%</span> to those in need through charitable initiatives.
               </p>
-              <div className="flex justify-center">
+              <div className="flex justify-center mt-4">
               <Button 
-              className="bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 hover:from-blue-500 hover:to-blue-600 text-white rounded-full shadow-lg transition-all duration-300 text-[10px] font-medium border border-blue-400/30 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/20 before:to-transparent before:opacity-70 scale-95 hover:scale-100 px-[clamp(8px,1vw,12px)] py-[clamp(4px,0.5vw,8px)]"
-              onClick={(e) => {
-                e.stopPropagation(); // Prevent double navigation
-                goToCharityPage(); // Use the navigate function instead of window.open
-              }}
-            >
-              Learn More
-            </Button>
+                className="bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 hover:from-blue-500 hover:to-blue-600 text-white px-2 py-1 rounded-full shadow-lg transition-all duration-300 text-[10px] font-medium border border-blue-400/30 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/20 before:to-transparent before:opacity-70 transform hover:scale-105 scale-90"
+                onClick={(e) => {
+                  e.stopPropagation(); // Prevent double navigation
+                  goToCharityPage(); // Use the navigate function instead of window.open
+                }}
+              >
+                Learn More
+              </Button>
               </div>
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Mobile CTA Button positioned in bottom left corner */}
-      <div 
-        className="absolute bottom-4 left-4 hidden"
-      >
-        <Button 
-          className="bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 hover:from-blue-500 hover:to-blue-600 text-white px-3 py-1.5 rounded-full shadow-lg transition-all duration-300 text-xs font-medium border border-blue-400/30 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/20 before:to-transparent before:opacity-70 scale-90"
-          onClick={() => navigate('/contact')}
-        >
-          Connect With Us
-          <ArrowRight className="ml-1.5 h-3 w-3" />
-        </Button>
       </div>
 
       <div 
@@ -312,14 +301,14 @@ export default function Hero() {
 
       {/* Mobile version of Client Testimonials - Bottom Right */}
       <div 
-        className="absolute bottom-4 right-4 md:hidden"
+        className="absolute bottom-[35vh] left-[10vw] md:hidden"
         style={{ 
           zIndex: 25,
-          width: '150px',
+          width: '170px',
         }}
       >
         <div 
-          className="bg-white/90 backdrop-blur-sm border-l-4 border-r-4 border-blue-500 rounded-lg shadow-lg overflow-hidden p-2 flex flex-col justify-between cursor-pointer hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent"
+          className="bg-white/95 backdrop-blur-sm border-l-4 border-r-4 border-blue-500 rounded-lg shadow-lg overflow-hidden p-2 flex flex-col justify-between hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent cursor-pointer"
           onClick={goToTestimonialsPage}
         >
           <div>
@@ -406,17 +395,17 @@ export default function Hero() {
         {/* PRIMARY FOCUS: Heading and Mission Statement - Left-aligned column */}
         <div className="w-full order-1 md:px-0 md:pr-0">
           {/* Heading - PRIMARY FOCUS PART 1 */}
-          <div className="text-center overflow-visible mx-auto w-full mb-[1vh] hidden sm:block">
+          <div className="text-center overflow-visible mx-auto w-full mb-[1vh]">
             <h1 className="relative text-[clamp(24px,3vw,44px)] font-bold tracking-tight mb-0 overflow-visible py-[0.3vh] px-0 leading-tight whitespace-normal mt-0"> 
               <span className="text-blue-500 relative">
                 {/* Gradient text with animation */}
-                <span className="bg-[#000000] bg-clip-text text-transparent animate-gradient-x font-extrabold">
+                <span className="bg-[#000000] bg-clip-text text-transparent animate-gradient-x font-extrabold hidden md:inline-block">
                   Voltify
                 </span>
                 
                 <Zap 
                   shapeRendering="crispEdges"
-                  className="bg-transparent inline-block h-[clamp(28px,2.5vw,60px)] w-[clamp(22px,2vw,48px)] ml-[0.5vw] text-[#fde90c] fill-current hover:scale-110 transition-transform duration-300"
+                  className="bg-transparent inline-block h-[clamp(28px,2.75vw,60px)] w-[clamp(25px,2vw,48px)] ml-[0.5vw] text-[#fde90c] fill-current hover:scale-110 transition-transform duration-300 hidden md:inline-block"
                   style={{
                     stroke: '#fde90c',
                     strokeWidth: 1.5,
@@ -429,14 +418,14 @@ export default function Hero() {
             </h1>
           </div>
           
-         {/* Mission statement - PRIMARY FOCUS PART 2 */}
-<div className="relative z-10 md:ml-[-3.5vw] px-0 mx-auto mt-[-0.5vh]">
+         {/* Desktop Mission statement - PRIMARY FOCUS PART 2 */}
+<div className="relative z-10 ml-[-3.5vw] xl:ml-0 lg:ml-0 md:ml-[-1.5vw] px-0 mx-auto mt-[-0.5vh] hidden md:block">
    <div 
-       className="bg-white/95 backdrop-blur-sm border-l-2 border-r-2 border-blue-500 pl-[1vw] pr-[0.8vw] py-[0.8vw] rounded-lg mr-auto relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent h-auto w-[280px] sm:w-[350px] md:w-auto"
+       className="bg-white/95 backdrop-blur-sm border-l-2 border-r-2 border-blue-500 pl-[1vw] pr-[0.8vw] py-[0.8vw] rounded-lg mr-auto relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent h-auto md:w-auto"
        style={{ width: 'clamp(315px, 55vw, 750px)', maxWidth: '95%' }}
    >
      <div className="flex flex-col items-center justify-center">
-       <p className="relative text-[16px] sm:text-[16px] md:text-[clamp(17px,1.8vw,25px)] font-bold text-black leading-tight text-center md:text-left relative z-10 py-[0.8vh]">
+       <p className="relative text-[clamp(17px,1.8vw,25px)] font-bold text-black leading-tight text-left relative z-10 py-[0.8vh]">
          <span className="block mb-[0.5vh]">
            We energize careers, build lasting relationships,
          </span>
@@ -446,11 +435,34 @@ export default function Hero() {
        </p>
        
        <Button 
-         className="bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 hover:from-blue-500 hover:to-blue-600 text-white px-[8px] sm:px-[clamp(12px,1.2vw,16px)] py-[4px] sm:py-[clamp(6px,0.8vw,12px)] rounded-full shadow-lg transition-all duration-300 text-[10px] sm:text-[clamp(14px,1vw,18px)] font-medium border border-blue-400/30 mb-[0.5vh] relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/20 before:to-transparent before:opacity-70 transform hover:scale-105 self-center scale-90 sm:scale-100 hidden sm:flex"
+         className="bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 hover:from-blue-500 hover:to-blue-600 text-white px-[clamp(12px,1.2vw,16px)] py-[clamp(6px,0.8vw,12px)] rounded-full shadow-lg transition-all duration-300 text-[clamp(14px,1vw,18px)] font-medium border border-blue-400/30 mb-[0.5vh] relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/20 before:to-transparent before:opacity-70 transform hover:scale-105 self-center"
          onClick={() => navigate('/contact')}
        >
          Discover Opportunities
-         <ArrowRight className="ml-[0.3vw] h-[10px] sm:h-[clamp(14px,1.2vw,20px)] w-[10px] sm:w-[clamp(14px,1.2vw,20px)]" />
+         <ArrowRight className="ml-[0.5vw] h-[clamp(14px,1.2vw,20px)] w-[clamp(14px,1.2vw,20px)]" />
+       </Button>
+     </div>
+   </div>
+</div>
+
+{/* Mobile Mission statement */}
+<div className="relative z-10 px-1 mr-[5vw] mx-auto mt-[2vh] block md:hidden">
+   <div 
+       className="bg-white/95 backdrop-blur-sm border-l-2 border-r-2 border-blue-500 px-3 py-2 rounded-lg mx-auto relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent h-auto w-[100%] max-w-[500px] shadow-lg"
+   >
+     <div className="flex flex-col items-center justify-center">
+       <p className="relative text-[16px] font-bold text-black leading-[1.15] text-center relative z-10 tracking-tight w-full">
+         <span className="inline-block">We energize careers and build</span>
+         <span className="inline-block">relationships, connecting you</span>
+         <span className="inline-block mb-1.5">with opportunities.</span>
+       </p>
+       
+       <Button 
+         className="bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 hover:from-blue-500 hover:to-blue-600 text-white px-[10px] py-[6px] rounded-full shadow-lg transition-all duration-300 text-[12px] font-medium border border-blue-400/30 mb-1 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/20 before:to-transparent before:opacity-70 transform hover:scale-105 self-center"
+         onClick={() => navigate('/contact')}
+       >
+         Discover Opportunities
+         <ArrowRight className="ml-1.5 h-[12px] w-[12px]" />
        </Button>
      </div>
    </div>
