@@ -168,8 +168,8 @@ export default function Navbar() {
       >
         {/* Mobile logo - visible only on mobile */}
         <div className={`flex sm:hidden items-center -ml-2 ${mobileMenuOpen ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300 mobile-logo-container`}>
-          <div className="relative">
-            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[50px] h-[55px] bg-blue-700 rounded-t-full transform -rotate-180 z-0"></div>
+          <div className="relative mt-[8vw]">
+            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[40px] h-[45px] bg-blue-700 rounded-t-full transform -rotate-180 z-0"></div>
             <Link 
               to="/" 
               className="relative z-10"
@@ -191,9 +191,9 @@ export default function Navbar() {
             >
               <LogoDisplay 
                 position="relative"
-                width="90px"
+                width="95px"
                 height="auto"
-                className="transition-all duration-300 scale-75"
+                className="transition-all duration-300 scale-90"
                 responsive={true}
               />
             </Link>

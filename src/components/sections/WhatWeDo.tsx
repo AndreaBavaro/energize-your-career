@@ -27,31 +27,31 @@ export default function WhatWeDo() {
   // Industry sectors we serve
   const sectors = [
     {
-      icon: <Zap className="h-8 w-8 text-alternative-600" />,
+      icon: <Zap className="h-8 w-8 text-black-600" />,
       name: 'Energy',
     },
     {
-      icon: <Database className="h-8 w-8 text-alternative-600" />,
+      icon: <Database className="h-8 w-8 text-black-600" />,
       name: 'Information Technology',
     },
     {
-      icon: <Heart className="h-8 w-8 text-alternative-600" />,
+      icon: <Heart className="h-8 w-8 text-black-600" />,
       name: 'Human Resources',
     },
     {
-      icon: <BarChart3 className="h-8 w-8 text-alternative-600" />,
+      icon: <BarChart3 className="h-8 w-8 text-black-600" />,
       name: 'Marketing',
     },
     {
-      icon: <CreditCard className="h-8 w-8 text-alternative-600" />,
+      icon: <CreditCard className="h-8 w-8 text-black-600" />,
       name: 'Financial Services',
     },
     {
-      icon: <Microscope className="h-8 w-8 text-alternative-600" />,
+      icon: <Microscope className="h-8 w-8 text-black-600" />,
       name: 'Life Science',
     },
     {
-      icon: <CreditCard className="h-8 w-8 text-alternative-600" />,
+      icon: <CreditCard className="h-8 w-8 text-black-600" />,
       name: 'FinTech',
     },
   ];
@@ -145,13 +145,13 @@ export default function WhatWeDo() {
                   {sectors.map((sector, index) => (
                     <div 
                       key={index}
-                      className="opacity-0 animate-fade-in-up animate-fill-forwards bg-white/20 backdrop-blur-sm rounded-lg shadow-md p-2 flex items-center cursor-pointer hover:bg-white/30 transition-colors duration-300"
+                      className="opacity-0 animate-fade-in-up animate-fill-forwards bg-white/30 backdrop-blur-sm rounded-lg shadow-md p-2 flex items-center cursor-pointer hover:bg-white/30 transition-colors duration-300"
                       style={{animationDelay: `${index * 100}ms`}}
                       onClick={scrollToPositions}
                       role="button"
                       aria-label={`View positions in ${sector.name}`}
                     >
-                      <div className="flex-shrink-0 w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mr-3">
+                      <div className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center mr-3">
                         {sector.icon}
                       </div>
                       <h4 className="font-semibold text-white text-sm">{sector.name}</h4>
@@ -265,8 +265,8 @@ export default function WhatWeDo() {
                   >
                     <div className="bg-gradient-to-r from-alternative-500 to-alternative-600 p-4">
                       <div className="flex items-center">
-                        <div className="bg-white/20 backdrop-blur-sm rounded-full p-2 mr-3">
-                          {React.cloneElement(group.icon, { className: "h-6 w-6 text-white" })}
+                        <div className="rounded-full p-2 mr-3">
+                          {React.cloneElement(group.icon, { className: "h-6 w-6 text-alternative-600" })}
                         </div>
                         <h4 className="font-bold text-white">{group.category}</h4>
                       </div>
