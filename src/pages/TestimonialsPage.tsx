@@ -18,7 +18,7 @@ const TestimonialsPage = () => {
       fullQuote: `Working with Melinda for our website development project was the right choice. She was instrumental in researching and identifying the right development company to meet our needs, ensuring that every detail aligned with our objectives. Melinda expertly managed the relationship between our team and the developers, advocating for our requirements and making sure our expectations were met at every stage. Her regular collaboration and communication were outstanding, keeping everything on track while proactively addressing any challenges that arose. She handled issues seamlessly, allowing me to focus on other tasks with confidence. Melinda's professionalism, attention to detail, and commitment to our success made the entire process smooth and stress-free. I would highly recommend working with Melinda and Ban Partners to any business seeking expert guidance and strategic support.`,
       author: 'Jeff Merrick',
       position: 'CIO and VP Digital Information',
-      company: '',
+      company: 'Advocate Printing & Publishing',
       avatarUrl: '/images/office-view.jpg'
     },
     {
