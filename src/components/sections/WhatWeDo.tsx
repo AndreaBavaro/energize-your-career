@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import OptimizedImage from '../ui/OptimizedImage';
 
 export default function WhatWeDo() {
   // Function to scroll to positions section
@@ -121,10 +122,12 @@ export default function WhatWeDo() {
       
       <div className="container-custom relative z-10">
         {/* Industries Banner - Moved to top and made smaller */}
-        <div className="relative py-12 md:py-16 mb-12 overflow-hidden w-screen -ml-[50vw] left-1/2 min-h-[350px] md:min-h-[300px] flex items-center justify-center bg-[position:calc(50%+400px)_30%] md:bg-[position:center_30%]" 
+        <div className="relative py-12 md:py-16 mb-12 overflow-hidden w-screen -ml-[50vw] left-1/2 min-h-[350px] md:min-h-[300px] flex items-center justify-center" 
           style={{
-            backgroundImage: `url("${import.meta.env.BASE_URL}images/bulb.jpg")`,
+            backgroundImage: `url("${import.meta.env.BASE_URL}images/bulb.webp"), url("${import.meta.env.BASE_URL}images/bulb.jpg")`,
             backgroundSize: 'cover',
+            backgroundPosition: 'calc(50% + 400px) 30%',
+            backgroundRepeat: 'no-repeat',
           }}>
           {/* Semi-transparent overlay with stronger opacity on mobile */}
           <div className="absolute inset-0 bg-black/60 md:bg-black/50"></div>
@@ -209,12 +212,12 @@ export default function WhatWeDo() {
                 </div>
               </div>
               
-              {/* Add helping.jpg image below the steps */}
               <div className="mt-8">
-                <img 
+                <OptimizedImage 
                   src="/images/helping.jpg" 
                   alt="Professional helping a candidate find the perfect role" 
                   className="w-full h-auto rounded-lg shadow-md object-cover"
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -260,7 +263,7 @@ export default function WhatWeDo() {
                 {positionGroups.map((group, index) => (
                   <div 
                     key={index} 
-                    className="opacity-0 animate-fade-in-up animate-fill-forwards bg-white rounded-xl shadow-md overflow-hidden border border-alternative-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                    className="opacity-0 animate-fade-in-up animate-fill-forwards bg-white rounded-xl shadow-md overflow-hidden border border-alternative-100 duration-300"
                     style={{animationDelay: `${index * 100}ms`}}
                   >
                     <div className="bg-gradient-to-r from-alternative-500 to-alternative-600 p-4">
@@ -291,7 +294,7 @@ export default function WhatWeDo() {
               <div className="mt-8 text-center">
                 <Link 
                   to="/contact" 
-                  className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-alternative-600 to-alternative-700 text-white font-medium rounded-lg shadow-md hover:shadow-lg transform transition-all duration-300 hover:-translate-y-1"
+                  className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-alternative-600 to-alternative-700 text-white font-medium rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
                 >
                   Find Your Next Role
                   <ChevronRight className="ml-2 h-5 w-5" />

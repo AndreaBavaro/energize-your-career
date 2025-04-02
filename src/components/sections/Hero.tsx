@@ -135,34 +135,36 @@ export default function Hero() {
       className="relative min-h-[100svh] flex flex-col justify-between pt-3 sm:pt-4 md:pt-6 overflow-hidden position-relative"
     >
       {/* Image Background */}
-<div className="absolute inset-0 z-0 overflow-hidden">
-  <div className="hidden md:block">
-    <div
-      className="absolute inset-0 w-full h-full"
-      style={{
-        backgroundImage: `url("${import.meta.env.BASE_URL}images/city.jpg")`,
-        backgroundSize: '100% 100%',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        filter: 'contrast(1.2) brightness(1.0) saturate(1.0)',        }}
-    ></div>
-  </div>
-  
-  <div className="md:hidden">
-    <div
-      className="absolute inset-0 w-full h-full"
-      style={{
-        backgroundImage: `url("${import.meta.env.BASE_URL}images/city.jpg")`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        filter: 'contrast(1.2) brightness(0.9) saturate(1.0)',
-      }}
-    ></div>
-    <div className="absolute inset-0 bg-blue-900/30 backdrop-blur-[1px]"></div>
-  </div>
-</div>
-
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        {/* Desktop Background */}
+        <div className="hidden md:block">
+          <div
+            className="absolute inset-0 w-full h-full"
+            style={{
+              backgroundImage: `url("${import.meta.env.BASE_URL}images/city.webp"), url("${import.meta.env.BASE_URL}images/city.jpg")`,
+              backgroundSize: '100% 100%',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+              filter: 'contrast(1.2) brightness(1.0) saturate(1.0)',
+            }}
+          ></div>
+        </div>
+        
+        {/* Mobile Background */}
+        <div className="md:hidden">
+          <div
+            className="absolute inset-0 w-full h-full"
+            style={{
+              backgroundImage: `url("${import.meta.env.BASE_URL}images/city.webp"), url("${import.meta.env.BASE_URL}images/city.jpg")`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+              filter: 'contrast(1.2) brightness(0.9) saturate(1.0)',
+            }}
+          ></div>
+          <div className="absolute inset-0 bg-blue-900/30 backdrop-blur-[1px]"></div>
+        </div>
+      </div>
 
       {/* Voltify Donates 5% - Top Right on desktop, Bottom Left on mobile */}
       <div 
