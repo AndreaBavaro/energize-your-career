@@ -126,8 +126,9 @@ export default function WhatWeDo() {
           style={{
             backgroundImage: `url("${import.meta.env.BASE_URL}images/bulb.webp"), url("${import.meta.env.BASE_URL}images/bulb.jpg")`,
             backgroundSize: 'cover',
-            backgroundPosition: 'calc(50% + 400px) 30%',
+            backgroundPosition: 'center center',
             backgroundRepeat: 'no-repeat',
+            width: '100vw',
           }}>
           {/* Semi-transparent overlay with stronger opacity on mobile */}
           <div className="absolute inset-0 bg-black/60 md:bg-black/50"></div>
