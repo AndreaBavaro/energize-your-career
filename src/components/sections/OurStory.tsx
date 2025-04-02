@@ -40,7 +40,7 @@ export default function OurStory() {
                   src="/images/helpingvid.mp4" 
                   poster="/images/helping-poster.jpg"
                   ariaLabel="Voltify's impact on careers and organizations" 
-                  className="w-full h-96 rounded-lg shadow-md object-cover"
+                  className="w-full rounded-lg shadow-md object-cover aspect-video max-h-[70vh]"
                   autoPlay
                   muted
                   loop

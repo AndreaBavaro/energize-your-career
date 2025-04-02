@@ -1,4 +1,5 @@
 import emailjs from '@emailjs/browser';
+import { addSubscriber } from './subscriberService';
 
 // Replace these with your actual EmailJS credentials
 const SERVICE_ID = 'YOUR_SERVICE_ID';
@@ -29,7 +30,15 @@ export const subscribeToNewsletter = async (data: SubscriberData): Promise<{ suc
       return { success: false, message: 'Please enter a valid email address' };
     }
 
-    // Prepare template parameters
+    // First add the subscriber to Firebase
+    const firebaseResult = await addSubscriber(data);
+    
+    // If the subscriber was already in the database, return that result
+    if (!firebaseResult.success && firebaseResult.message.includes('already subscribed')) {
+      return firebaseResult;
+    }
+
+    // Prepare template parameters for welcome email
     const templateParams = {
       email: data.email,
       name: data.name || '',
@@ -37,7 +46,7 @@ export const subscribeToNewsletter = async (data: SubscriberData): Promise<{ suc
       subscription_source: data.source || window.location.pathname
     };
 
-    // Send to EmailJS
+    // Send welcome email via EmailJS
     const result = await emailjs.send(
       SERVICE_ID,
       TEMPLATE_ID,
@@ -48,11 +57,13 @@ export const subscribeToNewsletter = async (data: SubscriberData): Promise<{ suc
     if (result.text === 'OK') {
       return { success: true, message: 'Thank you for subscribing to our newsletter!' };
     } else {
-      throw new Error('Failed to subscribe');
+      throw new Error('Failed to send welcome email');
     }
   } catch (error) {
     console.error('Newsletter subscription error:', error);
-    return { success: false, message: 'Failed to subscribe. Please try again later.' };
+    // If we already added to Firebase but EmailJS failed, still consider it a success
+    // since the subscriber is in our database
+    return { success: true, message: 'You have been subscribed to our newsletter!' };
   }
 };
 

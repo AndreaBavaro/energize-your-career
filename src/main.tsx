@@ -7,6 +7,11 @@ import { initFontOptimization } from './utils/fontOptimizer.ts'
 import { initCSSOptimization } from './utils/cssOptimizer.ts'
 import { initDependencyAnalysis } from './utils/dependencyAnalyzer.ts'
 import { injectFavicons } from './utils/faviconGenerator.ts'
+import { initEmailJS } from './services/newsletterService.ts'
+import './config/firebase.ts' // This will initialize Firebase
+
+// Initialize EmailJS
+initEmailJS();
 
 // Initialize performance monitoring in production
 if (process.env.NODE_ENV === 'production') {

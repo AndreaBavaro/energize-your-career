@@ -2,6 +2,7 @@ import React from 'react';
 import { Quote } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import OptimizedImage from '@/components/ui/OptimizedImage';
 
 const TestimonialsPage = () => {
   // Combined CLIENT + CANDIDATE testimonials, with client ones first
@@ -18,7 +19,7 @@ const TestimonialsPage = () => {
       fullQuote: `Working with Melinda for our website development project was the right choice. She was instrumental in researching and identifying the right development company to meet our needs, ensuring that every detail aligned with our objectives. Melinda expertly managed the relationship between our team and the developers, advocating for our requirements and making sure our expectations were met at every stage. Her regular collaboration and communication were outstanding, keeping everything on track while proactively addressing any challenges that arose. She handled issues seamlessly, allowing me to focus on other tasks with confidence. Melinda's professionalism, attention to detail, and commitment to our success made the entire process smooth and stress-free. I would highly recommend working with Melinda and Ban Partners to any business seeking expert guidance and strategic support.`,
       author: 'Jeff Merrick',
       position: 'CIO and VP Digital Information',
-      company: 'Advocate Printing & Publishing',
+      company: '',
       avatarUrl: '/images/office-view.jpg'
     },
     {
@@ -110,10 +111,12 @@ const TestimonialsPage = () => {
                 <div className="p-4 sm:p-6 md:p-8 flex flex-col items-center text-center">
                   {/* Avatar */}
                   <div className="mb-3 sm:mb-6">
-                    <img 
+                    <OptimizedImage 
                       src={testimonial.avatarUrl} 
                       alt={testimonial.author} 
                       className="h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24 rounded-full object-cover border-4 border-white shadow-md" 
+                      width={96}
+                      height={96}
                     />
                   </div>
                   

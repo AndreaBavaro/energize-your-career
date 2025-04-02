@@ -46,10 +46,16 @@ node_modules
 
 # Firebase
 .firebase/
+.firebaserc
+firebase.json
 firebase-debug.log
-firestore-debug.log
+firestore.rules
+firestore.indexes.json
+storage.rules
 ui-debug.log
-.runtimeconfig.json
+functions/lib/
+functions/node_modules/
+functions/.runtimeconfig.json
 
 # Misc
 .cache
