@@ -1,6 +1,8 @@
 import { SectionHeading } from '../ui/SectionHeading';
 import { GlassCard } from '../ui/GlassCard';
 import { BookOpen, Award, Heart, Lightbulb, Star, Users } from 'lucide-react';
+import OptimizedVideo from '../ui/OptimizedVideo';
+import OptimizedImage from '../ui/OptimizedImage';
 
 export default function OurStory() {
   return (
@@ -31,6 +33,20 @@ export default function OurStory() {
               <p className="text-lg text-black leading-relaxed font-medium italic text-center py-4 border-y border-alternative-300/80">
                 "She has had the privilege of helping hundreds of individuals transform their careers and enhance their lives—and that's what continues to drive and inspire us every day!"
               </p>
+              
+              {/* Video showcasing the Voltify journey */}
+              <div className="mt-8">
+                <OptimizedVideo 
+                  src="/images/helpingvid.mp4" 
+                  poster="/images/helping-poster.jpg"
+                  ariaLabel="Voltify's impact on careers and organizations" 
+                  className="w-full h-96 rounded-lg shadow-md object-cover"
+                  autoPlay
+                  muted
+                  loop
+                  preload="metadata"
+                />
+              </div>
             </div>
           </div>
           
@@ -116,10 +132,11 @@ export default function OurStory() {
             </p>
             
             <div className="mt-6 flex justify-center">
-              <img 
+              <OptimizedImage 
                 src={`${import.meta.env.BASE_URL}images/women2.jpg`}
                 alt="Helping" 
                 className="rounded-lg shadow-md w-full max-w-4xl h-auto"
+                loading="lazy"
               />
             </div>
           </div>

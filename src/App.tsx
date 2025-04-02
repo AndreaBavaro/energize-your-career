@@ -4,16 +4,30 @@ import { Toaster } from "./components/ui/toaster";
 import { Toaster as Sonner } from "./components/ui/sonner";
 import ScrollToTop from "./components/ui/ScrollToTop";
 import RouteScrollToTop from "./components/ui/RouteScrollToTop";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
-import Contact from "./pages/Contact";
-import Blog from "./pages/Blog";
-import BlogPost from "./pages/BlogPost";
-import TestimonialsPage from "./pages/TestimonialsPage";
-import ThemePreview from "./components/ThemePreview";
-import Charity from "./pages/Charity";
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { initContentProtection } from "./utils/contentProtection";
+
+// Only import the Index page eagerly as it's the landing page
+import Index from "./pages/Index";
+
+// Lazy load all other pages
+const NotFound = lazy(() => import("./pages/NotFound"));
+const Contact = lazy(() => import("./pages/Contact"));
+const Blog = lazy(() => import("./pages/Blog"));
+const BlogPost = lazy(() => import("./pages/BlogPost"));
+const TestimonialsPage = lazy(() => import("./pages/TestimonialsPage"));
+const ThemePreview = lazy(() => import("./components/ThemePreview"));
+const Charity = lazy(() => import("./pages/Charity"));
+
+// Loading fallback component
+const PageLoading = () => (
+  <div className="min-h-screen flex items-center justify-center bg-stone-50">
+    <div className="text-center">
+      <div className="w-16 h-16 border-4 border-alternative-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+      <p className="text-alternative-600 font-medium">Loading...</p>
+    </div>
+  </div>
+);
 
 const queryClient = new QueryClient();
 
@@ -31,15 +45,52 @@ const App = () => {
         <RouteScrollToTop />
         <ScrollToTop />
         <Routes>
+          {/* Index page is not lazy loaded as it's the landing page */}
           <Route path="/" element={<Index />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:id" element={<BlogPost />} />
-          <Route path="/testimonials" element={<TestimonialsPage />} />
-          <Route path="/charity" element={<Charity />} />
-          <Route path="/theme-preview" element={<ThemePreview />} />
+          
+          {/* All other routes are lazy loaded */}
+          <Route path="/contact" element={
+            <Suspense fallback={<PageLoading />}>
+              <Contact />
+            </Suspense>
+          } />
+          
+          <Route path="/blog" element={
+            <Suspense fallback={<PageLoading />}>
+              <Blog />
+            </Suspense>
+          } />
+          
+          <Route path="/blog/:id" element={
+            <Suspense fallback={<PageLoading />}>
+              <BlogPost />
+            </Suspense>
+          } />
+          
+          <Route path="/testimonials" element={
+            <Suspense fallback={<PageLoading />}>
+              <TestimonialsPage />
+            </Suspense>
+          } />
+          
+          <Route path="/charity" element={
+            <Suspense fallback={<PageLoading />}>
+              <Charity />
+            </Suspense>
+          } />
+          
+          <Route path="/theme-preview" element={
+            <Suspense fallback={<PageLoading />}>
+              <ThemePreview />
+            </Suspense>
+          } />
+          
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
+          <Route path="*" element={
+            <Suspense fallback={<PageLoading />}>
+              <NotFound />
+            </Suspense>
+          } />
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>

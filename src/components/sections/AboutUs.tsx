@@ -1,6 +1,7 @@
 import { SectionHeading } from '../ui/SectionHeading';
 import { GlassCard } from '../ui/GlassCard';
 import { CheckCircle, Users, History, Trophy, Briefcase, Heart, Award } from 'lucide-react';
+import OptimizedImage from '../ui/OptimizedImage';
 
 export default function AboutUs() {
   const features = [
@@ -111,10 +112,11 @@ export default function AboutUs() {
               animationDelay={`200ms`}
             >
               <div className="w-full h-full">
-                <img 
+                <OptimizedImage 
                   src="/images/women1.jpg" 
                   alt="Women-Owned Business" 
                   className="w-full h-56 sm:h-72 md:h-80 object-cover rounded-lg"
+                  loading="eager" 
                 />
               </div>
             </GlassCard>

@@ -5,6 +5,7 @@ import { format } from "date-fns";
 import { ArrowLeft } from "lucide-react";
 import "@/styles/twitter-embeds.css";
 import { processEmbeds, findEmbeds, EmbedInfo } from "@/utils/embedUtils";
+import { optimizeContent } from "@/utils/imageOptimizer";
 import EmbedTypeIcon from "@/components/ui/EmbedTypeIcon";
 import Newsletter from "@/components/ui/Newsletter";
 import Footer from "@/components/layout/Footer";
@@ -53,14 +54,14 @@ export default function BlogPost() {
 
   // Process content to enhance embeds
   useEffect(() => {
-    if (post?.content?.rendered) {
-      // Process the content to enhance embeds
-      const processed = processEmbeds(post.content.rendered);
-      setProcessedContent(processed);
+    if (post && post.content.rendered) {
+      // First process embeds
+      const processedResult = processEmbeds(post.content.rendered);
+      setEmbeds(processedResult.embeds || []);
       
-      // Find all embeds in the content
-      const foundEmbeds = findEmbeds(post.content.rendered);
-      setEmbeds(foundEmbeds);
+      // Then optimize images in the content
+      const optimizedContent = optimizeContent(processedResult.content);
+      setProcessedContent(optimizedContent);
     }
   }, [post]);
 
@@ -184,7 +185,7 @@ export default function BlogPost() {
             <article className="max-w-4xl mx-auto bg-white rounded-xl shadow-sm p-6 sm:p-8 md:p-10">
               {/* Categories */}
               <div className="flex flex-wrap gap-2 mb-4">
-                {post._embedded?.['wp:term']?.[0]?.map((category) => (
+                {post._embedded?.['wp:term']?.[0]?.filter(category => category.name !== 'Uncategorized').map((category) => (
                   <span
                     key={category.id}
                     className="px-3 py-1 text-sm font-medium bg-alternative-100 text-alternative-800 rounded-md"
@@ -201,22 +202,6 @@ export default function BlogPost() {
 
               {/* Title */}
               <h1 className="text-3xl sm:text-4xl font-bold text-stone-900 mb-6" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
-
-              {/* Author info if available */}
-              {post._embedded?.author?.[0] && (
-                <div className="flex items-center mb-8 pb-6 border-b border-stone-200">
-                  {post._embedded.author[0].avatar_urls?.['96'] && (
-                    <img 
-                      src={post._embedded.author[0].avatar_urls['96']} 
-                      alt={post._embedded.author[0].name}
-                      className="h-12 w-12 rounded-full mr-4 object-cover"
-                    />
-                  )}
-                  <div>
-                    <p className="font-medium text-stone-900">By {post._embedded.author[0].name}</p>
-                  </div>
-                </div>
-              )}
 
               {/* Content */}
               <div 
