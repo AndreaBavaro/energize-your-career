@@ -33,7 +33,7 @@ export default function AboutUs() {
           <div className="space-y-6">
             <div className="bg-white p-4 rounded-xl shadow-md">
               <h3 className="text-xl font-semibold text-black mb-3 flex items-center">
-                <Briefcase className="h-5 w-5 mr-2 text-red-500" />
+                <Briefcase className="h-5 w-5 mr-2 text-blue-500" />
                 Our Approach
               </h3>
               <p className="text-lg text-stone-700 leading-relaxed">
