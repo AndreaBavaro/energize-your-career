@@ -160,8 +160,9 @@ export default function Navbar() {
       {/* Navigation container */}
       <nav 
         className={`container-custom flex items-center justify-between sm:justify-end h-8 sm:h-10 md:h-12 lg:h-14 px-2 sm:px-3 md:px-4 lg:px-6 sm:ml-[100px] md:ml-[120px] lg:ml-[180px] mt-1 ${!mobileMenuOpen ? 'lg:cursor-default cursor-pointer' : ''}`}
-        onClick={() => {
-          if (window.innerWidth < 1024 && !mobileMenuOpen) {
+        onClick={(e) => {
+          // Don't open menu if clicking on the logo container
+          if (window.innerWidth < 1024 && !mobileMenuOpen && !(e.target as Element).closest('.mobile-logo-container')) {
             setMobileMenuOpen(true);
           }
         }}
@@ -174,18 +175,13 @@ export default function Navbar() {
               to="/" 
               className="relative z-10"
               onClick={(e) => {
-                if (window.innerWidth < 1024 && !mobileMenuOpen) {
-                  e.preventDefault();
-                  setMobileMenuOpen(true);
-                } else {
-                  e.preventDefault();
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                  if (location.pathname !== '/') {
-                    navigate('/');
-                  }
-                  if (mobileMenuOpen) {
-                    setMobileMenuOpen(false);
-                  }
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                if (location.pathname !== '/') {
+                  navigate('/');
+                }
+                if (mobileMenuOpen) {
+                  setMobileMenuOpen(false);
                 }
               }}
             >
