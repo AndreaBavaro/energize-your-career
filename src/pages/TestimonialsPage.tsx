@@ -19,7 +19,7 @@ const TestimonialsPage = () => {
       fullQuote: `Working with Melinda for our website development project was the right choice. She was instrumental in researching and identifying the right development company to meet our needs, ensuring that every detail aligned with our objectives. Melinda expertly managed the relationship between our team and the developers, advocating for our requirements and making sure our expectations were met at every stage. Her regular collaboration and communication were outstanding, keeping everything on track while proactively addressing any challenges that arose. She handled issues seamlessly, allowing me to focus on other tasks with confidence. Melinda's professionalism, attention to detail, and commitment to our success made the entire process smooth and stress-free. I would highly recommend working with Melinda and Ban Partners to any business seeking expert guidance and strategic support.`,
       author: 'Jeff Merrick',
       position: 'CIO and VP Digital Information',
-      company: '',
+      company: 'Advocate Printing & Publishing',
       avatarUrl: '/images/office-view.jpg'
     },
     {
@@ -40,7 +40,7 @@ const TestimonialsPage = () => {
       fullQuote: `Working with Melinda was an absolute game-changer for my job search! From the very first conversation, I felt supported and valued. Melinda took the time to truly understand my skills, goals, and career aspirations. She matched me with an opportunity that was perfectly aligned with my experience, and I never felt like I was being pushed into something that was not right for me. What really stood out was her personalized approach — she did not just send me generic job listings; she provided tailored advice and guided me through each step of the process. Melinda kept me updated regularly, offering constructive feedback after interviews and helped me navigate each step with confidence. She was proactive, responsive, and genuinely cared about my success. Thanks to her expertise, I secured a role that I'm excited about and that aligns perfectly with my long-term goals. If you're on the job hunt, I highly recommend working with Melinda — she made the whole process smoother, less stressful, and ultimately more successful!`,
       author: 'Jared Drepaul',
       position: 'Director HR Operations Technology',
-      company: 'TMX Group',
+      company: 'FSRA',
       avatarUrl: '/images/office-view5.jpg'
     },
     {
