@@ -5,8 +5,8 @@ import { format } from "date-fns";
 import { ArrowLeft } from "lucide-react";
 import "@/styles/twitter-embeds.css";
 import { processEmbeds, findEmbeds, EmbedInfo } from "@/utils/embedUtils";
-import { optimizeContent } from "@/utils/imageOptimizer";
 import EmbedTypeIcon from "@/components/ui/EmbedTypeIcon";
+import Newsletter from "@/components/ui/Newsletter";
 import Footer from "@/components/layout/Footer";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { createRoot } from 'react-dom/client';
@@ -53,14 +53,14 @@ export default function BlogPost() {
 
   // Process content to enhance embeds
   useEffect(() => {
-    if (post && post.content.rendered) {
-      // First process embeds
-      const processedResult = processEmbeds(post.content.rendered);
-      setEmbeds(processedResult.embeds || []);
+    if (post?.content?.rendered) {
+      // Process the content to enhance embeds
+      const processed = processEmbeds(post.content.rendered);
+      setProcessedContent(processed);
       
-      // Then optimize images in the content
-      const optimizedContent = optimizeContent(processedResult.content);
-      setProcessedContent(optimizedContent);
+      // Find all embeds in the content
+      const foundEmbeds = findEmbeds(post.content.rendered);
+      setEmbeds(foundEmbeds);
     }
   }, [post]);
 
@@ -225,6 +225,22 @@ export default function BlogPost() {
             <div className="text-center py-12">Post not found</div>
           )}
         </div>
+        
+        {/* Newsletter Section */}
+        <section className="py-16 bg-stone-100">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto text-center">
+              <SectionHeading
+                title="Subscribe to Our Newsletter"
+                subtitle="Never miss a new post. Get notified when we publish new content."
+                className="mb-8"
+              />
+              <div className="max-w-md mx-auto">
+                <Newsletter className="mt-6" />
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
       <Footer />
     </div>

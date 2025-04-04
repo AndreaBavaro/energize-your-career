@@ -2,7 +2,6 @@ import React from 'react';
 import { SectionHeading } from '../ui/SectionHeading';
 import { GlassCard } from '../ui/GlassCard';
 import { Trophy, Clock, CheckCircle, Handshake, Key, MessageSquare } from 'lucide-react';
-import OptimizedImage from '../ui/OptimizedImage';
 
 export default function WhyPartner() {
   const reasons = [
@@ -97,11 +96,11 @@ export default function WhyPartner() {
                   {/* Overlay to enhance image quality perception */}
                   <div className="absolute inset-0 bg-alternative-600/10 mix-blend-overlay z-10"></div>
                   
-                  <OptimizedImage 
+                  <img 
                     src="/images/women3.jpg" 
                     alt="Professional women collaborating in business setting" 
-                    className="w-full h-auto object-cover max-h-[450px]"
-                    loading="lazy"
+                    className="w-full h-auto object-cover"
+                    style={{ maxHeight: "450px" }}
                   />
                 </div>
               </div>

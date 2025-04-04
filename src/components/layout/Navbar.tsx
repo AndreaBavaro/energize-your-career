@@ -20,10 +20,12 @@ const navigationItems = [
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const mobileMenuRef = useRef<HTMLDivElement>(null);
 
+  // Handle scroll events
   useEffect(() => {
     const handleScroll = () => {
       const isScrolled = window.scrollY > 10;
@@ -35,6 +37,19 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [scrolled]);
+  
+  // Reset mobile menu when location changes
+  useEffect(() => {
+    setMobileMenuOpen(false);
+    
+    // Set transitioning state to handle page transitions
+    setIsTransitioning(true);
+    const timer = setTimeout(() => {
+      setIsTransitioning(false);
+    }, 300); // Match this with your transition durations
+    
+    return () => clearTimeout(timer);
+  }, [location.pathname]);
 
   // Handle click outside to close mobile menu
   useEffect(() => {
@@ -60,11 +75,13 @@ export default function Navbar() {
 
     // If we're not on the homepage, navigate there first
     if (location.pathname !== '/') {
+      setIsTransitioning(true);
       navigate('/');
       // After navigation, we need to wait for the page to load before scrolling
       setTimeout(() => {
         scrollToElement(href.substring(1));
-      }, 100);
+        setIsTransitioning(false);
+      }, 300);
     } else {
       // We're already on the homepage, just scroll
       scrollToElement(href.substring(1));
@@ -99,8 +116,16 @@ export default function Navbar() {
         <Link
           key={item.name}
           to={href}
-          className={className}
+          className={`${className} ${isTransitioning ? 'pointer-events-none' : 'pointer-events-auto'}`}
           onClick={(e) => {
+            if (isTransitioning) {
+              e.preventDefault();
+              return;
+            }
+            setIsTransitioning(true);
+            setTimeout(() => {
+              setIsTransitioning(false);
+            }, 300);
             if (onClick) onClick();
           }}
           dangerouslySetInnerHTML={{ __html: item.name }}
@@ -111,8 +136,12 @@ export default function Navbar() {
         <a
           key={item.name}
           href={href}
-          className={className}
+          className={`${className} ${isTransitioning ? 'pointer-events-none' : 'pointer-events-auto'}`}
           onClick={(e) => {
+            if (isTransitioning) {
+              e.preventDefault();
+              return;
+            }
             handleHashLinkClick(e, href);
             if (onClick) onClick();
           }}
@@ -125,7 +154,8 @@ export default function Navbar() {
   return (
     <header className={cn(
       "fixed top-0 inset-x-0 z-50 transition-all duration-300 ease-in-out",
-      scrolled ? "py-0 bg-blue-800 backdrop-blur-md shadow-md" : "py-0 bg-blue-800 backdrop-blur-sm"
+      scrolled ? "py-0 bg-blue-800 backdrop-blur-md shadow-md" : "py-0 bg-blue-800 backdrop-blur-sm",
+      isTransitioning ? "pointer-events-none opacity-90" : "pointer-events-auto opacity-100"
     )}>
       {/* Mobile navbar tap indicator - only visible on mobile when menu is closed */}
       {!mobileMenuOpen && (
@@ -142,7 +172,11 @@ export default function Navbar() {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: 'smooth' });
               if (location.pathname !== '/') {
+                setIsTransitioning(true);
                 navigate('/');
+                setTimeout(() => {
+                  setIsTransitioning(false);
+                }, 300);
               }
             }}
           >
@@ -159,10 +193,10 @@ export default function Navbar() {
 
       {/* Navigation container */}
       <nav 
-        className={`container-custom flex items-center justify-between sm:justify-end h-8 sm:h-10 md:h-12 lg:h-14 px-2 sm:px-3 md:px-4 lg:px-6 sm:ml-[100px] md:ml-[120px] lg:ml-[180px] mt-1 ${!mobileMenuOpen ? 'lg:cursor-default cursor-pointer' : ''}`}
+        className={`container-custom flex items-center justify-between sm:justify-end h-8 sm:h-10 md:h-12 lg:h-14 px-2 sm:px-3 md:px-4 lg:px-6 sm:ml-[100px] md:ml-[120px] lg:ml-[180px] mt-1 ${!mobileMenuOpen ? 'lg:cursor-default cursor-pointer' : ''} ${isTransitioning ? 'opacity-90' : 'opacity-100'} transition-opacity duration-300`}
         onClick={(e) => {
-          // Don't open menu if clicking on the logo container
-          if (window.innerWidth < 1024 && !mobileMenuOpen && !(e.target as Element).closest('.mobile-logo-container')) {
+          // Don't open menu if transitioning or clicking on the logo container
+          if (window.innerWidth < 1024 && !mobileMenuOpen && !isTransitioning && !(e.target as Element).closest('.mobile-logo-container')) {
             setMobileMenuOpen(true);
           }
         }}
@@ -176,12 +210,27 @@ export default function Navbar() {
               className="relative z-10"
               onClick={(e) => {
                 e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                if (location.pathname !== '/') {
-                  navigate('/');
+                
+                if (isTransitioning) {
+                  return; // Prevent actions during transition
                 }
-                if (mobileMenuOpen) {
-                  setMobileMenuOpen(false);
+                
+                if (window.innerWidth < 1024 && !mobileMenuOpen) {
+                  setMobileMenuOpen(true);
+                } else {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                  
+                  if (location.pathname !== '/') {
+                    setIsTransitioning(true);
+                    navigate('/');
+                    setTimeout(() => {
+                      setIsTransitioning(false);
+                    }, 300);
+                  }
+                  
+                  if (mobileMenuOpen) {
+                    setMobileMenuOpen(false);
+                  }
                 }
               }}
             >

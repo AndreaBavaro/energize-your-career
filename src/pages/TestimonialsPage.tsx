@@ -3,48 +3,8 @@ import { Quote } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import OptimizedImage from '@/components/ui/OptimizedImage';
-import { useLocation } from 'react-router-dom';
 
 const TestimonialsPage = () => {
-  // Get location to detect navigation changes
-  const location = useLocation();
-  
-  // State to track if the component is mounted
-  const [mounted, setMounted] = React.useState(false);
-
-  // Reference to the testimonials container
-  const testimonialsRef = React.useRef<HTMLDivElement>(null);
-
-  // Set mounted state after component mounts
-  React.useEffect(() => {
-    // Reset mounted state when navigating to this page
-    setMounted(false);
-    
-    // Force immediate style calculation
-    document.body.offsetHeight;
-    
-    // Set a timeout to ensure DOM is ready before animations
-    const timer = setTimeout(() => {
-      setMounted(true);
-      
-      // Force another reflow after setting mounted to true
-      document.body.offsetHeight;
-      
-      if (testimonialsRef.current) {
-        testimonialsRef.current.classList.add('testimonials-loaded');
-      }
-    }, 50);
-    
-    return () => clearTimeout(timer);
-  }, [location.pathname]); // Re-run when pathname changes
-  
-  // Add a class to the body to help with CSS specificity
-  React.useEffect(() => {
-    document.body.classList.add('testimonials-page-active');
-    return () => {
-      document.body.classList.remove('testimonials-page-active');
-    };
-  }, []);
   // Combined CLIENT + CANDIDATE testimonials, with client ones first
   const testimonials = [
     // CLIENT TESTIMONIALS
@@ -141,21 +101,11 @@ const TestimonialsPage = () => {
           </div>
           
           {/* Testimonial cards */}
-          <div 
-            ref={testimonialsRef}
-            className={`grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 transition-all duration-500 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-            style={{ willChange: 'opacity, transform' }}
-          >
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {testimonials.map((testimonial, index) => (
               <div 
                 key={index} 
-                className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col"
-                style={{
-                  opacity: mounted ? 1 : 0,
-                  transform: mounted ? 'translateY(0)' : 'translateY(10px)',
-                  transition: `opacity 300ms ease-in-out ${index * 50}ms, transform 300ms ease-in-out ${index * 50}ms`,
-                  willChange: 'opacity, transform'
-                }}
+                className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 flex flex-col"
               >
                 {/* Card content with avatar at top */}
                 <div className="p-4 sm:p-6 md:p-8 flex flex-col items-center text-center">
@@ -167,7 +117,6 @@ const TestimonialsPage = () => {
                       className="h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24 rounded-full object-cover border-4 border-white shadow-md" 
                       width={96}
                       height={96}
-                      loading="lazy"
                     />
                   </div>
                   
@@ -177,7 +126,7 @@ const TestimonialsPage = () => {
                   </div>
                   
                   {/* Testimonial text */}
-                  <div className="h-32 sm:h-40 md:h-48 overflow-y-auto mb-4 sm:mb-6 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent" style={{ minHeight: '8rem' }}>
+                  <div className="max-h-48 sm:max-h-64 overflow-y-auto mb-4 sm:mb-6 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent">
                     <p className="text-gray-600 italic text-sm sm:text-base">
                       {testimonial.fullQuote}
                     </p>
