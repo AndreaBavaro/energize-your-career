@@ -5,6 +5,36 @@ import Footer from '@/components/layout/Footer';
 import OptimizedImage from '@/components/ui/OptimizedImage';
 
 const TestimonialsPage = () => {
+  // State to track if the component is mounted
+  const [mounted, setMounted] = React.useState(false);
+
+  // Reference to the testimonials container
+  const testimonialsRef = React.useRef<HTMLDivElement>(null);
+
+  // Set mounted state after component mounts
+  React.useEffect(() => {
+    setMounted(true);
+    
+    // Apply a class to force a repaint
+    if (testimonialsRef.current) {
+      setTimeout(() => {
+        if (testimonialsRef.current) {
+          testimonialsRef.current.classList.add('testimonials-loaded');
+        }
+      }, 100);
+    }
+    
+    // Force a reflow to ensure styles are applied
+    const forceReflow = () => {
+      if (testimonialsRef.current) {
+        // Reading offsetHeight causes a reflow
+        const height = testimonialsRef.current.offsetHeight;
+      }
+    };
+    
+    // Force reflow after a short delay
+    setTimeout(forceReflow, 50);
+  }, []);
   // Combined CLIENT + CANDIDATE testimonials, with client ones first
   const testimonials = [
     // CLIENT TESTIMONIALS
@@ -101,11 +131,19 @@ const TestimonialsPage = () => {
           </div>
           
           {/* Testimonial cards */}
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+          <div 
+            ref={testimonialsRef}
+            className={`grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 transition-opacity duration-300 ${mounted ? 'opacity-100' : 'opacity-0'}`}
+          >
             {testimonials.map((testimonial, index) => (
               <div 
                 key={index} 
-                className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 flex flex-col"
+                className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col"
+                style={{
+                  opacity: mounted ? 1 : 0,
+                  transform: mounted ? 'translateY(0)' : 'translateY(10px)',
+                  transition: `opacity 300ms ease-in-out ${index * 100}ms, transform 300ms ease-in-out ${index * 100}ms`
+                }}
               >
                 {/* Card content with avatar at top */}
                 <div className="p-4 sm:p-6 md:p-8 flex flex-col items-center text-center">
@@ -117,6 +155,7 @@ const TestimonialsPage = () => {
                       className="h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24 rounded-full object-cover border-4 border-white shadow-md" 
                       width={96}
                       height={96}
+                      loading="lazy"
                     />
                   </div>
                   
@@ -126,7 +165,7 @@ const TestimonialsPage = () => {
                   </div>
                   
                   {/* Testimonial text */}
-                  <div className="max-h-48 sm:max-h-64 overflow-y-auto mb-4 sm:mb-6 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent">
+                  <div className="h-32 sm:h-40 md:h-48 overflow-y-auto mb-4 sm:mb-6 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent" style={{ minHeight: '8rem' }}>
                     <p className="text-gray-600 italic text-sm sm:text-base">
                       {testimonial.fullQuote}
                     </p>
