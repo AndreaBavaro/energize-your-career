@@ -389,17 +389,16 @@ export default function Blog() {
         </section>
 
         {/* Newsletter Section */}
-        <section className="py-8 bg-stone-100">
+        <section className="py-16 bg-stone-100">
           <div className="container mx-auto px-4">
-            <div className="max-w-xl mx-auto text-center">
+            <div className="max-w-3xl mx-auto text-center">
               <SectionHeading
                 title="Subscribe to Our Newsletter"
-                subtitle="Get the latest blog posts and career tips delivered to your inbox."
-                className="mb-4"
-                size="small"
+                subtitle="Get the latest blog posts, industry insights, and career tips delivered straight to your inbox."
+                className="mb-8"
               />
-              <div className="max-w-sm mx-auto">
-                <Newsletter className="mt-4" variant="compact" />
+              <div className="max-w-md mx-auto">
+                <Newsletter className="mt-6" />
               </div>
             </div>
           </div>

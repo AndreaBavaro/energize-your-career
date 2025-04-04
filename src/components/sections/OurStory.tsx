@@ -1,8 +1,6 @@
 import { SectionHeading } from '../ui/SectionHeading';
 import { GlassCard } from '../ui/GlassCard';
 import { BookOpen, Award, Heart, Lightbulb, Star, Users } from 'lucide-react';
-import OptimizedVideo from '../ui/OptimizedVideo';
-import OptimizedImage from '../ui/OptimizedImage';
 
 export default function OurStory() {
   return (
@@ -36,16 +34,17 @@ export default function OurStory() {
               
               {/* Video showcasing the Voltify journey */}
               <div className="mt-8">
-                <OptimizedVideo 
+                <video 
                   src="/images/helpingvid.mp4" 
-                  poster="/images/helping-poster.jpg"
-                  ariaLabel="Voltify's impact on careers and organizations" 
-                  className="w-full rounded-lg shadow-md object-cover aspect-video max-h-[70vh]"
                   autoPlay
                   muted
                   loop
-                  preload="metadata"
-                />
+                  poster="/images/helping-poster.jpg"
+                  aria-label="Voltify's impact on careers and organizations" 
+                  className="w-full h-96 rounded-lg shadow-md object-cover"
+                >
+                  Your browser does not support the video tag.
+                </video>
               </div>
             </div>
           </div>
@@ -132,11 +131,10 @@ export default function OurStory() {
             </p>
             
             <div className="mt-6 flex justify-center">
-              <OptimizedImage 
+              <img 
                 src={`${import.meta.env.BASE_URL}images/women2.jpg`}
                 alt="Helping" 
                 className="rounded-lg shadow-md w-full max-w-4xl h-auto"
-                loading="lazy"
               />
             </div>
           </div>

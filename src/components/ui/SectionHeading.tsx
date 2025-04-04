@@ -1,3 +1,4 @@
+
 import { cn } from "@/lib/utils";
 
 interface SectionHeadingProps {
@@ -5,15 +6,13 @@ interface SectionHeadingProps {
   subtitle?: string;
   centered?: boolean;
   className?: string;
-  size?: 'default' | 'small';
 }
 
 export function SectionHeading({ 
   title, 
   subtitle, 
   centered = true, 
-  className,
-  size = 'default'
+  className 
 }: SectionHeadingProps) {
   return (
     <div className={cn(
@@ -21,17 +20,11 @@ export function SectionHeading({
       centered && "text-center",
       className
     )}>
-      <h2 className={cn(
-        "font-bold tracking-tight",
-        size === 'default' ? "text-3xl md:text-4xl" : "text-2xl md:text-3xl"
-      )}>
+      <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
         {title}
       </h2>
       {subtitle && (
-        <p className={cn(
-          "text-stone-600 max-w-3xl mx-auto",
-          size === 'default' ? "text-lg" : "text-base"
-        )}>
+        <p className="text-lg text-stone-600 max-w-3xl mx-auto">
           {subtitle}
         </p>
       )}

@@ -1,7 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
 import { getAnalytics } from "firebase/analytics";
-import { getFirestore } from "firebase/firestore";
 
 // Debug: Log environment variables status
 console.log('Firebase Environment Variables Status:', {
@@ -39,7 +38,6 @@ console.log('Firebase Config Being Used:', {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
-const firestore = getFirestore(app);
 
 // Initialize Analytics in browser environment only
 let analytics = null;
@@ -51,4 +49,4 @@ if (typeof window !== 'undefined') {
   }
 }
 
-export { storage, analytics, firestore };
+export { storage, analytics };

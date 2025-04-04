@@ -6,7 +6,6 @@ import {
 } from 'lucide-react';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import OptimizedImage from '../ui/OptimizedImage';
 
 export default function WhatWeDo() {
   // Function to scroll to positions section
@@ -122,13 +121,10 @@ export default function WhatWeDo() {
       
       <div className="container-custom relative z-10">
         {/* Industries Banner - Moved to top and made smaller */}
-        <div className="relative py-12 md:py-16 mb-12 overflow-hidden w-screen -ml-[50vw] left-1/2 min-h-[350px] md:min-h-[300px] flex items-center justify-center" 
+        <div className="relative py-12 md:py-16 mb-12 overflow-hidden w-screen -ml-[50vw] left-1/2 min-h-[350px] md:min-h-[300px] flex items-center justify-center bg-[position:calc(50%+400px)_30%] md:bg-[position:center_30%]" 
           style={{
-            backgroundImage: `url("${import.meta.env.BASE_URL}images/bulb.webp"), url("${import.meta.env.BASE_URL}images/bulb.jpg")`,
+            backgroundImage: `url("${import.meta.env.BASE_URL}images/bulb.jpg")`,
             backgroundSize: 'cover',
-            backgroundPosition: 'center center',
-            backgroundRepeat: 'no-repeat',
-            width: '100vw',
           }}>
           {/* Semi-transparent overlay with stronger opacity on mobile */}
           <div className="absolute inset-0 bg-black/60 md:bg-black/50"></div>
@@ -214,11 +210,10 @@ export default function WhatWeDo() {
               </div>
               
               <div className="mt-8">
-                <OptimizedImage 
+                <img 
                   src="/images/helping.jpg" 
                   alt="Professional helping a candidate find the perfect role" 
                   className="w-full h-auto rounded-lg shadow-md object-cover"
-                  loading="lazy"
                 />
               </div>
             </div>

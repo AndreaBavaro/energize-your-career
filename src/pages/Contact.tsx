@@ -504,7 +504,7 @@ export default function Contact() {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 mt-1 sm:mt-2">
                           <label className={`
                             p-2 sm:p-4 rounded-xl border-2 transition-all cursor-pointer
-                            ${userType === 'jobSeeker' ? 'border-blue-600 bg-blue-50 shadow-md' : 'border-stone-200'}
+                            ${userType === 'jobSeeker' ? 'border-alternative-600 bg-alternative-50 shadow-md' : 'border-stone-200'}
                           `}>
                             <input
                               type="radio"
@@ -518,7 +518,7 @@ export default function Contact() {
                             <div className="flex items-center gap-2 sm:gap-3">
                               <div className={`
                                 h-4 sm:h-5 w-4 sm:w-5 rounded-full border-2 flex items-center justify-center
-                                ${userType === 'jobSeeker' ? 'border-blue-600 bg-blue-600' : 'border-stone-300 bg-white'}
+                                ${userType === 'jobSeeker' ? 'border-alternative-600 bg-alternative-600' : 'border-stone-300 bg-white'}
                               `}>
                                 <div className={`
                                   h-1.5 sm:h-2 w-1.5 sm:w-2 rounded-full
@@ -531,7 +531,7 @@ export default function Contact() {
                           
                           <label className={`
                             p-2 sm:p-4 rounded-xl border-2 transition-all cursor-pointer
-                            ${userType === 'employer' ? 'border-blue-600 bg-blue-50 shadow-md' : 'border-stone-200'}
+                            ${userType === 'employer' ? 'border-alternative-600 bg-alternative-50 shadow-md' : 'border-stone-200'}
                           `}>
                             <input
                               type="radio"
@@ -545,7 +545,7 @@ export default function Contact() {
                             <div className="flex items-center gap-2 sm:gap-3">
                               <div className={`
                                 h-4 sm:h-5 w-4 sm:w-5 rounded-full border-2 flex items-center justify-center
-                                ${userType === 'employer' ? 'border-blue-600 bg-blue-600' : 'border-stone-300 bg-white'}
+                                ${userType === 'employer' ? 'border-alternative-600 bg-alternative-600' : 'border-stone-300 bg-white'}
                               `}>
                                 <div className={`
                                   h-1.5 sm:h-2 w-1.5 sm:w-2 rounded-full

@@ -1,7 +1,6 @@
 import { SectionHeading } from '../ui/SectionHeading';
 import { GlassCard } from '../ui/GlassCard';
 import { CheckCircle, Users, History, Trophy, Briefcase, Heart, Award } from 'lucide-react';
-import OptimizedImage from '../ui/OptimizedImage';
 
 export default function AboutUs() {
   const features = [
@@ -33,7 +32,7 @@ export default function AboutUs() {
           <div className="space-y-6">
             <div className="bg-white p-4 rounded-xl shadow-md">
               <h3 className="text-xl font-semibold text-black mb-3 flex items-center">
-                <Briefcase className="h-5 w-5 mr-2 text-blue-500" />
+                <Briefcase className="h-5 w-5 mr-2 text-red-500" />
                 Our Approach
               </h3>
               <p className="text-lg text-stone-700 leading-relaxed">
@@ -112,11 +111,10 @@ export default function AboutUs() {
               animationDelay={`200ms`}
             >
               <div className="w-full h-full">
-                <OptimizedImage 
+                <img 
                   src="/images/women1.jpg" 
                   alt="Women-Owned Business" 
                   className="w-full h-56 sm:h-72 md:h-80 object-cover rounded-lg"
-                  loading="eager" 
                 />
               </div>
             </GlassCard>
