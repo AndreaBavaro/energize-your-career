@@ -50,9 +50,11 @@ firebase-debug.log
 firestore-debug.log
 ui-debug.log
 .runtimeconfig.json
-firebase.json
-src/config/firebase.ts
-src/config/firebase.placeholder.ts
+# Don't ignore the placeholder files
+# firebase.json
+# src/config/firebase.placeholder.ts
+# But do ignore the actual config with real credentials
+src/config/firebase.credentials.ts
 firebase-storage-setup.md
 
 # Misc

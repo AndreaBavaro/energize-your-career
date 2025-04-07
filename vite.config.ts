@@ -26,11 +26,24 @@ export default defineConfig(({ mode }) => {
           // Ensure 404.html is copied to the dist folder
           console.log('Copying 404.html and CNAME to dist folder...');
           try {
-            copyFileSync('public/404.html', 'dist/404.html');
-            copyFileSync('public/CNAME', 'dist/CNAME');
-            console.log('Files copied successfully!');
+            const fs = require('fs');
+            // Check if files exist before copying
+            if (fs.existsSync('public/404.html')) {
+              copyFileSync('public/404.html', 'dist/404.html');
+              console.log('404.html copied successfully!');
+            } else {
+              console.log('404.html not found, skipping...');
+            }
+            
+            if (fs.existsSync('public/CNAME')) {
+              copyFileSync('public/CNAME', 'dist/CNAME');
+              console.log('CNAME copied successfully!');
+            } else {
+              console.log('CNAME not found, skipping...');
+            }
           } catch (error) {
             console.error('Error copying files:', error);
+            // Continue build process even if file copying fails
           }
         }
       }
