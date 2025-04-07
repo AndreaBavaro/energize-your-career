@@ -50,6 +50,10 @@ firebase-debug.log
 firestore-debug.log
 ui-debug.log
 .runtimeconfig.json
+firebase.json
+src/config/firebase.ts
+src/config/firebase.placeholder.ts
+firebase-storage-setup.md
 
 # Misc
 .cache
