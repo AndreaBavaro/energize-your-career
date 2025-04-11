@@ -18,7 +18,7 @@ export default function Footer() {
               <a href="https://www.linkedin.com/company/voltify" target="_blank" rel="noopener noreferrer" className="text-stone-300 hover:text-red-500 transition-colors">
                 <Linkedin size={20} />
               </a>
-              <a href="mailto:info@voltify.com" className="text-stone-300 hover:text-red-500 transition-colors">
+              <a href="mailto:info@voltifygroup.com" className="text-stone-300 hover:text-red-500 transition-colors">
                 <Mail size={20} />
               </a>
               <a href="tel:+15551234567" className="text-stone-300 hover:text-red-500 transition-colors">
@@ -84,8 +84,8 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start">
                 <Mail size={18} className="mr-2 mt-0.5 text-blue-500" />
-                <a href="mailto:info@voltify.com" className="text-stone-300 hover:text-white transition-colors">
-                  info@voltify.com
+                <a href="mailto:info@voltifygroup.com" className="text-stone-300 hover:text-white transition-colors">
+                  info@voltifygroup.com
                 </a>
               </li>
             </ul>
@@ -93,7 +93,7 @@ export default function Footer() {
         </div>
         
         <div className="mt-12 pt-8 border-t border-stone-800 text-center text-stone-400 text-sm">
-          <p>&copy; {currentYear} Voltify. All rights reserved.</p>
+          <p>&copy; {currentYear} Voltify Group. All rights reserved.</p>
         </div>
       </div>
     </footer>
