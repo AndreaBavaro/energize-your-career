@@ -15,14 +15,11 @@ export default function Footer() {
               Energizing careers, building lasting relationships, and connecting you with opportunities.
             </p>
             <div className="flex space-x-4">
-              <a href="https://www.linkedin.com/company/voltify" target="_blank" rel="noopener noreferrer" className="text-stone-300 hover:text-red-500 transition-colors">
+              <a href="https://www.linkedin.com/company/voltifygroup/" target="_blank" rel="noopener noreferrer" className="text-stone-300 hover:text-red-500 transition-colors">
                 <Linkedin size={20} />
               </a>
               <a href="mailto:info@voltifygroup.com" className="text-stone-300 hover:text-red-500 transition-colors">
                 <Mail size={20} />
-              </a>
-              <a href="tel:+15551234567" className="text-stone-300 hover:text-red-500 transition-colors">
-                <Phone size={20} />
               </a>
             </div>
           </div>
