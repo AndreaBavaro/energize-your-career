@@ -40,15 +40,13 @@ export default function OurStory() {
                   muted
                   loop
                   playsInline
-                  poster="/images/optimized/helping.webp"
+                  poster="/images/helping.jpg"
                   preload="none"
                   aria-label="Voltify Group's impact on careers and organizations" 
                   className="w-full h-96 rounded-lg shadow-md object-cover lazy-video"
                 >
-                  {/* WebM format for modern browsers - better compression */}
-                  <source src="/images/optimized/helpingvid.webm" type="video/webm" />
-                  {/* MP4 fallback for older browsers */}
-                  <source src="/images/optimized/helpingvid.mp4" type="video/mp4" />
+                  {/* Use original video while optimized versions are being created */}
+                  <source src="/images/helpingvid.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
               </div>
