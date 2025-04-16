@@ -25,7 +25,7 @@ export default function AboutUs() {
       <div className="container-custom relative z-10">
         <SectionHeading 
           title="Who We Are"
-          subtitle="Voltify is a women-owned staffing solutions business built on a solid foundation of industry expertise."
+          subtitle="Voltify Group is a women-owned staffing solutions business built on a solid foundation of industry expertise."
         />
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto">
@@ -50,7 +50,7 @@ export default function AboutUs() {
                 </div>
               </div>
               <p className="mt-3 text-lg text-stone-600 leading-relaxed">
-                We've built an excellent reputation for delivering quality results efficiently.
+                Voltify Group has built an excellent reputation for delivering quality results efficiently.
               </p>
             </div>
             
@@ -60,7 +60,7 @@ export default function AboutUs() {
                 Our Values
               </h3>
               <p className="text-lg text-stone-700 leading-relaxed">
-                We believe in a more <span className="font-bold text-black">tailored approach</span> to staffing and recruitment, treating every candidate and client with the same respect and consideration we would expect ourselves.
+                Voltify Group believes in a more <span className="font-bold text-black">tailored approach</span> to staffing and recruitment, treating every candidate and client with the same respect and consideration we would expect ourselves.
               </p>
               <div className="mt-3 flex justify-center">
                 <div className="bg-alternative-600 px-4 py-2 rounded-lg border border-alternative-100 inline-block">

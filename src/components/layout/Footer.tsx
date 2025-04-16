@@ -10,9 +10,9 @@ export default function Footer() {
       <div className="container-custom pt-16 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div className="space-y-4">
-            <h3 className="text-xl font-bold">Voltify</h3>
+            <h3 className="text-xl font-bold">Voltify Group</h3>
             <p className="text-stone-300 max-w-xs">
-              Energizing careers, building lasting relationships, and connecting you with opportunities.
+              Voltify Group energizes careers, builds lasting relationships, and connects you with opportunities across industries.
             </p>
             <div className="flex space-x-4">
               <a href="https://www.linkedin.com/company/voltifygroup/" target="_blank" rel="noopener noreferrer" className="text-stone-300 hover:text-red-500 transition-colors">

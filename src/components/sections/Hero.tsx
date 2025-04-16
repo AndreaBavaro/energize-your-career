@@ -400,7 +400,7 @@ export default function Hero() {
               <span className="text-blue-500 relative">
                 {/* Gradient text with animation */}
                 <span className="bg-[#000000] bg-clip-text text-transparent animate-gradient-x font-extrabold hidden md:inline-block">
-                  Voltify
+                  Voltify Group
                 </span>
                 
                 <Zap 
@@ -427,10 +427,10 @@ export default function Hero() {
      <div className="flex flex-col items-center justify-center">
        <p className="relative text-[clamp(17px,1.8vw,25px)] font-bold text-black leading-tight text-left relative z-10 py-[0.8vh]">
          <span className="block mb-[0.5vh]">
-           We energize careers, build lasting relationships,
+           <span className="font-extrabold">Voltify Group</span> energizes careers, builds lasting relationships,
          </span>
          <span className="block mb-[0.75vh]">
-           connect you with opportunities, and help you grow.
+           connects you with opportunities, and helps you grow professionally.
          </span>
        </p>
        
@@ -452,9 +452,9 @@ export default function Hero() {
    >
      <div className="flex flex-col items-center justify-center">
        <p className="relative text-[16px] font-bold text-black leading-[1.15] text-center relative z-10 tracking-tight w-full">
-         <span className="inline-block">We energize careers and build</span>
-         <span className="inline-block">relationships, connecting you</span>
-         <span className="inline-block mb-1.5">with opportunities.</span>
+         <span className="inline-block"><span className="font-extrabold">Voltify Group</span> energizes careers</span>
+         <span className="inline-block">and builds relationships, connecting you</span>
+         <span className="inline-block mb-1.5">with opportunities and growth.</span>
        </p>
        
        <Button 
