@@ -246,14 +246,18 @@
     }
     </script>
     
-    <!-- Disable Cloudflare 404 errors for speculation rules -->
+    <!-- Register service worker to handle Cloudflare requests -->
     <script>
-      // Intercept and handle speculation rules requests to prevent 404 errors
+      // Intercept and handle Cloudflare requests to prevent 404 errors
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', function() {
-          navigator.serviceWorker.register('/sw-speculation.js')
-            .then(function() { console.log('Speculation rules service worker registered'); })
-            .catch(function(error) { console.log('Speculation rules service worker registration failed:', error); });
+          navigator.serviceWorker.register('/sw.js', { scope: '/' })
+            .then(function(registration) { 
+              console.log('Service worker registered with scope:', registration.scope); 
+            })
+            .catch(function(error) { 
+              console.log('Service worker registration failed:', error); 
+            });
         });
       }
     </script>
