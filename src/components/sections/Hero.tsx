@@ -507,29 +507,60 @@ export default function Hero() {
 </div>
 
 {/* Mobile Mission statement */}
-<div className="relative z-10 px-1 mr-[5vw] mx-auto mt-[2vh] block md:hidden" style={{ contentVisibility: 'auto' }}>
-   <div 
-       className="bg-white/95 backdrop-blur-sm border-l-2 border-r-2 border-blue-500 px-3 py-2 rounded-lg mx-auto relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent h-auto w-[100%] max-w-[500px] shadow-lg"
-   >
-     <div className="flex flex-col items-center justify-center">
-       <p 
-         className="relative text-[16px] font-bold text-black leading-[1.15] text-center relative z-10 tracking-tight w-full lcp-text"
-         data-lcp-element="true"
-       >
-         <span className="inline-block"><span className="font-extrabold">Voltify Group</span> energizes careers</span>
-         <span className="inline-block">and builds relationships, connecting you</span>
-         <span className="inline-block mb-1.5">with opportunities and growth.</span>
-       </p>
-       
-       <Button 
-         className="bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 hover:from-blue-500 hover:to-blue-600 text-white px-[10px] py-[6px] rounded-full shadow-lg transition-all duration-300 text-[12px] font-medium border border-blue-400/30 mb-1 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/20 before:to-transparent before:opacity-70 transform hover:scale-105 self-center"
-         onClick={() => navigate('/contact')}
-       >
-         Discover Opportunities
-         <ArrowRight className="ml-1.5 h-[12px] w-[12px]" />
-       </Button>
-     </div>
-   </div>
+<div
+  className="relative z-10 px-1 mr-[5vw] mx-auto mt-[2vh] block md:hidden"
+  style={{
+    contentVisibility: 'auto',
+    containIntrinsicSize: '80px 120px', // Prevent layout shift
+    minHeight: '80px',
+    maxWidth: '500px',
+    width: '100%',
+  }}
+>
+  {/* Inline critical font preload for mobile LCP if not already in HTML head */}
+  {/* <link rel="preload" as="font" href="/fonts/YourFont.woff2" type="font/woff2" crossOrigin /> */}
+  <div
+    className="bg-white/95 backdrop-blur-sm border-l-2 border-r-2 border-blue-500 px-3 py-2 rounded-lg mx-auto relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent h-auto w-[100%] max-w-[500px] shadow-lg"
+    style={{
+      willChange: 'contents',
+      containIntrinsicSize: '80px 120px',
+      contentVisibility: 'auto',
+      minHeight: '80px',
+      width: '100%',
+      maxWidth: '500px',
+    }}
+  >
+    <div className="flex flex-col items-center justify-center">
+      <p
+        className="relative text-[clamp(15px,4vw,22px)] font-bold text-black leading-[1.15] text-center z-10 tracking-tight w-full lcp-text"
+        data-lcp-element="true"
+        style={{
+          contentVisibility: 'visible',
+          containIntrinsicSize: '60px 120px',
+          willChange: 'contents',
+          margin: 0,
+        }}
+      >
+        <span className="inline-block" data-lcp-element="true" style={{ willChange: 'contents', contentVisibility: 'auto', containIntrinsicSize: '20px 120px' }}>
+          <span className="font-extrabold">Voltify Group</span> energizes careers
+        </span>
+        <span className="inline-block" data-lcp-element="true" style={{ willChange: 'contents', contentVisibility: 'auto', containIntrinsicSize: '20px 120px' }}>
+          and builds relationships, connecting you
+        </span>
+        <span className="inline-block mb-1.5" data-lcp-element="true" style={{ willChange: 'contents', contentVisibility: 'auto', containIntrinsicSize: '20px 120px' }}>
+          with opportunities and growth.
+        </span>
+      </p>
+      <Button
+        className="bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 hover:from-blue-500 hover:to-blue-600 text-white px-[clamp(8px,2vw,18px)] py-[clamp(4px,1vw,10px)] rounded-full shadow-lg transition-all duration-300 text-[clamp(11px,2.6vw,16px)] font-medium border border-blue-400/30 mb-1 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/20 before:to-transparent before:opacity-70 transform hover:scale-105 self-center"
+        onClick={() => navigate('/contact')}
+        style={{ willChange: 'contents', containIntrinsicSize: '36px 120px' }}
+      >
+        Discover Opportunities
+        <ArrowRight className="ml-1.5 h-[clamp(11px,2.6vw,16px)] w-[clamp(11px,2.6vw,16px)]" />
+      </Button>
+    </div>
+  </div>
 </div>
 
         </div>
