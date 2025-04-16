@@ -1,6 +1,7 @@
 import { SectionHeading } from '../ui/SectionHeading';
 import { GlassCard } from '../ui/GlassCard';
 import { CheckCircle, Users, History, Trophy, Briefcase, Heart, Award } from 'lucide-react';
+import OptimizedImage from '../ui/OptimizedImage';
 
 export default function AboutUs() {
   const features = [
@@ -111,10 +112,14 @@ export default function AboutUs() {
               animationDelay={`200ms`}
             >
               <div className="w-full h-full">
-                <img 
+                <OptimizedImage
                   src="/images/women1.jpg" 
                   alt="Voltify Group - Women-Owned Staffing and Recruitment Business" 
-                  className="w-full h-56 sm:h-72 md:h-80 object-cover rounded-lg"
+                  className="w-full h-56 sm:h-72 md:h-80 rounded-lg"
+                  width={1200}
+                  height={800}
+                  objectFit="cover"
+                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 80vw, 1200px"
                 />
               </div>
             </GlassCard>

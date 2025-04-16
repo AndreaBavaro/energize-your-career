@@ -1,6 +1,7 @@
 import { SectionHeading } from '../ui/SectionHeading';
 import { GlassCard } from '../ui/GlassCard';
 import { BookOpen, Award, Heart, Lightbulb, Star, Users } from 'lucide-react';
+import OptimizedImage from '../ui/OptimizedImage';
 
 export default function OurStory() {
   return (
@@ -131,10 +132,13 @@ export default function OurStory() {
             </p>
             
             <div className="mt-6 flex justify-center">
-              <img 
+              <OptimizedImage
                 src={`${import.meta.env.BASE_URL}images/women2.jpg`}
                 alt="Voltify Group professionals helping clients advance their careers" 
                 className="rounded-lg shadow-md w-full max-w-4xl h-auto"
+                width={1200}
+                height={800}
+                sizes="(max-width: 768px) 100vw, 1200px"
               />
             </div>
           </div>

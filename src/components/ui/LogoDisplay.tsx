@@ -1,4 +1,5 @@
 import React from 'react';
+import OptimizedImage from './OptimizedImage';
 
 interface LogoDisplayProps {
   position?: 'absolute' | 'relative' | 'fixed' | 'sticky';
@@ -97,18 +98,14 @@ export function LogoDisplay({
           aspectRatio: '3/1',
         }}
       >
-        <img
+        <OptimizedImage
           src={`${import.meta.env.BASE_URL}images/${logoPath}`}
-          alt="Voltify Logo"
-          style={{ 
-            width: 'auto',
-            height: 'auto',
-            maxWidth: '100%',
-            maxHeight: '100%',
-            objectFit: 'contain',
-            filter: 'drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.1))'
-          }}
-          className="transition-all duration-300"
+          alt="Voltify Group Logo"
+          width={600}
+          height={200}
+          priority={true}
+          objectFit="contain"
+          className="transition-all duration-300 w-auto h-auto max-w-full max-h-full filter drop-shadow-sm"
         />
       </div>
     </div>

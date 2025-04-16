@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import OptimizedImage from '../ui/OptimizedImage';
 
 export default function WhatWeDo() {
   // Function to scroll to positions section
@@ -210,10 +211,14 @@ export default function WhatWeDo() {
               </div>
               
               <div className="mt-8">
-                <img 
+                <OptimizedImage
                   src="/images/helping.jpg" 
                   alt="Voltify Group professional helping a candidate find the perfect career opportunity" 
-                  className="w-full h-auto rounded-lg shadow-md object-cover"
+                  className="w-full h-auto rounded-lg shadow-md"
+                  width={1200}
+                  height={800}
+                  objectFit="cover"
+                  sizes="(max-width: 768px) 100vw, 1200px"
                 />
               </div>
             </div>

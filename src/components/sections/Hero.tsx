@@ -5,6 +5,7 @@ import { JobSeekerModal } from '../ui/JobSeekerModal';
 import { EmployerModal } from '../ui/EmployerModal';
 import { useNavigate } from 'react-router-dom';
 import { LogoDisplay } from '../ui/LogoDisplay';
+import OptimizedImage from '../ui/OptimizedImage';
 import '/src/styles/hero.css';
 
 export default function Hero() {
@@ -140,25 +141,57 @@ export default function Hero() {
     <div
       className="absolute inset-0 w-full h-full"
       style={{
-        backgroundImage: `url("${import.meta.env.BASE_URL}images/city.jpg")`,
+        backgroundImage: `url("${import.meta.env.BASE_URL}images/optimized/city.webp")`,
         backgroundSize: '100% 100%',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         filter: 'contrast(1.2) brightness(1.0) saturate(1.0)',        }}
-    ></div>
+    >
+      {/* Fallback for browsers that don't support WebP */}
+      <div
+        className="absolute inset-0 w-full h-full"
+        style={{
+          backgroundImage: `url("${import.meta.env.BASE_URL}images/city.jpg")`,
+          backgroundSize: '100% 100%',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          opacity: 0, /* Hidden by default, shown if WebP fails to load */
+        }}
+        onError={(e: React.SyntheticEvent<HTMLDivElement>) => {
+          // Show the fallback if WebP fails to load
+          (e.currentTarget as HTMLDivElement).style.opacity = '1';
+        }}
+      ></div>
+    </div>
   </div>
   
   <div className="md:hidden">
     <div
       className="absolute inset-0 w-full h-full"
       style={{
-        backgroundImage: `url("${import.meta.env.BASE_URL}images/city.jpg")`,
+        backgroundImage: `url("${import.meta.env.BASE_URL}images/optimized/city.webp")`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         filter: 'contrast(1.2) brightness(0.9) saturate(1.0)',
       }}
-    ></div>
+    >
+      {/* Fallback for browsers that don't support WebP */}
+      <div
+        className="absolute inset-0 w-full h-full"
+        style={{
+          backgroundImage: `url("${import.meta.env.BASE_URL}images/city.jpg")`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          opacity: 0, /* Hidden by default, shown if WebP fails to load */
+        }}
+        onError={(e: React.SyntheticEvent<HTMLDivElement>) => {
+          // Show the fallback if WebP fails to load
+          (e.currentTarget as HTMLDivElement).style.opacity = '1';
+        }}
+      ></div>
+    </div>
     <div className="absolute inset-0 bg-blue-900/30 backdrop-blur-[1px]"></div>
   </div>
 </div>

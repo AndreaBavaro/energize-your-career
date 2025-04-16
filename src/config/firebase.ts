@@ -6,13 +6,14 @@ import { getStorage } from 'firebase/storage';
 
 // Firebase configuration placeholder
 const firebaseConfig = {
-  apiKey: process.env.VITE_FIREBASE_API_KEY || 'placeholder-api-key',
-  authDomain: process.env.VITE_FIREBASE_AUTH_DOMAIN || 'placeholder-project-id.firebaseapp.com',
-  projectId: process.env.VITE_FIREBASE_PROJECT_ID || 'placeholder-project-id',
-  storageBucket: process.env.VITE_FIREBASE_STORAGE_BUCKET || 'placeholder-project-id.appspot.com',
-  messagingSenderId: process.env.VITE_FIREBASE_MESSAGING_SENDER_ID || '000000000000',
-  appId: process.env.VITE_FIREBASE_APP_ID || '1:000000000000:web:0000000000000000000000'
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || 'placeholder-api-key',
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || 'placeholder-project-id.firebaseapp.com',
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || 'placeholder-project-id',
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || 'placeholder-project-id.appspot.com',
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || '000000000000',
+  appId: import.meta.env.VITE_FIREBASE_APP_ID || '1:000000000000:web:0000000000000000000000'
 };
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
