@@ -225,6 +225,26 @@
       }
     </script>
     <title>Voltify Group | Energize Your Career</title>
+    
+    <!-- Speculation Rules for faster navigation -->
+    <script type="speculationrules">
+    {
+      "prefetch": [
+        {
+          "source": "list",
+          "urls": ["/", "/contact", "/testimonials", "/charity", "/blog"]
+        }
+      ],
+      "prerender": [
+        {
+          "source": "document",
+          "where": {
+            "href_matches": "https://voltifygroup.com/(.*)"
+          }
+        }
+      ]
+    }
+    </script>
     <style>
       /* Disable right-click and user selection on images and videos */
       img, video {
