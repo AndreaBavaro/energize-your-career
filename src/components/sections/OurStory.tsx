@@ -36,14 +36,19 @@ export default function OurStory() {
               {/* Video showcasing the Voltify journey */}
               <div className="mt-8">
                 <video 
-                  src="/images/helpingvid.mp4" 
                   autoPlay
                   muted
                   loop
-                  poster="/images/helping-poster.jpg"
-                  aria-label="Voltify's impact on careers and organizations" 
-                  className="w-full h-96 rounded-lg shadow-md object-cover"
+                  playsInline
+                  poster="/images/optimized/helping.webp"
+                  preload="none"
+                  aria-label="Voltify Group's impact on careers and organizations" 
+                  className="w-full h-96 rounded-lg shadow-md object-cover lazy-video"
                 >
+                  {/* WebM format for modern browsers - better compression */}
+                  <source src="/images/optimized/helpingvid.webm" type="video/webm" />
+                  {/* MP4 fallback for older browsers */}
+                  <source src="/images/optimized/helpingvid.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
               </div>
