@@ -19,14 +19,14 @@
     <meta name="twitter:image" content="https://voltifygroup.com/og-image.png" />
     
     <!-- Font preloading for faster text rendering -->
-    <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/public/fonts/inter.woff2" as="font" type="font/woff2" crossorigin />
     
     <!-- Preload critical assets -->
     <link rel="preload" href="/assets/index.css" as="style" />
     
     <!-- Preload fonts -->
-    <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/fonts/inter-bold.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/public/fonts/inter.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/public/fonts/inter-bold.woff2" as="font" type="font/woff2" crossorigin />
     
     <!-- Preconnect to Google Fonts to reduce connection time -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
@@ -41,7 +41,7 @@
         font-weight: 400;
         font-display: swap;
         src: local('Inter Regular'), local('Inter-Regular'),
-             url('/fonts/inter.woff2') format('woff2');
+             url('/public/fonts/inter.woff2') format('woff2');
         unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
       }
       
@@ -51,7 +51,7 @@
         font-weight: 700;
         font-display: swap;
         src: local('Inter Bold'), local('Inter-Bold'),
-             url('/fonts/inter-bold.woff2') format('woff2');
+             url('/public/fonts/inter-bold.woff2') format('woff2');
         unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
       }
     </style>
