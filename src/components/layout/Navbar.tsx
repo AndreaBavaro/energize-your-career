@@ -7,14 +7,14 @@ import { LogoDisplay } from '@/components/ui/LogoDisplay';
 // Navigation items in the specified order
 const navigationItems = [
   { name: 'About Voltify Group', href: '#who-we-are', isRouterLink: false },
-  { name: 'Voltify Group Services', href: '#what-we-do', isRouterLink: false },
-  { name: 'Voltify Group Story', href: '#our-story', isRouterLink: false },
+  { name: 'Services', href: '#what-we-do', isRouterLink: false },
+  { name: 'Our Story', href: '#our-story', isRouterLink: false },
   { name: 'Client Testimonials', href: '/testimonials', isRouterLink: true },
   { name: 'Partner With Voltify Group', href: '#why-partner', isRouterLink: false },
   { name: 'Industries We Serve', href: '#what-we-do', isRouterLink: false },
-  { name: 'Voltify Group Charity', href: '/charity', isRouterLink: true },
-  { name: 'Voltify Group Blog', href: '/blog', isRouterLink: true },
-  { name: 'Contact Voltify Group', href: '/contact', isRouterLink: true },
+  { name: 'Charity', href: '/charity', isRouterLink: true },
+  { name: 'Blog', href: '/blog', isRouterLink: true },
+  { name: 'Contact Us', href: '/contact', isRouterLink: true },
 ];
 
 export default function Navbar() {
