@@ -178,7 +178,7 @@ export default function WhatWeDo() {
                 Specialized Placement Across Industries
               </h3>
               <p className="text-lg text-stone-900 mb-8 text-center">
-                Voltify provides placements of <span className="text-black font-bold">highly qualified, fully screened professionals</span> across various roles and specialized industry sectors.
+                Voltify Group provides placements of <span className="text-black font-bold">highly qualified, fully screened professionals</span> across various roles and specialized industry sectors.
               </p>
               
               <h4 className="text-lg font-semibold mb-4 text-stone-900 text-center">Your Path to the Perfect Role</h4>

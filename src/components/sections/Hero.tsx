@@ -400,7 +400,7 @@ export default function Hero() {
               <span className="text-blue-500 relative">
                 {/* Gradient text with animation */}
                 <span className="bg-[#000000] bg-clip-text text-transparent animate-gradient-x font-extrabold hidden md:inline-block">
-                  Voltify Group
+                  Voltify
                 </span>
                 
                 <Zap 
@@ -427,7 +427,7 @@ export default function Hero() {
      <div className="flex flex-col items-center justify-center">
        <p className="relative text-[clamp(17px,1.8vw,25px)] font-bold text-black leading-tight text-left relative z-10 py-[0.8vh]">
          <span className="block mb-[0.5vh]">
-           <span className="font-extrabold">Voltify Group</span> energizes careers, builds lasting relationships,
+           <span className="font-extrabold">Voltify</span> energizes careers, builds lasting relationships,
          </span>
          <span className="block mb-[0.75vh]">
            connects you with opportunities, and helps you grow professionally.
