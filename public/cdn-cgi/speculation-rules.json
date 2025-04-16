@@ -1,0 +1,16 @@
+{
+  "prefetch": [
+    {
+      "source": "list",
+      "urls": ["/", "/contact", "/testimonials", "/charity", "/blog"]
+    }
+  ],
+  "prerender": [
+    {
+      "source": "document",
+      "where": {
+        "href_matches": "https://voltifygroup.com/(.*)"
+      }
+    }
+  ]
+}
