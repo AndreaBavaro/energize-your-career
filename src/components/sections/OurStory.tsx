@@ -133,7 +133,7 @@ export default function OurStory() {
             <div className="mt-6 flex justify-center">
               <img 
                 src={`${import.meta.env.BASE_URL}images/women2.jpg`}
-                alt="Helping" 
+                alt="Voltify Group professionals helping clients advance their careers" 
                 className="rounded-lg shadow-md w-full max-w-4xl h-auto"
               />
             </div>

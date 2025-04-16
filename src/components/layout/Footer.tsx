@@ -28,16 +28,16 @@ export default function Footer() {
             <h3 className="text-lg font-semibold">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <a href="/#who-we-are" className="text-stone-300 hover:text-white transition-colors">Who We Are</a>
+                <a href="/#who-we-are" className="text-stone-300 hover:text-white transition-colors">About Voltify Group</a>
               </li>
               <li>
-                <a href="/#what-we-do" className="text-stone-300 hover:text-white transition-colors">What We Do</a>
+                <a href="/#what-we-do" className="text-stone-300 hover:text-white transition-colors">Voltify Group Services</a>
               </li>
               <li>
-                <a href="/#our-story" className="text-stone-300 hover:text-white transition-colors">Our Story</a>
+                <a href="/#our-story" className="text-stone-300 hover:text-white transition-colors">Voltify Group Story</a>
               </li>
               <li>
-                <a href="/#why-partner" className="text-stone-300 hover:text-white transition-colors">Why Partner</a>
+                <a href="/#why-partner" className="text-stone-300 hover:text-white transition-colors">Partner With Voltify Group</a>
               </li>
               <li>
                 <a href="/contact" className="text-stone-300 hover:text-white transition-colors">Contact Us</a>
@@ -64,7 +64,7 @@ export default function Footer() {
                 <a href="/#services" className="text-stone-300 hover:text-white transition-colors">Payroll Services</a>
               </li>
               <li className="text-stone-300">
-                <a href="/charity" className="text-stone-300 hover:text-white transition-colors">Charity Work</a>
+                <a href="/charity" className="text-stone-300 hover:text-white transition-colors">Voltify Group Charity</a>
               </li>
             </ul>
           </div>

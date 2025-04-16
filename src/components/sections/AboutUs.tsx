@@ -113,7 +113,7 @@ export default function AboutUs() {
               <div className="w-full h-full">
                 <img 
                   src="/images/women1.jpg" 
-                  alt="Women-Owned Business" 
+                  alt="Voltify Group - Women-Owned Staffing and Recruitment Business" 
                   className="w-full h-56 sm:h-72 md:h-80 object-cover rounded-lg"
                 />
               </div>

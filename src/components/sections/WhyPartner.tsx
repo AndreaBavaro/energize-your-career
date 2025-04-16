@@ -98,7 +98,7 @@ export default function WhyPartner() {
                   
                   <img 
                     src="/images/women3.jpg" 
-                    alt="Professional women collaborating in business setting" 
+                    alt="Voltify Group team members collaborating to deliver exceptional recruitment services" 
                     className="w-full h-auto object-cover"
                     style={{ maxHeight: "450px" }}
                   />

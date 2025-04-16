@@ -212,7 +212,7 @@ export default function WhatWeDo() {
               <div className="mt-8">
                 <img 
                   src="/images/helping.jpg" 
-                  alt="Professional helping a candidate find the perfect role" 
+                  alt="Voltify Group professional helping a candidate find the perfect career opportunity" 
                   className="w-full h-auto rounded-lg shadow-md object-cover"
                 />
               </div>
