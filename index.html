@@ -21,12 +21,64 @@
     <!-- Font preloading for faster text rendering -->
     <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin />
     
+    <!-- Preload critical assets -->
+    <link rel="preload" href="/src/index.css" as="style" />
+    <link rel="preload" href="/src/styles/hero.css" as="style" />
+    
+    <!-- Preload critical hero section for desktop LCP -->
+    <link rel="preload" fetchpriority="high" as="fetch" href="/src/components/sections/Hero.tsx" />
+    
     <!-- Preconnect to Google Fonts to reduce connection time -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     
+    <!-- Inline critical fonts instead of using Google Fonts CSS request -->
+    <style>
+      /* Inline critical Inter font subset */
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: local('Inter Regular'), local('Inter-Regular'),
+             url('/fonts/inter.woff2') format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: local('Inter Bold'), local('Inter-Bold'),
+             url('/fonts/inter-bold.woff2') format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+    </style>
+    
     <!-- Critical CSS for LCP optimization -->
     <style>
+      /* Critical CSS for First Paint */
+      :root {
+        --background: 210 40% 99%;
+        --foreground: 222 47% 11%;
+        --primary: 210 100% 35%;
+        --primary-foreground: 210 40% 98%;
+      }
+      
+      html, body {
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+        margin: 0;
+        padding: 0;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      }
+      
+      body {
+        background-color: hsl(var(--background));
+        color: hsl(var(--foreground));
+      }
+      
       /* Optimize LCP text rendering */
       .lcp-text {
         content-visibility: auto;
@@ -35,6 +87,38 @@
         will-change: transform;
         transform: translateZ(0);
         backface-visibility: hidden;
+        display: block;
+        visibility: visible !important;
+      }
+      
+      /* LCP optimization for all critical elements */
+      [data-lcp-element="true"] {
+        visibility: visible !important;
+        content-visibility: visible;
+        contain-intrinsic-size: auto;
+        display: block;
+        font-display: block;
+        contain: none;
+      }
+      
+      /* Desktop LCP specific optimization */
+      .desktop-lcp-element {
+        visibility: visible !important;
+        content-visibility: visible;
+        contain: none;
+        will-change: contents;
+        transform: translateZ(0);
+        display: block;
+        font-display: block;
+      }
+      
+      /* Hero section critical styles */
+      .hero-section {
+        position: relative;
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
       
       /* Optimize image loading */
@@ -46,6 +130,11 @@
       /* Reduce layout shifts */
       .container-custom {
         contain: layout;
+        max-width: 80rem;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 1rem;
+        padding-right: 1rem;
       }
       
       /* Lazy load videos */
@@ -54,13 +143,16 @@
         contain-intrinsic-size: auto 384px; /* h-96 = 24rem = 384px */
       }
       
-      /* Optimize Google Fonts loading */
-      @font-face {
-        font-family: 'Google Font';
-        font-style: normal;
-        font-weight: 400;
-        font-display: swap; /* Ensure text is visible during font load */
-        src: local('Arial');
+      /* Charity text specific styles for mobile */
+      @media (max-width: 768px) {
+        .text-xs.text-black.leading-tight.lcp-text {
+          font-size: 0.75rem;
+          line-height: 1.2;
+          font-weight: 300;
+          visibility: visible !important;
+          display: block !important;
+          content-visibility: visible;
+        }
       }
     </style>
     <!-- Organization Schema with Enhanced SEO -->
@@ -171,8 +263,25 @@
   <body>
     <h1 style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Voltify Group - Professional Career Services</h1>
     <div id="root"></div>
+    <!-- Load non-critical CSS asynchronously -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" />
+    </noscript>
+    
     <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
-    <script type="module" src="/src/main.tsx"></script>
+    <script src="https://cdn.gpteng.co/gptengineer.js" type="module" defer></script>
+    <script type="module" src="/src/main.tsx" defer></script>
+    
+    <!-- Preload CSS once the page has loaded -->
+    <script>
+      // Add main CSS file after page load
+      window.addEventListener('load', function() {
+        const mainStyle = document.createElement('link');
+        mainStyle.rel = 'stylesheet';
+        mainStyle.href = '/src/index.css';
+        document.head.appendChild(mainStyle);
+      });
+    </script>
   </body>
 </html>

@@ -1,0 +1,37 @@
+/* Hero section optimizations for LCP */
+
+/* Desktop LCP element optimization */
+.desktop-lcp-element {
+  visibility: visible !important;
+  content-visibility: visible;
+  contain: none;
+  will-change: contents;
+  transform: translateZ(0);
+  display: block;
+  font-display: block;
+  backface-visibility: hidden;
+}
+
+/* Optimize hero text rendering */
+.lcp-text {
+  content-visibility: visible;
+  contain-intrinsic-size: auto 200px;
+  font-display: swap;
+  will-change: contents;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  display: block;
+  visibility: visible !important;
+}
+
+/* Prioritize desktop hero section */
+@media (min-width: 768px) {
+  .desktop-lcp-element {
+    font-size: clamp(17px, 1.8vw, 25px);
+    line-height: 1.2;
+    font-weight: 700;
+    visibility: visible !important;
+    display: block !important;
+    content-visibility: visible;
+  }
+}

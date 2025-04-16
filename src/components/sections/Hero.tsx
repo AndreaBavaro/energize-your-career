@@ -258,8 +258,17 @@ export default function Hero() {
             </div>
             
             <div className="px-1 pt-1 pb-0 rounded-b-lg mb-0">
-              <p className="text-xs text-black leading-tight max-w-xl mx-auto font-light">
-              For each candidate hired, we contribute <span className="font-bold text-blue-500">5%</span> to those in need through charitable initiatives.
+              <p 
+                className="text-xs text-black leading-tight max-w-xl mx-auto font-light lcp-text"
+                data-lcp-element="true"
+                style={{
+                  contentVisibility: 'auto',
+                  willChange: 'contents',
+                  transform: 'translateZ(0)',
+                  backfaceVisibility: 'hidden'
+                }}
+              >
+                For each candidate hired, we contribute <span className="font-bold text-blue-500">5%</span> to those in need through charitable initiatives.
               </p>
               <div className="flex justify-center mt-4">
               <Button 
@@ -462,11 +471,26 @@ export default function Hero() {
        <p 
          className="relative text-[clamp(17px,1.8vw,25px)] font-bold text-black leading-tight text-left relative z-10 py-[0.8vh] lcp-text"
          data-lcp-element="true"
+         style={{
+           contentVisibility: 'visible',
+           willChange: 'contents',
+           transform: 'translateZ(0)',
+           backfaceVisibility: 'hidden',
+           contain: 'none'
+         }}
        >
-         <span className="block mb-[0.5vh]">
+         <span className="block mb-[0.5vh]" data-priority="high">
            <span className="font-extrabold">Voltify</span> energizes careers, builds lasting relationships,
          </span>
-         <span className="block mb-[0.75vh]">
+         <span 
+           className="block mb-[0.75vh] desktop-lcp-element"
+           data-lcp-element="true"
+           style={{
+             visibility: 'visible',
+             contentVisibility: 'visible',
+             willChange: 'contents'
+           }}
+         >
            connects you with opportunities, and helps you grow professionally.
          </span>
        </p>
