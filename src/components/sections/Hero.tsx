@@ -452,13 +452,17 @@ export default function Hero() {
           </div>
           
          {/* Desktop Mission statement - PRIMARY FOCUS PART 2 */}
-<div className="relative z-10 ml-[-3.5vw] xl:ml-0 lg:ml-0 md:ml-[-1.5vw] px-0 mx-auto mt-[-0.5vh] hidden md:block">
+<div className="relative z-10 ml-[-3.5vw] xl:ml-0 lg:ml-0 md:ml-[-1.5vw] px-0 mx-auto mt-[-0.5vh] hidden md:block" style={{ contentVisibility: 'auto' }}>
    <div 
        className="bg-white/95 backdrop-blur-sm border-l-2 border-r-2 border-blue-500 pl-[1vw] pr-[0.8vw] py-[0.8vw] rounded-lg mr-auto relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent h-auto md:w-auto"
        style={{ width: 'clamp(315px, 55vw, 750px)', maxWidth: '95%' }}
    >
      <div className="flex flex-col items-center justify-center">
-       <p className="relative text-[clamp(17px,1.8vw,25px)] font-bold text-black leading-tight text-left relative z-10 py-[0.8vh]">
+       {/* Optimize for Largest Contentful Paint */}
+       <p 
+         className="relative text-[clamp(17px,1.8vw,25px)] font-bold text-black leading-tight text-left relative z-10 py-[0.8vh] lcp-text"
+         data-lcp-element="true"
+       >
          <span className="block mb-[0.5vh]">
            <span className="font-extrabold">Voltify</span> energizes careers, builds lasting relationships,
          </span>
@@ -479,12 +483,15 @@ export default function Hero() {
 </div>
 
 {/* Mobile Mission statement */}
-<div className="relative z-10 px-1 mr-[5vw] mx-auto mt-[2vh] block md:hidden">
+<div className="relative z-10 px-1 mr-[5vw] mx-auto mt-[2vh] block md:hidden" style={{ contentVisibility: 'auto' }}>
    <div 
        className="bg-white/95 backdrop-blur-sm border-l-2 border-r-2 border-blue-500 px-3 py-2 rounded-lg mx-auto relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent h-auto w-[100%] max-w-[500px] shadow-lg"
    >
      <div className="flex flex-col items-center justify-center">
-       <p className="relative text-[16px] font-bold text-black leading-[1.15] text-center relative z-10 tracking-tight w-full">
+       <p 
+         className="relative text-[16px] font-bold text-black leading-[1.15] text-center relative z-10 tracking-tight w-full lcp-text"
+         data-lcp-element="true"
+       >
          <span className="inline-block"><span className="font-extrabold">Voltify Group</span> energizes careers</span>
          <span className="inline-block">and builds relationships, connecting you</span>
          <span className="inline-block mb-1.5">with opportunities and growth.</span>

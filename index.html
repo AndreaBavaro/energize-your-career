@@ -17,6 +17,33 @@
     <meta name="twitter:title" content="Voltify Group | Energize Your Career" />
     <meta name="twitter:description" content="Voltify Group energizes your career with professional coaching, job search services, and career development." />
     <meta name="twitter:image" content="https://voltifygroup.com/og-image.png" />
+    
+    <!-- Font preloading for faster text rendering -->
+    <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin />
+    
+    <!-- Critical CSS for LCP optimization -->
+    <style>
+      /* Optimize LCP text rendering */
+      .lcp-text {
+        content-visibility: auto;
+        contain-intrinsic-size: auto 200px;
+        font-display: swap;
+        will-change: transform;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+      }
+      
+      /* Optimize image loading */
+      img.priority {
+        content-visibility: auto;
+        contain-intrinsic-size: auto 450px;
+      }
+      
+      /* Reduce layout shifts */
+      .container-custom {
+        contain: layout;
+      }
+    </style>
     <!-- Organization Schema with Enhanced SEO -->
     <script type="application/ld+json">
       {
