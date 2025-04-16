@@ -42,19 +42,6 @@ self.addEventListener('fetch', function(event) {
     return;
   }
   
-  // Handle font file requests that might be 404ing
-  if (url.pathname.includes('/fonts/') && !url.pathname.includes('/public/fonts/')) {
-    // Redirect to the correct path
-    const newUrl = url.pathname.replace('/fonts/', '/public/fonts/');
-    event.respondWith(
-      fetch(new Request(newUrl, {
-        method: event.request.method,
-        headers: event.request.headers,
-        mode: event.request.mode,
-        credentials: event.request.credentials,
-        redirect: event.request.redirect
-      }))
-    );
-    return;
-  }
+  // We've moved the font files to the correct location, so no need to redirect
+  // This service worker now focuses on handling speculation rules requests
 });
