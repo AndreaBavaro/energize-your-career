@@ -17,8 +17,6 @@ export default function Hero() {
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
 
   // State for modals
-  const [showJobSeekerModal, setShowJobSeekerModal] = useState(false);
-  const [showEmployerModal, setShowEmployerModal] = useState(false);
   const [isJobSeekerModalOpen, setIsJobSeekerModalOpen] = useState(false);
   const [isEmployerModalOpen, setIsEmployerModalOpen] = useState(false);
   const [isCharityModalOpen, setIsCharityModalOpen] = useState(false);

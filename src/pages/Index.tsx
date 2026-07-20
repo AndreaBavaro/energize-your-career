@@ -16,29 +16,26 @@ const WhatWeDo = lazy(() => import("@/components/sections/WhatWeDo"));
 
 const Index = () => {
   useEffect(() => {
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        if (!targetId) return;
-        
-        const targetElement = document.querySelector(targetId);
-        if (!targetElement) return;
-        
-        window.scrollTo({
-          top: targetElement.offsetTop,
-          behavior: 'smooth'
-        });
-      });
-    });
-    
-    return () => {
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.removeEventListener('click', function (e) {});
+    // Smooth scroll for anchor links (single delegated listener so cleanup works)
+    const handleAnchorClick = (e: MouseEvent) => {
+      const anchor = (e.target as Element).closest('a[href^="#"]');
+      if (!anchor) return;
+
+      const targetId = anchor.getAttribute('href');
+      if (!targetId) return;
+
+      const targetElement = document.querySelector(targetId);
+      if (!targetElement) return;
+
+      e.preventDefault();
+      window.scrollTo({
+        top: (targetElement as HTMLElement).offsetTop,
+        behavior: 'smooth'
       });
     };
+
+    document.addEventListener('click', handleAnchorClick);
+    return () => document.removeEventListener('click', handleAnchorClick);
   }, []);
 
   // Simple section loading placeholder

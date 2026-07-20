@@ -31,7 +31,7 @@ export default function ClientTypes() {
   ];
 
   return (
-    <section className="py-24 white-brick-bg">
+    <section className="py-16 md:py-24 white-brick-bg">
       <div className="container-custom">
         <div id="job-seekers" className="mb-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">

@@ -39,7 +39,7 @@ export default function WhyPartner() {
   ];
 
   return (
-    <section id="why-partner" className="py-24 white-brick-bg relative overflow-hidden">
+    <section id="why-partner" className="py-16 md:py-24 white-brick-bg relative overflow-hidden">
       <div className="container-custom relative z-10">
         <SectionHeading 
           title="Why Partner With Us"
@@ -48,7 +48,7 @@ export default function WhyPartner() {
         
         {/* Mobile view: 3x2 grid */}
         <div className="block sm:hidden">
-          <div className="grid grid-cols-3 gap-3 max-w-6xl mx-auto">
+          <div className="grid grid-cols-2 gap-3 max-w-6xl mx-auto">
             {reasons.map((reason, index) => (
               <GlassCard 
                 key={index}
@@ -90,7 +90,7 @@ export default function WhyPartner() {
         <div className="mt-16 max-w-6xl mx-auto">
           <div className="flex flex-col lg:flex-row gap-8 items-center">
             {/* Image column - larger now */}
-            <div className="w-full lg:w-3/5 order-1 sm:order-1 lg:order-1">
+            <div className="w-full lg:w-3/5 order-1">
               <div className="relative h-full flex items-center justify-center">
                 <div className="absolute w-full h-full bg-alternative-600/10 rounded-2xl transform rotate-3"></div>
                 <div className="relative z-10 transform -rotate-2 hover:rotate-0 transition-transform duration-500 w-full max-w-lg mx-auto overflow-hidden rounded-2xl shadow-xl">
@@ -111,7 +111,7 @@ export default function WhyPartner() {
             </div>
             
             {/* Content column - smaller now */}
-            <div className="w-full lg:w-2/5 order-2 sm:order-2 lg:order-2">
+            <div className="w-full lg:w-2/5 order-2">
               <div className="bg-alternative-600 rounded-2xl p-6 md:p-8 text-white shadow-xl h-full">
                 <h3 className="text-2xl font-bold mb-4 text-center lg:text-left">Our Commitment to Excellence</h3>
                 <p className="text-lg mb-4 text-alternative-50">

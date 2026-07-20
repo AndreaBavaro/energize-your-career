@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils';
-import { Linkedin, Mail, MapPin, Phone } from 'lucide-react';
+import { Linkedin, Mail } from 'lucide-react';
 import Newsletter from '@/components/ui/Newsletter';
 
 export default function Footer() {

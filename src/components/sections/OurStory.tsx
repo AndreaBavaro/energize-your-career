@@ -5,7 +5,7 @@ import OptimizedImage from '../ui/OptimizedImage';
 
 export default function OurStory() {
   return (
-    <section id="our-story" className="py-24 white-brick-bg relative">
+    <section id="our-story" className="py-16 md:py-24 white-brick-bg relative overflow-hidden">
       <div className="absolute inset-0 z-0">
         <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-alternative-50 rounded-full filter blur-3xl opacity-30"></div>
       </div>
@@ -43,7 +43,7 @@ export default function OurStory() {
                   poster="/images/optimized/helping.webp"
                   preload="none"
                   aria-label="Voltify Group's impact on careers and organizations" 
-                  className="w-full h-96 rounded-lg shadow-md object-cover lazy-video"
+                  className="w-full h-56 sm:h-72 md:h-96 rounded-lg shadow-md object-cover lazy-video"
                 >
                   {/* WebM format for modern browsers - better compression */}
                   <source src="/images/optimized/helpingvid.webm" type="video/webm" />

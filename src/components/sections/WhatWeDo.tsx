@@ -28,31 +28,31 @@ export default function WhatWeDo() {
   // Industry sectors we serve
   const sectors = [
     {
-      icon: <Zap className="h-8 w-8 text-black-600" />,
+      icon: <Zap className="h-8 w-8 text-white" />,
       name: 'Energy',
     },
     {
-      icon: <Database className="h-8 w-8 text-black-600" />,
+      icon: <Database className="h-8 w-8 text-white" />,
       name: 'Information Technology',
     },
     {
-      icon: <Heart className="h-8 w-8 text-black-600" />,
+      icon: <Heart className="h-8 w-8 text-white" />,
       name: 'Human Resources',
     },
     {
-      icon: <BarChart3 className="h-8 w-8 text-black-600" />,
+      icon: <BarChart3 className="h-8 w-8 text-white" />,
       name: 'Marketing',
     },
     {
-      icon: <CreditCard className="h-8 w-8 text-black-600" />,
+      icon: <CreditCard className="h-8 w-8 text-white" />,
       name: 'Financial Services',
     },
     {
-      icon: <Microscope className="h-8 w-8 text-black-600" />,
+      icon: <Microscope className="h-8 w-8 text-white" />,
       name: 'Life Science',
     },
     {
-      icon: <CreditCard className="h-8 w-8 text-black-600" />,
+      icon: <CreditCard className="h-8 w-8 text-white" />,
       name: 'FinTech',
     },
   ];

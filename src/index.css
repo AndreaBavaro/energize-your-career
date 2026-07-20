@@ -158,9 +158,16 @@
     background-image: url('/images/textures/white-brick.svg');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
     opacity: 0.15;
     z-index: -2;
+  }
+
+  /* background-attachment: fixed is janky/unsupported on iOS Safari,
+     so only enable it where it behaves well */
+  @media (min-width: 1024px) {
+    .white-brick-bg::before {
+      background-attachment: fixed;
+    }
   }
   
   .white-brick-bg::after {

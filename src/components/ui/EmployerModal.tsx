@@ -9,9 +9,9 @@ interface EmployerModalProps {
 }
 
 export function EmployerModal({ isOpen, onClose }: EmployerModalProps) {
-  if (!isOpen) return null;
-  
   const navigate = useNavigate();
+
+  if (!isOpen) return null;
   
   // Expanded list of benefits for mobile
   const employerBenefits = [
@@ -29,7 +29,10 @@ export function EmployerModal({ isOpen, onClose }: EmployerModalProps) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/70 backdrop-blur-sm animate-fade-in">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/70 backdrop-blur-sm animate-fade-in"
+      onClick={onClose}
+    >
       <div 
         className="w-full max-w-xs sm:max-w-2xl max-h-[90vh] sm:max-h-[90vh] overflow-auto" 
         onClick={(e) => e.stopPropagation()}

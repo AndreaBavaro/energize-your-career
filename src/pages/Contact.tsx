@@ -499,7 +499,7 @@ export default function Contact() {
                     </div>
                     
                     <div className="space-y-1 sm:space-y-2">
-                      <label className="block text-xs sm:text-sm font-medium text-stone-700">
+                      <div className="block text-xs sm:text-sm font-medium text-stone-700">
                         I am a: *
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 mt-1 sm:mt-2">
                           <label className={`
@@ -556,7 +556,7 @@ export default function Contact() {
                             </div>
                           </label>
                         </div>
-                      </label>
+                      </div>
                     </div>
 
                     {/* File Upload Section */}

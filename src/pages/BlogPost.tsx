@@ -10,6 +10,7 @@ import Newsletter from "@/components/ui/Newsletter";
 import Footer from "@/components/layout/Footer";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { createRoot } from 'react-dom/client';
+import DOMPurify from 'dompurify';
 
 // Twitter widget type declaration
 declare global {
@@ -200,13 +201,13 @@ export default function BlogPost() {
               </div>
 
               {/* Title */}
-              <h1 className="text-3xl sm:text-4xl font-bold text-stone-900 mb-6" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+              <h1 className="text-3xl sm:text-4xl font-bold text-stone-900 mb-6" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.title.rendered) }} />
 
               {/* Content */}
               <div 
                 ref={contentRef}
                 className="prose prose-stone max-w-none prose-headings:text-alternative-900 prose-a:text-alternative-600 hover:prose-a:text-alternative-700 relative"
-                dangerouslySetInnerHTML={{ __html: processedContent }}
+                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(processedContent, { ADD_TAGS: ['iframe', 'blockquote'], ADD_ATTR: ['allow', 'allowfullscreen', 'frameborder', 'scrolling', 'src', 'class', 'data-tweet-id'] }) }}
               />
               
               {/* Embed Icons */}

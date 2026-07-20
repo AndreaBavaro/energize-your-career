@@ -159,10 +159,10 @@ export default function Navbar() {
     )}>
       {/* Mobile navbar tap indicator - only visible on mobile when menu is closed */}
       {!mobileMenuOpen && (
-        <div className="lg:hidden absolute inset-0 bg-white/5 animate-pulse-slow pointer-events-none"></div>
+        <div className="xl:hidden absolute inset-0 bg-white/5 animate-pulse-slow pointer-events-none"></div>
       )}
       {/* Logo positioned absolutely at the top left - hidden on mobile */}
-      <div className="absolute top-1/2 -translate-y-1/2 left-0 sm:left-2 md:left-4 lg:left-6 hidden sm:flex items-center z-50 mt-9">
+      <div className={`absolute top-1/2 -translate-y-1/2 left-0 sm:left-2 md:left-4 lg:left-6 hidden sm:flex items-center z-50 transition-all duration-300 ${scrolled ? 'mt-2 scale-[0.65] origin-left' : 'mt-9'}`}>
         <div className="relative">
           
           <Link 
@@ -193,17 +193,17 @@ export default function Navbar() {
 
       {/* Navigation container */}
       <nav 
-        className={`container-custom flex items-center justify-between sm:justify-end h-8 sm:h-10 md:h-12 lg:h-14 px-2 sm:px-3 md:px-4 lg:px-6 sm:ml-[100px] md:ml-[120px] lg:ml-[180px] mt-1 ${!mobileMenuOpen ? 'lg:cursor-default cursor-pointer' : ''} ${isTransitioning ? 'opacity-90' : 'opacity-100'} transition-opacity duration-300`}
+        className={`container-custom flex items-center justify-between sm:justify-end h-8 sm:h-10 md:h-12 lg:h-14 px-2 sm:px-3 md:px-4 lg:px-6 sm:ml-[100px] md:ml-[120px] xl:ml-[180px] mt-1 ${!mobileMenuOpen ? 'xl:cursor-default cursor-pointer' : ''} ${isTransitioning ? 'opacity-90' : 'opacity-100'} transition-opacity duration-300`}
         onClick={(e) => {
           // Don't open menu if transitioning or clicking on the logo container
-          if (window.innerWidth < 1024 && !mobileMenuOpen && !isTransitioning && !(e.target as Element).closest('.mobile-logo-container')) {
+          if (window.innerWidth < 1280 && !mobileMenuOpen && !isTransitioning && !(e.target as Element).closest('.mobile-logo-container')) {
             setMobileMenuOpen(true);
           }
         }}
       >
         {/* Mobile logo - visible only on mobile */}
         <div className={`flex sm:hidden items-center -ml-2 ${mobileMenuOpen ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300 mobile-logo-container`}>
-          <div className="relative mt-[8vw]">
+          <div className={`relative transition-all duration-300 ${scrolled ? 'mt-1 scale-[0.55] origin-top-left' : 'mt-[8vw]'}`}>
             <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[40px] h-[45px] bg-blue-700 rounded-t-full transform -rotate-180 z-0"></div>
             <Link 
               to="/" 
@@ -215,7 +215,7 @@ export default function Navbar() {
                   return; // Prevent actions during transition
                 }
                 
-                if (window.innerWidth < 1024 && !mobileMenuOpen) {
+                if (window.innerWidth < 1280 && !mobileMenuOpen) {
                   setMobileMenuOpen(true);
                 } else {
                   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -246,7 +246,7 @@ export default function Navbar() {
         </div>
         
         {/* Desktop navigation */}
-        <div className="hidden lg:flex items-center space-x-1 xl:space-x-1">
+        <div className="hidden xl:flex items-center space-x-1">
           {/* Navigation items */}
           {navigationItems.map((item) => (
             renderNavLink(
@@ -257,15 +257,15 @@ export default function Navbar() {
         </div>
 
         {/* Mobile menu button */}
-        <div className="flex lg:hidden">
+        <div className="flex xl:hidden">
           <button
             type="button"
-            className="text-white p-0.5 sm:p-1 rounded-lg hover:bg-white/10 transition-colors relative"
+            className="text-white p-2 rounded-lg hover:bg-white/10 transition-colors relative"
             onClick={() => setMobileMenuOpen(true)}
             aria-label="Open main menu"
           >
             <span className="sr-only">Open main menu</span>
-            <Menu className="h-3 w-3 sm:h-4 sm:w-4" aria-hidden="true" />
+            <Menu className="h-5 w-5" aria-hidden="true" />
             {!mobileMenuOpen && (
               <span className="absolute -top-1 -right-1 flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
