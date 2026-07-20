@@ -323,7 +323,7 @@ export default function WhatWeDo() {
           </GlassCard>
           
           {/* Bottom row - two services side by side */}
-          <div className="grid grid-cols-2 gap-3 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6">
             {additionalServices.slice(1).map((service, index) => (
               <GlassCard 
                 key={index + 1}

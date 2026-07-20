@@ -64,3 +64,7 @@ firebase-storage-setup.md
 *.bak
 .eslintcache
 .stylelintcache
+
+# local tooling
+.claude/
+*.tsbuildinfo

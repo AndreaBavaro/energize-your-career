@@ -1,8 +1,7 @@
 import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
-import { componentTagger } from "lovable-tagger";
-import { copyFileSync } from 'fs';
+import { copyFileSync, existsSync } from 'fs';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -18,24 +17,21 @@ export default defineConfig(({ mode }) => {
     },
     plugins: [
       react(),
-      mode === 'development' &&
-      componentTagger(),
       {
         name: 'copy-spa-files',
         closeBundle() {
           // Ensure 404.html is copied to the dist folder
           console.log('Copying 404.html and CNAME to dist folder...');
           try {
-            const fs = require('fs');
             // Check if files exist before copying
-            if (fs.existsSync('public/404.html')) {
+            if (existsSync('public/404.html')) {
               copyFileSync('public/404.html', 'dist/404.html');
               console.log('404.html copied successfully!');
             } else {
               console.log('404.html not found, skipping...');
             }
             
-            if (fs.existsSync('public/CNAME')) {
+            if (existsSync('public/CNAME')) {
               copyFileSync('public/CNAME', 'dist/CNAME');
               console.log('CNAME copied successfully!');
             } else {

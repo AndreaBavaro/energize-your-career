@@ -105,7 +105,7 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
         loading={loading}
         style={{ objectFit }}
         sizes={sizes}
-        fetchPriority={priority ? 'high' : 'auto'}
+        {...({ fetchpriority: priority ? 'high' : 'auto' } as React.ImgHTMLAttributes<HTMLImageElement>)}
         decoding={priority ? 'sync' : 'async'}
       />
     </picture>

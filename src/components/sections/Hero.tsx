@@ -133,7 +133,7 @@ export default function Hero() {
   return (
     <section 
       id="hero" 
-      className="relative min-h-[100svh] flex flex-col justify-between pt-3 sm:pt-4 md:pt-6 overflow-hidden position-relative"
+      className="relative min-h-[100svh] flex flex-col justify-start md:justify-between pt-3 sm:pt-4 md:pt-6 overflow-hidden position-relative"
     >
       {/* Image Background */}
 <div className="absolute inset-0 z-0 overflow-hidden">
@@ -142,7 +142,7 @@ export default function Hero() {
       className="absolute inset-0 w-full h-full"
       style={{
         backgroundImage: `url("${import.meta.env.BASE_URL}images/optimized/city.webp")`,
-        backgroundSize: '100% 100%',
+        backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         filter: 'contrast(1.2) brightness(1.0) saturate(1.0)',        }}
@@ -152,7 +152,7 @@ export default function Hero() {
         className="absolute inset-0 w-full h-full"
         style={{
           backgroundImage: `url("${import.meta.env.BASE_URL}images/city.jpg")`,
-          backgroundSize: '100% 100%',
+          backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
           opacity: 0, /* Hidden by default, shown if WebP fails to load */
@@ -236,15 +236,9 @@ export default function Hero() {
       </div>
 
       {/* Mobile version of Voltify Donates 5% - Bottom Left */}
-      <div 
-        className="absolute bottom-[35vh] right-[2vw] md:hidden"
-        style={{ 
-          zIndex: 25,
-          width: '170px',
-        }}
-      >
-        <div 
-          className="bg-white/95 backdrop-blur-sm border-l-4 border-r-4 border-blue-500 rounded-lg shadow-lg overflow-hidden p-2 flex flex-col justify-between hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent cursor-pointer h-full"
+      <div className="relative z-20 order-3 mx-4 mt-3 mb-6 md:hidden">
+        <div
+          className="bg-white/95 backdrop-blur-sm border-l-4 border-r-4 border-blue-500 rounded-lg shadow-lg overflow-hidden p-3 flex flex-col justify-between hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent cursor-pointer h-full"
           onClick={(e) => {
             e.stopPropagation(); // Prevent double navigation
             goToCharityPage(); // Use the navigate function instead of window.open
@@ -342,15 +336,9 @@ export default function Hero() {
       </div>
 
       {/* Mobile version of Client Testimonials - Bottom Right */}
-      <div 
-        className="absolute bottom-[35vh] left-[10vw] md:hidden"
-        style={{ 
-          zIndex: 25,
-          width: '170px',
-        }}
-      >
-        <div 
-          className="bg-white/95 backdrop-blur-sm border-l-4 border-r-4 border-blue-500 rounded-lg shadow-lg overflow-hidden p-2 flex flex-col justify-between hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent cursor-pointer"
+      <div className="relative z-20 order-2 mx-4 mt-auto md:hidden">
+        <div
+          className="bg-white/95 backdrop-blur-sm border-l-4 border-r-4 border-blue-500 rounded-lg shadow-lg overflow-hidden p-3 flex flex-col justify-between hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent cursor-pointer"
           onClick={goToTestimonialsPage}
         >
           <div>
@@ -366,13 +354,13 @@ export default function Hero() {
                   {currentTestimonial.initials}
                 </div>
                 <div>
-                  <h4 className="text-[10px] font-semibold text-black">{currentTestimonial.author}</h4>
-                  <p className="text-[8px] text-stone-600">{currentTestimonial.position}</p>
+                  <h4 className="text-xs font-semibold text-black">{currentTestimonial.author}</h4>
+                  <p className="text-[10px] text-stone-600">{currentTestimonial.position}</p>
                 </div>
               </div>
 
-              <blockquote className="text-[10px] text-black mb-1 leading-tight italic min-h-[40px] flex items-center">
-                <p>"{currentTestimonial.quote.substring(0, 60)}..."</p>
+              <blockquote className="text-xs text-black mb-1 leading-snug italic min-h-[40px] flex items-center">
+                <p>"{currentTestimonial.quote.substring(0, 110)}..."</p>
               </blockquote>
               
               {/* 5-star review */}
@@ -428,8 +416,8 @@ export default function Hero() {
       </div>
 
       {/* Flexbox layout for side-by-side containers */}
-<div className="container-custom relative z-20 flex flex-col justify-start py-0 pl-[2vw] ml-[15vw]">
-  <div className="max-w-7xl w-full mt-[0.5vh] ml-[1vw]">
+<div className="container-custom relative z-20 order-1 flex flex-col justify-start py-0 px-4 md:px-0 md:pl-[2vw] md:ml-[8vw] lg:ml-[15vw]">
+  <div className="max-w-7xl w-full mt-[0.5vh] md:ml-[1vw]">
     <div className="pt-[3vh] md:pt-[7vh]">
       {/* Three-column layout on desktop, stacked on mobile */}
       <div className="flex flex-col md:flex-row md:items-start">
@@ -463,8 +451,8 @@ export default function Hero() {
          {/* Desktop Mission statement - PRIMARY FOCUS PART 2 */}
 <div className="relative z-10 ml-[-3.5vw] xl:ml-0 lg:ml-0 md:ml-[-1.5vw] px-0 mx-auto mt-[-0.5vh] hidden md:block" style={{ contentVisibility: 'auto' }}>
    <div 
-       className="bg-white/95 backdrop-blur-sm border-l-2 border-r-2 border-blue-500 pl-[1vw] pr-[0.8vw] py-[0.8vw] rounded-lg mr-auto relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent h-auto md:w-auto"
-       style={{ width: 'clamp(315px, 55vw, 750px)', maxWidth: '95%' }}
+       className="bg-white/95 backdrop-blur-sm border-l-2 border-r-2 border-blue-500 pl-[1vw] pr-[0.8vw] py-[0.8vw] rounded-lg mr-auto relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent h-auto md:w-[clamp(300px,46vw,750px)] lg:w-[clamp(315px,55vw,750px)]"
+       style={{ maxWidth: '95%' }}
    >
      <div className="flex flex-col items-center justify-center">
        {/* Optimize for Largest Contentful Paint */}
@@ -508,7 +496,7 @@ export default function Hero() {
 
 {/* Mobile Mission statement */}
 <div
-  className="relative z-10 px-1 mr-[5vw] mx-auto mt-[2vh] block md:hidden"
+  className="relative z-10 px-1 mx-auto mt-[2vh] block md:hidden"
   style={{
     contentVisibility: 'auto',
     containIntrinsicSize: '80px 120px', // Prevent layout shift
